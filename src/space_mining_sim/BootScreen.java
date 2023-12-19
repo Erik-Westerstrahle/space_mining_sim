@@ -3,6 +3,8 @@ package space_mining_sim;
 import java.util.Scanner;
 
 public class BootScreen {
+	
+	// test comment for github
 
     public static void main(String[] args) throws InterruptedException {
         final int loadingBarWidth = 30; // The width of the loading bar
