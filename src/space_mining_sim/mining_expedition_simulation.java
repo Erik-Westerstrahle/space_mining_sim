@@ -8,13 +8,18 @@ public class mining_expedition_simulation {
 	}
 	
 	
-	
+	ship_stats shipStats = new ship_stats();
 
-	public void go_on_mining_expedition(finances_player playerFinances) {
-	
-	 System.out.println("went mining");
-	 
-	  playerFinances.increase_finances(300); // Example: increase by 100
+	// dependency injection 
+	public void go_on_mining_expedition(finances_player playerFinances, ship_stats shipStats) {
+		
+		int receive_money = 300;
+	    
+        System.out.println("Went mining");
+        playerFinances.increase_finances(receive_money); // Increase finances
+        System.out.println("You received " + receive_money);
+        
+        shipStats.setWentOnMiningExpedition(true); // Set flag on the passed shipStats instance
 	}
 
 }

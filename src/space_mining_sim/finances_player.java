@@ -18,5 +18,7 @@ public class finances_player {
 	{
 		finances_player+=finance_amount;
 	}
+	
+
 }
 

@@ -1,23 +1,16 @@
 package space_mining_sim;
 
 import java.util.Scanner;
-import javax.swing.*;
-import java.awt.*;
 
 public class BootScreen {
-	
 
     public static void main(String[] args) throws InterruptedException {
-    	
-    	
-    	
-    	
-    	
         final int loadingBarWidth = 30; // The width of the loading bar
         final int sleepTime = 1000 / loadingBarWidth; // Time to sleep in milliseconds
         final int infinityTimerStop = 200;
         boolean loadingSuccessful = false;
         finances_player playerFinances = new finances_player();
+        ship_stats shipStats = new ship_stats();
 
         System.out.println("Booting Spaceship OS...");
         try {
@@ -56,17 +49,19 @@ public class BootScreen {
 
                input = scanner.nextLine(); // Assign new input value here, don't redeclare
 
-               ship_stats stats = new ship_stats();
+               
+               
+               //ship_stats shipStats = new ship_stats();
                ascii_art ascii_art = new ascii_art();
-               shop_spaceship_parts spaceship_parts_store_instance = new shop_spaceship_parts();
+               Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
               // finances_player finances_player = new finances_player();
               // finances_player playerFinances = new finances_player();
-               mining_expedition_simulation mining_expedition = new mining_expedition_simulation();
+               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation();
 
                // Use switch statement to handle the input
                switch (input) {
                    case "a":
-                       stats.displayStats();
+                       shipStats.displayStats();
                        break;
                    case "v":
                        ascii_art.ascii_spaceship();
@@ -76,7 +71,13 @@ public class BootScreen {
                        break;
                    case "e":
                 	   
-                	   mining_expedition.go_on_mining_expedition(playerFinances);
+                	   mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats);
+                	   shipStats.wear_and_tear(); // Apply wear and tear after expedition
+                	   shipStats.fuel_comsumption();
+                	   shipStats.displayStats();
+                	   playerFinances.print_finances();
+                	   
+                	   
                        break;
                    case "s":
                 	   
@@ -99,4 +100,3 @@ public class BootScreen {
      //   System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
     }
 }
-
