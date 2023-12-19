@@ -2,12 +2,60 @@ package space_mining_sim;
 
 import java.util.Scanner;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.PrintStream;
+
 public class BootScreen {
 	
 	// test comment for github
+	
+	
+	
+	//add window later
+//
+//    private static void createAndShowGUI() {
+//        // Create and set up the window.
+//        JFrame frame = new JFrame("Spaceship OS");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setLayout(new BorderLayout());
+//
+//        // Add a text area.
+//        JTextArea textArea = new JTextArea();
+//        textArea.setEditable(false);
+//        frame.add(new JScrollPane(textArea), BorderLayout.CENTER);
+//
+//        // Redirect standard output to the text area.
+//        System.setOut(new PrintStream(new TextAreaOutputStream(textArea)));
+//
+//        // Display the window.
+//        frame.setSize(500, 300);
+//        frame.setVisible(true);
+//        
+//        // Redirect output and errors
+//        System.setOut(new PrintStream(new TextAreaOutputStream(textArea)));
+//        System.setErr(new PrintStream(new TextAreaOutputStream(textArea)));
+//    }
+
+
+	
 
     public static void main(String[] args) throws InterruptedException {
-        final int loadingBarWidth = 30; // The width of the loading bar
+        
+    	
+    	// add window later
+//        // Schedule a job for the event dispatch thread:
+//        // creating and showing this application's GUI.
+//        SwingUtilities.invokeLater(new Runnable() {
+//            public void run() {
+//                createAndShowGUI();
+//            }
+//        });
+    	
+    	
+    	final int loadingBarWidth = 30; // The width of the loading bar
         final int sleepTime = 1000 / loadingBarWidth; // Time to sleep in milliseconds
         final int infinityTimerStop = 200;
         boolean loadingSuccessful = false;
@@ -47,6 +95,7 @@ public class BootScreen {
                System.out.println("Press 'v' to view your ship");
                System.out.println("Press 'f' to view your finances");
                System.out.println("Press 'e' to go on a mining expedition");
+               System.out.println("Press 'r' to refuel");
                System.out.println("Type 'exit' to quit");
 
                input = scanner.nextLine(); // Assign new input value here, don't redeclare
@@ -59,6 +108,9 @@ public class BootScreen {
               // finances_player finances_player = new finances_player();
               // finances_player playerFinances = new finances_player();
                mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation();
+               
+               
+               
 
                // Use switch statement to handle the input
                switch (input) {
@@ -71,6 +123,9 @@ public class BootScreen {
                    case "f":
                 	   playerFinances.print_finances();
                        break;
+                   case "r":
+                	   spaceship_parts_store_instance.refuel_spaceship(shipStats);
+                	   break;
                    case "e":
                 	   
                 	   mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats);
@@ -101,4 +156,38 @@ public class BootScreen {
 
      //   System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
     }
+    
+    
+    
+    
+    
+   // add window later 
+//    
+//    // Custom PrintStream to redirect output to a JTextArea
+//    static class TextAreaOutputStream extends PrintStream {
+//        private JTextArea textArea;
+//
+//        public TextAreaOutputStream(JTextArea textArea) {
+//            super(System.out, true); // Enable auto-flush
+//            this.textArea = textArea;
+//        }
+//
+//        @Override
+//        public void print(String s) {
+//            SwingUtilities.invokeLater(() -> textArea.append(s));
+//        }
+//
+//        @Override
+//        public void println(String x) {
+//            print(x + "\n");
+//        }
+//
+//        @Override
+//        public void println() {
+//            print("\n");
+//        }
+//
+//        // Implement other necessary methods...
+//    }
+
 }

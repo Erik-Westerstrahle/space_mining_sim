@@ -32,6 +32,13 @@ public void fuel_comsumption()
 	
 }
 
+
+public void reset_fuel(int fuel_amount)
+{
+	this.fuel_amount = fuel_amount; 
+}
+
+
 public void setWentOnMiningExpedition(boolean wentOnExpedition)
 {
 	this.wentOnMiningExpedition = wentOnExpedition;
