@@ -19,6 +19,10 @@ public class finances_player {
 		finances_player+=finance_amount;
 	}
 	
+	   public void decrease_finances(int amount) {
+	        finances_player -= amount;
+	    }
+	
 
 }
 

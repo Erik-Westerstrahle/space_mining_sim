@@ -54,6 +54,13 @@ public void displayStats() {
 }
 
 
+public void test_for_parameter(Shop_space_mining_sim spaceship_parts_store_instance)
+{
+	 System.out.println("remember lesson "  );
+	 spaceship_parts_store_instance.spaceship_parts_prices(100);
+}
+
+
 }
 
 

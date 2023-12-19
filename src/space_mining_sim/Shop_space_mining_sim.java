@@ -5,7 +5,7 @@ public class Shop_space_mining_sim {
 	
 	
 	
-	//ship_stats shipStats = new ship_stats();
+	//ship_stats shipStats_instance = new ship_stats();
 	
 	public void spaceship_parts_store()
 	{
@@ -19,10 +19,17 @@ public class Shop_space_mining_sim {
 		 
 		 
 		 
+				 
 		 
 		 
-		 
-		 
+	}
+	
+	
+	public void spaceship_parts_prices(int engine_price)
+	{
+	 engine_price = 100;
+				 
+	 System.out.println(engine_price);	 
 		 
 	}
 	
@@ -31,12 +38,13 @@ public class Shop_space_mining_sim {
 								//   remember you can input instance of classes as variables
 											//V
 	
-	public void refuel_spaceship(ship_stats shipStats)
+	public void refuel_spaceship(ship_stats shipStats_instance, finances_player playerFinances)
 	{
 		 System.out.println(" press f to refuel your ship");
 		 
 
-		 shipStats.reset_fuel(100);
+		 shipStats_instance.reset_fuel(100);
+		 playerFinances.decrease_finances(10); // Decrease finances by 10
 		
 	}
 	
@@ -47,6 +55,9 @@ public class Shop_space_mining_sim {
 		 System.out.println(" press r to refuel your ship");
 		
 	}
+
+
+
 			
 
 }

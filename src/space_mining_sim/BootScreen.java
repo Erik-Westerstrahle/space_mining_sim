@@ -60,7 +60,7 @@ public class BootScreen {
         final int infinityTimerStop = 200;
         boolean loadingSuccessful = false;
         finances_player playerFinances = new finances_player();
-        ship_stats shipStats = new ship_stats();
+        ship_stats shipStats_instance = new ship_stats();
 
         System.out.println("Booting Spaceship OS...");
         try {
@@ -96,13 +96,14 @@ public class BootScreen {
                System.out.println("Press 'f' to view your finances");
                System.out.println("Press 'e' to go on a mining expedition");
                System.out.println("Press 'r' to refuel");
+               System.out.println("Press 'l' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
                input = scanner.nextLine(); // Assign new input value here, don't redeclare
 
                
                
-               //ship_stats shipStats = new ship_stats();
+               //ship_stats shipStats_instance = new ship_stats();
                ascii_art ascii_art = new ascii_art();
                Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
               // finances_player finances_player = new finances_player();
@@ -115,7 +116,7 @@ public class BootScreen {
                // Use switch statement to handle the input
                switch (input) {
                    case "a":
-                       shipStats.displayStats();
+                       shipStats_instance.displayStats();
                        break;
                    case "v":
                        ascii_art.ascii_spaceship();
@@ -124,14 +125,17 @@ public class BootScreen {
                 	   playerFinances.print_finances();
                        break;
                    case "r":
-                	   spaceship_parts_store_instance.refuel_spaceship(shipStats);
+                	   spaceship_parts_store_instance.refuel_spaceship(shipStats_instance, playerFinances);
+                	   break;
+                   case "l":
+                	   shipStats_instance.test_for_parameter(spaceship_parts_store_instance);
                 	   break;
                    case "e":
                 	   
-                	   mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats);
-                	   shipStats.wear_and_tear(); // Apply wear and tear after expedition
-                	   shipStats.fuel_comsumption();
-                	   shipStats.displayStats();
+                	   mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats_instance);
+                	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
+                	   shipStats_instance.fuel_comsumption();
+                	   shipStats_instance.displayStats();
                 	   playerFinances.print_finances();
                 	   
                 	   
