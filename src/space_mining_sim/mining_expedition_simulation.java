@@ -1,6 +1,8 @@
 package space_mining_sim;
 
 import java.util.Scanner;
+import java.util.Random;
+
 
 public class mining_expedition_simulation {
 
@@ -54,34 +56,55 @@ public class mining_expedition_simulation {
 	
 	public void go_on_mining_outer_ring(finances_player playerFinances, ship_stats shipStats_instance) {
 		
-		int receive_money = 100;
-	    
-        System.out.println("Went mining outer ring");
-        playerFinances.increase_finances(receive_money); // Increase finances
-        System.out.println("You received " + receive_money);
-        
-        shipStats_instance.setWentOnMiningExpedition(true); // Set flag on the passed shipStats_instance instance
+	    Random random = new Random();
+	    int chance = random.nextInt(100); // Generate a number between 0 and 99
+	    int pirateChance = 2; // 1% chance for outer ring
+
+	    if (chance <= pirateChance) {
+	        System.out.println("You encountered pirates and earned 0 money!");
+	    } else {
+	        int receive_money = 100;
+	        System.out.println("Went mining outer ring");
+	        playerFinances.increase_finances(receive_money); // Increase finances
+	        System.out.println("You received " + receive_money);
+	    }
+
+	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
 	public void go_on_mining_mid_ring(finances_player playerFinances, ship_stats shipStats_instance) {
 		
-		int receive_money = 200;
-	    
-        System.out.println("Went mining mid ring");
-        playerFinances.increase_finances(receive_money); // Increase finances
-        System.out.println("You received " + receive_money);
-        
-        shipStats_instance.setWentOnMiningExpedition(true); // Set flag on the passed shipStats_instance instance
+	    Random random = new Random();
+	    int chance = random.nextInt(100); // Generate a number between 0 and 99
+	    int pirateChance = 10; // 1% chance for outer ring
+
+	    if (chance <= pirateChance) {
+	        System.out.println("You encountered pirates and earned 0 money!");
+	    } else {
+	        int receive_money = 200;
+	        System.out.println("Went mining mid ring");
+	        playerFinances.increase_finances(receive_money); // Increase finances
+	        System.out.println("You received " + receive_money);
+	    }
+
+	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
 	public void go_on_mining_inner_ring(finances_player playerFinances, ship_stats shipStats_instance) {
 		
-		int receive_money = 300;
-	    
-        System.out.println("Went mining innner ring");
-        playerFinances.increase_finances(receive_money); // Increase finances
-        System.out.println("You received " + receive_money);
-        
-        shipStats_instance.setWentOnMiningExpedition(true); // Set flag on the passed shipStats_instance instance
+	    Random random = new Random();
+	    int chance = random.nextInt(100); // Generate a number between 0 and 99
+	    int pirateChance = 100; // 1% chance for outer ring
+
+	    if (chance <= pirateChance) {
+	        System.out.println("You encountered pirates and earned 0 money!");
+	    } else {
+	        int receive_money = 300;
+	        System.out.println("Went mining inner ring");
+	        playerFinances.increase_finances(receive_money); // Increase finances
+	        System.out.println("You received " + receive_money);
+	    }
+
+	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 }

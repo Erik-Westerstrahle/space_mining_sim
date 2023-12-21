@@ -15,29 +15,6 @@ public class BootScreen {
 	
 	
 	//add window later
-//
-//    private static void createAndShowGUI() {
-//        // Create and set up the window.
-//        JFrame frame = new JFrame("Spaceship OS");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLayout(new BorderLayout());
-//
-//        // Add a text area.
-//        JTextArea textArea = new JTextArea();
-//        textArea.setEditable(false);
-//        frame.add(new JScrollPane(textArea), BorderLayout.CENTER);
-//
-//        // Redirect standard output to the text area.
-//        System.setOut(new PrintStream(new TextAreaOutputStream(textArea)));
-//
-//        // Display the window.
-//        frame.setSize(500, 300);
-//        frame.setVisible(true);
-//        
-//        // Redirect output and errors
-//        System.setOut(new PrintStream(new TextAreaOutputStream(textArea)));
-//        System.setErr(new PrintStream(new TextAreaOutputStream(textArea)));
-//    }
 
 
 	
@@ -167,32 +144,6 @@ public class BootScreen {
     
     
    // add window later 
-//    
-//    // Custom PrintStream to redirect output to a JTextArea
-//    static class TextAreaOutputStream extends PrintStream {
-//        private JTextArea textArea;
-//
-//        public TextAreaOutputStream(JTextArea textArea) {
-//            super(System.out, true); // Enable auto-flush
-//            this.textArea = textArea;
-//        }
-//
-//        @Override
-//        public void print(String s) {
-//            SwingUtilities.invokeLater(() -> textArea.append(s));
-//        }
-//
-//        @Override
-//        public void println(String x) {
-//            print(x + "\n");
-//        }
-//
-//        @Override
-//        public void println() {
-//            print("\n");
-//        }
-//
-//        // Implement other necessary methods...
-//    }
+
 
 }
