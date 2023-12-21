@@ -132,7 +132,8 @@ public class BootScreen {
                 	   break;
                    case "e":
                 	   
-                	   mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats_instance);
+                	   //mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats_instance);
+                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance);
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
                 	   shipStats_instance.fuel_comsumption();
                 	   shipStats_instance.displayStats();

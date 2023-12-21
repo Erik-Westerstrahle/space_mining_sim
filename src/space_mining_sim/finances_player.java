@@ -20,7 +20,16 @@ public class finances_player {
 	}
 	
 	   public void decrease_finances(int amount) {
-	        finances_player -= amount;
+		   int finances_before_purchase =finances_player;
+		  
+		   if(finances_before_purchase <= 0)
+		   {
+			   System.out.println("you have no money"); 
+		   }
+		   else
+		   {
+			   finances_player -= amount;
+		   }
 	    }
 	
 

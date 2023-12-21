@@ -45,6 +45,7 @@ public class Shop_space_mining_sim {
 
 		 shipStats_instance.reset_fuel(100);
 		 playerFinances.decrease_finances(10); // Decrease finances by 10
+		 playerFinances.print_finances();
 		
 	}
 	
