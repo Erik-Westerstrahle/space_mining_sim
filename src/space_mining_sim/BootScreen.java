@@ -42,6 +42,7 @@ public class BootScreen {
         ship_stats shipStats_instance = new ship_stats();
         Shop_space_mining_sim shop = new Shop_space_mining_sim();
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
+        timeManager timeManager_instance = new timeManager();
 
         System.out.println("Booting Spaceship OS...");
         try {
@@ -67,6 +68,8 @@ public class BootScreen {
        if (loadingSuccessful) {
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
+          // System.out.println(timeManager_instance.printCurrentDate());
+           timeManager_instance.printCurrentDate();
            
            Scanner scanner = new Scanner(System.in);
            String input = ""; // Declare input before the loop
@@ -115,7 +118,8 @@ public class BootScreen {
                    case "e":
                 	   
                 	   //mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats_instance);
-                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance,shop);
+                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance, shop, timeManager_instance);
+
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
                 	   shipStats_instance.fuel_comsumption();
                 	   shipStats_instance.displayStats();
