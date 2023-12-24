@@ -31,7 +31,11 @@ public class finances_player {
 			   finances_player -= amount;
 		   }
 	    }
-	
+
+	    // Method to get the current amount of finances
+	    public int getFinances() {
+	        return finances_player;
+	    }
 
 }
 

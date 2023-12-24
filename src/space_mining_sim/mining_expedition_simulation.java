@@ -13,6 +13,7 @@ public class mining_expedition_simulation {
 	
 	
 	ship_stats shipStats_instance = new ship_stats();
+	
 
 	// dependency injection 
 	public void go_on_mining_expedition(finances_player playerFinances, ship_stats shipStats) {
@@ -28,7 +29,7 @@ public class mining_expedition_simulation {
 	
 	
 	
-	public void  select_where_go_mining(finances_player playerFinances, ship_stats shipStats_instance)
+	public void  select_where_go_mining(finances_player playerFinances, ship_stats shipStats_instance, Shop_space_mining_sim shop)
 	{
 		 Scanner scanner = new Scanner(System.in);
 		  System.out.println("press 1 to mine outer_ring");
@@ -39,13 +40,13 @@ public class mining_expedition_simulation {
 		  switch(choice)
 		  {
           case "1":
-              go_on_mining_outer_ring(playerFinances, shipStats_instance);
+              go_on_mining_outer_ring(playerFinances, shipStats_instance, shop );
               break;
           case "2":
-              go_on_mining_mid_ring(playerFinances, shipStats_instance);
+              go_on_mining_mid_ring(playerFinances, shipStats_instance, shop);
               break;
           case "3":
-              go_on_mining_inner_ring(playerFinances, shipStats_instance);
+              go_on_mining_inner_ring(playerFinances, shipStats_instance, shop);
               break;
           default:
               System.out.println("Invalid choice.");
@@ -54,7 +55,7 @@ public class mining_expedition_simulation {
 	}
 
 	
-	public void go_on_mining_outer_ring(finances_player playerFinances, ship_stats shipStats_instance) {
+	public void go_on_mining_outer_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop) {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
@@ -63,7 +64,7 @@ public class mining_expedition_simulation {
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	    } else {
-	        int receive_money = 100;
+	    	int receive_money = calculateIncome(100, shop.getIncomeMultiplier());
 	        System.out.println("Went mining outer ring");
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
@@ -72,7 +73,7 @@ public class mining_expedition_simulation {
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
-	public void go_on_mining_mid_ring(finances_player playerFinances, ship_stats shipStats_instance) {
+	public void go_on_mining_mid_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop) {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
@@ -81,7 +82,7 @@ public class mining_expedition_simulation {
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	    } else {
-	        int receive_money = 200;
+	    	int receive_money = calculateIncome(200, shop.getIncomeMultiplier());
 	        System.out.println("Went mining mid ring");
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
@@ -90,7 +91,7 @@ public class mining_expedition_simulation {
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
-	public void go_on_mining_inner_ring(finances_player playerFinances, ship_stats shipStats_instance) {
+	public void go_on_mining_inner_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop) {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
@@ -99,7 +100,7 @@ public class mining_expedition_simulation {
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	    } else {
-	        int receive_money = 300;
+	    	 int receive_money = calculateIncome(300, shop.getIncomeMultiplier());
 	        System.out.println("Went mining inner ring");
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
@@ -107,4 +108,9 @@ public class mining_expedition_simulation {
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
+	
+    // Method to calculate income considering the multiplier
+    private int calculateIncome(int baseIncome, double multiplier) {
+        return (int) (baseIncome * multiplier);
+    }
 }

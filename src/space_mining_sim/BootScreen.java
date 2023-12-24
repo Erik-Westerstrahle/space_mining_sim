@@ -36,8 +36,12 @@ public class BootScreen {
         final int sleepTime = 1000 / loadingBarWidth; // Time to sleep in milliseconds
         final int infinityTimerStop = 200;
         boolean loadingSuccessful = false;
+        
+        
         finances_player playerFinances = new finances_player();
         ship_stats shipStats_instance = new ship_stats();
+        Shop_space_mining_sim shop = new Shop_space_mining_sim();
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
 
         System.out.println("Booting Spaceship OS...");
         try {
@@ -73,6 +77,7 @@ public class BootScreen {
                System.out.println("Press 'f' to view your finances");
                System.out.println("Press 'e' to go on a mining expedition");
                System.out.println("Press 'r' to refuel");
+               System.out.println("Press 's' to access store");
                System.out.println("Press 'l' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
@@ -110,7 +115,7 @@ public class BootScreen {
                    case "e":
                 	   
                 	   //mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats_instance);
-                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance);
+                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance,shop);
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
                 	   shipStats_instance.fuel_comsumption();
                 	   shipStats_instance.displayStats();
@@ -120,7 +125,7 @@ public class BootScreen {
                        break;
                    case "s":
                 	   
-                	   spaceship_parts_store_instance.spaceship_parts_store();
+                	   spaceship_parts_store_instance.spaceship_parts_store(playerFinances);
                        break;
                    default:
                        System.out.println("Invalid command.");

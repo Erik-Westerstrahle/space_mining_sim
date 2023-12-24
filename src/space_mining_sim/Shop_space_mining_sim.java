@@ -3,24 +3,75 @@ import java.util.Scanner;
 
 public class Shop_space_mining_sim {
 	
+	// Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
 	
+	private boolean haveBoughtMiningArm = false;
+	private double incomeMultiplier =1.0;
 	
 	//ship_stats shipStats_instance = new ship_stats();
 	
-	public void spaceship_parts_store()
+	public void spaceship_parts_store(finances_player playerFinances)
 	{
-		 System.out.println("xenon engine");
-		 System.out.println("fusion engine");
-		 System.out.println("pres r to repair hull");
+		 System.out.println("1. Purchase mining arm (100 credits)");
+	        System.out.println("Enter the number of the item you want to purchase, or 'b' to go back:");
+		// System.out.println("pres r to repair hull");
+		 
+	        Scanner scanner = new Scanner(System.in);
+	        String choice = scanner.nextLine();
+	        
+	        switch (choice) {
+	        case "1":
+	        	 purchaseMiningArm(playerFinances);
+	              
+	        	 break;
+	                
+	        case "b":
+                // Go back
+                break;
+            default:
+                System.out.println("Invalid choice.");
+                break;    
+	        	
+	        }
+	}
+	        
+	private void purchaseMiningArm(finances_player playerFinances) {
+	        	
+	        	if (haveBoughtMiningArm) {
+	        		System.out.println("You have already purchased the mining arm.");
+	        	} else if (playerFinances.getFinances() >= 100) {
+	                playerFinances.decrease_finances(100);
+	                haveBoughtMiningArm = true;
+	                incomeMultiplier = 1.2;
+	                System.out.println("Mining arm purchased successfully!");
+	            } else {
+	                System.out.println("Not enough credits to purchase the mining arm.");
+	        	}
+	        	
+	        }
 		 
 		 
 		 
 		 
-		 
-		 
-		 
+	        boolean hasBoughtMiningArm() {
+	            return haveBoughtMiningArm;
+	        }
+
+	        public double getIncomeMultiplier() {
+	            return incomeMultiplier;
+	        }
 				 
 		 
+		 
+	
+	
+	
+	
+	public void check_what_have_bought(finances_player playerFinances)
+	{
+	
+
+			
 		 
 	}
 	
