@@ -60,6 +60,26 @@ public void test_for_parameter(Shop_space_mining_sim spaceship_parts_store_insta
 	 spaceship_parts_store_instance.spaceship_parts_prices(100);
 }
 
+public int getHullIntegrity() {
+	// TODO Auto-generated method stub
+	return ship_hull_integrity;
+}
+
+public int getFuelAmount() {
+	// TODO Auto-generated method stub
+	return fuel_amount;
+}
+
+public void setHullIntegrity(int newShipHullIntegrity) {
+	// TODO Auto-generated method stub
+	this.ship_hull_integrity = newShipHullIntegrity;
+}
+
+public void setFuelAmount(int newFuelAmount) {
+	// TODO Auto-generated method stub
+	this.fuel_amount = newFuelAmount;
+}
+
 
 }
 

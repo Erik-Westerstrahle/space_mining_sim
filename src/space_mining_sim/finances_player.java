@@ -36,11 +36,6 @@ public class finances_player {
 		   }
 	    }
 
-	    // Method to get the current amount of finances
-	    public int getFinances() {
-	        return finances_player;
-	    }
-	    
 	    
 	    public void payOffPlayerDebt ()
 	    {
@@ -72,5 +67,32 @@ public class finances_player {
 	    	
 	    	System.out.println(debtPlayer); 
 	    }
+	    
+	    
+
+	    // Method to get the current amount of finances
+	    public int getFinances() {
+	        return finances_player;
+	    }
+	    
+
+
+		public int getDebt() {
+			// TODO Auto-generated method stub
+			return debtPlayer;
+		}
+
+
+		public void setFinances(int newFinances) {
+			this.finances_player = newFinances;
+
+			
+		}
+
+
+		public void setDebt(int newDebtPlayer) {
+			// TODO Auto-generated method stub
+			this.debtPlayer = newDebtPlayer;
+		}
 }
 

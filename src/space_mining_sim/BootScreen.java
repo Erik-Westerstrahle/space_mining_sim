@@ -31,6 +31,10 @@ public class BootScreen {
 //            }
 //        });
     	
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_GREEN = "\u001B[32m";
+        final String ANSI_BLUE = "\u001B[34m";
+    	
     	
     	final int loadingBarWidth = 30; // The width of the loading bar
         final int sleepTime = 1000 / loadingBarWidth; // Time to sleep in milliseconds
@@ -43,6 +47,7 @@ public class BootScreen {
         Shop_space_mining_sim shop = new Shop_space_mining_sim();
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
         timeManager timeManager_instance = new timeManager();
+        SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
 
         System.out.println("Booting Spaceship OS...");
         try {
@@ -69,19 +74,23 @@ public class BootScreen {
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
           // System.out.println(timeManager_instance.printCurrentDate());
-           timeManager_instance.printCurrentDate();
+         //  timeManager_instance.printCurrentDate();
            
            Scanner scanner = new Scanner(System.in);
            String input = ""; // Declare input before the loop
 
            while (!input.equals("exit")) {
+        	   timeManager_instance.printCurrentDate();
                System.out.println("Press 'a' to see ship stats");
                System.out.println("Press 'v' to view your ship");
                System.out.println("Press 'f' to view your finances");
                System.out.println("Press 'e' to go on a mining expedition");
                System.out.println("Press 'r' to refuel");
-               System.out.println("Press 's' to access store");
-               System.out.println("Press 'l' for leasson you ought to remember");
+               System.out.println("Press 'b' to access store");
+               System.out.println("Press 'p' to pay of your debts");
+               System.out.println("Press 's' to save the game");
+               System.out.println("Press 'l' to load the game");
+             //  System.out.println("Press 'k' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
                input = scanner.nextLine(); // Assign new input value here, don't redeclare
@@ -112,7 +121,7 @@ public class BootScreen {
                    case "r":
                 	   spaceship_parts_store_instance.refuel_spaceship(shipStats_instance, playerFinances);
                 	   break;
-                   case "l":
+                   case "k":
                 	   shipStats_instance.test_for_parameter(spaceship_parts_store_instance);
                 	   break;
                    case "e":
@@ -125,11 +134,11 @@ public class BootScreen {
                 	   shipStats_instance.displayStats();
                 	   playerFinances.print_finances();
                 	   // Print the updated date after a mining expedition
-                	    timeManager_instance.printCurrentDate();
+                	 //   timeManager_instance.printCurrentDate();
                 	   
                 	   
                        break;
-                   case "s":
+                   case "b":
                 	   
                 	   spaceship_parts_store_instance.spaceship_parts_store(playerFinances);
                        break;
@@ -137,6 +146,16 @@ public class BootScreen {
                 	   
                 	   playerFinances.payOffPlayerDebt();
                 	   playerFinances.print_finances();
+                       break;
+                   case "s":
+                	   
+                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance);
+                	  
+                       break;
+                   case "l":
+                	   
+                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance);
+                	  
                        break;
                    default:
                        System.out.println("Invalid command.");
