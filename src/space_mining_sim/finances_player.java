@@ -14,7 +14,7 @@ public class finances_player {
 	
 	public void print_finances() {
 	
-	 System.out.println(finances_player);
+	 System.out.println("your money: "+finances_player);
 	}
 	
 	
@@ -65,7 +65,7 @@ public class finances_player {
 	    public void printDebtPlayer ()
 	    {
 	    	
-	    	System.out.println(debtPlayer); 
+	    	System.out.println("your debt is: "+debtPlayer); 
 	    }
 	    
 	    

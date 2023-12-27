@@ -2,6 +2,7 @@ package space_mining_sim;
 
 import java.util.Scanner;
 
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -19,7 +20,7 @@ public class BootScreen {
 
 	
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, LineUnavailableException {
         
     	
     	// add window later
@@ -48,6 +49,7 @@ public class BootScreen {
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
         timeManager timeManager_instance = new timeManager();
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
+        SoundGenerator SoundGeneratorInstance = new SoundGenerator();
 
         System.out.println("Booting Spaceship OS...");
         try {
@@ -111,18 +113,23 @@ public class BootScreen {
                switch (input) {
                    case "a":
                        shipStats_instance.displayStats();
+                       SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "v":
                        ascii_art.ascii_spaceship();
+                       SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "f":
                 	   playerFinances.print_finances();
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "r":
                 	   spaceship_parts_store_instance.refuel_spaceship(shipStats_instance, playerFinances);
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	   break;
                    case "k":
                 	   shipStats_instance.test_for_parameter(spaceship_parts_store_instance);
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	   break;
                    case "e":
                 	   
@@ -136,25 +143,29 @@ public class BootScreen {
                 	   // Print the updated date after a mining expedition
                 	 //   timeManager_instance.printCurrentDate();
                 	   
-                	   
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "b":
                 	   
                 	   spaceship_parts_store_instance.spaceship_parts_store(playerFinances);
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "p":
                 	   
                 	   playerFinances.payOffPlayerDebt();
                 	   playerFinances.print_finances();
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "s":
                 	   
                 	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance);
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;
                    case "l":
                 	   
                 	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance);
+                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;
                    default:

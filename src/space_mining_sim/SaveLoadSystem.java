@@ -7,10 +7,10 @@ public class SaveLoadSystem {
     public static void saveGame(finances_player playerFinances, ship_stats shipStats) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("game_save.txt"));
-            writer.write(playerFinances.getFinances() + "\n");
-            writer.write(playerFinances.getDebt() + "\n");
-            writer.write(shipStats.getHullIntegrity() + "\n");
-            writer.write(shipStats.getFuelAmount() + "\n");
+            writer.write("Player Finances: " + playerFinances.getFinances() + "\n");
+            writer.write("Player Debt: " +playerFinances.getDebt() + "\n");
+            writer.write("Ship Hull Integrity: " +shipStats.getHullIntegrity() + "\n");
+            writer.write("Ship Fuel Amount: " +shipStats.getFuelAmount() + "\n");
             // ... Write other game states
             writer.close();
             System.out.println("Game saved successfully.");

@@ -1,4 +1,4 @@
-287
-599987
-100
-100
+Player Finances: 100
+Player Debt: 600000
+Ship Hull Integrity: 100
+Ship Fuel Amount: 100
