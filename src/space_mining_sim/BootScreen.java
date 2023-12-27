@@ -124,12 +124,19 @@ public class BootScreen {
                 	   shipStats_instance.fuel_comsumption();
                 	   shipStats_instance.displayStats();
                 	   playerFinances.print_finances();
+                	   // Print the updated date after a mining expedition
+                	    timeManager_instance.printCurrentDate();
                 	   
                 	   
                        break;
                    case "s":
                 	   
                 	   spaceship_parts_store_instance.spaceship_parts_store(playerFinances);
+                       break;
+                   case "p":
+                	   
+                	   playerFinances.payOffPlayerDebt();
+                	   playerFinances.print_finances();
                        break;
                    default:
                        System.out.println("Invalid command.");

@@ -1,5 +1,7 @@
 package space_mining_sim;
 
+import java.util.Scanner;
+
 public class finances_player {
 
 	public static void main(String[] args) {
@@ -7,6 +9,8 @@ public class finances_player {
 
 	}
 	int finances_player = 0;
+	int debtPlayer = 600000;
+
 	
 	public void print_finances() {
 	
@@ -36,6 +40,37 @@ public class finances_player {
 	    public int getFinances() {
 	        return finances_player;
 	    }
+	    
+	    
+	    public void payOffPlayerDebt ()
+	    {
+	    	  Scanner scanner = new Scanner(System.in);
+		        int payOffAmount  = scanner.nextInt();
+	    	
+	    	
+		        // Check if the entered amount is valid
+		        if (payOffAmount <= 0) {
+		            System.out.println("Invalid amount.");
+		            return;
+		        }
+		        
 
+		        // Check if the player has enough money
+		        if (payOffAmount > finances_player) {
+		            System.out.println("Insufficient funds to pay off the debt.");
+		            return;
+		        }
+
+		        // Deduct the payment from the player's finances and debt
+		        finances_player -= payOffAmount;
+		        debtPlayer -= payOffAmount;
+		        System.out.println("Paid off " + payOffAmount + " of the debt. Remaining debt: " + debtPlayer);
+	    }
+	    
+	    public void printDebtPlayer ()
+	    {
+	    	
+	    	System.out.println(debtPlayer); 
+	    }
 }
 
