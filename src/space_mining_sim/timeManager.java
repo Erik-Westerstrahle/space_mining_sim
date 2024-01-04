@@ -13,9 +13,11 @@ public class timeManager {
 	
 	
 	
-	public void advanceTime(int days)
+	public void advanceTime(double d)
 	{
-        timeDay += days;
+		 int intDays = (int) Math.round(d); // Round to nearest integer
+		   timeDay += intDays;
+    //    timeDay += d;
         while (timeDay > 30) {  // Assuming each month has 30 days for simplicity
             timeDay -= 30;
             timeMonth++;
@@ -31,4 +33,7 @@ public class timeManager {
 	{
 		 System.out.println("Current date is " + timeDay + '.' + timeMonth + '.' +  timeYear);
 	}
+
+
+
 }

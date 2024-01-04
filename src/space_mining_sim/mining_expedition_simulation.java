@@ -41,16 +41,52 @@ public class mining_expedition_simulation {
 		  switch(choice)
 		  {
           case "1":
-              go_on_mining_outer_ring(playerFinances, shipStats_instance, shop, timeManager  );
-              timeManager.advanceTime(5);
+        	  if(shop.getHaveBoughtFusionEngine()==true)
+        	  {
+        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop, timeManager  );
+                  //timeManager.advanceTime(5 * shop.getTimeTakeWithFusionEngine());
+                  timeManager.advanceTime(5 * 0.6);
+        		  System.out.println("fusion engine lowered time");
+        	  }
+        	  else
+        	  {
+        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop, timeManager  );
+                    timeManager.advanceTime(5);
+                    System.out.println("took 5 days to mine");
+        	  }
+          
               break;
           case "2":
-              go_on_mining_mid_ring(playerFinances, shipStats_instance, shop, timeManager );
-              timeManager.advanceTime(10);
+            //  go_on_mining_mid_ring(playerFinances, shipStats_instance, shop, timeManager );
+             // timeManager.advanceTime(10);
+              if(shop.getHaveBoughtFusionEngine()==true)
+        	  {
+        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop, timeManager  );
+                  timeManager.advanceTime(10 * 0.6);
+        		  System.out.println("fusion engine lowered time");
+        	  }
+        	  else
+        	  {
+        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop, timeManager  );
+                    timeManager.advanceTime(10);
+                    System.out.println("took 10 days to mine");
+        	  }
               break;
           case "3":
-              go_on_mining_inner_ring(playerFinances, shipStats_instance, shop, timeManager );
-              timeManager.advanceTime(15);
+           //   go_on_mining_inner_ring(playerFinances, shipStats_instance, shop, timeManager );
+          //    timeManager.advanceTime(15);
+              if(shop.getHaveBoughtFusionEngine()==true)
+        	  {
+        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop, timeManager  );
+                  timeManager.advanceTime(15 * 0.6);
+        		  System.out.println("fusion engine lowered time");
+        	  }
+        	  else
+        	  {
+        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop, timeManager  );
+                    timeManager.advanceTime(15);
+                    System.out.println("took 15 days to mine");
+        	  }
               break;
           default:
               System.out.println("Invalid choice.");
