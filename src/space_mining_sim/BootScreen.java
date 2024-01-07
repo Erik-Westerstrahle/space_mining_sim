@@ -23,14 +23,7 @@ public class BootScreen {
     public static void main(String[] args) throws InterruptedException, LineUnavailableException {
         
     	
-    	// add window later
-//        // Schedule a job for the event dispatch thread:
-//        // creating and showing this application's GUI.
-//        SwingUtilities.invokeLater(new Runnable() {
-//            public void run() {
-//                createAndShowGUI();
-//            }
-//        });
+
     	
         final String ANSI_RED = "\u001B[31m";
         final String ANSI_GREEN = "\u001B[32m";
@@ -43,13 +36,19 @@ public class BootScreen {
         boolean loadingSuccessful = false;
         
         
+        
         finances_player playerFinances = new finances_player();
-        ship_stats shipStats_instance = new ship_stats();
-        Shop_space_mining_sim shop = new Shop_space_mining_sim();
+    
+        Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
+     //   shop_instance.setShipStatsInstance(shipStats_instance);
+        ship_stats shipStats_instance = new ship_stats(shop_instance);
+      
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
         timeManager timeManager_instance = new timeManager();
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
+     //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
+        
 
         System.out.println("Booting Spaceship OS...");
         try {
@@ -77,7 +76,7 @@ public class BootScreen {
            System.out.println(" ");
            System.out.println("Welcome to my game ");
            System.out.println("You have bought a mining space ship and you need to pay of your debt by mining to complete the game ");
-           SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop);
+           SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance);
         //   System.out.println("Game loaded successfully.");
           // System.out.println(timeManager_instance.printCurrentDate());
          //  timeManager_instance.printCurrentDate();
@@ -105,10 +104,12 @@ public class BootScreen {
                
                //ship_stats shipStats_instance = new ship_stats();
                ascii_art ascii_art = new ascii_art();
-               Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
+          //     Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
               // finances_player finances_player = new finances_player();
               // finances_player playerFinances = new finances_player();
                mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation();
+               
+               
                
                
                
@@ -117,28 +118,28 @@ public class BootScreen {
                switch (input) {
                    case "a":
                        shipStats_instance.displayStats();
-                       SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                   //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "v":
                        ascii_art.ascii_spaceship();
-                       SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                    //   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "f":
                 	   playerFinances.print_finances();
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "r":
-                	   spaceship_parts_store_instance.refuel_spaceship(shipStats_instance, playerFinances);
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	   shop_instance.refuel_spaceship(shipStats_instance, playerFinances);
+                	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	   break;
                    case "k":
-                	   shipStats_instance.test_for_parameter(spaceship_parts_store_instance);
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	   shipStats_instance.test_for_parameter(shop_instance);
+                	//   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	   break;
                    case "e":
                 	   
                 	   //mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats_instance);
-                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance, shop, timeManager_instance);
+                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance, shop_instance, timeManager_instance);
 
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
                 	   shipStats_instance.fuel_comsumption();
@@ -151,7 +152,7 @@ public class BootScreen {
                        break;
                    case "b":
                 	   
-                	   spaceship_parts_store_instance.spaceship_parts_store(playerFinances);
+                	   shop_instance.spaceship_parts_store(playerFinances);
                 	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "p":
@@ -162,13 +163,13 @@ public class BootScreen {
                        break;
                    case "s":
                 	   
-                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop);
+                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance);
                 	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;
                    case "l":
                 	   
-                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop);
+                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance);
                 	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;

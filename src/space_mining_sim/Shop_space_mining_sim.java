@@ -8,18 +8,31 @@ public class Shop_space_mining_sim {
 	private boolean haveBoughtMiningArm = false;
 	private boolean haveBoughtFusionEngine = false;
 	private boolean haveFusionEngine = false;
+	private boolean haveBoughtBasicCrewQuarters = false;
 	private double incomeMultiplier =1.0;
 	private double timeTakeWithFusionEngine =1.0;
 	
 	int priceFusionEngine = 200;
 	int priceMiningArm = 100;
-	
+	int priceBasicCrewQuarters = 100;
+		
 	//ship_stats shipStats_instance = new ship_stats();
+	
+	  private ship_stats shipStats_instance;
+	  
+	  
+	    public void setShipStatsInstance(ship_stats shipStats_instance) {
+	        this.shipStats_instance = shipStats_instance;
+	    }
+	    
+	    
+
 	
 	public void spaceship_parts_store(finances_player playerFinances)
 	{
-		 System.out.println("1. Purchase mining arm " + priceMiningArm + "credits");
-		 System.out.println("2.fusion engine " + priceFusionEngine + "credits");
+		 System.out.println("1. Purchase mining arm " + priceMiningArm + " credits");
+		 System.out.println("2.fusion engine " + priceFusionEngine + " credits");
+		 System.out.println("3. basic crew quarters " + priceBasicCrewQuarters + " credits");
 	        System.out.println("Enter the number of the item you want to purchase, or 'b' to go back:");
 		// System.out.println("pres r to repair hull");
 		 
@@ -29,10 +42,15 @@ public class Shop_space_mining_sim {
 	        switch (choice) {
 	        case "1":
 	        	 purchaseMiningArm(playerFinances);
+	        	 
 	              
 	        	 break;
 	        case "2":
 	        	purchaseFusionEngine(playerFinances);
+	              
+	        	 break;
+	        case "3":
+	        	purchaseBasicCrewQuarters(playerFinances);
 	              
 	        	 break;
 	                
@@ -55,6 +73,7 @@ public class Shop_space_mining_sim {
 	                haveBoughtMiningArm = true;
 	                incomeMultiplier = 1.2;
 	                System.out.println("Mining arm purchased successfully!");
+	              //  shipStats_instance.checkIfShipHasMiningArm();  // Update ship stats
 	            } else {
 	                System.out.println("Not enough credits to purchase the mining arm.");
 	        	}
@@ -76,6 +95,24 @@ public class Shop_space_mining_sim {
     	}
     	
     }
+	
+	
+	
+	public void purchaseBasicCrewQuarters(finances_player playerFinances) {
+		System.out.println("shipStats_instance "+shipStats_instance);
+	    if (haveBoughtBasicCrewQuarters) {
+	        System.out.println("You have already purchased the basic crew quarters.");
+	    } else if (playerFinances.getFinances() >= priceBasicCrewQuarters) {
+	        playerFinances.decrease_finances(priceBasicCrewQuarters);
+	        haveBoughtBasicCrewQuarters = true;
+	        shipStats_instance.upgradeToBasicCrewQuarters(); // Notify ship_stats of the purchase
+	        System.out.println("Basic crew quarters purchased successfully!");
+	    } else {
+	        System.out.println("Not enough credits to purchase the basic crew quarters.");
+	    }
+    	
+    }
+	
  
 		 
 		 
