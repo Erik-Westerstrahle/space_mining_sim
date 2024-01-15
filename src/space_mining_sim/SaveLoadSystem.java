@@ -8,24 +8,34 @@ public class SaveLoadSystem {
 
     
     
-
+	  // Method to save game state to a file
     public static void saveGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance) {
         try {
+        	  // Using BufferedWriter for efficient writing to a file
             BufferedWriter writer = new BufferedWriter(new FileWriter("game_save.txt"));
+            // Writing player's finances and debt to the file
             writer.write( playerFinances.getFinances() + "\n");
             writer.write( playerFinances.getDebt() + "\n");
+            
+         // Writing ship's hull integrity and fuel amount to the file
             writer.write( shipStats.getHullIntegrity() + "\n");
             writer.write( shipStats.getFuelAmount() + "\n");
+            
+            // Writing information about purchased items (mining arm, fusion engine)
             writer.write( shop_instance.hasBoughtMiningArm() + "\n");
             writer.write(shop_instance.getHaveBoughtFusionEngine() + "\n"); // Save fusion engine state
             // ... Write other game states
+            
+            // Closing the writer to ensure data is saved and resources are released
             writer.close();
             System.out.println("Game saved successfully.");
         } catch (IOException e) {
             System.out.println("Error saving the game: " + e.getMessage());
         } 
     }
-
+    
+    
+    // Method to load game state from a file
     public static void loadGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("game_save.txt"));

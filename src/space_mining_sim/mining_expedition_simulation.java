@@ -1,6 +1,9 @@
 package space_mining_sim;
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 
 
@@ -159,8 +162,51 @@ public class mining_expedition_simulation {
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
+	public void bonusesFromHiredAstronauts()
+	{
+		try
+		{
+			int totalSkillLevel = getTotalSkillLevelFromHiredAstronauts();
+			double bonusMultiplier = 1 + (totalSkillLevel / 100.0);
+			 System.out.println("total level bonus " + bonusMultiplier);
+			
+		}
+		 catch (IOException e) {
+	            System.out.println("Error reading hired astronauts: " + e.getMessage());
+	        }
+		
+			  
+	}
+	
+	private int getTotalSkillLevelFromHiredAstronauts() throws IOException {
+		int totalSkill = 0;
+
+		  try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
+			  String line;
+			  while ((line = reader.readLine()) !=null) {
+				  totalSkill += extractSkillLevel(line);
+				  
+			  }
+		  }
+		  return totalSkill;
+	}
+	
+	private int extractSkillLevel(String astronautData)
+	{
+		 String skillLevelPart = astronautData.split(",")[1].trim(); // "skillLevel=X"
+		 return Integer.parseInt(skillLevelPart.split("=")[1]); // X
+	}
+	
+	
+	
+		
+		  
+	
+	
     // Method to calculate income considering the multiplier
     private int calculateIncome(int baseIncome, double multiplier) {
         return (int) (baseIncome * multiplier);
     }
+    
+    
 }

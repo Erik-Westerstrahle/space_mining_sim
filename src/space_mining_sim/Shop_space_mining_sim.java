@@ -105,7 +105,11 @@ public class Shop_space_mining_sim {
 	    } else if (playerFinances.getFinances() >= priceBasicCrewQuarters) {
 	        playerFinances.decrease_finances(priceBasicCrewQuarters);
 	        haveBoughtBasicCrewQuarters = true;
-	        shipStats_instance.upgradeToBasicCrewQuarters(); // Notify ship_stats of the purchase
+	        if (shipStats_instance != null) {
+	            shipStats_instance.upgradeToBasicCrewQuarters(); // Update ship stats
+	        } else {
+	            System.out.println("Error: Ship stats instance is not initialized.");
+	        }
 	        System.out.println("Basic crew quarters purchased successfully!");
 	    } else {
 	        System.out.println("Not enough credits to purchase the basic crew quarters.");

@@ -1,0 +1,2 @@
+Astronaut{name='Fiona', skillLevel=10, salaryRequirement=10000}
+Astronaut{name='Alice', skillLevel=5, salaryRequirement=5000}

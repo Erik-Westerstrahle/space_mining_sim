@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
 
 public class BootScreen {
@@ -20,7 +23,7 @@ public class BootScreen {
 
 	
 
-    public static void main(String[] args) throws InterruptedException, LineUnavailableException {
+    public static void main(String[] args) throws InterruptedException, LineUnavailableException, IOException {
         
     	
 
@@ -36,20 +39,27 @@ public class BootScreen {
         boolean loadingSuccessful = false;
         
         
-        
+     // Creating instances of the game's main components
         finances_player playerFinances = new finances_player();
     
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
      //   shop_instance.setShipStatsInstance(shipStats_instance);
         ship_stats shipStats_instance = new ship_stats(shop_instance);
+        
+        shop_instance.setShipStatsInstance(shipStats_instance);
       
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
         timeManager timeManager_instance = new timeManager();
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
+        hireAstronauts hireAstronautsInstance = new hireAstronauts();
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
-
+        
+        // Generate and save astronauts at the start of the program
+        generateAndSaveAstronauts();
+        
+     // If loading is successful, display welcome messages and load game data
         System.out.println("Booting Spaceship OS...");
         try {
 
@@ -83,7 +93,8 @@ public class BootScreen {
            
            Scanner scanner = new Scanner(System.in);
            String input = ""; // Declare input before the loop
-
+           
+           // Main game loop
            while (!input.equals("exit")) {
         	   timeManager_instance.printCurrentDate();
                System.out.println("Press 'a' to see ship stats");
@@ -95,6 +106,7 @@ public class BootScreen {
                System.out.println("Press 'p' to pay of your debts");
                System.out.println("Press 's' to save the game");
                System.out.println("Press 'l' to load the game");
+               System.out.println("Press 'h' to hire astronauts");
              //  System.out.println("Press 'k' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
@@ -148,29 +160,38 @@ public class BootScreen {
                 	   // Print the updated date after a mining expedition
                 	 //   timeManager_instance.printCurrentDate();
                 	   
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "b":
                 	   
                 	   shop_instance.spaceship_parts_store(playerFinances);
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "p":
                 	   
                 	   playerFinances.payOffPlayerDebt();
                 	   playerFinances.print_finances();
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "s":
                 	   
                 	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance);
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
+                       break;
+                   case "h":
+                	   
+                	   hireAstronauts.hireAstronautPersonel(playerFinances);
+                	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	  
+                       break;
+                   case "view":
+                       hireAstronauts.viewHiredAstronauts();
                        break;
                    case "l":
                 	   
                 	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance);
-                	   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;
                    default:
@@ -188,6 +209,20 @@ public class BootScreen {
        }
 
      //   System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
+    }
+    
+ // Method to generate and save astronaut data to a file
+    private static void generateAndSaveAstronauts() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("astronauts.txt"))) {
+            for (int i = 0; i < 5; i++) {
+                Astronauts astronaut = AstronautGenerator.generateAstronaut();
+                writer.write(astronaut.toString());
+                writer.newLine();
+            }
+            System.out.println("5 astronauts have been generated and saved to astronauts.txt");
+        } catch (IOException e) {
+            System.out.println("Error writing to astronauts.txt: " + e.getMessage());
+        }
     }
     
     
