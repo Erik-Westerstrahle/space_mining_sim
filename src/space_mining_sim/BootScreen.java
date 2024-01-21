@@ -43,10 +43,8 @@ public class BootScreen {
         finances_player playerFinances = new finances_player();
     
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
-     //   shop_instance.setShipStatsInstance(shipStats_instance);
         ship_stats shipStats_instance = new ship_stats(shop_instance);
-        
-        shop_instance.setShipStatsInstance(shipStats_instance);
+        shop_instance.setShipStatsInstance(shipStats_instance); // this exists for dependincis
       
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
         timeManager timeManager_instance = new timeManager();
@@ -181,7 +179,7 @@ public class BootScreen {
                        break;
                    case "h":
                 	   
-                	   hireAstronauts.hireAstronautPersonel(playerFinances);
+                	   hireAstronauts.hireAstronautPersonel(playerFinances, shipStats_instance);
                 	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;

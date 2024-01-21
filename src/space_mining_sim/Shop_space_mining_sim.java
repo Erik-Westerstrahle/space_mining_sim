@@ -17,8 +17,9 @@ public class Shop_space_mining_sim {
 	int priceBasicCrewQuarters = 100;
 		
 	//ship_stats shipStats_instance = new ship_stats();
-	
-	  private ship_stats shipStats_instance;
+	   ship_stats shipStats_instance = new ship_stats();
+	  //private ship_stats shipStats_instance;
+
 	  
 	  
 	    public void setShipStatsInstance(ship_stats shipStats_instance) {
@@ -72,7 +73,9 @@ public class Shop_space_mining_sim {
 	                playerFinances.decrease_finances(100);
 	                haveBoughtMiningArm = true;
 	                incomeMultiplier = 1.2;
+	               
 	                System.out.println("Mining arm purchased successfully!");
+	                shipStats_instance.updateShipFeatures();
 	              //  shipStats_instance.checkIfShipHasMiningArm();  // Update ship stats
 	            } else {
 	                System.out.println("Not enough credits to purchase the mining arm.");
@@ -89,7 +92,10 @@ public class Shop_space_mining_sim {
             playerFinances.decrease_finances(priceFusionEngine);
             haveBoughtFusionEngine = true;
             timeTakeWithFusionEngine = 0.1;
+        
             System.out.println("fusion engine purchased successfully!");
+            shipStats_instance.updateShipFeatures();
+       
         } else {
             System.out.println("Not enough credits to purchase the fusion engine.");
     	}
@@ -105,12 +111,15 @@ public class Shop_space_mining_sim {
 	    } else if (playerFinances.getFinances() >= priceBasicCrewQuarters) {
 	        playerFinances.decrease_finances(priceBasicCrewQuarters);
 	        haveBoughtBasicCrewQuarters = true;
+	
 	        if (shipStats_instance != null) {
 	            shipStats_instance.upgradeToBasicCrewQuarters(); // Update ship stats
 	        } else {
 	            System.out.println("Error: Ship stats instance is not initialized.");
 	        }
 	        System.out.println("Basic crew quarters purchased successfully!");
+	        shipStats_instance.updateShipFeatures();
+
 	    } else {
 	        System.out.println("Not enough credits to purchase the basic crew quarters.");
 	    }

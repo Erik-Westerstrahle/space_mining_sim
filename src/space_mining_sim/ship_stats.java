@@ -9,9 +9,12 @@ int availableCrewSpots = 1;
 boolean wentOnMiningExpedition = false; 
 boolean shipHasMiningArm = false; 
 boolean shipHasFusionEngine = false; 
+
+
+
 private Shop_space_mining_sim shop_instance;
 
-Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
+//Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
 
 
 
