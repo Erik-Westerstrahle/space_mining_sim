@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 
@@ -40,7 +41,7 @@ public class mining_expedition_simulation {
 	
 	
 	
-	public void select_where_go_mining(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, timeManager timeManager)
+	public void select_where_go_mining(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, timeManager timeManager) throws IOException
 	{
 		 Scanner scanner = new Scanner(System.in);
 		  System.out.println("press 1 to mine outer_ring, it will take 5 days");
@@ -105,7 +106,7 @@ public class mining_expedition_simulation {
 	}
 
 	
-	public void go_on_mining_outer_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance,  timeManager timeManager_instance ) {
+	public void go_on_mining_outer_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance,  timeManager timeManager_instance ) throws IOException {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
@@ -114,7 +115,8 @@ public class mining_expedition_simulation {
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	    } else {
-	    	int receive_money = calculateIncome(100, shop_instance.getIncomeMultiplier());
+	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
+	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        System.out.println("Went mining outer ring");
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
@@ -122,9 +124,10 @@ public class mining_expedition_simulation {
 	    }
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
+	//    List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	}
 	
-	public void go_on_mining_mid_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance,  timeManager timeManager_instance ) {
+	public void go_on_mining_mid_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance,  timeManager timeManager_instance ) throws IOException {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
@@ -133,7 +136,8 @@ public class mining_expedition_simulation {
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	    } else {
-	    	int receive_money = calculateIncome(200, shop_instance.getIncomeMultiplier());
+	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
+	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        System.out.println("Went mining mid ring");
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
@@ -143,7 +147,7 @@ public class mining_expedition_simulation {
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
-	public void go_on_mining_inner_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance,  timeManager timeManager_instance ) {
+	public void go_on_mining_inner_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance,  timeManager timeManager_instance ) throws IOException {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
@@ -152,7 +156,8 @@ public class mining_expedition_simulation {
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	    } else {
-	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier());
+	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
+	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        System.out.println("Went mining inner ring");
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
@@ -161,6 +166,9 @@ public class mining_expedition_simulation {
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
+	
+	
+	
 	
 	public void bonusesFromHiredAstronauts()
 	{
@@ -204,9 +212,17 @@ public class mining_expedition_simulation {
 	
 	
     // Method to calculate income considering the multiplier
-    private int calculateIncome(int baseIncome, double multiplier) {
-        return (int) (baseIncome * multiplier);
+    private int calculateIncome(int baseIncome, double multiplier,List<Astronauts> hiredAstronauts) {
+    	double geologistBonus = 1.0;
+    for(Astronauts astronaut : hiredAstronauts) {
+    
+        if(astronaut.getOccupation().equalsIgnoreCase("Geologist"))
+        {
+        	   geologistBonus += 0.1;
+        	   System.out.println("geologist bonus was applied ") ;
+        }
     }
+    return (int) (baseIncome * multiplier * geologistBonus); 
     
-    
+}  
 }

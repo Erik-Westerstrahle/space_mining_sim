@@ -1,5 +1,1 @@
-Astronaut{name='Fiona', skillLevel=10, salaryRequirement=10000}
-Astronaut{name='Alice', skillLevel=5, salaryRequirement=5000}
-Astronaut{name='Charlie', skillLevel=10, occupation=Geologist, salaryRequirement=10000}
-Astronaut{name='Dana', skillLevel=5, occupation=Mechanic, salaryRequirement=5000}
-
+Astronaut{name='Fiona', skillLevel=6, occupation=Geologist, salaryRequirement=6000}

@@ -5,7 +5,11 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 
@@ -49,6 +53,7 @@ class hireAstronauts {
     // Method to count the number of hired astronauts
     private static int getNumberOfHiredAstronauts() throws IOException {
         int count = 0;
+        // the number of astronauts that have been hired are saved to a text file. This migh need to be changed later
         try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
             while (reader.readLine() != null) {
                 count++;
@@ -76,6 +81,54 @@ class hireAstronauts {
             }
         }
     }
+    
+    public static void getHiredAstronautsSkills() throws IOException {
+    	  try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
+    		
+    		  
+    	  }
+    }
+    
+    
+    // learn this later
+    public static List<Astronauts> getHiredAstronauts() throws IOException {
+        List<Astronauts> hiredAstronauts = new ArrayList<>();
+        Pattern pattern = Pattern.compile("Astronaut\\{name='(.*?)', skillLevel=(\\d+), occupation=(.*?), salaryRequirement=(\\d+)}");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Matcher matcher = pattern.matcher(line);
+                if (matcher.find()) {
+                    String name = matcher.group(1).trim();
+                    int skillLevel = Integer.parseInt(matcher.group(2).trim());
+                    String occupation = matcher.group(3).trim();
+                    int salaryRequirement = Integer.parseInt(matcher.group(4).trim());
+
+                    hiredAstronauts.add(new Astronauts(name, skillLevel, salaryRequirement, occupation));
+                }
+            }
+        }
+        return hiredAstronauts;
+    }
+    
+//    public static List<Astronauts> getHiredAstronauts() throws IOException {
+//        List<Astronauts> hiredAstronauts = new ArrayList<>();
+//        try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                String[] data = line.split(",");
+//                // Assuming the format is "Name, SkillLevel, SalaryRequirement, Occupation"
+//                String name = data[0].split("=")[1].trim();
+//                int skillLevel = Integer.parseInt(data[1].split("=")[1].trim());
+//                int salaryRequirement = Integer.parseInt(data[2].split("=")[1].trim());
+//                String occupation = data[3].split("=")[1].trim();
+//
+//                hiredAstronauts.add(new Astronauts(name, skillLevel, salaryRequirement, occupation));
+//            }
+//        }
+//        return hiredAstronauts;
+//    }
 	
 	
 	

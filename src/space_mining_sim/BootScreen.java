@@ -14,11 +14,12 @@ import java.io.PrintStream;
 
 public class BootScreen {
 	
-	// test comment for github
-	
-	
-	
-	//add window later
+// TODO
+	// add astronaut occupation does something
+	// add countdown for paying bak dept
+	// add better ways to store data
+	// add more story descriptions
+	//
 
 
 	
