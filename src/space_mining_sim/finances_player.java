@@ -62,6 +62,25 @@ public class finances_player {
 		        System.out.println("Paid off " + payOffAmount + " of the debt. Remaining debt: " + debtPlayer);
 	    }
 	    
+	    
+	    
+	    public void payDebtIstallment(timeManager timeManager_instance)
+	    {
+	    	int debtPayment = 300;
+	    	if(finances_player >= debtPayment)
+	    	{
+	    		finances_player -=debtPayment;
+	    		
+	    		debtPlayer -= debtPayment;
+	    		System.out.println("Paid " + debtPayment + " towards debt. Remaining debt: " + debtPlayer);
+	    		timeManager_instance.resetDebtDeadline();
+	    	}
+	    	else
+	    	{
+	    		System.out.println("Insufficient funds to pay the debt");
+	    	}
+	    }
+	    
 	    public void printDebtPlayer ()
 	    {
 	    	

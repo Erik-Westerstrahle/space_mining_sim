@@ -16,9 +16,10 @@ public class BootScreen {
 	
 // TODO
 	// add astronaut occupation does something
-	// add countdown for paying bak dept
+	// add countdown for paying back debt
 	// add better ways to store data
 	// add more story descriptions
+	   // add window UI later 
 	//
 
 
@@ -106,6 +107,7 @@ public class BootScreen {
                System.out.println("Press 's' to save the game");
                System.out.println("Press 'l' to load the game");
                System.out.println("Press 'h' to hire astronauts");
+               System.out.println("Press 'view' to see hired astronauts");
              //  System.out.println("Press 'k' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
@@ -156,6 +158,30 @@ public class BootScreen {
                 	   shipStats_instance.fuel_comsumption();
                 	   shipStats_instance.displayStats();
                 	   playerFinances.print_finances();
+                	   
+                	   if(timeManager_instance.isDebtDeadlinePassed()) {
+                		   playerFinances.payDebtIstallment(timeManager_instance);
+                	   }
+                	   else
+                	   {
+                		   int daysUntilDeadline = timeManager_instance.getTimeUnitlDeadline();
+                		   System.out.println("Days until next debt payment deadline: " + daysUntilDeadline + " days");
+                	   }
+                	   
+                	   
+//                	   
+//                	   
+//                	   if (timeManager_instance.isDebtDeadlinePassed())
+//                	   {
+//                		   playerFinances.payDebtIstallment(timeManager_instance);
+//                	   }
+//                	   
+//                	   else
+//                	   {
+//                		  int daysUntilDeadline = timeManager_instance.getTimeUnitlDeadline(); 
+//                		  System.out.println("Days until next debt payment deadline: " + daysUntilDeadline);
+//                	   }
+           
                 	   // Print the updated date after a mining expedition
                 	 //   timeManager_instance.printCurrentDate();
                 	   
@@ -169,6 +195,11 @@ public class BootScreen {
                    case "p":
                 	   
                 	   playerFinances.payOffPlayerDebt();
+                	   playerFinances.print_finances();
+                	   if(playerFinances.getDebt() <=0)
+                	   {
+                		   timeManager_instance.resetDebtDeadline();
+                	   }
                 	   playerFinances.print_finances();
                 	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
@@ -228,7 +259,7 @@ public class BootScreen {
     
     
     
-   // add window later 
+
 
 
 }

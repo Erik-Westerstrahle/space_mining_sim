@@ -7,6 +7,8 @@ public class timeManager {
 	int timeDay = 1;
 	int timeMonth = 1;
 	int timeYear = 2221;
+	int timeToDebtDeadline =  60;
+	
 
 	
 
@@ -33,7 +35,27 @@ public class timeManager {
 	{
 		 System.out.println("Current date is " + timeDay + '.' + timeMonth + '.' +  timeYear);
 	}
-
+	
+	public void calculateTimeToDebtDeadline()
+	{
+		
+	}
+	
+	public boolean isDebtDeadlinePassed()
+	{
+		return timeDay >= timeToDebtDeadline;
+	}
+	
+	public int getTimeUnitlDeadline()
+	{
+		return timeToDebtDeadline-timeDay;
+		
+	}
+	
+	public int resetDebtDeadline()
+	{
+		return timeToDebtDeadline = timeDay + 60;
+	}
 
 
 }
