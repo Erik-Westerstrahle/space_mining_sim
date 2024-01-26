@@ -54,6 +54,7 @@ public class BootScreen {
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
+        EventManager eventManagerInstance = new EventManager();
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
         

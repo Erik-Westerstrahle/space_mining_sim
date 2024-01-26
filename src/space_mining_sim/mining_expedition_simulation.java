@@ -17,6 +17,7 @@ public class mining_expedition_simulation {
 	
 	
 	ship_stats shipStats_instance = new ship_stats();
+	EventManager eventManagerInstance = new EventManager();
 	// timeManager timeManager_instance = new timeManager();
 	
 //    private Shop_space_mining_sim shop;
@@ -90,7 +91,7 @@ public class mining_expedition_simulation {
         	  {
         		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
                   timeManager.advanceTime(15 * 0.6);
-        		  System.out.println("fusion engine lowered time");
+        		  //sSystem.out.println("fusion engine lowered time");
         	  }
         	  else
         	  {
@@ -118,8 +119,14 @@ public class mining_expedition_simulation {
 	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        System.out.println("Went mining outer ring");
+	        
+	        //events that can happen are listed here
+	        eventManagerInstance.eventTankExplode();
+	        
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
+	        
+	        
 	        timeManager_instance.printCurrentDate();
 	    }
 
