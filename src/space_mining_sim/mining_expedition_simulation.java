@@ -18,6 +18,7 @@ public class mining_expedition_simulation {
 	
 	ship_stats shipStats_instance = new ship_stats();
 	EventManager eventManagerInstance = new EventManager();
+	playerStats playerStatsInstance = new playerStats();
 	// timeManager timeManager_instance = new timeManager();
 	
 //    private Shop_space_mining_sim shop;
@@ -122,6 +123,7 @@ public class mining_expedition_simulation {
 	        
 	        //events that can happen are listed here
 	        eventManagerInstance.eventTankExplode();
+	        eventManagerInstance.encounterDeadAstronaut();
 	        
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);

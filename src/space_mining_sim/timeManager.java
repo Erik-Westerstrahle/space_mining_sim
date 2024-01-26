@@ -30,6 +30,11 @@ public class timeManager {
         }
 	}
 	
+	public int increaseTimeDay(int increaseTimeDayAmount)
+	{
+		return timeDay += increaseTimeDayAmount;
+	}
+	
 	
 	public void printCurrentDate()
 	{
@@ -56,6 +61,25 @@ public class timeManager {
 	{
 		return timeToDebtDeadline = timeDay + 60;
 	}
+	
+	public int getCurrentTimeDay()
+	{
+		return timeDay;
+	
+	}
+	
+	public int getCurrentTimeMonth()
+	{
+		return timeMonth;
+	
+	}
+	
+	public int getCurrentTimeYear()
+	{
+		return timeYear;
+	
+	}
+
 
 
 }
