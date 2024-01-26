@@ -16,7 +16,8 @@ public class BootScreen {
 	
 // TODO
 	// add astronaut occupation does something
-	// add countdown for paying back debt
+	// add event systems
+	// DONE add countdown for paying back debt
 	// add better ways to store data
 	// add more story descriptions
 	   // add window UI later 
