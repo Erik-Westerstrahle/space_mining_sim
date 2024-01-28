@@ -2,7 +2,7 @@ package space_mining_sim;
 
 public class timeManager {
 	
-	  mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
+	 // mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
 	
 	int timeDay = 1;
 	int timeMonth = 1;
@@ -10,7 +10,10 @@ public class timeManager {
 	int timeToDebtDeadline =  60;
 	
 
-	
+	  public timeManager() {
+	        // Initialize without creating a mining_expedition_simulation instance
+	    }
+
 
 	
 	

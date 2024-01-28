@@ -48,8 +48,10 @@ public class BootScreen {
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         ship_stats shipStats_instance = new ship_stats(shop_instance);
         shop_instance.setShipStatsInstance(shipStats_instance); // this exists for dependincis
+        timeManager timeManagerInstance = new timeManager();
       
-        mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
+      //  mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManagerInstance);
         timeManager timeManager_instance = new timeManager();
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
@@ -122,7 +124,7 @@ public class BootScreen {
           //     Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
               // finances_player finances_player = new finances_player();
               // finances_player playerFinances = new finances_player();
-               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation();
+               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance);
                
                
                
