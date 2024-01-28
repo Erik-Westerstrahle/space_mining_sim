@@ -17,15 +17,18 @@ public class mining_expedition_simulation {
 	
 	
 	ship_stats shipStats_instance = new ship_stats();
-	EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManagerInstance, null);
+	
 	playerStats playerStatsInstance = new playerStats();
-	private timeManager timeManagerInstance;
+	//private timeManager timeManagerInstance;
+	private timeManager timeManager_instance;
 	
 	//dependency injection
-	  public mining_expedition_simulation(timeManager timeManagerInstance) {
-	        this.timeManagerInstance = timeManagerInstance;
+	  public mining_expedition_simulation(timeManager timeManager_instance) {
+	        this.timeManager_instance = timeManager_instance;
 	        // Other initializations...
 	    }
+	  
+	  EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null);
 	// timeManager timeManager_instance = new timeManager();
 	
 //    private Shop_space_mining_sim shop;

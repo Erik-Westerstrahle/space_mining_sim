@@ -15,8 +15,8 @@ import java.io.PrintStream;
 public class BootScreen {
 	
 // TODO
-	// add astronaut occupation does something
-	// add event systems
+	// add astronaut occupation astrogator does something
+	// add more events
 	// DONE add countdown for paying back debt
 	// add better ways to store data
 	// add more story descriptions
@@ -48,11 +48,12 @@ public class BootScreen {
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         ship_stats shipStats_instance = new ship_stats(shop_instance);
         shop_instance.setShipStatsInstance(shipStats_instance); // this exists for dependincis
-        timeManager timeManagerInstance = new timeManager();
+       // timeManager timeManagerInstance = new timeManager();
       
       //  mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
-        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManagerInstance);
+  
         timeManager timeManager_instance = new timeManager();
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance);
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();

@@ -45,7 +45,7 @@ public class EventManager {
 	public void encounterDeadAstronaut() {
 		 Random random = new Random();
 		
-		 int chance = random.nextInt(1000);
+		 int chance = random.nextInt(100);
 		 int chanceToEncounterDeadAstronaut =1;
 		 int extraTimeToRevocerDeadAstronaut = 1;
 		 int increaseInReputationForRevoceringDeadAstronaut = 5;
@@ -74,13 +74,45 @@ public class EventManager {
                 break;
 	}
 
+}		
+}
+	
+	public void eventDistressCallFromShip() {
+		 Random random = new Random();
+		
+		 int chance = random.nextInt(100);
+		 int chanceToEncounterEventDistressCallFromShip =1;
+		 int extraTimeToHelpDistressedShip = 1;
+		 int increaseInReputationForHelpingDistressedShip = 5;
+		 
+		 if (chance <= chanceToEncounterEventDistressCallFromShip) {
+		        System.out.println("you receive a distress call from a ship in distress it will take "+ extraTimeToHelpDistressedShip + " day/days to help however your reputation will inrease by 5 if you do so");
+		        System.out.println("input 1 to recover the astronaut or 2 to continue on");
+		        Scanner scanner = new Scanner(System.in);
+		        String choice = scanner.nextLine();
+		        switch(choice)
+				  {
+		        case "1":
+		        	
+		        playerStatsInstance.increasePlayersReputation(increaseInReputationForHelpingDistressedShip);
+		        timeManagerInstance.increaseTimeDay(extraTimeToHelpDistressedShip);
+		        
+		      
+		        break;
+		        case "2":
+		        	
+		        	
+		        System.out.println("You have chosen to continue the expedition.");
+               break;
+               default:
+               System.out.println("Invalid choice. Continuing the expedition.");
+               break;
+	}
+
+}		
 }
 	
 	
 	
 	
-	
-	
-	
-}
 }
