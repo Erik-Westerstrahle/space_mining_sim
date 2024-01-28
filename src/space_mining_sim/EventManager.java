@@ -6,11 +6,20 @@ import java.util.Scanner;
 //here the events of the game are managed
 
 public class EventManager {
-	ship_stats shipStats_instance = new ship_stats();
-	 finances_player playerFinances = new finances_player();
-	 playerStats playerStatsInstance = new playerStats();
-	 timeManager timeManager_instance = new timeManager();
-	
+	//ship_stats shipStats_instance = new ship_stats();
+	 //finances_player playerFinances = new finances_player();
+	 //playerStats playerStatsInstance = new playerStats();
+	 //timeManager timeManager_instance = new timeManager();
+	 private ship_stats shipStatsInstance;
+	 private timeManager timeManagerInstance;
+	 private finances_player playerFinancesInstance;
+	 private playerStats playerStatsInstance;
+	 
+	 public EventManager(ship_stats shipStats, timeManager timeManager, finances_player playerFinances) {
+        this.shipStatsInstance = shipStats;
+        this.timeManagerInstance = timeManager;
+        this.playerFinancesInstance = playerFinances;
+    }
 	
 	public void eventTankExplode() {
 		 Random random = new Random();
@@ -19,13 +28,13 @@ public class EventManager {
 		 int chanceEventTankExplode =1;
 		 if (chance <= chanceEventTankExplode) {
 		        System.out.println("one of the ships fuel tanks ruptured and exploded it will cost " +costToFixFuelTank + " to fix");
-		        if(playerFinances.getFinances()<costToFixFuelTank)
+		        if(playerFinancesInstance.getFinances()<costToFixFuelTank)
 		        {
 		        	System.out.println("you do not have enough money to pay the cost of the tank. There has not been a fail state impelemented for this in the game yet");
 		        }
 		        else
 		        {
-		        	playerFinances.decrease_finances(costToFixFuelTank);
+		        	playerFinancesInstance.decrease_finances(costToFixFuelTank);
 		        	
 		    } 
 	}
@@ -51,7 +60,7 @@ public class EventManager {
 		        case "1":
 		        	
 		        playerStatsInstance.increasePlayersReputation(increaseInReputationForRevoceringDeadAstronaut);
-		        timeManager_instance.increaseTimeDay(extraTimeToRevocerDeadAstronaut);
+		        timeManagerInstance.increaseTimeDay(extraTimeToRevocerDeadAstronaut);
 		        
 		      
 		        break;

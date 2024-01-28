@@ -17,7 +17,7 @@ public class mining_expedition_simulation {
 	
 	
 	ship_stats shipStats_instance = new ship_stats();
-	EventManager eventManagerInstance = new EventManager();
+	EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManagerInstance, null);
 	playerStats playerStatsInstance = new playerStats();
 	private timeManager timeManagerInstance;
 	
