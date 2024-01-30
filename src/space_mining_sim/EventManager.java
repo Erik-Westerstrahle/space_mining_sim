@@ -133,9 +133,14 @@ public class EventManager {
 		        case "1":
 		        	
 		        	if(playerFinancesInstance.getFinances()<moneyToPayToExtortionists) {
+		        		System.out.println("you do not have enough money to pay the cost of the tank. There has not been a fail state impelemented for this in the game yet");
 		        		
 		        	}
-		        playerFinancesInstance.decrease_finances(moneyToPayToExtortionists);
+		        	else {
+		        		  playerFinancesInstance.decrease_finances(moneyToPayToExtortionists);
+		  		        
+		        	}
+		 
 		        
 		      
 		        break;
@@ -143,6 +148,10 @@ public class EventManager {
 		        	
 		        	
 		        System.out.println("You have chosen to continue the expedition.");
+		        int damagedHull = shipStatsInstance.getHullIntegrity();
+		        shipStatsInstance.setHullIntegrity(damagedHull-5);
+	              
+		      
                break;
                default:
                System.out.println("Invalid choice. Continuing the expedition.");
