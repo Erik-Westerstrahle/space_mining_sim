@@ -112,6 +112,46 @@ public class EventManager {
 }		
 }
 	
+	public void eventExtortionFromMiner() {
+		 Random random = new Random();
+			
+		 int chance = random.nextInt(1000);
+		 int chanceToEncounterThisEvent =1;
+		 int moneyToPayToExtortionists = 300;
+		 
+		 if (chance <= chanceToEncounterThisEvent) {
+			 
+			   System.out.println("you are extorted for protection money when you are on an expeition. They demad that you pay " + moneyToPayToExtortionists + " to pass safely");
+			   System.out.println(" if you do not pay it it is likey your ship will suffer harm");
+			   System.out.println("input 1 to pay up or 2 to try to run");
+			   
+			   
+		        Scanner scanner = new Scanner(System.in);
+		        String choice = scanner.nextLine();
+		        switch(choice)
+				  {
+		        case "1":
+		        	
+		        	if(playerFinancesInstance.getFinances()<moneyToPayToExtortionists) {
+		        		
+		        	}
+		        playerFinancesInstance.decrease_finances(moneyToPayToExtortionists);
+		        
+		      
+		        break;
+		        case "2":
+		        	
+		        	
+		        System.out.println("You have chosen to continue the expedition.");
+               break;
+               default:
+               System.out.println("Invalid choice. Continuing the expedition.");
+               break;
+	}
+		 }
+		
+	}
+	
 	
 	
 	
