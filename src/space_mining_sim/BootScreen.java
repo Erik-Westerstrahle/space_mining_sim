@@ -102,6 +102,7 @@ public class BootScreen {
            // Main game loop
            while (!input.equals("exit")) {
         	   timeManager_instance.printCurrentDate();
+        	   System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
                System.out.println("Press 'a' to see ship stats");
                System.out.println("Press 'v' to view your ship");
                System.out.println("Press 'f' to view your finances");
