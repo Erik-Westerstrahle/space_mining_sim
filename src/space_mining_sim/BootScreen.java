@@ -15,6 +15,7 @@ import java.io.PrintStream;
 public class BootScreen {
 	
 // TODO
+	// add so that the geologist experience is saved
 	// add astronaut occupation astrogator does something
 	// add more events
 	// DONE add countdown for paying back debt
@@ -51,13 +52,14 @@ public class BootScreen {
        // timeManager timeManagerInstance = new timeManager();
       
       //  mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
-  
+        playerStats playerStatsInstance = new playerStats(); 
         timeManager timeManager_instance = new timeManager();
-        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance);
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance);
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
+
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
         
@@ -126,7 +128,7 @@ public class BootScreen {
           //     Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
               // finances_player finances_player = new finances_player();
               // finances_player playerFinances = new finances_player();
-               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance);
+               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance, playerStatsInstance);
                
                
                

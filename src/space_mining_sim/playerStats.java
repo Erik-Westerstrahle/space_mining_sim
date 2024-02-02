@@ -2,6 +2,8 @@ package space_mining_sim;
 
 public class playerStats {
 	
+	  ship_stats shipStats_instance = new ship_stats();
+	
 	int reputationPlayer = 	100;
 	
 	int geologistSkillPlayer = 0;
@@ -18,9 +20,10 @@ public class playerStats {
 		reputationPlayer+=amountIncreasePlayerReputation;
 	}
 	
-	public void increaseGeologistExperiencePlayer ()
+	public void increaseGeologistExperiencePlayer (int amountIncreaseGeologistExperiencePlayer )
 	{
-		
+		astrogatorExperiencePlayer += amountIncreaseGeologistExperiencePlayer;
+		 System.out.println("you gained " + amountIncreaseGeologistExperiencePlayer + " geologist experience");
 	}
 	
 	

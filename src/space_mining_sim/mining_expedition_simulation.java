@@ -18,26 +18,24 @@ public class mining_expedition_simulation {
 	
 	ship_stats shipStats_instance = new ship_stats();
 	
-	playerStats playerStatsInstance = new playerStats();
-	//private timeManager timeManagerInstance;
+
+
 	private timeManager timeManager_instance;
 	
+
+	 private playerStats playerStatsInstance;
+	
 	//dependency injection
-	  public mining_expedition_simulation(timeManager timeManager_instance) {
+	  public mining_expedition_simulation(timeManager timeManager_instance, playerStats playerStatsInstance) {
 	        this.timeManager_instance = timeManager_instance;
+	        this.playerStatsInstance = playerStatsInstance;
 	        // Other initializations...
 	    }
 	  
 	  EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null);
 	// timeManager timeManager_instance = new timeManager();
 	
-//    private Shop_space_mining_sim shop;
-//
-//    public mining_expedition_simulation(Shop_space_mining_sim shop_instance) {
-//        this.shop_instance = shop_instance;
-//        // additional initialization if necessary
-//    }
-//	
+
 
 	// dependency injection 
 	public void go_on_mining_expedition(finances_player playerFinances, ship_stats shipStats) {
@@ -80,8 +78,7 @@ public class mining_expedition_simulation {
           
               break;
           case "2":
-            //  go_on_mining_mid_ring(playerFinances, shipStats_instance, shop, timeManager );
-             // timeManager.advanceTime(10);
+
               if(shop_instance.getHaveBoughtFusionEngine()==true)
         	  {
         		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
@@ -96,8 +93,7 @@ public class mining_expedition_simulation {
         	  }
               break;
           case "3":
-           //   go_on_mining_inner_ring(playerFinances, shipStats_instance, shop, timeManager );
-          //    timeManager.advanceTime(15);
+
               if(shop_instance.getHaveBoughtFusionEngine()==true)
         	  {
         		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
@@ -135,11 +131,13 @@ public class mining_expedition_simulation {
 	        eventManagerInstance.eventTankExplode();
 	        eventManagerInstance.encounterDeadAstronaut();
 	        
+	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
-	        
-	        
 	        timeManager_instance.printCurrentDate();
+	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
+	       
+	       
 	    }
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
@@ -150,7 +148,7 @@ public class mining_expedition_simulation {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
-	    int pirateChance = 10; // 1% chance for outer ring
+	    int pirateChance = 1; // 1% chance for outer ring
 
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
@@ -161,6 +159,7 @@ public class mining_expedition_simulation {
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
 	        timeManager_instance.printCurrentDate();
+	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
 	    }
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
@@ -170,7 +169,7 @@ public class mining_expedition_simulation {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
-	    int pirateChance = 100; // 1% chance for outer ring
+	    int pirateChance = 1; // 1% chance for outer ring
 
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
@@ -181,6 +180,7 @@ public class mining_expedition_simulation {
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
 	        timeManager_instance.printCurrentDate();
+	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
 	    }
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
