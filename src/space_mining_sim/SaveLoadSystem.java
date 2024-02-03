@@ -24,6 +24,9 @@ public class SaveLoadSystem {
             // Writing information about purchased items (mining arm, fusion engine)
             writer.write( shop_instance.hasBoughtMiningArm() + "\n");
             writer.write(shop_instance.getHaveBoughtFusionEngine() + "\n"); // Save fusion engine state
+            
+            //writing player experience and skill to file
+            
             // ... Write other game states
             
             // Closing the writer to ensure data is saved and resources are released

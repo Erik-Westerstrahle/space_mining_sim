@@ -132,10 +132,12 @@ public class mining_expedition_simulation {
 	        eventManagerInstance.encounterDeadAstronaut();
 	        
 	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
+	        playerStatsInstance.levelUpGeologistPlayer();
+	        
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
 	        timeManager_instance.printCurrentDate();
-	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
+	       // playerStatsInstance.increaseGeologistExperiencePlayer(5);
 	       
 	       
 	    }
