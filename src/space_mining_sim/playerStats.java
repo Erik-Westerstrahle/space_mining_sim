@@ -55,5 +55,37 @@ public class playerStats {
 	{
 		return reputationPlayer;
 	}
+	
+	
+	public int getLevelGeologistSkillPlayer()
+	{
+		return levelGeologistSkillPlayer;
+	}
+	
+	public int getLevelAstrogatorSkillPlayer()
+	{
+		return levelAstrogatorSkillPlayer;
+	}
+	
+	public int getLevelEngineeringSkillPlayer()
+	{
+		return levelEngineeringSkillPlayer;
+	}
+	
+	public int getGeologistExperiencePlayer()
+	{
+		return geologistExperiencePlayer;
+	}
+	
+	public int getAstrogatorExperiencePlayer()
+	{
+		return astrogatorExperiencePlayer;
+	}
+	
+	public int getEngineeringExperiencePlayer()
+	{
+		return engineeringExperiencePlayer;
+	}
+
 
 }
