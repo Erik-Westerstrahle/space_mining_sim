@@ -116,6 +116,7 @@ public class BootScreen {
                System.out.println("Press 'l' to load the game");
                System.out.println("Press 'h' to hire astronauts");
                System.out.println("Press 'view' to see hired astronauts");
+               System.out.println("Press 'h' to view your stats");
              //  System.out.println("Press 'k' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
@@ -232,6 +233,12 @@ public class BootScreen {
                 	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;
+                   case "c":
+                	   System.out.println("Your geology levet is : "+ playerStatsInstance.getLevelGeologistSkillPlayer());
+                	   System.out.println("Your Astrogator levet is : "+ playerStatsInstance.getAstrogatorExperiencePlayer());
+                	   System.out.println("Your Engineering levet is : "+ playerStatsInstance.getEngineeringExperiencePlayer());
+                	   
+                	   break;
                    default:
                        System.out.println("Invalid command.");
                        break;
