@@ -93,7 +93,7 @@ public class BootScreen {
            System.out.println(" ");
            System.out.println("Welcome to my game ");
            System.out.println("You have bought a mining space ship and you need to pay of your debt by mining to complete the game ");
-           SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance);
+           SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
         //   System.out.println("Game loaded successfully.");
           // System.out.println(timeManager_instance.printCurrentDate());
          //  timeManager_instance.printCurrentDate();
@@ -213,7 +213,7 @@ public class BootScreen {
                        break;
                    case "s":
                 	   
-                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance);
+                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
                 	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;
@@ -228,7 +228,7 @@ public class BootScreen {
                        break;
                    case "l":
                 	   
-                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance);
+                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
                 	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                 	  
                        break;

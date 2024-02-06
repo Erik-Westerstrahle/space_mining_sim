@@ -86,6 +86,22 @@ public class playerStats {
 	{
 		return engineeringExperiencePlayer;
 	}
+	
+	
+    public void setLevelAstrogatorSkillPlayer(int newLevelAstrogatorSkillPlayer) {
+    	// TODO Auto-generated method stub
+    	this.levelAstrogatorSkillPlayer = newLevelAstrogatorSkillPlayer;
+    }
+    
+    public void setLevelGeologistSkillPlayer(int newLevelGeologistSkillPlayer) {
+    	// TODO Auto-generated method stub
+    	this.levelGeologistSkillPlayer = newLevelGeologistSkillPlayer;
+    }
+    
+    public void setLevelEngineeringSkillPlayer(int newLevelEngineeringSkillPlayer) {
+    	// TODO Auto-generated method stub
+    	this.levelEngineeringSkillPlayer = newLevelEngineeringSkillPlayer;
+    }
 
 
 }

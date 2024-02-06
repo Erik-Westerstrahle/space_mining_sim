@@ -4,12 +4,12 @@ import java.io.*;
 
 public class SaveLoadSystem {
 	  Shop_space_mining_sim shop = new Shop_space_mining_sim();
-
+	   playerStats playerStatsInstance = new playerStats(); 
 
     
     
 	  // Method to save game state to a file
-    public static void saveGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance) {
+    public static void saveGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance,  playerStats playerStatsInstance) {
         try {
         	  // Using BufferedWriter for efficient writing to a file
             BufferedWriter writer = new BufferedWriter(new FileWriter("game_save.txt"));
@@ -26,6 +26,10 @@ public class SaveLoadSystem {
             writer.write(shop_instance.getHaveBoughtFusionEngine() + "\n"); // Save fusion engine state
             
             //writing player experience and skill to file
+            writer.write(playerStatsInstance.getLevelGeologistSkillPlayer() + "\n");
+            writer.write(playerStatsInstance.getAstrogatorExperiencePlayer() + "\n");
+            writer.write(playerStatsInstance.getEngineeringExperiencePlayer() + "\n");
+            
             
             // ... Write other game states
             
@@ -39,7 +43,7 @@ public class SaveLoadSystem {
     
     
     // Method to load game state from a file
-    public static void loadGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance) {
+    public static void loadGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance, playerStats playerStatsInstance) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("game_save.txt"));
             playerFinances.setFinances(Integer.parseInt(reader.readLine()));
@@ -49,6 +53,9 @@ public class SaveLoadSystem {
          //   boolean hasBoughtMiningArm = Boolean.parseBoolean(reader.readLine().split(": ")[1]);
            shop_instance.setHaveBoughtMiningArm(Boolean.parseBoolean(reader.readLine()));
            shop_instance.setHaveBoughtFusionEngine(Boolean.parseBoolean(reader.readLine())); // Load fusion engine state
+           playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
+           playerStatsInstance.setLevelAstrogatorSkillPlayer(Integer.parseInt(reader.readLine()));
+           playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
             // ... Read other game states
             reader.close();
             System.out.println("Game loaded successfully.");
