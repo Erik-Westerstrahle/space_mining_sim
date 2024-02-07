@@ -234,16 +234,26 @@ public class mining_expedition_simulation {
 	
     // Method to calculate income considering the multiplier
     private int calculateIncome(int baseIncome, double multiplier,List<Astronauts> hiredAstronauts) {
-    	double geologistBonus = 1.0;
+    	double geologistBonusFromAstronauts = 1.0;
+    	double geologistBonusFromPlayer = 1.0;
+    	double[] levelBonuses = {0.0, 0.1, 0.3, 0.6}; // Index 0 is unused, levels start from 1
     for(Astronauts astronaut : hiredAstronauts) {
     
         if(astronaut.getOccupation().equalsIgnoreCase("Geologist"))
         {
-        	   geologistBonus += 0.1;
-        	   System.out.println("geologist bonus was applied ") ;
+        	geologistBonusFromAstronauts += 0.1;
+        	   System.out.println("geologist bonus was applied  from player stats") ;
         }
     }
-    return (int) (baseIncome * multiplier * geologistBonus); 
+    
+    int level = playerStatsInstance.getLevelGeologistSkillPlayer();
+    if (level > 0 && level < levelBonuses.length) {
+        geologistBonusFromPlayer += levelBonuses[level];
+        System.out.println("bonus from geologist level ") ;
+    }
+    
+    
+    return (int) (baseIncome * multiplier * geologistBonusFromAstronauts* geologistBonusFromPlayer); 
     
 }  
 }

@@ -49,6 +49,7 @@ public class playerStats {
 		
 	}
 	
+
 	
 	
 	public int getPlayersReputation()
@@ -86,6 +87,12 @@ public class playerStats {
 	{
 		return engineeringExperiencePlayer;
 	}
+	
+	
+    public void setGeologistExperiencePlayer(int newSetGeologistExperiencePlayer) {
+    	// TODO Auto-generated method stub
+    	this.geologistExperiencePlayer = newSetGeologistExperiencePlayer;
+    }
 	
 	
     public void setLevelAstrogatorSkillPlayer(int newLevelAstrogatorSkillPlayer) {
