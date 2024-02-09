@@ -9,6 +9,13 @@ int availableCrewSpots = 1;
 boolean wentOnMiningExpedition = false; 
 boolean shipHasMiningArm = false; 
 boolean shipHasFusionEngine = false; 
+int shipHardPoint1 =0;
+int shipHardPoint2 =0;
+int shipHardPoint3 =0;
+int shipHardPoint4 =0;
+int shipHardPoint5 =0;
+int shipHardPoint6 =0;
+
 
 
 
