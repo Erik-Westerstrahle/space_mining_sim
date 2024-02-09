@@ -9,12 +9,12 @@ int availableCrewSpots = 1;
 boolean wentOnMiningExpedition = false; 
 boolean shipHasMiningArm = false; 
 boolean shipHasFusionEngine = false; 
-int shipHardPoint1 =0;
-int shipHardPoint2 =0;
-int shipHardPoint3 =0;
-int shipHardPoint4 =0;
-int shipHardPoint5 =0;
-int shipHardPoint6 =0;
+int shipHardpoint1 =0;
+int shipHardpoint2 =0;
+int shipHardpoint3 =0;
+int shipHardpoint4 =0;
+int shipHardpoint5 =0;
+int shipHardpoint6 =0;
 
 
 
@@ -99,12 +99,18 @@ public void upgradeToBasicCrewQuarters() {
     System.out.println("Crew quarters upgraded. Available crew spots: " + availableCrewSpots);
 }
 
+public void equipOnShipHarpoint()
+{
+	
+}
+
 
 public void test_for_parameter(Shop_space_mining_sim spaceship_parts_store_instance)
 {
-	 System.out.println("remember lesson "  );
+	
 	 spaceship_parts_store_instance.spaceship_parts_prices(100);
 }
+
 
 public int getHullIntegrity() {
 	// TODO Auto-generated method stub
