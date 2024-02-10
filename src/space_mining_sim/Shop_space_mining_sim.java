@@ -9,6 +9,7 @@ public class Shop_space_mining_sim {
 	private boolean haveBoughtFusionEngine = false;
 	private boolean haveFusionEngine = false;
 	private boolean haveBoughtBasicCrewQuarters = false;
+	private boolean haveBoughtBasicRadar = false;
 	private double incomeMultiplier =1.0;
 	private double timeTakeWithFusionEngine =1.0;
 	
@@ -83,6 +84,25 @@ public class Shop_space_mining_sim {
 	        	
 	        }
 	
+	private void purchaseBasicRadar(finances_player playerFinances) {
+    	
+    	if (haveBoughtBasicRadar==true) {
+    		System.out.println("You have already purchased the basic radar.");
+    	} else if (playerFinances.getFinances() >= 100) {
+            playerFinances.decrease_finances(100);
+            haveBoughtBasicRadar = true;
+ 
+           
+            System.out.println("basic radar purchased successfully!");
+            shipStats_instance.updateShipFeatures();
+          //  shipStats_instance.checkIfShipHasMiningArm();  // Update ship stats
+        } else {
+            System.out.println("Not enough credits to purchase the basic radar.");
+    	}
+    	
+    }
+
+	
 	
 	private void purchaseFusionEngine(finances_player playerFinances) {
     	
@@ -149,9 +169,19 @@ public class Shop_space_mining_sim {
 	        boolean getHaveBoughtFusionEngine() {
 	            return haveBoughtFusionEngine;
 	        }
+	        
+	        boolean getHaveBoughtBasicRadar() {
+	            return haveBoughtBasicRadar;
+	        }
+	        
 	        public void setHaveBoughtFusionEngine(boolean newHaveBoughtFusionEngine) {
 	        	// TODO Auto-generated method stub
 	        	this.haveBoughtFusionEngine = newHaveBoughtFusionEngine;
+	        }
+	        
+	        public void setHaveBoughtBasicRadar(boolean newHaveBoughtBasicRadar) {
+	        	// TODO Auto-generated method stub
+	        	this.haveBoughtBasicRadar = newHaveBoughtBasicRadar;
 	        }
 	        
 	        public double getTimeTakeWithFusionEngine() {

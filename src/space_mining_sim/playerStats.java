@@ -9,11 +9,14 @@ public class playerStats {
 	int levelGeologistSkillPlayer = 0;
 	int levelAstrogatorSkillPlayer = 0;
 	int levelEngineeringSkillPlayer = 0;
+	int levelDiplomacySkillPlayer = 0;
 	
 	
 	int geologistExperiencePlayer = 0;
 	int astrogatorExperiencePlayer = 0;
 	int engineeringExperiencePlayer = 0;
+	int diplomacyExperiencePlayer = 0;
+	
 	
 	public void increasePlayersReputation(int amountIncreasePlayerReputation)
 	{

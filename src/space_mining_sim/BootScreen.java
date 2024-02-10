@@ -15,14 +15,13 @@ import java.io.PrintStream;
 public class BootScreen {
 	
 // TODO
-	// add so that the geologist experience is saved
+
 	// add astronaut occupation astrogator does something
+	// add a way to equip parts to ship hard points
 	// add more events
-	// DONE add countdown for paying back debt
 	// add better ways to store data
 	// add more story descriptions
-	   // add window UI later 
-	//
+
 
 
 	
@@ -49,9 +48,7 @@ public class BootScreen {
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         ship_stats shipStats_instance = new ship_stats(shop_instance);
         shop_instance.setShipStatsInstance(shipStats_instance); // this exists for dependincis
-       // timeManager timeManagerInstance = new timeManager();
-      
-      //  mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
+   
         playerStats playerStatsInstance = new playerStats(); 
         timeManager timeManager_instance = new timeManager();
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance);
@@ -94,9 +91,7 @@ public class BootScreen {
            System.out.println("Welcome to my game ");
            System.out.println("You have bought a mining space ship and you need to pay of your debt by mining to complete the game ");
            SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
-        //   System.out.println("Game loaded successfully.");
-          // System.out.println(timeManager_instance.printCurrentDate());
-         //  timeManager_instance.printCurrentDate();
+   
            
            Scanner scanner = new Scanner(System.in);
            String input = ""; // Declare input before the loop
@@ -116,7 +111,7 @@ public class BootScreen {
                System.out.println("Press 'l' to load the game");
                System.out.println("Press 'h' to hire astronauts");
                System.out.println("Press 'view' to see hired astronauts");
-               System.out.println("Press 'h' to view your stats");
+               System.out.println("Press 'c' to view your stats");
              //  System.out.println("Press 'k' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
@@ -124,11 +119,9 @@ public class BootScreen {
 
                
                
-               //ship_stats shipStats_instance = new ship_stats();
+          
                ascii_art ascii_art = new ascii_art();
-          //     Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
-              // finances_player finances_player = new finances_player();
-              // finances_player playerFinances = new finances_player();
+   
                mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance, playerStatsInstance);
                
                
@@ -140,6 +133,7 @@ public class BootScreen {
                switch (input) {
                    case "a":
                        shipStats_instance.displayStats();
+                       System.out.println("You can press 'p' to equip parts to hardpoints.");
                    //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "v":
@@ -177,22 +171,7 @@ public class BootScreen {
                 		   System.out.println("Days until next debt payment deadline: " + daysUntilDeadline + " days");
                 	   }
                 	   
-                	   
-//                	   
-//                	   
-//                	   if (timeManager_instance.isDebtDeadlinePassed())
-//                	   {
-//                		   playerFinances.payDebtIstallment(timeManager_instance);
-//                	   }
-//                	   
-//                	   else
-//                	   {
-//                		  int daysUntilDeadline = timeManager_instance.getTimeUnitlDeadline(); 
-//                		  System.out.println("Days until next debt payment deadline: " + daysUntilDeadline);
-//                	   }
-           
-                	   // Print the updated date after a mining expedition
-                	 //   timeManager_instance.printCurrentDate();
+                	  
                 	   
                 	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
@@ -239,6 +218,14 @@ public class BootScreen {
                 	   System.out.println("Your Engineering levet is : "+ playerStatsInstance.getEngineeringExperiencePlayer());
                 	   
                 	   break;
+                   case "u":
+                	    shipStats_instance.displayEquippedParts();
+                	    System.out.println("Select a hardpoint to equip (1-6):");
+                	    int hardpoint = scanner.nextInt() - 1; // Adjust for 0-based indexing
+                	    System.out.println("Enter part ID to equip:");
+                	    int partId = scanner.nextInt();
+                	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
+                	    break;
                    default:
                        System.out.println("Invalid command.");
                        break;
