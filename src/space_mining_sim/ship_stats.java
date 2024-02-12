@@ -1,5 +1,7 @@
 package space_mining_sim;
 
+import java.util.Scanner;
+
 public class ship_stats {
 	
 int i =1;
@@ -26,20 +28,30 @@ int shipHardpoint6 =0;
 
 private Shop_space_mining_sim shop_instance;
 
+Scanner scanner = new Scanner(System.in);
+String input = "";
+
 //Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
 
 
 
-// Assuming a fixed number of hardpoints for simplicity
+//Assuming 6 hardpoints for simplicity
 private int[] hardpoints = new int[6]; // Array to store equipped parts by ID
 
 // Method to equip a part to a hardpoint
 public void equipPartToHardpoint(int hardpointIndex, int partId) {
-    if (hardpointIndex >= 0 && hardpointIndex < hardpoints.length) {
-        hardpoints[hardpointIndex] = partId;
-        System.out.println("Equipped part " + partId + " to hardpoint " + (hardpointIndex + 1));
+    if (hardpointIndex >= 1 && hardpointIndex <= hardpoints.length) {
+        hardpoints[hardpointIndex - 1] = partId; // Adjust for 0-based indexing
+        System.out.println("Part " + partId + " equipped to hardpoint " + hardpointIndex);
     } else {
-        System.out.println("Invalid hardpoint index.");
+        System.out.println("Invalid hardpoint selected.");
+    }
+}
+
+// Method to display hardpoints and equipped parts
+public void displayHardpoints() {
+    for (int i = 0; i < hardpoints.length; i++) {
+        System.out.println("Hardpoint " + (i + 1) + ": Part ID " + hardpoints[i]);
     }
 }
 
@@ -63,6 +75,56 @@ public ship_stats() {
 	// TODO Auto-generated constructor stub
 
 }
+
+//public void selectHardpoint() {
+//	  input = scanner.nextLine();  
+//	switch (input) {
+//     case "1":
+//       
+//     //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+//         break;
+//  
+//     case "2":
+//         
+//         //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+//             break;
+//             
+//     case "3":
+//         
+//         //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+//             break;
+//             
+//     case "4":
+//         
+//         //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+//             break;
+//     case "5":
+//         
+//         //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+//             break;
+//     case "6":
+//         
+//         //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+//             break;
+//         default:
+//         System.out.println("Invalid command.");
+//         break;
+//	}
+//}
+
+
+//public void equiptHardpoint() {
+//	  input = scanner.nextLine();  
+//	switch (input) {
+//   case "1":
+//     
+//   //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+//       break;
+//   default:
+//       System.out.println("Invalid command.");
+//       break;
+//	}
+//}
 
 
 // Call this method to update the status
@@ -179,6 +241,36 @@ public int getShipHardpoint5() {
 public int getShipHardpoint6() {
 	
 	return shipHardpoint6;
+}
+
+public void setShipHardpoint1(int newShipHardpoint1) {
+	// TODO Auto-generated method stub
+	this.shipHardpoint1 = newShipHardpoint1;
+}
+
+public void setShipHardpoint2(int newShipHardpoint2) {
+	// TODO Auto-generated method stub
+	this.shipHardpoint2 = newShipHardpoint2;
+}
+
+public void setShipHardpoint3(int newShipHardpoint3) {
+	// TODO Auto-generated method stub
+	this.shipHardpoint3 = newShipHardpoint3;
+}
+
+public void setShipHardpoint4(int newShipHardpoint4) {
+	// TODO Auto-generated method stub
+	this.shipHardpoint4 = newShipHardpoint4;
+}
+
+public void setShipHardpoint5(int newShipHardpoint5) {
+	// TODO Auto-generated method stub
+	this.shipHardpoint5 = newShipHardpoint5;
+}
+
+public void setShipHardpoint6(int newShipHardpoint6) {
+	// TODO Auto-generated method stub
+	this.shipHardpoint6 = newShipHardpoint6;
 }
 
 public void setHullIntegrity(int newShipHullIntegrity) {

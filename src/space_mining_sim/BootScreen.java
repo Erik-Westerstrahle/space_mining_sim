@@ -219,11 +219,18 @@ public class BootScreen {
                 	   
                 	   break;
                    case "u":
-                	    shipStats_instance.displayEquippedParts();
+                	   shipStats_instance.displayHardpoints();
                 	    System.out.println("Select a hardpoint to equip (1-6):");
-                	    int hardpoint = scanner.nextInt() - 1; // Adjust for 0-based indexing
-                	    System.out.println("Enter part ID to equip:");
+                	    int hardpoint = scanner.nextInt();
+                	    scanner.nextLine(); // Consume the newline
+
+                	    System.out.println("Select a part to equip:");
+                	    System.out.println("1. Basic Radar");
+                	    System.out.println("2. Advanced Mining Laser");
+                	    // Add more parts as needed
                 	    int partId = scanner.nextInt();
+                	    scanner.nextLine(); // Consume the newline
+
                 	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
                 	    break;
                    default:
