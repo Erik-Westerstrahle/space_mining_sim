@@ -30,6 +30,14 @@ public class playerStats {
 		 System.out.println("you have " + geologistExperiencePlayer + " geologist experience");
 	}
 	
+	public void increaseEngineeringExperiencePlayer (int amountIncreaseEngineeringExperiencePlayer )
+	{
+		engineeringExperiencePlayer += amountIncreaseEngineeringExperiencePlayer;
+		 System.out.println("you gained " + amountIncreaseEngineeringExperiencePlayer + " Engineering experience");
+		 System.out.println("you have " + engineeringExperiencePlayer + " engineering experience");
+	}
+	
+	
 	public void levelUpGeologistPlayer () {
 		 // Check if the player's geologist experience is sufficient for the next level
 	    // and if the geologist skill level is still at 0 (not yet leveled up to 1)
