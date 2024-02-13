@@ -16,6 +16,8 @@ public class BootScreen {
 	
 // TODO
 
+	// fix geologist astronaut skill bonus code to make it more efficent
+	// add astrogator player skill lowers travel time
 	// add astronaut occupation astrogator does something
 	// add a way to equip parts to ship hard points
 	// add more events

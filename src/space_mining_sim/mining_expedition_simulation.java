@@ -66,14 +66,16 @@ public class mining_expedition_simulation {
         	  {
         		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
                   //timeManager.advanceTime(5 * shop.getTimeTakeWithFusionEngine());
-                  timeManager.advanceTime(5 * 0.6);
+                  timeManager.advanceTime(5 * 0.6*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
         		  System.out.println("fusion engine lowered time");
+        		  playerStatsInstance.increaseEngineeringExperiencePlayer(5);
         	  }
         	  else
         	  {
         		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-                    timeManager.advanceTime(5);
+                    timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
                     System.out.println("took 5 days to mine");
+                    playerStatsInstance.increaseEngineeringExperiencePlayer(5);
         	  }
           
               break;
@@ -84,12 +86,14 @@ public class mining_expedition_simulation {
         		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
                   timeManager.advanceTime(10 * 0.6);
         		  System.out.println("fusion engine lowered time");
+        		  playerStatsInstance.increaseEngineeringExperiencePlayer(15);
         	  }
         	  else
         	  {
         		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
                     timeManager.advanceTime(10);
                     System.out.println("took 10 days to mine");
+                    playerStatsInstance.increaseEngineeringExperiencePlayer(5);
         	  }
               break;
           case "3":

@@ -17,6 +17,8 @@ public class playerStats {
 	int engineeringExperiencePlayer = 0;
 	int diplomacyExperiencePlayer = 0;
 	
+
+	
 	
 	public void increasePlayersReputation(int amountIncreasePlayerReputation)
 	{
@@ -36,6 +38,17 @@ public class playerStats {
 		 System.out.println("you gained " + amountIncreaseEngineeringExperiencePlayer + " Engineering experience");
 		 System.out.println("you have " + engineeringExperiencePlayer + " engineering experience");
 	}
+	
+	
+	public void increaseAstrogatorExperiencePlayer (int amountIncreaseAstrogatorExperiencePlayer )
+	{
+		engineeringExperiencePlayer += amountIncreaseAstrogatorExperiencePlayer;
+		 System.out.println("you gained " + amountIncreaseAstrogatorExperiencePlayer + " Astrogator experience");
+		 System.out.println("you have " + engineeringExperiencePlayer + " Astrogator experience");
+	}
+	
+	
+
 	
 	
 	public void levelUpGeologistPlayer () {
@@ -60,8 +73,66 @@ public class playerStats {
 		
 	}
 	
-
+	public void levelUpEngineeringPlayer () {
+		 // Check if the player's Engineering experience is sufficient for the next level
+	    // and if the Engineering skill level is still at 0 (not yet leveled up to 1)
+		if(engineeringExperiencePlayer>=5 &&levelEngineeringSkillPlayer==0)
+		{
+			levelEngineeringSkillPlayer +=1;
+			 System.out.println("you reached level 1 Engineering");
+		}
+		if(geologistExperiencePlayer>=10 &&levelEngineeringSkillPlayer==1)
+		{
+			levelEngineeringSkillPlayer +=1;
+			 System.out.println("you reached level 2 Engineering");
+		}
+		if(geologistExperiencePlayer>=15 &&levelEngineeringSkillPlayer==2)
+		{
+			levelEngineeringSkillPlayer +=1;
+			 System.out.println("you reached level 3 Engineering");
+		}
+		
+		
+	}
 	
+	public void levelUpAstrogatorPlayer () {
+		 // Check if the player's Astrogator experience is sufficient for the next level
+	    // and if the Engineering skill level is still at 0 (not yet leveled up to 1)
+		if(astrogatorExperiencePlayer>=5 &&levelAstrogatorSkillPlayer==0)
+		{
+			levelAstrogatorSkillPlayer +=1;
+			 System.out.println("you reached level 1 Engineering");
+		}
+		if(astrogatorExperiencePlayer>=10 &&levelAstrogatorSkillPlayer==1)
+		{
+			levelAstrogatorSkillPlayer +=1;
+			 System.out.println("you reached level 2 Engineering");
+		}
+		if(astrogatorExperiencePlayer>=15 &&levelAstrogatorSkillPlayer==2)
+		{
+			levelAstrogatorSkillPlayer +=1;
+			 System.out.println("you reached level 3 Engineering");
+		}
+		
+		
+	}
+	
+	
+
+	public double bonusesFromAstrogatorPlayerSkill () {
+		double astrogatorBonusFromPlayer = 1.0;
+		double[] levelBonuses = {0.0, 0.1, 0.3, 0.6}; // Index 0 is unused, levels start from 1
+		
+		   int level = getLevelAstrogatorSkillPlayer();
+		    if (level > 0 && level < levelBonuses.length) {
+		    	astrogatorBonusFromPlayer += levelBonuses[level];
+		        System.out.println("bonus from astrogator level ") ;
+		    }
+		    
+		    
+		    return (double) astrogatorBonusFromPlayer; 
+		
+	}
 	
 	public int getPlayersReputation()
 	{

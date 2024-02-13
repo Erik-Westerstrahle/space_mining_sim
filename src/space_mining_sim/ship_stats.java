@@ -147,6 +147,14 @@ public void wear_and_tear()
 	}
 }
 
+public void repairShip()
+{
+
+	
+	
+}
+
+
 public void fuel_comsumption()
 {
 	if(wentOnMiningExpedition)
