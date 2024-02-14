@@ -26,9 +26,10 @@ public class mining_expedition_simulation {
 	 private playerStats playerStatsInstance;
 	
 	//dependency injection
-	  public mining_expedition_simulation(timeManager timeManager_instance, playerStats playerStatsInstance) {
+	  public mining_expedition_simulation(timeManager timeManager_instance, playerStats playerStatsInstance, ship_stats shipStats_instance) {
 	        this.timeManager_instance = timeManager_instance;
 	        this.playerStatsInstance = playerStatsInstance;
+	       // this.shipStats_instance = shipStats_instance;
 	        // Other initializations...
 	    }
 	  
@@ -51,7 +52,7 @@ public class mining_expedition_simulation {
 	
 	
 	
-	public void select_where_go_mining(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, timeManager timeManager) throws IOException
+	public void select_where_go_mining(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, timeManager timeManager,ship_stats shipStats_instance) throws IOException
 	{
 		 Scanner scanner = new Scanner(System.in);
 		  System.out.println("press 1 to mine outer_ring, it will take 5 days");
@@ -62,21 +63,27 @@ public class mining_expedition_simulation {
 		  switch(choice)
 		  {
           case "1":
-        	  if(shop_instance.getHaveBoughtFusionEngine()==true)
-        	  {
-        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-                  //timeManager.advanceTime(5 * shop.getTimeTakeWithFusionEngine());
-                  timeManager.advanceTime(5 * 0.6*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
-        		  System.out.println("fusion engine lowered time");
-        		  playerStatsInstance.increaseEngineeringExperiencePlayer(5);
-        	  }
-        	  else
-        	  {
-        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-                    timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
-                    System.out.println("took 5 days to mine");
-                    playerStatsInstance.increaseEngineeringExperiencePlayer(5);
-        	  }
+        	  shipStats_instance.checkIfShipHasFusionEngine();
+        	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
+            timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
+            System.out.println("took 5 days to mine");
+            playerStatsInstance.increaseEngineeringExperiencePlayer(5);
+        	  
+//        	  if(shop_instance.getHaveBoughtFusionEngine()==true)
+//        	  {
+//        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
+//                  //timeManager.advanceTime(5 * shop.getTimeTakeWithFusionEngine());
+//                  timeManager.advanceTime(5 * 0.6*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
+//        		  System.out.println("fusion engine lowered time");
+//        		  playerStatsInstance.increaseEngineeringExperiencePlayer(5);
+//        	  }
+//        	  else
+//        	  {
+//        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
+//                    timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
+//                    System.out.println("took 5 days to mine");
+//                    playerStatsInstance.increaseEngineeringExperiencePlayer(5);
+//        	  }
           
               break;
           case "2":

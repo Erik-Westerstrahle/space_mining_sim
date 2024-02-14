@@ -11,6 +11,7 @@ int availableCrewSpots = 1;
 boolean wentOnMiningExpedition = false; 
 boolean shipHasMiningArm = false; 
 boolean shipHasFusionEngine = false; 
+double bonusFusionEngine = 1.0;
 //Example of part IDs, can be expanded as needed
 final int BASIC_RADAR = 1;
 final int ADVANCED_MINING_LASER = 2;
@@ -33,9 +34,20 @@ String input = "";
 
 //Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
 
+public void checkIfShipHasFusionEngine(){
+	if(shipHasFusionEngine==true) {
+		
+	}
+	
+}
 
+public void checkIfShipHasMiningArm(){
+	if(shipHasMiningArm==true) {
+		setBonusFusionEngine(0.6);
+	}
+}
 
-//Assuming 6 hardpoints for simplicity
+//6 hardpoints here
 private int[] hardpoints = new int[6]; // Array to store equipped parts by ID
 
 // Method to equip a part to a hardpoint
@@ -206,6 +218,11 @@ public void test_for_parameter(Shop_space_mining_sim spaceship_parts_store_insta
 }
 
 
+public double getBonusFusionEngine() {
+	// TODO Auto-generated method stub
+	return bonusFusionEngine;
+}
+
 public int getHullIntegrity() {
 	// TODO Auto-generated method stub
 	return ship_hull_integrity;
@@ -249,6 +266,12 @@ public int getShipHardpoint5() {
 public int getShipHardpoint6() {
 	
 	return shipHardpoint6;
+}
+
+public void setBonusFusionEngine(double newBonusFusionEngine) {
+	// TODO Auto-generated method stub
+	
+	this.bonusFusionEngine = newBonusFusionEngine;
 }
 
 public void setShipHardpoint1(int newShipHardpoint1) {
