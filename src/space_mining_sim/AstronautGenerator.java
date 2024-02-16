@@ -5,6 +5,7 @@ import java.util.Random;
 public class AstronautGenerator {
 	
     private static final String[] names = {"Alice", "Bob", "Charlie", "Dana", "Eli", "Fiona"};
+    private static final String[] lastNames = {"Smith", "Piper", "Andersson", "Saari", "Fisher", "Castle"};
     private static final String[] jobsAstronaut = {"Geologist","Astrogator","Mechanic","Miner"};
     private static final Random random = new Random();
  

@@ -36,7 +36,7 @@ String input = "";
 
 public void checkIfShipHasFusionEngine(){
 	if(shipHasFusionEngine==true) {
-		
+		System.out.println("fusion engine lowered time");
 	}
 	
 }
