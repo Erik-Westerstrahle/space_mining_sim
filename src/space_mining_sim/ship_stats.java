@@ -193,7 +193,7 @@ public void displayStats() {
 	
 	
 	
-	
+ updateShipFeatures();
  System.out.println("hull:"+ ship_hull_integrity);
  System.out.println("fuel: "+ fuel_amount);
  System.out.println("available crew spots "+ availableCrewSpots);
