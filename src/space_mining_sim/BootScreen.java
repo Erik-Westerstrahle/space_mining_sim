@@ -92,6 +92,9 @@ public class BootScreen {
            System.out.println(" ");
            System.out.println("Welcome to my game ");
            System.out.println("You have bought a mining space ship and you need to pay of your debt by mining to complete the game ");
+           
+           shipStats_instance.updateShipFeatures();
+           
            SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
    
            
@@ -101,19 +104,20 @@ public class BootScreen {
            // Main game loop
            while (!input.equals("exit")) {
         	   timeManager_instance.printCurrentDate();
-        	   System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
-               System.out.println("Press 'a' to see ship stats");
-               System.out.println("Press 'v' to view your ship");
-               System.out.println("Press 'f' to view your finances");
-               System.out.println("Press 'e' to go on a mining expedition");
-               System.out.println("Press 'r' to refuel");
-               System.out.println("Press 'b' to access store");
-               System.out.println("Press 'p' to pay of your debts");
-               System.out.println("Press 's' to save the game");
-               System.out.println("Press 'l' to load the game");
-               System.out.println("Press 'h' to hire astronauts");
-               System.out.println("Press 'view' to see hired astronauts");
-               System.out.println("Press 'c' to view your stats");
+        	   System.out.println("Type 'help' to see available commands");
+//        	   System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
+//               System.out.println("Press 'a' to see ship stats");
+//               System.out.println("Press 'v' to view your ship");
+//               System.out.println("Press 'f' to view your finances");
+//               System.out.println("Press 'e' to go on a mining expedition");
+//               System.out.println("Press 'r' to refuel");
+//               System.out.println("Press 'b' to access store");
+//               System.out.println("Press 'p' to pay of your debts");
+//               System.out.println("Press 's' to save the game");
+//               System.out.println("Press 'l' to load the game");
+//               System.out.println("Press 'h' to hire astronauts");
+//               System.out.println("Press 'view' to see hired astronauts");
+//               System.out.println("Press 'c' to view your stats");
              //  System.out.println("Press 'k' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
@@ -235,6 +239,22 @@ public class BootScreen {
 
                 	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
                 	    break;
+                   	  case "help":
+                   		  
+                   	   System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
+                       System.out.println("Press 'a' to see ship stats");
+                       System.out.println("Press 'v' to view your ship");
+                       System.out.println("Press 'f' to view your finances");
+                       System.out.println("Press 'e' to go on a mining expedition");
+                       System.out.println("Press 'r' to refuel");
+                       System.out.println("Press 'b' to access store");
+                       System.out.println("Press 'p' to pay of your debts");
+                       System.out.println("Press 's' to save the game");
+                       System.out.println("Press 'l' to load the game");
+                       System.out.println("Press 'h' to hire astronauts");
+                       System.out.println("Press 'view' to see hired astronauts");
+                       System.out.println("Press 'c' to view your stats");
+                	   break;
                    default:
                        System.out.println("Invalid command.");
                        break;

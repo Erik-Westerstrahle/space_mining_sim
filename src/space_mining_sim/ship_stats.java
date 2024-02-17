@@ -143,6 +143,7 @@ public ship_stats() {
 public void updateShipFeatures() {
     this.shipHasMiningArm = shop_instance.hasBoughtMiningArm();
     this.shipHasFusionEngine = shop_instance.getHaveBoughtFusionEngine();
+    System.out.println("succesfully updated ship parts");
 }
 
 

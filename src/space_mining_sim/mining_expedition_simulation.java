@@ -109,22 +109,28 @@ public class mining_expedition_simulation {
 //        	  }
 //              break;
           case "3":
+        	  
+        	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
+              timeManager.advanceTime(10 * playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
+    		  
+    		  playerStatsInstance.increaseEngineeringExperiencePlayer(30);
 
-              if(shop_instance.getHaveBoughtFusionEngine()==true)
-        	  {
-        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-                  timeManager.advanceTime(15 * 0.6);
-        		  //sSystem.out.println("fusion engine lowered time");
-        	  }
-        	  else
-        	  {
-        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-                    timeManager.advanceTime(15);
-                    System.out.println("took 15 days to mine");
-        	  }
-              break;
-          default:
-              System.out.println("Invalid choice.");
+
+//              if(shop_instance.getHaveBoughtFusionEngine()==true)
+//        	  {
+//        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
+//                  timeManager.advanceTime(15 * 0.6);
+//        		  //sSystem.out.println("fusion engine lowered time");
+//        	  }
+//        	  else
+//        	  {
+//        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
+//                    timeManager.advanceTime(15);
+//                    System.out.println("took 15 days to mine");
+//        	  }
+//              break;
+//          default:
+//              System.out.println("Invalid choice.");
               break;
 		  }
 	}
