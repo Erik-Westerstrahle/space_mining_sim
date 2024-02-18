@@ -12,13 +12,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 
-public class BootScreen {
+public class MainSpaceMiningSim {
 	
 // TODO
 
-	// fix geologist astronaut skill bonus code to make it more efficent
+	// 
 	// add astrogator player skill lowers travel time
-	// add astronaut occupation astrogator does something
+	// make mining expedition code more cleaner
 	// add a way to equip parts to ship hard points
 	// add more events
 	// add better ways to store data

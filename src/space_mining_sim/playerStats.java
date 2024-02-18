@@ -114,9 +114,27 @@ public class playerStats {
 			 System.out.println("you reached level 3 Engineering");
 		}
 		
-		
-	}
+		}
 	
+//	public void levelUpAstrogatorPlayer () {
+//		int[] experienceTresholds = {5,10,15};
+//		
+//		boolean hasLeveledUp = false;
+//		for(int i =0; i<experienceTresholds.length; i++)
+//		{
+//			if(astrogatorExperiencePlayer >= experienceTresholds[i] && levelAstrogatorSkillPlayer == i)
+//			{
+//				 levelAstrogatorSkillPlayer += 1; // Increment the player's level
+//			}
+//			 System.out.println("You reached level " + levelAstrogatorSkillPlayer + " Engineering");
+//			 hasLeveledUp = true;
+//		}
+//	    if (!hasLeveledUp) {
+//	      //  System.out.println("Not enough experience to level up or already at max level.");
+//	    }
+//		
+//	}
+//	
 	
 
 	public double bonusesFromAstrogatorPlayerSkill () {

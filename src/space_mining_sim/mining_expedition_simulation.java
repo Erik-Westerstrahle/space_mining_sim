@@ -67,7 +67,8 @@ public class mining_expedition_simulation {
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
             timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
-            playerStatsInstance.increaseEngineeringExperiencePlayer(5);
+            playerStatsInstance.increaseEngineeringExperiencePlayer(10);
+            playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
         	  
 //        	  if(shop_instance.getHaveBoughtFusionEngine()==true)
 //        	  {
@@ -146,8 +147,9 @@ public class mining_expedition_simulation {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	    } else {
 	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
-	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
+	    	
 	        System.out.println("Went mining outer ring");
+	       
 	        
 	        //events that can happen are listed here
 	        eventManagerInstance.eventTankExplode();
@@ -156,10 +158,12 @@ public class mining_expedition_simulation {
 	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
 	        playerStatsInstance.levelUpGeologistPlayer();
 	        
+	        int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
+	        
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
 	        timeManager_instance.printCurrentDate();
-	       // playerStatsInstance.increaseGeologistExperiencePlayer(5);
+	       
 	       
 	       
 	    }
@@ -183,7 +187,7 @@ public class mining_expedition_simulation {
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
 	        timeManager_instance.printCurrentDate();
-	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
+	        playerStatsInstance.increaseGeologistExperiencePlayer(10);
 	    }
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
@@ -204,7 +208,7 @@ public class mining_expedition_simulation {
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
 	        timeManager_instance.printCurrentDate();
-	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
+	        playerStatsInstance.increaseGeologistExperiencePlayer(15);
 	    }
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
