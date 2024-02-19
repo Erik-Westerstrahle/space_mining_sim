@@ -29,14 +29,14 @@ public class playerStats {
 	{
 		geologistExperiencePlayer += amountIncreaseGeologistExperiencePlayer;
 		 System.out.println("you gained " + amountIncreaseGeologistExperiencePlayer + " geologist experience");
-		 System.out.println("you have " + geologistExperiencePlayer + " geologist experience");
+	//	 System.out.println("you have " + geologistExperiencePlayer + " geologist experience");
 	}
 	
 	public void increaseEngineeringExperiencePlayer (int amountIncreaseEngineeringExperiencePlayer )
 	{
 		engineeringExperiencePlayer += amountIncreaseEngineeringExperiencePlayer;
 		 System.out.println("you gained " + amountIncreaseEngineeringExperiencePlayer + " Engineering experience");
-		 System.out.println("you have " + engineeringExperiencePlayer + " engineering experience");
+	//	 System.out.println("you have " + engineeringExperiencePlayer + " engineering experience");
 	}
 	
 	
@@ -44,7 +44,7 @@ public class playerStats {
 	{
 		engineeringExperiencePlayer += amountIncreaseAstrogatorExperiencePlayer;
 		 System.out.println("you gained " + amountIncreaseAstrogatorExperiencePlayer + " Astrogator experience");
-		 System.out.println("you have " + engineeringExperiencePlayer + " Astrogator experience");
+	//	 System.out.println("you have " + engineeringExperiencePlayer + " Astrogator experience");
 	}
 	
 	

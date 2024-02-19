@@ -165,8 +165,8 @@ public class MainSpaceMiningSim {
 
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
                 	   shipStats_instance.fuel_comsumption();
-                	   shipStats_instance.displayStats();
-                	   playerFinances.print_finances();
+                	 //  shipStats_instance.displayStats();
+                	 //  playerFinances.print_finances();
                 	   
                 	   if(timeManager_instance.isDebtDeadlinePassed()) {
                 		   playerFinances.payDebtIstallment(timeManager_instance);

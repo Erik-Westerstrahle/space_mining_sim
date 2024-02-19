@@ -67,8 +67,8 @@ public class mining_expedition_simulation {
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
             timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
-            playerStatsInstance.increaseEngineeringExperiencePlayer(10);
-            playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
+         //   playerStatsInstance.increaseEngineeringExperiencePlayer(10);
+         //   playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
         	  
 //        	  if(shop_instance.getHaveBoughtFusionEngine()==true)
 //        	  {
@@ -156,13 +156,17 @@ public class mining_expedition_simulation {
 	        eventManagerInstance.encounterDeadAstronaut();
 	        
 	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
+	        playerStatsInstance.increaseEngineeringExperiencePlayer(10);
+            playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
 	        playerStatsInstance.levelUpGeologistPlayer();
 	        
 	        int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        
 	        playerFinances.increase_finances(receive_money); // Increase finances
-	        System.out.println("You received " + receive_money);
-	        timeManager_instance.printCurrentDate();
+	        System.out.println("You received " + receive_money + " credits");
+	        playerFinances.print_finances();
+     	   
+	      //  timeManager_instance.printCurrentDate();
 	       
 	       
 	       
