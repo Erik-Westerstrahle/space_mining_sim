@@ -55,9 +55,9 @@ public class mining_expedition_simulation {
 	public void select_where_go_mining(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, timeManager timeManager,ship_stats shipStats_instance) throws IOException
 	{
 		 Scanner scanner = new Scanner(System.in);
-		  System.out.println("press 1 to mine outer_ring, it will take 5 days");
-		  System.out.println("press 2 to mine mid ring, it will take 10 days");
-		  System.out.println("press 3 to mine inner ring, it will take 15 days");
+		  System.out.println("press 1 to mine outer ring, it will take 5 days. The outer ring is safe, but the inner ring has been moslty mined empty");
+		  System.out.println("press 2 to mine mid ring, it will take 10 days. The mid ring is moderately dangerous, but the is moderat profits to be made here");
+		  System.out.println("press 3 to mine inner ring, it will take 15 days.. The inner ring is higly dangerous, but the arnings are high");
 		  String choice = scanner.nextLine();
 		  
 		  switch(choice)
@@ -67,6 +67,7 @@ public class mining_expedition_simulation {
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
             timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
+            
          //   playerStatsInstance.increaseEngineeringExperiencePlayer(10);
          //   playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
         	  
@@ -152,8 +153,9 @@ public class mining_expedition_simulation {
 	       
 	        
 	        //events that can happen are listed here
-	        eventManagerInstance.eventTankExplode();
-	        eventManagerInstance.encounterDeadAstronaut();
+	        eventManagerInstance.callAllEvents();
+	       // eventManagerInstance.eventTankExplode();
+	      //  eventManagerInstance.encounterDeadAstronaut();
 	        
 	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
 	        playerStatsInstance.increaseEngineeringExperiencePlayer(10);
@@ -188,6 +190,13 @@ public class mining_expedition_simulation {
 	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        System.out.println("Went mining mid ring");
+	        
+	        
+	        //events that can happen are listed here
+	        eventManagerInstance.callAllEvents();
+	       // eventManagerInstance.eventTankExplode();
+	      //  eventManagerInstance.encounterDeadAstronaut();
+	        
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);
 	        timeManager_instance.printCurrentDate();
@@ -208,6 +217,14 @@ public class mining_expedition_simulation {
 	    } else {
 	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
+	    	 
+	    	 
+		        //events that can happen are listed here
+		        eventManagerInstance.callAllEvents();
+		       // eventManagerInstance.eventTankExplode();
+		      //  eventManagerInstance.encounterDeadAstronaut();
+	    	 
+	    	 
 	        System.out.println("Went mining inner ring");
 	        playerFinances.increase_finances(receive_money); // Increase finances
 	        System.out.println("You received " + receive_money);

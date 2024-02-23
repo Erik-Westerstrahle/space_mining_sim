@@ -161,6 +161,56 @@ public class EventManager {
 		
 	}
 	
+	public void encounterDerelictShip() {
+		
+		 Random random = new Random();
+			
+		 int chance = random.nextInt(1000);
+		 int chanceToEncounterThisEvent =1;
+		 int earnMoneyFromShipSalvage = 300;
+		 
+		 if (chance <= chanceToEncounterThisEvent) {
+			 
+		
+			   System.out.println("You encounter a derelict ship in the planetary rings");
+			   System.out.println("You can salvage the ship for money but it will take extra time");
+			   
+			   
+		        Scanner scanner = new Scanner(System.in);
+		        String choice = scanner.nextLine();
+		        switch(choice)
+				  {
+		        case "1":
+		        	
+		        	 System.out.println("You earn "+ earnMoneyFromShipSalvage +" from salvaging the ship and selling the salvage");
+		        	playerFinancesInstance.increase_finances(earnMoneyFromShipSalvage);
+		        	  timeManagerInstance.increaseTimeDay(5);// set here how much time this event should take
+		      
+		        break;
+		        case "2":
+		        	
+		        	
+		        System.out.println("You have chosen to continue the expedition and leave the ship.");
+		
+	              
+		      
+             break;
+             default:
+             System.out.println("Invalid choice. Continuing the expedition.");
+             break;
+	}
+		 }
+	
+	}
+	
+	public void callAllEvents() {
+		eventTankExplode();
+		encounterDeadAstronaut();
+		eventDistressCallFromShip();
+		eventExtortionFromMiner();
+		encounterDerelictShip();
+	}
+	
 	
 	
 	

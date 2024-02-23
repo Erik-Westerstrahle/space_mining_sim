@@ -17,15 +17,17 @@ public class MainSpaceMiningSim {
 // TODO
 
 	// 
-	// add astrogator player skill lowers travel time
-	// make mining expedition code more cleaner
-	// add a way to equip parts to ship hard points
-	// add more events
+
+
+
+	// make the event system more effivent
 	// add better ways to store data
 	// add more story descriptions
 
-
-
+// Done
+	// add astrogator player skill lowers travel time
+	// make mining expedition code more cleaner
+	// add more events
 	
 
     public static void main(String[] args) throws InterruptedException, LineUnavailableException, IOException {
@@ -241,7 +243,7 @@ public class MainSpaceMiningSim {
                 	    break;
                    	  case "help":
                    		  
-                   	   System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
+                   	   //System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
                        System.out.println("Press 'a' to see ship stats");
                        System.out.println("Press 'v' to view your ship");
                        System.out.println("Press 'f' to view your finances");
