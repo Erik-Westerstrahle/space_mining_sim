@@ -26,6 +26,7 @@ public class SaveLoadSystem {
             writer.write(shop_instance.getHaveBoughtFusionEngine() + "\n"); // Save fusion engine state
             
             //writing player experience and skill to file
+            writer.write(playerStatsInstance.getPlayerName() + "\n");
             writer.write(playerStatsInstance.getGeologistExperiencePlayer() + "\n");
             writer.write(playerStatsInstance.getLevelAstrogatorSkillPlayer() + "\n");
             writer.write(playerStatsInstance.getEngineeringExperiencePlayer() + "\n");
@@ -56,6 +57,7 @@ public class SaveLoadSystem {
          //   boolean hasBoughtMiningArm = Boolean.parseBoolean(reader.readLine().split(": ")[1]);
            shop_instance.setHaveBoughtMiningArm(Boolean.parseBoolean(reader.readLine()));
            shop_instance.setHaveBoughtFusionEngine(Boolean.parseBoolean(reader.readLine())); // Load fusion engine state
+           playerStatsInstance.setPlayerName(reader.readLine());
            playerStatsInstance.setGeologistExperiencePlayer(Integer.parseInt(reader.readLine()));
            playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
            playerStatsInstance.setLevelAstrogatorSkillPlayer(Integer.parseInt(reader.readLine()));

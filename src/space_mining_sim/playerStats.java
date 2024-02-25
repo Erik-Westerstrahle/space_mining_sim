@@ -1,9 +1,14 @@
 package space_mining_sim;
 
+import java.util.Scanner;
+
 public class playerStats {
 	
 	  ship_stats shipStats_instance = new ship_stats();
 	
+	  
+	private String playerName;
+	  
 	int reputationPlayer = 	100;
 	
 	int levelGeologistSkillPlayer = 0;
@@ -16,7 +21,24 @@ public class playerStats {
 	int astrogatorExperiencePlayer = 0;
 	int engineeringExperiencePlayer = 0;
 	int diplomacyExperiencePlayer = 0;
+
 	
+    
+//    public void String getPlayerName(Scanner scanner) {
+//        System.out.println("Please enter your character's name:");
+//        return scanner.nextLine();
+//        Scanner scannerHolder = new Scanner(System.in);
+//       // String playerName = getPlayerName(); // Get player's name
+//       // setPlayerName(playerName); // Save player's name in player stats
+//        setPlayerName(playerName); // Save player's name in player stats
+//    }
+	
+	public void getPlayerName(Scanner scanner) {
+	    System.out.println("Please enter your character's name:");
+	    this.playerName = scanner.nextLine(); // Read the player's name from the console
+	    System.out.println("Welcome, " + playerName + "!"); // Greet the player
+	}
+
 
 	
 	
@@ -152,6 +174,11 @@ public class playerStats {
 		
 	}
 	
+	
+    public String getPlayerName() {
+        return playerName;
+    }
+	
 	public int getPlayersReputation()
 	{
 		return reputationPlayer;
@@ -208,6 +235,10 @@ public class playerStats {
     public void setLevelEngineeringSkillPlayer(int newLevelEngineeringSkillPlayer) {
     	// TODO Auto-generated method stub
     	this.levelEngineeringSkillPlayer = newLevelEngineeringSkillPlayer;
+    }
+    
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
 

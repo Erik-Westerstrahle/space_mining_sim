@@ -20,7 +20,7 @@ public class MainSpaceMiningSim {
 
 
 
-	// make the event system more effivent
+// add it so that the player can enter their character name
 	// add better ways to store data
 	// add more story descriptions
 
@@ -28,6 +28,7 @@ public class MainSpaceMiningSim {
 	// add astrogator player skill lowers travel time
 	// make mining expedition code more cleaner
 	// add more events
+	// make the event system more efficent
 	
 
     public static void main(String[] args) throws InterruptedException, LineUnavailableException, IOException {
@@ -63,6 +64,10 @@ public class MainSpaceMiningSim {
 
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
+      //  Scanner scanner = new Scanner(System.in);
+  
+    
+        
         
         // Generate and save astronauts at the start of the program
         generateAndSaveAstronauts();
@@ -97,11 +102,14 @@ public class MainSpaceMiningSim {
            
            shipStats_instance.updateShipFeatures();
            
+           
+           
            SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
    
            
            Scanner scanner = new Scanner(System.in);
            String input = ""; // Declare input before the loop
+           playerStatsInstance.getPlayerName(scanner); // Get player's name
            
            // Main game loop
            while (!input.equals("exit")) {
@@ -142,6 +150,7 @@ public class MainSpaceMiningSim {
                    case "a":
                        shipStats_instance.displayStats();
                        System.out.println("You can press 'p' to equip parts to hardpoints.");
+                       
                    //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "v":
