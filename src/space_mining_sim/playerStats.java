@@ -31,7 +31,18 @@ public class playerStats {
 //       // String playerName = getPlayerName(); // Get player's name
 //       // setPlayerName(playerName); // Save player's name in player stats
 //        setPlayerName(playerName); // Save player's name in player stats
-//    }
+//    }playerName
+	
+	
+	public void printPlayerStats()
+	{
+		 System.out.println("Your name is: "+playerName);	
+		 System.out.println("your reputation score is " + reputationPlayer);
+		 System.out.println("Geology Level: "+ levelGeologistSkillPlayer);
+		 System.out.println("Astrogator Level: "+  levelAstrogatorSkillPlayer);
+		 System.out.println("Engineering Level: "+ levelEngineeringSkillPlayer);
+		 System.out.println( "Diplomacy Level: "+levelDiplomacySkillPlayer);
+	}
 	
 	public void getPlayerName(Scanner scanner) {
 	    System.out.println("Please enter your character's name:");

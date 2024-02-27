@@ -230,9 +230,10 @@ public class MainSpaceMiningSim {
                 	  
                        break;
                    case "c":
-                	   System.out.println("Your geology levet is : "+ playerStatsInstance.getLevelGeologistSkillPlayer());
-                	   System.out.println("Your Astrogator levet is : "+ playerStatsInstance.getAstrogatorExperiencePlayer());
-                	   System.out.println("Your Engineering levet is : "+ playerStatsInstance.getEngineeringExperiencePlayer());
+                	   playerStatsInstance.printPlayerStats();
+               // 	   System.out.println("Your geology levet is : "+ playerStatsInstance.getLevelGeologistSkillPlayer());
+                //	   System.out.println("Your Astrogator levet is : "+ playerStatsInstance.getAstrogatorExperiencePlayer());
+                	//   System.out.println("Your Engineering levet is : "+ playerStatsInstance.getEngineeringExperiencePlayer());
                 	   
                 	   break;
                    case "u":
@@ -250,6 +251,7 @@ public class MainSpaceMiningSim {
 
                 	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
                 	    break;
+               
                    	  case "help":
                    		  
                    	   //System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
