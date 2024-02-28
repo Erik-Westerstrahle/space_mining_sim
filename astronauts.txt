@@ -1,5 +1,5 @@
-Astronaut{name='Talia', skillLevel=8, occupation=Miner, salaryRequirement=8000}
-Astronaut{name='Ulysses', skillLevel=6, occupation=Astrogator, salaryRequirement=6000}
-Astronaut{name='Zachary', skillLevel=3, occupation=Mechanic, salaryRequirement=3000}
-Astronaut{name='Mabel', skillLevel=6, occupation=Geologist, salaryRequirement=6000}
-Astronaut{name='Olivia', skillLevel=1, occupation=Astrogator, salaryRequirement=1000}
+Astronaut{name='Soren Ivory', skillLevel=1, occupation=Mechanic, salaryRequirement=1000}
+Astronaut{name='Eli Hawke', skillLevel=4, occupation=Mechanic, salaryRequirement=4000}
+Astronaut{name='Quincy Xenon', skillLevel=5, occupation=Geologist, salaryRequirement=5000}
+Astronaut{name='Charlie Bates', skillLevel=6, occupation=Miner, salaryRequirement=6000}
+Astronaut{name='Phoenix Sterling', skillLevel=4, occupation=Mechanic, salaryRequirement=4000}

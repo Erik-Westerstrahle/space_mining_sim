@@ -34,10 +34,13 @@ public class AstronautGenerator {
  
 
     public static Astronauts generateAstronaut() {
-        String name = names[random.nextInt(names.length)];
+    	 String firstName = names[random.nextInt(names.length)];
+         String lastName = lastNames[random.nextInt(lastNames.length)];
+         String fullName = firstName + " " + lastName;  // Concatenate the first name and last name
+        
         String occupation = jobsAstronaut[random.nextInt(jobsAstronaut.length)];
         int skillLevel = 1 + random.nextInt(10); // Skill level between 1 and 10
         int salary = 1000 * skillLevel; // Example salary calculation
-        return new Astronauts(name, skillLevel, salary, occupation);
+        return new Astronauts(fullName, skillLevel, salary, occupation);
     }
 }
