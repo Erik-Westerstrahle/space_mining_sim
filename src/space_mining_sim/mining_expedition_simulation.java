@@ -24,11 +24,20 @@ public class mining_expedition_simulation {
 	
 
 	 private playerStats playerStatsInstance;
+	 
+	 private storyDescriptionsText storyDescriptionsTextInstance;
+
+
+
+
 	
 	//dependency injection
-	  public mining_expedition_simulation(timeManager timeManager_instance, playerStats playerStatsInstance, ship_stats shipStats_instance) {
-	        this.timeManager_instance = timeManager_instance;
-	        this.playerStatsInstance = playerStatsInstance;
+	 public mining_expedition_simulation(timeManager timeManager_instance, playerStats playerStatsInstance, ship_stats shipStats_instance, storyDescriptionsText storyDescriptionsTextInstance) {
+		    this.timeManager_instance = timeManager_instance;
+		    this.playerStatsInstance = playerStatsInstance;
+		    this.shipStats_instance = shipStats_instance;
+		    this.storyDescriptionsTextInstance = storyDescriptionsTextInstance; // Assigning the passed instance
+		
 	       // this.shipStats_instance = shipStats_instance;
 	        // Other initializations...
 	    }
@@ -67,6 +76,7 @@ public class mining_expedition_simulation {
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
             timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
+            storyDescriptionsTextInstance.printRandomStationDescription();
             
          //   playerStatsInstance.increaseEngineeringExperiencePlayer(10);
          //   playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
@@ -94,6 +104,7 @@ public class mining_expedition_simulation {
               timeManager.advanceTime(10 * playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
     		  
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(15);
+    		  storyDescriptionsTextInstance.printRandomStationDescription();
 
 //              if(shop_instance.getHaveBoughtFusionEngine()==true)
 //        	  {
@@ -116,6 +127,7 @@ public class mining_expedition_simulation {
               timeManager.advanceTime(10 * playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
     		  
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(30);
+    		  storyDescriptionsTextInstance.printRandomStationDescription();
 
 
 //              if(shop_instance.getHaveBoughtFusionEngine()==true)

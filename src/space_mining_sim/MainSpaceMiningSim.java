@@ -56,7 +56,8 @@ public class MainSpaceMiningSim {
    
         playerStats playerStatsInstance = new playerStats(); 
         timeManager timeManager_instance = new timeManager();
-        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance);
+        storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance);
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
@@ -65,7 +66,6 @@ public class MainSpaceMiningSim {
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
       //  Scanner scanner = new Scanner(System.in);
-  
     
         
         
@@ -138,7 +138,7 @@ public class MainSpaceMiningSim {
           
                ascii_art ascii_art = new ascii_art();
    
-               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance);
+               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance);
                
                
                
