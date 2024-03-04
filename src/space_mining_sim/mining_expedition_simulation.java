@@ -77,6 +77,7 @@ public class mining_expedition_simulation {
             timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
             storyDescriptionsTextInstance.printRandomStationDescription();
+            storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
             
          //   playerStatsInstance.increaseEngineeringExperiencePlayer(10);
          //   playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
@@ -105,6 +106,7 @@ public class mining_expedition_simulation {
     		  
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(15);
     		  storyDescriptionsTextInstance.printRandomStationDescription();
+    		  storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
 
 //              if(shop_instance.getHaveBoughtFusionEngine()==true)
 //        	  {
@@ -128,6 +130,7 @@ public class mining_expedition_simulation {
     		  
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(30);
     		  storyDescriptionsTextInstance.printRandomStationDescription();
+    		  storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
 
 
 //              if(shop_instance.getHaveBoughtFusionEngine()==true)

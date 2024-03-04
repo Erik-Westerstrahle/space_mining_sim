@@ -20,11 +20,12 @@ public class MainSpaceMiningSim {
 
 
 
-// add it so that the player can enter their character name
+// way for code to check if player has already entered name and saved, so that it does not always prompt the player
 	// add better ways to store data
 	// add more story descriptions
 
 // Done
+	// add it so that the player can enter their character name
 	// add astrogator player skill lowers travel time
 	// make mining expedition code more cleaner
 	// add more events
