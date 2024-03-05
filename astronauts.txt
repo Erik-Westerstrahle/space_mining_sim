@@ -1,5 +1,5 @@
-Astronaut{name='Marcus Vale', skillLevel=3, occupation=Mechanic, salaryRequirement=3000}
-Astronaut{name='Vera Jennings', skillLevel=2, occupation=Geologist, salaryRequirement=2000}
-Astronaut{name='Lorenzo Morrow', skillLevel=3, occupation=Geologist, salaryRequirement=3000}
-Astronaut{name='Bob Saari', skillLevel=5, occupation=Mechanic, salaryRequirement=5000}
-Astronaut{name='Helena Knight', skillLevel=8, occupation=Astrogator, salaryRequirement=8000}
+Astronaut{name='Yara Parrish', skillLevel=3, occupation=Astrogator, salaryRequirement=3000}
+Astronaut{name='Silas Cross', skillLevel=4, occupation=Geologist, salaryRequirement=4000}
+Astronaut{name='Uriel Winter', skillLevel=10, occupation=Geologist, salaryRequirement=10000}
+Astronaut{name='Zara Wilde', skillLevel=6, occupation=Astrogator, salaryRequirement=6000}
+Astronaut{name='Paxton Noble', skillLevel=6, occupation=Geologist, salaryRequirement=6000}

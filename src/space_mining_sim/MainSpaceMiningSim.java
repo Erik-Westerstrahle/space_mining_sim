@@ -62,6 +62,7 @@ public class MainSpaceMiningSim {
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
+        
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
 
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
@@ -110,7 +111,16 @@ public class MainSpaceMiningSim {
            
            Scanner scanner = new Scanner(System.in);
            String input = ""; // Declare input before the loop
-           playerStatsInstance.getPlayerName(scanner); // Get player's name
+           // here checks if the player has already entered their name and saved
+           if(playerStatsInstance.getPlayerName()==null || playerStatsInstance.getPlayerName().isEmpty())
+           {
+        	   System.out.println("Please enter your character's name:");
+        	   String playerName = scanner.nextLine();
+        	   System.out.println("Welcome, " + playerName + "!");
+           }
+           else {
+        	   System.out.println("Welcome back, " + playerStatsInstance.getPlayerName() + "!");
+           }
            
            // Main game loop
            while (!input.equals("exit")) {
@@ -132,6 +142,7 @@ public class MainSpaceMiningSim {
              //  System.out.println("Press 'k' for leasson you ought to remember");
                System.out.println("Type 'exit' to quit");
 
+         
                input = scanner.nextLine(); // Assign new input value here, don't redeclare
 
                

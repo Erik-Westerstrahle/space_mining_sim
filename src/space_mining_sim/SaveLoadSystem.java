@@ -49,6 +49,7 @@ public class SaveLoadSystem {
     // Method to load game state from a file
     public static void loadGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance, playerStats playerStatsInstance) {
         try {
+        	 boolean nameLoaded = false;
             BufferedReader reader = new BufferedReader(new FileReader("game_save.txt"));
             playerFinances.setFinances(Integer.parseInt(reader.readLine()));
             playerFinances.setDebt(Integer.parseInt(reader.readLine()));

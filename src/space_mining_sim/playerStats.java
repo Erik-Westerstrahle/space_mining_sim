@@ -44,10 +44,11 @@ public class playerStats {
 		 System.out.println( "Diplomacy Level: "+levelDiplomacySkillPlayer);
 	}
 	
-	public void getPlayerName(Scanner scanner) {
-	    System.out.println("Please enter your character's name:");
-	    this.playerName = scanner.nextLine(); // Read the player's name from the console
-	    System.out.println("Welcome, " + playerName + "!"); // Greet the player
+	public String getPlayerName(Scanner scanner) {
+	  //  System.out.println("Please enter your character's name:");
+	 //   this.playerName = scanner.nextLine(); // Read the player's name from the console
+	 //   System.out.println("Welcome, " + playerName + "!"); // Greet the player
+		   return playerName;
 	}
 
 
