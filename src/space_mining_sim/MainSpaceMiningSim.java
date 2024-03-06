@@ -31,6 +31,8 @@ public class MainSpaceMiningSim {
 	// add more events
 	// make the event system more efficent
 	
+	 // private static boolean firstTimeStartGameBoolean = true;
+	
 
     public static void main(String[] args) throws InterruptedException, LineUnavailableException, IOException {
         
@@ -46,6 +48,7 @@ public class MainSpaceMiningSim {
         final int sleepTime = 1000 / loadingBarWidth; // Time to sleep in milliseconds
         final int infinityTimerStop = 200;
         boolean loadingSuccessful = false;
+    //    boolean firstTimeStartGameBoolean = false;
         
         
      // Creating instances of the game's main components
@@ -64,7 +67,7 @@ public class MainSpaceMiningSim {
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
         
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
-
+    
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
       //  Scanner scanner = new Scanner(System.in);
@@ -94,14 +97,14 @@ public class MainSpaceMiningSim {
         loadingSuccessful = true;
        } catch (InterruptedException e) {
            System.err.println("\nError during loading: " + e.getMessage());
+           
            // Handle the error as needed
        }
        if (loadingSuccessful) {
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
-           System.out.println("Welcome to my game ");
-           System.out.println("You have bought a mining space ship and you need to pay of your debt by mining to complete the game ");
-           
+       
+    
            shipStats_instance.updateShipFeatures();
            
            
@@ -117,11 +120,22 @@ public class MainSpaceMiningSim {
         	   System.out.println("Please enter your character's name:");
         	   String playerName = scanner.nextLine();
         	   System.out.println("Welcome, " + playerName + "!");
+        	 //  setFirstTimeStartGameBoolean();
            }
            else {
         	   System.out.println("Welcome back, " + playerStatsInstance.getPlayerName() + "!");
            }
            
+//           if(getFirstTimeStartGameBoolean()==true)
+//           {
+//           System.out.println("Welcome to my game ");
+//           System.out.println("You have bought a mining space ship and you need to pay of your debt by mining to complete the game ");
+//           }
+//           else
+//           {
+//        	   
+//           }
+         
            // Main game loop
            while (!input.equals("exit")) {
         	   timeManager_instance.printCurrentDate();
@@ -295,6 +309,8 @@ public class MainSpaceMiningSim {
        }
 
      //   System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
+       
+
     }
     
  // Method to generate and save astronaut data to a file
@@ -312,8 +328,21 @@ public class MainSpaceMiningSim {
     }
     
     
+//
+//    static boolean getFirstTimeStartGameBoolean()
+//    {
+//    	return firstTimeStartGameBoolean;
+//    }
+//    
+//    public static void setFirstTimeStartGameBoolean() {
+//    	// TODO Auto-generated method stub
+//    	//this.fuel_amount = newFuelAmount;
+//    	firstTimeStartGameBoolean = false;
+//    }
+//  
+
     
-    
+
     
 
 

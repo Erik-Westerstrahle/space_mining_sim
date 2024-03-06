@@ -5,7 +5,7 @@ import java.io.*;
 public class SaveLoadSystem {
 	  Shop_space_mining_sim shop = new Shop_space_mining_sim();
 	   playerStats playerStatsInstance = new playerStats(); 
-
+	   static boolean firstTimeStartGameBoolean = false;
     
     
 	  // Method to save game state to a file
@@ -33,6 +33,8 @@ public class SaveLoadSystem {
             writer.write(playerStatsInstance.getLevelGeologistSkillPlayer() + "\n");
             writer.write(playerStatsInstance.getAstrogatorExperiencePlayer() + "\n");
             writer.write(playerStatsInstance.getEngineeringExperiencePlayer() + "\n");
+            writer.write(firstTimeStartGameBoolean + "\n");
+            
             
             
             // ... Write other game states
@@ -63,6 +65,7 @@ public class SaveLoadSystem {
            playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
            playerStatsInstance.setLevelAstrogatorSkillPlayer(Integer.parseInt(reader.readLine()));
            playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
+           firstTimeStartGameBoolean=Boolean.parseBoolean(reader.readLine());
             // ... Read other game states
             reader.close();
             System.out.println("Game loaded successfully.");
@@ -72,4 +75,23 @@ public class SaveLoadSystem {
             System.out.println("Error in saved data format: " + e.getMessage());
         }
     }
+    
+
+    static boolean getFirstTimeStartGameBoolean()
+    {
+    	
+		return firstTimeStartGameBoolean;
+    }
+    
+    public static void setFirstTimeStartGameBoolean() {
+    	// TODO Auto-generated method stub
+    	//this.fuel_amount = newFuelAmount;
+    	firstTimeStartGameBoolean = false;
+    }
+  
+
+    
+
+    
+
 }
