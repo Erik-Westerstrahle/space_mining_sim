@@ -1,5 +1,5 @@
-Astronaut{name='Dana Hawke', skillLevel=4, occupation=Mechanic, salaryRequirement=4000}
-Astronaut{name='Rhea Knox', skillLevel=3, occupation=Geologist, salaryRequirement=3000}
-Astronaut{name='Kyra Ivory', skillLevel=4, occupation=Miner, salaryRequirement=4000}
-Astronaut{name='Wallace Easton', skillLevel=10, occupation=Miner, salaryRequirement=10000}
-Astronaut{name='Jasper Hawke', skillLevel=2, occupation=Astrogator, salaryRequirement=2000}
+Astronaut{name='Gideon Reed', skillLevel=1, occupation=Miner, salaryRequirement=1000}
+Astronaut{name='Zane Dixon', skillLevel=7, occupation=Miner, salaryRequirement=7000}
+Astronaut{name='Rosalind Jett', skillLevel=9, occupation=Astrogator, salaryRequirement=9000}
+Astronaut{name='Nolan Underwood', skillLevel=10, occupation=Miner, salaryRequirement=10000}
+Astronaut{name='Nova York', skillLevel=3, occupation=Miner, salaryRequirement=3000}

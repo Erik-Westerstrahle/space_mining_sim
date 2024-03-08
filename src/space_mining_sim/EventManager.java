@@ -76,6 +76,7 @@ public class EventManager {
 
 }		
 }
+	// event where player receives a distress call and the player has to decide on what to do
 	
 	public void eventDistressCallFromShip() {
 		 Random random = new Random();

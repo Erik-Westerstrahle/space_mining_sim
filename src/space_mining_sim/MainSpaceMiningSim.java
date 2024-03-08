@@ -33,6 +33,8 @@ public class MainSpaceMiningSim {
 	
 	 // private static boolean firstTimeStartGameBoolean = true;
 	
+    
+	
 
     public static void main(String[] args) throws InterruptedException, LineUnavailableException, IOException {
         
@@ -101,21 +103,31 @@ public class MainSpaceMiningSim {
            // Handle the error as needed
        }
        if (loadingSuccessful) {
+    	  
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
            
-       if(SaveLoadSystemInstance.getFirstTimeStartGameBoolean()==true) {
-    	   System.out.println("welcome to my game");
-     	   System.out.println("This is the first time start message");
-    	 //  SaveLoadSystemInstance.setFirstTimeStartGameBoolean();
-       }
-       else
+      
+
     
            shipStats_instance.updateShipFeatures();
            
            
            
            SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
+           
+           
+           
+           if(playerStatsInstance.getPlayerName() == null || playerStatsInstance.getPlayerName().isEmpty())
+    	   {
+        	   System.out.println("Welcome to my game");
+        	   System.out.println("To win you need to earn money by mining and pay of your debt to fully own your own ship");
+        	   System.out.println("");
+    	   }
+    	   else
+    	   {
+    		  
+    	   }
    
            
            Scanner scanner = new Scanner(System.in);
@@ -302,6 +314,11 @@ public class MainSpaceMiningSim {
                        System.out.println("Press 'view' to see hired astronauts");
                        System.out.println("Press 'c' to view your stats");
                 	   break;
+                      case "exit":
+                          System.out.println("Exiting the game. Goodbye!");
+                          scanner.close(); //closing the scanner before exiting
+                          System.exit(0); // This terminates the program
+                          break;
                    default:
                        System.out.println("Invalid command.");
                        break;
@@ -315,11 +332,20 @@ public class MainSpaceMiningSim {
        } else {
            System.out.println("\nBoot Failed. Please try again or contact support.");
        }
+       
+ 
+       
+
+     
+       
+
 
      //   System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
        
 
     }
+    
+
     
  // Method to generate and save astronaut data to a file
     private static void generateAndSaveAstronauts() {
@@ -350,11 +376,7 @@ public class MainSpaceMiningSim {
 //  
 
     
-  static void firstTimeStartMessage()
-  {
-	  System.out.println("Error writing to astronauts.txt: " );
-  }
-    
+
 
 
 

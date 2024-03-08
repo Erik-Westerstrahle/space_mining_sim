@@ -28,7 +28,9 @@ public class storyDescriptionsText {
         "Entering the station you feel the smell of the ozone from the air cleaners. It is good to be back.",
         "Arriving back at the station you are surprised by the large crowds.",
         "You remember the old saying space is clean, humans are not as you step into the station. It smells horrible here.",
-        "111111111111111111111111111111111 "
+        "111111111111111111111111111111111 ",
+        "There is a lot traffic at the station. It took forever to dock ",
+        "You had to qeue to dock with the station, Somebody was arguing with control"
     };
     
     // Randomly selects and prints a station description
@@ -77,7 +79,9 @@ public class storyDescriptionsText {
             "66 55 89 34 11 33 44 66 84 99 10 01 76 72",
             "you hear strange music on the radio. You cannot identify what genre it is",
             "It sounds like screaming, but it might be static. You should probably hurry up and get out of here",
-            " You heard two people aruing intensly over the radio. You do not understand the language they are arguing in"
+            " You heard two people aruing intensly over the radio. You do not understand the language they are arguing in",
+            "A commercial plays on the radio offering ship insurance",
+            "You heard some staticy classical music on the radio. this signal mus be wery old"
         };
         
         // Randomly selects and prints a station description
