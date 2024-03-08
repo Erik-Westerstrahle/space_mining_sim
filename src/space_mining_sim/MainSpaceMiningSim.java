@@ -103,7 +103,13 @@ public class MainSpaceMiningSim {
        if (loadingSuccessful) {
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
-       
+           
+       if(SaveLoadSystemInstance.getFirstTimeStartGameBoolean()==true) {
+    	   System.out.println("welcome to my game");
+     	   System.out.println("This is the first time start message");
+    	 //  SaveLoadSystemInstance.setFirstTimeStartGameBoolean();
+       }
+       else
     
            shipStats_instance.updateShipFeatures();
            
@@ -120,6 +126,7 @@ public class MainSpaceMiningSim {
         	   System.out.println("Please enter your character's name:");
         	   String playerName = scanner.nextLine();
         	   System.out.println("Welcome, " + playerName + "!");
+        	   playerStatsInstance.setPlayerName(playerName);
         	 //  setFirstTimeStartGameBoolean();
            }
            else {
@@ -232,6 +239,7 @@ public class MainSpaceMiningSim {
                 		   timeManager_instance.resetDebtDeadline();
                 	   }
                 	   playerFinances.print_finances();
+                	   playerFinances.checkIFDebtHasBeenPaid(); // victory condition
                 	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "s":
@@ -342,7 +350,10 @@ public class MainSpaceMiningSim {
 //  
 
     
-
+  static void firstTimeStartMessage()
+  {
+	  System.out.println("Error writing to astronauts.txt: " );
+  }
     
 
 

@@ -87,6 +87,18 @@ public class finances_player {
 	    	System.out.println("your debt is: "+debtPlayer); 
 	    }
 	    
+	    public void checkIFDebtHasBeenPaid ()
+	    {
+	    	if(debtPlayer<=0)
+	    	{
+	    		System.out.println("Congratulations. You have paid of your debt and now own your ship fully. You have won the game."); 
+	    		System.out.println("there is no post game content yet. But you can continue if you want to."); 
+	    	}
+	    	
+	   
+	    }
+	    
+	    
 	    
 
 	    // Method to get the current amount of finances

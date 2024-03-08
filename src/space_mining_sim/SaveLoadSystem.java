@@ -5,7 +5,7 @@ import java.io.*;
 public class SaveLoadSystem {
 	  Shop_space_mining_sim shop = new Shop_space_mining_sim();
 	   playerStats playerStatsInstance = new playerStats(); 
-	   static boolean firstTimeStartGameBoolean = false;
+	   static boolean firstTimeStartGameBoolean = true;
     
     
 	  // Method to save game state to a file
@@ -60,6 +60,7 @@ public class SaveLoadSystem {
          //   boolean hasBoughtMiningArm = Boolean.parseBoolean(reader.readLine().split(": ")[1]);
            shop_instance.setHaveBoughtMiningArm(Boolean.parseBoolean(reader.readLine()));
            shop_instance.setHaveBoughtFusionEngine(Boolean.parseBoolean(reader.readLine())); // Load fusion engine state
+           
            playerStatsInstance.setPlayerName(reader.readLine());
            playerStatsInstance.setGeologistExperiencePlayer(Integer.parseInt(reader.readLine()));
            playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
@@ -83,10 +84,11 @@ public class SaveLoadSystem {
 		return firstTimeStartGameBoolean;
     }
     
-    public static void setFirstTimeStartGameBoolean() {
+    public  void setFirstTimeStartGameBoolean(boolean newSetFirstTimeStartGameBoolean) {
     	// TODO Auto-generated method stub
     	//this.fuel_amount = newFuelAmount;
-    	firstTimeStartGameBoolean = false;
+
+    	SaveLoadSystem.firstTimeStartGameBoolean = newSetFirstTimeStartGameBoolean;
     }
   
 
