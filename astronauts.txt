@@ -1,5 +1,0 @@
-Astronaut{name='Gideon Reed', skillLevel=1, occupation=Miner, salaryRequirement=1000}
-Astronaut{name='Zane Dixon', skillLevel=7, occupation=Miner, salaryRequirement=7000}
-Astronaut{name='Rosalind Jett', skillLevel=9, occupation=Astrogator, salaryRequirement=9000}
-Astronaut{name='Nolan Underwood', skillLevel=10, occupation=Miner, salaryRequirement=10000}
-Astronaut{name='Nova York', skillLevel=3, occupation=Miner, salaryRequirement=3000}
