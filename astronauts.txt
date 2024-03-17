@@ -1,0 +1,5 @@
+Astronaut{name='Kyra Parrish'origin= VenusPersonality= , skillLevel=8, occupation=Geologist, salaryRequirement=8000, Personality=MelanchonyBorn on Venus}
+Astronaut{name='Leo Knox'origin= VenusPersonality= , skillLevel=9, occupation=Astrogator, salaryRequirement=9000, Personality=CautiousBorn on Venus}
+Astronaut{name='Max Smith'origin= MarsPersonality= , skillLevel=5, occupation=Astrogator, salaryRequirement=5000, Personality=CharmingBorn on Mars}
+Astronaut{name='Zane Graves'origin= VenusPersonality= , skillLevel=6, occupation=Geologist, salaryRequirement=6000, Personality=ResoursfulBorn on Venus}
+Astronaut{name='Rhea Lawson'origin= VenusPersonality= , skillLevel=9, occupation=Geologist, salaryRequirement=9000, Personality=MelanchonyBorn on Venus}

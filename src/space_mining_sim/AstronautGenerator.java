@@ -34,6 +34,10 @@ public class AstronautGenerator {
         private static final String[] homePlace = {
                 "Earth","Mars","Luna","Venus","Enceladus station","Mercury","Europa"
             };
+        
+        private static final String[] starSign = {
+                "Aries ","Taurus ","Gemini ","Cancer ","Leo ","Virgo ","Libra ","Scorpio "
+            };
     
     
     
@@ -47,10 +51,11 @@ public class AstronautGenerator {
          String fullName = firstName + " " + lastName;  // Concatenate the first name and last name
         
         String occupation = jobsAstronaut[random.nextInt(jobsAstronaut.length)];
-        String origin = homePlace[random.nextInt(homePlace.length)];
+        String home = homePlace[random.nextInt(homePlace.length)];
         String personalityAstronaut = personalitiesAstroanuts[random.nextInt(personalitiesAstroanuts.length)];
+        String astrologySign = starSign[random.nextInt(starSign.length)];
         int skillLevel = 1 + random.nextInt(10); // Skill level between 1 and 10
         int salary = 1000 * skillLevel; // Example salary calculation
-        return new Astronauts(fullName, skillLevel, salary, occupation,origin);
+        return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home,astrologySign);
     }
 }

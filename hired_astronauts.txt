@@ -1,1 +1,2 @@
 Astronaut{name='Fiona', skillLevel=6, occupation=Geologist, salaryRequirement=6000}
+Astronaut{name='Yara Blackwood'origin= VenusPersonality= , skillLevel=5, occupation=Astrogator, salaryRequirement=5000, Personality=DaydreamerBorn on Venus}

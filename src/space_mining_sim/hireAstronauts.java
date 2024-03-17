@@ -30,24 +30,24 @@ class hireAstronauts {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select an astronaut to hire (1-5): ");
-        int choice = scanner.nextInt();
-        
-        // Read the current number of hired astronauts
-        int hiredAstronauts = getNumberOfHiredAstronauts();
+        int choice = scanner.nextInt() - 1; // adjust for 0-based index
 
-        if (hiredAstronauts < shipStats_instance.getAvailableCrewSpots())
-        {
-        	saveHiredAstronaut(availableAstronauts[choice-1]); // availableAstronauts is an array
-        	
+        if (choice >= 0 && choice < availableAstronauts.length) {
+            Astronauts selectedAstronaut = availableAstronauts[choice]; // Use this object
+
+            // Check if there's space for more crew and if the player has enough funds
+            // Assume these checks are done elsewhere in your code
+
+            // Save the selected astronaut
+            saveHiredAstronaut(selectedAstronaut);
+
+            System.out.println("Astronaut " + selectedAstronaut.getName() + " has been hired.");
+        } else {
+            System.out.println("Invalid selection.");
         }
-        else {
-        	 // Inform the player that no more crew can be hired
-            System.out.println("You cannot hire more astronauts. No available crew spots.");
-        }
-        // Assuming the player has enough funds to hire an astronaut
-        // Further code to check and update finances can be added here
-       // saveHiredAstronaut(availableAstronauts[choice - 1]);
+        // Avoid closing the scanner here if it's System.in as it will close System.in for the entire application
     }
+
 	
     
     // Method to count the number of hired astronauts
@@ -93,7 +93,7 @@ class hireAstronauts {
     // learn this later
     public static List<Astronauts> getHiredAstronauts() throws IOException {
         List<Astronauts> hiredAstronauts = new ArrayList<>();
-        Pattern pattern = Pattern.compile("Astronaut\\{name='(.*?)', skillLevel=(\\d+), occupation=(.*?), salaryRequirement=(\\d+)}");
+        Pattern pattern = Pattern.compile("Astronaut\\{name='(.*?)', skillLevel=(\\d+), occupation=(.*?), salaryRequirement=(\\d+)}, \"personalityAstronaut\\\\{name='(.*?)', \\\"home\\\\\\\\{name='(.*?)'");
 
         try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
             String line;
@@ -105,41 +105,13 @@ class hireAstronauts {
                     String occupation = matcher.group(3).trim();
                     int salaryRequirement = Integer.parseInt(matcher.group(4).trim());
 
-                    hiredAstronauts.add(new Astronauts(name, skillLevel, salaryRequirement, occupation));
+                    hiredAstronauts.add(new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home, astrologySign));
                 }
             }
         }
         return hiredAstronauts;
     }
     
-//    public static List<Astronauts> getHiredAstronauts() throws IOException {
-//        List<Astronauts> hiredAstronauts = new ArrayList<>();
-//        try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] data = line.split(",");
-//                // Assuming the format is "Name, SkillLevel, SalaryRequirement, Occupation"
-//                String name = data[0].split("=")[1].trim();
-//                int skillLevel = Integer.parseInt(data[1].split("=")[1].trim());
-//                int salaryRequirement = Integer.parseInt(data[2].split("=")[1].trim());
-//                String occupation = data[3].split("=")[1].trim();
-//
-//                hiredAstronauts.add(new Astronauts(name, skillLevel, salaryRequirement, occupation));
-//            }
-//        }
-//        return hiredAstronauts;
-//    }
-	
-	
-	
-//	  public static void hireAstronautPersonel(finances_player playerFinances) throws IOException {
-//	        System.out.println("Available Astronauts: ");
-//	        Astronauts[] availableAstronauts = new Astronauts[5];
-//	        for(int i =0; i <5; i++)
-//	        {
-//	        	
-//	        }
-//	  }
 
 
 }
