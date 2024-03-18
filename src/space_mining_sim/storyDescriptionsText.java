@@ -33,6 +33,7 @@ public class storyDescriptionsText {
         "You had to qeue to dock with the station, Somebody was arguing with control",
         "You feel dead tired after the last mining expedition you just want to sleep",
         "As you step onto the station you wonder what your family is doing back home",
+        "A painful beeping sound played from the radio",
     };
     
     // Randomly selects and prints a station description

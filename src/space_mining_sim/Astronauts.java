@@ -9,10 +9,11 @@ public class Astronauts {
 	private String personalityAstronaut;
 	private String home;
 	private String astrologySign;
+	private String backgroundAstronaut;
 	
 	//Astronaut selectedAstronaut = availableAstronauts[choice - 1];
 
-    public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String home, String astrologySign) {
+    public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String home, String astrologySign,String backgroundAstronau) {
         this.name = name;
         this.skillLevel = skillLevel;
         this.salaryRequirement = salaryRequirement;
@@ -21,6 +22,7 @@ public class Astronauts {
         this.personalityAstronaut = personalityAstronaut;
         this.home = home;
         this.astrologySign=astrologySign;
+        this.backgroundAstronaut=backgroundAstronaut;
     }
 
     // Getters and Setters
@@ -51,6 +53,9 @@ public class Astronauts {
     public String getastrologySign() {
         return astrologySign;
     } 
+    public String backgroundAstronaut() {
+        return backgroundAstronaut;
+    } 
     @Override
     public String toString() {
         return "Astronaut{" +
@@ -61,7 +66,8 @@ public class Astronauts {
                 ", occupation=" + occupation +	
                 ", salaryRequirement=" + salaryRequirement +
                 ", Personality="+personalityAstronaut+
-                "Born on "+home+
+                ", Born on "+home+
+                ", background´"+backgroundAstronaut+
                 '}';
     }
 }
