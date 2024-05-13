@@ -1,5 +1,5 @@
-Astronaut{name='Olivia Blackwood'origin= MercuryPersonality= , skillLevel=5, occupation=Astrogator, salaryRequirement=5000, Personality=Joyful, Born on Mercury, background´null}
-Astronaut{name='Uriel Ivory'origin= LunaPersonality= , skillLevel=4, occupation=Mechanic, salaryRequirement=4000, Personality=Wraful, Born on Luna, background´null}
-Astronaut{name='Ulysses Farrow'origin= LunaPersonality= , skillLevel=7, occupation=Astrogator, salaryRequirement=7000, Personality=Wraful, Born on Luna, background´null}
-Astronaut{name='Gideon Ivory'origin= VenusPersonality= , skillLevel=5, occupation=Miner, salaryRequirement=5000, Personality=Charming, Born on Venus, background´null}
-Astronaut{name='Soren Ray'origin= EuropaPersonality= , skillLevel=7, occupation=Astrogator, salaryRequirement=7000, Personality=Wraful, Born on Europa, background´null}
+Astronaut{name='Winston Ford'origin= Enceladus stationPersonality= , skillLevel=1, occupation=Mechanic, salaryRequirement=1000, Personality=Joyful, Born on Enceladus station, background´null}
+Astronaut{name='Max Knight'origin= EuropaPersonality= , skillLevel=8, occupation=Mechanic, salaryRequirement=8000, Personality=Cautious, Born on Europa, background´null}
+Astronaut{name='Talia Lawson'origin= EarthPersonality= , skillLevel=1, occupation=Geologist, salaryRequirement=1000, Personality=Cautious, Born on Earth, background´null}
+Astronaut{name='Charlie Noble'origin= EarthPersonality= , skillLevel=6, occupation=Geologist, salaryRequirement=6000, Personality=Wraful, Born on Earth, background´null}
+Astronaut{name='Olivia Xenon'origin= Enceladus stationPersonality= , skillLevel=7, occupation=Astrogator, salaryRequirement=7000, Personality=Wraful, Born on Enceladus station, background´null}

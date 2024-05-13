@@ -204,12 +204,27 @@ public class EventManager {
 	
 	}
 	
+	
+	public void eventFindDroppedCargo() {
+		 Random random = new Random();
+		 int valueDroppedCargo = 10000;
+		 int chance = random.nextInt(100);
+		 int chanceEventFindDroppedCargoe =1;
+		 if (chance <= chanceEventFindDroppedCargoe) {
+			 playerFinancesInstance.increase_finances(valueDroppedCargo);
+
+		    } 
+	}
+
+}
+	
 	public void callAllEvents() {
 		eventTankExplode();
 		encounterDeadAstronaut();
 		eventDistressCallFromShip();
 		eventExtortionFromMiner();
 		encounterDerelictShip();
+		eventFindDroppedCargo();
 	}
 	
 	
