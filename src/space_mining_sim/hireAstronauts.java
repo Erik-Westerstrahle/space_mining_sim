@@ -1,6 +1,9 @@
+// hireAstronauts.java
+
 package space_mining_sim;
 
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,7 +13,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 
 
@@ -91,9 +93,30 @@ class hireAstronauts {
     
     
     // learn this later
+//    public static List<Astronauts> getHiredAstronauts() throws IOException {
+//        List<Astronauts> hiredAstronauts = new ArrayList<>();
+//        Pattern pattern = Pattern.compile("Astronaut\\{name='(.*?)', skillLevel=(\\d+), occupation=(.*?), salaryRequirement=(\\d+)}, \"personalityAstronaut\\\\{name='(.*?)', \\\"home\\\\\\\\{name='(.*?)'");
+//
+//        try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                Matcher matcher = pattern.matcher(line);
+//                if (matcher.find()) {
+//                    String name = matcher.group(1).trim();
+//                    int skillLevel = Integer.parseInt(matcher.group(2).trim());
+//                    String occupation = matcher.group(3).trim();
+//                    int salaryRequirement = Integer.parseInt(matcher.group(4).trim());
+//
+//                    hiredAstronauts.add(new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home, astrologySign));
+//                }
+//            }
+//        }
+//        return hiredAstronauts;
+//    }
+    
     public static List<Astronauts> getHiredAstronauts() throws IOException {
         List<Astronauts> hiredAstronauts = new ArrayList<>();
-        Pattern pattern = Pattern.compile("Astronaut\\{name='(.*?)', skillLevel=(\\d+), occupation=(.*?), salaryRequirement=(\\d+)}, \"personalityAstronaut\\\\{name='(.*?)', \\\"home\\\\\\\\{name='(.*?)'");
+        Pattern pattern = Pattern.compile("Astronaut\\{name='(.*?)', origin='(.*?)', personality='(.*?)', skillLevel=(\\d+), occupation='(.*?)', salaryRequirement=(\\d+), astrologySign='(.*?)', background='(.*?)'\\}");
 
         try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
             String line;
@@ -101,17 +124,19 @@ class hireAstronauts {
                 Matcher matcher = pattern.matcher(line);
                 if (matcher.find()) {
                     String name = matcher.group(1).trim();
-                    int skillLevel = Integer.parseInt(matcher.group(2).trim());
-                    String occupation = matcher.group(3).trim();
-                    int salaryRequirement = Integer.parseInt(matcher.group(4).trim());
+                    String origin = matcher.group(2).trim();
+                    String personality = matcher.group(3).trim();
+                    int skillLevel = Integer.parseInt(matcher.group(4).trim());
+                    String occupation = matcher.group(5).trim();
+                    int salaryRequirement = Integer.parseInt(matcher.group(6).trim());
+                    String astrologySign = matcher.group(7).trim();
+                    String background = matcher.group(8).trim();
 
-                    hiredAstronauts.add(new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home, astrologySign));
+                    hiredAstronauts.add(new Astronauts(name, skillLevel, salaryRequirement, occupation, origin, personality, astrologySign, background));
                 }
             }
         }
         return hiredAstronauts;
     }
-    
-
 
 }

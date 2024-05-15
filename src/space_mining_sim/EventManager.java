@@ -216,7 +216,7 @@ public class EventManager {
 		    } 
 	}
 
-}
+
 	
 	public void callAllEvents() {
 		eventTankExplode();

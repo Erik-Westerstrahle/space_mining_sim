@@ -1,3 +1,5 @@
+// Astronauts.java
+
 package space_mining_sim;
 
 public class Astronauts {
@@ -13,17 +15,17 @@ public class Astronauts {
 	
 	//Astronaut selectedAstronaut = availableAstronauts[choice - 1];
 
-    public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String home, String astrologySign,String backgroundAstronau) {
+    public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String astrologySign, String backgroundAstronaut) {
         this.name = name;
         this.skillLevel = skillLevel;
         this.salaryRequirement = salaryRequirement;
         this.occupation = occupation;
         this.origin = origin;
         this.personalityAstronaut = personalityAstronaut;
-        this.home = home;
-        this.astrologySign=astrologySign;
-        this.backgroundAstronaut=backgroundAstronaut;
+        this.astrologySign = astrologySign;
+        this.backgroundAstronaut = backgroundAstronaut;
     }
+
 
     // Getters and Setters
     public String getName() {
@@ -60,14 +62,13 @@ public class Astronauts {
     public String toString() {
         return "Astronaut{" +
                 "name='" + name + '\'' +
-                "origin= " + origin +
-                "Personality= "+
+                ", origin='" + origin + '\'' +
+                ", personality='" + personalityAstronaut + '\'' +
                 ", skillLevel=" + skillLevel +
-                ", occupation=" + occupation +	
+                ", occupation='" + occupation + '\'' +
                 ", salaryRequirement=" + salaryRequirement +
-                ", Personality="+personalityAstronaut+
-                ", Born on "+home+
-                ", background´"+backgroundAstronaut+
+                ", astrologySign='" + astrologySign + '\'' +
+                ", background='" + backgroundAstronaut + '\'' +
                 '}';
     }
 }

@@ -1,3 +1,6 @@
+// AstronautGenerator.java
+
+
 package space_mining_sim;
 
 import java.util.Random;
@@ -13,7 +16,7 @@ public class AstronautGenerator {
             "Helena", "Isaac", "Juno", "Kyra", "Lorenzo", "Mabel",
             "Nolan", "Olivia", "Paxton", "Quinn", "Rosalind", "Silas",
             "Thalia", "Uriel", "Valentina", "Wallace", "Xander", "Yara",
-            "Zachary"
+            "Zachary","Lisa"
         };
         
         private static final String[] lastNames = {
@@ -28,7 +31,7 @@ public class AstronautGenerator {
         };
         
         private static final String[] personalitiesAstroanuts = {
-                "Joyful","Wraful","Cautious","Melanchony","Charming","Daydreamer","Resoursful"
+                "Joyful","Wratful","Cautious","Melanchony","Charming","Daydreamer","Resoursful"
             };
         
         private static final String[] homePlace = {
@@ -40,7 +43,7 @@ public class AstronautGenerator {
             };
         
         private static final String[] backgroundAstronautArray = {
-                "Miner ","Navy ","Military ","Trader ","Professor ","Scientist ","Artist ","Criminal ","CENSORED ","Pilot","Warehouse manager","Smuggler","Dockhand"," Teacher","Programmer"
+                "Miner ","Navy ","Military ","Trader ","Professor ","Scientist ","Artist ","Criminal ","CENSORED ","Pilot","Warehouse manager","Smuggler","Dockhand"," Teacher","Programmer","Trader"
             };
     
     
@@ -61,6 +64,8 @@ public class AstronautGenerator {
         String backgroundAstronaut = backgroundAstronautArray[random.nextInt(backgroundAstronautArray.length)];
         int skillLevel = 1 + random.nextInt(10); // Skill level between 1 and 10
         int salary = 1000 * skillLevel; // Example salary calculation
-        return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home,astrologySign,backgroundAstronaut);
+       // return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home,astrologySign,backgroundAstronaut);
+        return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, astrologySign, backgroundAstronaut);
+
     }
 }
