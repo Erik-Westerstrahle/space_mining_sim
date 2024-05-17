@@ -5,8 +5,11 @@ package space_mining_sim;
 
 import java.util.Random;
 
+
+// Here Generates astronauts
 public class AstronautGenerator {
 	
+	// array of firt names used for the astronauts
     private static final String[] names = {
             "Alice", "Bob", "Charlie", "Dana", "Eli", "Fiona",
             "Luna", "Max", "Nova", "Orion", "Kira", "Jasper",
@@ -30,6 +33,7 @@ public class AstronautGenerator {
             "York", "Zephyr"
         };
         
+        
         private static final String[] personalitiesAstroanuts = {
                 "Joyful","Wratful","Cautious","Melanchony","Charming","Daydreamer","Resoursful"
             };
@@ -51,13 +55,14 @@ public class AstronautGenerator {
     private static final String[] jobsAstronaut = {"Geologist","Astrogator","Mechanic","Miner"};
     private static final Random random = new Random();
  
-
+// here the astronauts are generated when the game is run
+    // the randomly generated astronauts are saved to astronauts.txt
     public static Astronauts generateAstronaut() {
-    	 String firstName = names[random.nextInt(names.length)];
+    	 String firstName = names[random.nextInt(names.length)]; // randomly assigns a first name to a asteonaut
          String lastName = lastNames[random.nextInt(lastNames.length)];
          String fullName = firstName + " " + lastName;  // Concatenate the first name and last name
         
-        String occupation = jobsAstronaut[random.nextInt(jobsAstronaut.length)];
+        String occupation = jobsAstronaut[random.nextInt(jobsAstronaut.length)]; //
         String home = homePlace[random.nextInt(homePlace.length)];
         String personalityAstronaut = personalitiesAstroanuts[random.nextInt(personalitiesAstroanuts.length)];
         String astrologySign = starSign[random.nextInt(starSign.length)];

@@ -1,3 +1,5 @@
+// EventManager.java
+
 package space_mining_sim;
 
 import java.util.Random;
@@ -215,6 +217,23 @@ public class EventManager {
 
 		    } 
 	}
+	
+	
+	
+	public void eventEncounterEnforcers() {
+		 Random random = new Random();
+		
+		 int chance = random.nextInt(500);
+		 int chanceToEncounterThisEvent =1;
+		 if (chance <= chanceToEncounterThisEvent) {
+			 System.out.println("You receive a strange radio message saying: This patroll ship the Munich. Stop your engines and prepare to be scanned for weapons and contraband");
+			 System.out.println("You recognise the ships name. The ship is famous for hunting pirates. It is heavily armed. You know it is better to be scanned instead of running");
+			 System.out.println("After a couple of tense minutes the Munich seds the message");
+			 System.out.println("Your ship is cleared you may proceed");
+			 System.out.println("The Munich then starts burning fast. to where you do not know");
+
+		    } 
+	}
 
 
 	
@@ -225,6 +244,7 @@ public class EventManager {
 		eventExtortionFromMiner();
 		encounterDerelictShip();
 		eventFindDroppedCargo();
+		eventEncounterEnforcers();
 	}
 	
 	

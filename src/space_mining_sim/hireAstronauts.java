@@ -114,12 +114,16 @@ class hireAstronauts {
 //        return hiredAstronauts;
 //    }
     
+    // reads the file astronauts.txt and goes trough each line
     public static List<Astronauts> getHiredAstronauts() throws IOException {
-        List<Astronauts> hiredAstronauts = new ArrayList<>();
+        List<Astronauts> hiredAstronauts = new ArrayList<>(); // initializes an empty list
+        // creates an regex pattern that matches the contents of the txt file
         Pattern pattern = Pattern.compile("Astronaut\\{name='(.*?)', origin='(.*?)', personality='(.*?)', skillLevel=(\\d+), occupation='(.*?)', salaryRequirement=(\\d+), astrologySign='(.*?)', background='(.*?)'\\}");
 
+        // opens astronauts.txt
         try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
             String line;
+            // the code goes trough every line in the txt file
             while ((line = reader.readLine()) != null) {
                 Matcher matcher = pattern.matcher(line);
                 if (matcher.find()) {
@@ -132,6 +136,7 @@ class hireAstronauts {
                     String astrologySign = matcher.group(7).trim();
                     String background = matcher.group(8).trim();
 
+                    // creates an new object and add it to the list
                     hiredAstronauts.add(new Astronauts(name, skillLevel, salaryRequirement, occupation, origin, personality, astrologySign, background));
                 }
             }
