@@ -1,5 +1,5 @@
-Astronaut{name='Zara Piper'origin= MercuryPersonality= , skillLevel=5, occupation=Mechanic, salaryRequirement=5000, Personality=Cautious, Born on Mercury, background´null}
-Astronaut{name='Xander Underwood'origin= EarthPersonality= , skillLevel=6, occupation=Mechanic, salaryRequirement=6000, Personality=Resoursful, Born on Earth, background´null}
-Astronaut{name='Xena Ford'origin= EarthPersonality= , skillLevel=4, occupation=Astrogator, salaryRequirement=4000, Personality=Melanchony, Born on Earth, background´null}
-Astronaut{name='Isaac Piper'origin= VenusPersonality= , skillLevel=7, occupation=Geologist, salaryRequirement=7000, Personality=Cautious, Born on Venus, background´null}
-Astronaut{name='Gideon Mars'origin= EuropaPersonality= , skillLevel=10, occupation=Astrogator, salaryRequirement=10000, Personality=Daydreamer, Born on Europa, background´null}
+Astronaut{name='Rhea Blaze', origin='Europa', personality='Daydreamer', skillLevel=6, occupation='Astrogator', salaryRequirement=6000, astrologySign='Taurus ', background='Trader'}
+Astronaut{name='Zachary Ryder', origin='Mars', personality='Daydreamer', skillLevel=7, occupation='Mechanic', salaryRequirement=7000, astrologySign='Virgo ', background='Smuggler'}
+Astronaut{name='Orion Ray', origin='Earth', personality='Resoursful', skillLevel=10, occupation='Geologist', salaryRequirement=10000, astrologySign='Virgo ', background='Professor '}
+Astronaut{name='Nolan Mars', origin='Enceladus station', personality='Resoursful', skillLevel=9, occupation='Mechanic', salaryRequirement=9000, astrologySign='Libra ', background='Miner '}
+Astronaut{name='Zachary Sterling', origin='Venus', personality='Daydreamer', skillLevel=4, occupation='Astrogator', salaryRequirement=4000, astrologySign='Aries ', background='Programmer'}

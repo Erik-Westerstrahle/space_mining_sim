@@ -124,6 +124,7 @@ class hireAstronauts {
         try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
             String line;
             // the code goes trough every line in the txt file
+            // matcher identifys and extracts data fields from evety line
             while ((line = reader.readLine()) != null) {
                 Matcher matcher = pattern.matcher(line);
                 if (matcher.find()) {

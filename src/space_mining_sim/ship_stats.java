@@ -24,6 +24,7 @@ int shipHardpoint4 =0;
 int shipHardpoint5 =0;
 int shipHardpoint6 =0;
 
+private String shipName; 
 
 
 
@@ -195,6 +196,7 @@ public void displayStats() {
 	
 	
  updateShipFeatures();
+ System.out.println("Ship Name: "+ shipName);
  System.out.println("hull:"+ ship_hull_integrity);
  System.out.println("fuel: "+ fuel_amount);
  System.out.println("available crew spots "+ availableCrewSpots);
@@ -216,6 +218,10 @@ public void test_for_parameter(Shop_space_mining_sim spaceship_parts_store_insta
 {
 	
 	 spaceship_parts_store_instance.spaceship_parts_prices(100);
+}
+
+public String getShipName() {
+	return shipName;
 }
 
 
@@ -269,6 +275,8 @@ public int getShipHardpoint6() {
 	return shipHardpoint6;
 }
 
+
+
 public void setBonusFusionEngine(double newBonusFusionEngine) {
 	// TODO Auto-generated method stub
 	
@@ -319,7 +327,9 @@ public void setAvailableCrewSpots(int newAvailableCrewSpots) {
 	 this.availableCrewSpots = newAvailableCrewSpots;
 }
 
-
+public void setShipName(String shipName) {
+	this.shipName=shipName;
+}
 
 }
 

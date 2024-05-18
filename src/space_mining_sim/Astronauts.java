@@ -13,7 +13,7 @@ public class Astronauts {
 	private String astrologySign;
 	private String backgroundAstronaut;
 	
-	//Astronaut selectedAstronaut = availableAstronauts[choice - 1];
+	
 
     public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String astrologySign, String backgroundAstronaut) {
         this.name = name;

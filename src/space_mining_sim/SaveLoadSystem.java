@@ -33,6 +33,7 @@ public class SaveLoadSystem {
             writer.write(playerStatsInstance.getLevelGeologistSkillPlayer() + "\n");
             writer.write(playerStatsInstance.getAstrogatorExperiencePlayer() + "\n");
             writer.write(playerStatsInstance.getEngineeringExperiencePlayer() + "\n");
+            writer.write(shipStats.getShipName()+ "\n");
             writer.write(firstTimeStartGameBoolean + "\n");
             
             
@@ -67,6 +68,7 @@ public class SaveLoadSystem {
            playerStatsInstance.setLevelAstrogatorSkillPlayer(Integer.parseInt(reader.readLine()));
            playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
            firstTimeStartGameBoolean=Boolean.parseBoolean(reader.readLine());
+           shipStats.setShipName(reader.readLine());
             // ... Read other game states
             reader.close();
             System.out.println("Game loaded successfully.");

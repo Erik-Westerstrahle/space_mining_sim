@@ -145,6 +145,21 @@ public class MainSpaceMiningSim {
         	   System.out.println("Welcome back, " + playerStatsInstance.getPlayerName() + "!");
            }
            
+           if (shipStats_instance.getShipName() == null || shipStats_instance.getShipName().isEmpty())
+           {
+        	   System.out.println("Please enter your ship's name:");
+        	   String shipName = scanner.nextLine();
+        	   shipStats_instance.setShipName(shipName);
+        	   System.out.println("Your ship is named: " + shipName);
+           }
+           else
+        	   {
+        	   System.out.println("Your ship is named: " + shipStats_instance.getShipName());
+        	   }
+           
+        	   
+           
+           
 //           if(getFirstTimeStartGameBoolean()==true)
 //           {
 //           System.out.println("Welcome to my game ");
