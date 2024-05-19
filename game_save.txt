@@ -1,2 +1,15 @@
 0
 600000
+100
+100
+false
+false
+Bob
+0
+0
+0
+0
+0
+0
+testChangeShipName
+false

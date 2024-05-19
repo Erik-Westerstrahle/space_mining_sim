@@ -18,13 +18,14 @@ public class MainSpaceMiningSim {
 
 	// 
 
-
-
+// add way to start new game
+// add way to rename ship
 // way for code to check if player has already entered name and saved, so that it does not always prompt the player
 	// add better ways to store data
 	// add more story descriptions
 
 // Done
+	// add it so that the player can name their ship
 	// add it so that the player can enter their character name
 	// add astrogator player skill lowers travel time
 	// make mining expedition code more cleaner
@@ -209,7 +210,12 @@ public class MainSpaceMiningSim {
                switch (input) {
                    case "a":
                        shipStats_instance.displayStats();
-                       System.out.println("You can press 'p' to equip parts to hardpoints.");
+                       String subInput = scanner.nextLine();
+                       if (subInput.equals("r")) {
+                           shipStats_instance.renameShip();
+                       } else if (subInput.equals("e")) {
+                           System.out.println("You can press 'p' to equip parts to hardpoints.");
+                       }
                        
                    //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;

@@ -203,6 +203,7 @@ public void displayStats() {
  System.out.println("Ship has a mining arm: "+ shipHasMiningArm);
  System.out.println("Ship has a fusion engine: "+ shipHasFusionEngine);
  System.out.println("press e to equip ship hardpoints");
+ System.out.println("press r to change ship name");
 }
 
 
@@ -218,6 +219,16 @@ public void test_for_parameter(Shop_space_mining_sim spaceship_parts_store_insta
 {
 	
 	 spaceship_parts_store_instance.spaceship_parts_prices(100);
+}
+
+
+public void renameShip()
+{
+	Scanner scanner = new Scanner(System.in);
+	System.out.println("Enter new ship name:");
+	String newShipName = scanner.nextLine();
+	setShipName(newShipName);
+	 System.out.println("Your ship has been renamed to: " + newShipName);
 }
 
 public String getShipName() {
