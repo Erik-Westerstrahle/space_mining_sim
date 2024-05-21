@@ -44,6 +44,19 @@ public class playerStats {
 		 System.out.println( "Diplomacy Level: "+levelDiplomacySkillPlayer);
 	}
 	
+    public void resetPlayerStats() {
+        this.playerName = "";
+        this.reputationPlayer = 100;
+        this.levelGeologistSkillPlayer = 0;
+        this.levelAstrogatorSkillPlayer = 0;
+        this.levelEngineeringSkillPlayer = 0;
+        this.levelDiplomacySkillPlayer = 0;
+        this.geologistExperiencePlayer = 0;
+        this.astrogatorExperiencePlayer = 0;
+        this.engineeringExperiencePlayer = 0;
+        this.diplomacyExperiencePlayer = 0;
+    }
+	
 	public String getPlayerName(Scanner scanner) {
 	  //  System.out.println("Please enter your character's name:");
 	 //   this.playerName = scanner.nextLine(); // Read the player's name from the console

@@ -54,6 +54,13 @@ public class timeManager {
 		return timeDay >= timeToDebtDeadline;
 	}
 	
+    public void resetTimeManager() {
+        this.timeDay = 1;
+        this.timeMonth = 1;
+        this.timeYear = 2221;
+        this.timeToDebtDeadline = 60;
+    }
+	
 	public int getTimeUnitlDeadline()
 	{
 		return timeToDebtDeadline-timeDay;

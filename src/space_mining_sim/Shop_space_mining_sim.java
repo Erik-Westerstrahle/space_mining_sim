@@ -146,6 +146,15 @@ public class Shop_space_mining_sim {
     	
     }
 	
+    public void resetShop() {
+        this.haveBoughtMiningArm = false;
+        this.haveBoughtFusionEngine = false;
+        this.haveFusionEngine = false;
+        this.haveBoughtBasicCrewQuarters = false;
+        this.haveBoughtBasicRadar = false;
+        this.incomeMultiplier = 1.0;
+        this.timeTakeWithFusionEngine = 1.0;
+    }
  
 		 
 		 

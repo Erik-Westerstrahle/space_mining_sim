@@ -1,5 +1,5 @@
-Astronaut{name='Silas Hawke', origin='Luna', personality='Joyful', skillLevel=3, occupation='Mechanic', salaryRequirement=3000, astrologySign='Virgo ', background='Programmer'}
-Astronaut{name='Kyra Vale', origin='Venus', personality='Resoursful', skillLevel=1, occupation='Miner', salaryRequirement=1000, astrologySign='Cancer ', background='Criminal '}
-Astronaut{name='Max Ray', origin='Mercury', personality='Wratful', skillLevel=8, occupation='Mechanic', salaryRequirement=8000, astrologySign='Scorpio ', background=' Teacher'}
-Astronaut{name='Uriel Vale', origin='Mars', personality='Charming', skillLevel=7, occupation='Mechanic', salaryRequirement=7000, astrologySign='Taurus ', background='Trader '}
-Astronaut{name='Talia Smith', origin='Earth', personality='Resoursful', skillLevel=5, occupation='Astrogator', salaryRequirement=5000, astrologySign='Scorpio ', background='Navy '}
+Astronaut{name='Silas Sterling', origin='Europa', personality='Wratful', skillLevel=4, occupation='Miner', salaryRequirement=4000, astrologySign='Aries ', background='Programmer'}
+Astronaut{name='Rhea Sterling', origin='Venus', personality='Cautious', skillLevel=9, occupation='Miner', salaryRequirement=9000, astrologySign='Libra ', background='Artist '}
+Astronaut{name='Wallace Smith', origin='Europa', personality='Daydreamer', skillLevel=1, occupation='Mechanic', salaryRequirement=1000, astrologySign='Aries ', background='Navy '}
+Astronaut{name='Luna Easton', origin='Mercury', personality='Melanchony', skillLevel=7, occupation='Geologist', salaryRequirement=7000, astrologySign='Scorpio ', background='CENSORED '}
+Astronaut{name='Vera Easton', origin='Venus', personality='Charming', skillLevel=3, occupation='Miner', salaryRequirement=3000, astrologySign='Scorpio ', background='Scientist '}

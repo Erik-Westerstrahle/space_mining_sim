@@ -18,13 +18,15 @@ public class MainSpaceMiningSim {
 
 	// 
 
-// add way to start new game
-// add way to rename ship
+// add a better main game loop to main
+// make the start new game code better.
 // way for code to check if player has already entered name and saved, so that it does not always prompt the player
 	// add better ways to store data
 	// add more story descriptions
 
 // Done
+	// add way to start new game
+	// add way to rename ship
 	// add it so that the player can name their ship
 	// add it so that the player can enter their character name
 	// add astrogator player skill lowers travel time
@@ -108,7 +110,16 @@ public class MainSpaceMiningSim {
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
            
-      
+
+           while (true) {
+
+               
+           
+               
+           
+
+           
+    
 
     
            shipStats_instance.updateShipFeatures();
@@ -175,20 +186,7 @@ public class MainSpaceMiningSim {
            while (!input.equals("exit")) {
         	   timeManager_instance.printCurrentDate();
         	   System.out.println("Type 'help' to see available commands");
-//        	   System.out.println("time unil next debt payment is "+timeManager_instance.getTimeUnitlDeadline());
-//               System.out.println("Press 'a' to see ship stats");
-//               System.out.println("Press 'v' to view your ship");
-//               System.out.println("Press 'f' to view your finances");
-//               System.out.println("Press 'e' to go on a mining expedition");
-//               System.out.println("Press 'r' to refuel");
-//               System.out.println("Press 'b' to access store");
-//               System.out.println("Press 'p' to pay of your debts");
-//               System.out.println("Press 's' to save the game");
-//               System.out.println("Press 'l' to load the game");
-//               System.out.println("Press 'h' to hire astronauts");
-//               System.out.println("Press 'view' to see hired astronauts");
-//               System.out.println("Press 'c' to view your stats");
-             //  System.out.println("Press 'k' for leasson you ought to remember");
+
                System.out.println("Type 'exit' to quit");
 
          
@@ -318,6 +316,11 @@ public class MainSpaceMiningSim {
 
                 	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
                 	    break;
+                   case "z":
+                	    startNewGame(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, SaveLoadSystemInstance, scanner);
+                	    main(new String[]{});
+                        return;
+                	   // break;
                
                    	  case "help":
                    		  
@@ -334,6 +337,7 @@ public class MainSpaceMiningSim {
                        System.out.println("Press 'h' to hire astronauts");
                        System.out.println("Press 'view' to see hired astronauts");
                        System.out.println("Press 'c' to view your stats");
+                       System.out.println("Press 'z' to view your stats");
                 	   break;
                       case "exit":
                           System.out.println("Exiting the game. Goodbye!");
@@ -350,7 +354,7 @@ public class MainSpaceMiningSim {
 
            
            
-       } else {
+       }} else {
            System.out.println("\nBoot Failed. Please try again or contact support.");
        }
        
@@ -380,6 +384,19 @@ public class MainSpaceMiningSim {
         } catch (IOException e) {
             System.out.println("Error writing to astronauts.txt: " + e.getMessage());
         }
+    }
+    
+    
+    // Method to start a new game
+    private static void startNewGame(finances_player playerFinances, Shop_space_mining_sim shop_instance, ship_stats shipStats_instance, playerStats playerStatsInstance, timeManager timeManager_instance, SaveLoadSystem SaveLoadSystemInstance, Scanner scanner) {
+        // Reset game state
+        playerFinances.resetFinances();
+        shop_instance.resetShop();
+        shipStats_instance.resetShipStats();
+        playerStatsInstance.resetPlayerStats();
+        timeManager_instance.resetTimeManager();
+      //  SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance, shop_instance, playerStatsInstance);
+        System.out.println("New game started!");
     }
     
     

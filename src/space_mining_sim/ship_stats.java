@@ -231,6 +231,20 @@ public void renameShip()
 	 System.out.println("Your ship has been renamed to: " + newShipName);
 }
 
+public void resetShipStats()
+{
+	this.ship_hull_integrity = 100;
+	this.fuel_amount = 100;
+	this.availableCrewSpots =1;
+	this.wentOnMiningExpedition = false;
+	this.shipHasMiningArm = false;
+	this.bonusFusionEngine = 1.0;
+	this.hardpoints = new int[6];
+	this.shipName = "";
+	
+	
+}
+
 public String getShipName() {
 	return shipName;
 }

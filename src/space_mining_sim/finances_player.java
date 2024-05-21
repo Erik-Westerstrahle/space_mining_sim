@@ -98,6 +98,11 @@ public class finances_player {
 	   
 	    }
 	    
+	    public void resetFinances() {
+	        this.finances_player = 1000; // Default starting finances
+	        this.debtPlayer = 5000; // Default starting debt
+	    }
+	    
 	    
 	    
 

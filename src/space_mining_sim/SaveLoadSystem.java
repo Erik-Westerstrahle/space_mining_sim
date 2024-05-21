@@ -1,6 +1,9 @@
+// SaveloadSystem.java
+
 package space_mining_sim;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class SaveLoadSystem {
 	  Shop_space_mining_sim shop = new Shop_space_mining_sim();
@@ -93,7 +96,14 @@ public class SaveLoadSystem {
     	SaveLoadSystem.firstTimeStartGameBoolean = newSetFirstTimeStartGameBoolean;
     }
   
-
+    private static void startNewGame_old(finances_player playerFinances, Shop_space_mining_sim shop_instance, ship_stats shipStats_instance, playerStats playerStatsInstance, timeManager timeManager_instance, SaveLoadSystem SaveLoadSystemInstance, Scanner scanner) {
+        // Reset game state
+        playerFinances.resetFinances();
+        shop_instance.resetShop();
+        shipStats_instance.resetShipStats();
+        playerStatsInstance.resetPlayerStats();
+        timeManager_instance.resetTimeManager();
+    }
     
 
     
