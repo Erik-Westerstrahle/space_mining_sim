@@ -12,6 +12,7 @@ public class SaveLoadSystem {
     
     
 	  // Method to save game state to a file
+	   // the save game is currently a txt file. This migt be changed later
     public static void saveGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance,  playerStats playerStatsInstance) {
         try {
         	  // Using BufferedWriter for efficient writing to a file

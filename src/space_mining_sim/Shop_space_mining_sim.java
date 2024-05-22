@@ -20,6 +20,11 @@ public class Shop_space_mining_sim {
 	//ship_stats shipStats_instance = new ship_stats();
 	   ship_stats shipStats_instance = new ship_stats();
 	  //private ship_stats shipStats_instance;
+       playerStats playerStatsInstance = new playerStats(); 
+       timeManager timeManager_instance = new timeManager();
+       storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
+	   mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance);
+	   finances_player playerFinances = new finances_player();
 
 	  
 	  
@@ -86,7 +91,8 @@ public class Shop_space_mining_sim {
 	
 	private void purchaseBasicRadar(finances_player playerFinances) {
     	
-    	if (haveBoughtBasicRadar==true) {
+    	if (haveBoughtBasicRadar==true) // checks if you have already bought the radar
+    	{
     		System.out.println("You have already purchased the basic radar.");
     	} else if (playerFinances.getFinances() >= 100) {
             playerFinances.decrease_finances(100);
@@ -146,6 +152,7 @@ public class Shop_space_mining_sim {
     	
     }
 	
+	// this function is used when the player starts a new game
     public void resetShop() {
         this.haveBoughtMiningArm = false;
         this.haveBoughtFusionEngine = false;
@@ -159,7 +166,7 @@ public class Shop_space_mining_sim {
 		 
 		 
 		 
-		 
+		 // checks if the player has bought the Mining arm
 	        boolean hasBoughtMiningArm() {
 	            return haveBoughtMiningArm;
 	        }
@@ -240,6 +247,17 @@ public class Shop_space_mining_sim {
 	public void repair_hull()
 	{
 		 System.out.println(" press r to refuel your ship");
+		
+	}
+	
+	public void sellResourceUnits()
+	{
+		int moneySellingCopperResourceUnits =  miningExpedition.getCopperAmount() * 10;
+		int moneySellingSilverResourceUnits =  miningExpedition.getSilverAmount() * 50;
+		int moneySellingGoldResourceUnits =  miningExpedition.getSilverAmount() * 100;
+		
+		 System.out.println(" you sold all your resource units. You get =" + (moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits)+ " Credits");
+		playerFinances.increase_finances((moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits));
 		
 	}
 

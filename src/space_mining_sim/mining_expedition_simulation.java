@@ -27,7 +27,9 @@ public class mining_expedition_simulation {
 	 
 	 private storyDescriptionsText storyDescriptionsTextInstance;
 
-
+ 	int copperAmount = 0; 
+ 	int silverAmount = 0;
+ 	int goldAmount = 0; 
 
 
 	
@@ -318,4 +320,65 @@ public class mining_expedition_simulation {
     return (int) (baseIncome * multiplier * geologistBonusFromAstronauts* geologistBonusFromPlayer); 
     
 }  
-}
+    
+    public void chansToGetResources(int chanceToGetCopper,int chanceToGetSilver, int chanceToGetGold, int amountGetResources )
+    {
+    //	int copperAmount = 0; 
+    //	int silverAmount = 0;
+    //	int goldAmount = 0; 
+    	
+    	 Random random = new Random();
+    	// int chance = random.nextInt(100);
+    	 
+    	 int chanceCopper = random.nextInt(100);
+    	 int chanceSilver = random.nextInt(100);
+    	 int chanceGold = random.nextInt(100);
+    	 int resouceRandomCalculationTimes = random.nextInt(amountGetResources);
+    	 
+    	// int chanceToGetCopper =50;
+    	// int chanceToGetSilver =10;
+    	// int chanceToGetGold =1;
+    	 
+    	//int resouceRandomCalculationTimes = 6;
+    	
+    	for (int i = 0; i <= resouceRandomCalculationTimes; i++) {
+    		
+    		 int chance = random.nextInt(100);
+    		
+    		if (chance <= chanceToGetCopper) {
+    			// copperAmount = copperAmount +1;
+    			this.copperAmount++;
+		    } 
+    		
+    		if (chance <= chanceToGetSilver) {
+    			silverAmount = silverAmount +1;
+		    }
+    		if (chance <= chanceToGetGold) {
+    			goldAmount = goldAmount +1;
+		    }
+	
+
+    		
+    	}
+    	 System.out.println("times gathered resource = "+amountGetResources);
+    	 System.out.println(" ");
+    	
+		 System.out.println("copper amount = "+copperAmount);
+		 System.out.println("silver amount = "+silverAmount);
+		 System.out.println("gold amount = "+goldAmount);
+    	
+    	}
+    
+    
+    public int getCopperAmount() {
+        return this.copperAmount;
+    }
+    
+    public int getSilverAmount() {
+        return silverAmount;
+    }
+    
+    public int getGoldAmount() {
+        return goldAmount;
+    }
+    }

@@ -316,6 +316,16 @@ public class MainSpaceMiningSim {
 
                 	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
                 	    break;
+                	    
+                   case "t":
+                	   // debug for getting resources
+                	   mining_expedition_instance.chansToGetResources(50,10,1,10);
+                	   break;
+                	   
+                   case "m":
+                	   // debug for getting resources
+                	   shop_instance.sellResourceUnits();
+                	   break;
                    case "z":
                 	    startNewGame(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, SaveLoadSystemInstance, scanner);
                 	    main(new String[]{});
