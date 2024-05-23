@@ -1,5 +1,5 @@
-Astronaut{name='Aurora Castle', origin='Europa', personality='Charming', skillLevel=8, occupation='Astrogator', salaryRequirement=8000, astrologySign='Virgo ', background='Scientist '}
-Astronaut{name='Yvonne Underwood', origin='Mars', personality='Melanchony', skillLevel=6, occupation='Miner', salaryRequirement=6000, astrologySign='Virgo ', background='Artist '}
-Astronaut{name='Lisa Zephyr', origin='Luna', personality='Wratful', skillLevel=9, occupation='Geologist', salaryRequirement=9000, astrologySign='Gemini ', background='Navy '}
-Astronaut{name='Marcus Mars', origin='Mercury', personality='Charming', skillLevel=2, occupation='Miner', salaryRequirement=2000, astrologySign='Taurus ', background='Smuggler'}
-Astronaut{name='Quincy Harper', origin='Mercury', personality='Charming', skillLevel=7, occupation='Mechanic', salaryRequirement=7000, astrologySign='Cancer ', background='Professor '}
+Astronaut{name='Orion Sterling', origin='Mars', personality='Melanchony', skillLevel=10, occupation='Miner', salaryRequirement=10000, astrologySign='Scorpio ', background='Navy '}
+Astronaut{name='Juno Sterling', origin='Venus', personality='Joyful', skillLevel=4, occupation='Miner', salaryRequirement=4000, astrologySign='Leo ', background='Trader'}
+Astronaut{name='Thalia Ford', origin='Venus', personality='Charming', skillLevel=4, occupation='Astrogator', salaryRequirement=4000, astrologySign='Scorpio ', background='CENSORED '}
+Astronaut{name='Alice Storm', origin='Enceladus station', personality='Daydreamer', skillLevel=10, occupation='Miner', salaryRequirement=10000, astrologySign='Taurus ', background='Trader '}
+Astronaut{name='Dana Jennings', origin='Enceladus station', personality='Charming', skillLevel=3, occupation='Miner', salaryRequirement=3000, astrologySign='Virgo ', background='Navy '}

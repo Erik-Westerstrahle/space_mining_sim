@@ -369,6 +369,13 @@ public class mining_expedition_simulation {
     	
     	}
     
+    public void resetResources() {
+        this.copperAmount = 0;
+        this.silverAmount = 0;
+        this.goldAmount = 0;
+    }
+
+    
     
     public int getCopperAmount() {
         return this.copperAmount;
