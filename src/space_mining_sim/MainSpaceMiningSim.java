@@ -57,27 +57,24 @@ public class MainSpaceMiningSim {
         
         
      // Creating instances of the game's main components
+     // Create instances of the game's main components
         finances_player playerFinances = new finances_player();
-    
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         ship_stats shipStats_instance = new ship_stats(shop_instance);
-        shop_instance.setShipStatsInstance(shipStats_instance); // this exists for dependincis
-   
-        playerStats playerStatsInstance = new playerStats(); 
+        shop_instance.setShipStatsInstance(shipStats_instance);
+        playerStats playerStatsInstance = new playerStats();
         timeManager timeManager_instance = new timeManager();
         storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
-      //  mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance);
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation(
                 timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance
-            );
-        
-        shop_instance.setMiningExpedition(miningExpedition); // Set the miningExpedition instance here
-        shop_instance.setPlayerFinances(playerFinances); // Set the playerFinances instance here
-        
+        );
+
+        shop_instance.setMiningExpedition(miningExpedition);
+        shop_instance.setPlayerFinances(playerFinances);
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
-        
+
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
     
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
@@ -204,7 +201,7 @@ public class MainSpaceMiningSim {
           
                ascii_art ascii_art = new ascii_art();
    
-               mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance);
+             //  mining_expedition_simulation mining_expedition_instance = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance);
                
                
                
@@ -242,8 +239,8 @@ public class MainSpaceMiningSim {
                 	   break;
                    case "e":
                 	   
-                	   //mining_expedition_instance.go_on_mining_expedition(playerFinances, shipStats_instance);
-                	   mining_expedition_instance.select_where_go_mining(playerFinances, shipStats_instance, shop_instance, timeManager_instance, shipStats_instance);
+                	 
+                	   miningExpedition.select_where_go_mining(playerFinances, shipStats_instance, shop_instance, timeManager_instance, shipStats_instance);
 
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
                 	   shipStats_instance.fuel_comsumption();
@@ -326,12 +323,13 @@ public class MainSpaceMiningSim {
                 	    
                    case "t":
                 	   // debug for getting resources
-                	   mining_expedition_instance.chansToGetResources(50,10,1,10);
+                	   miningExpedition.chansToGetResources(50,10,1,10);
                 	   break;
                 	   
                    case "m":
                 	   // debug for getting resources
                 	   shop_instance.sellResourceUnits();
+
                 	   break;
                    case "z":
                 	    startNewGame(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, SaveLoadSystemInstance, scanner);

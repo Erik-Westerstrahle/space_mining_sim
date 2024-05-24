@@ -25,10 +25,10 @@ public class Shop_space_mining_sim {
        playerStats playerStatsInstance = new playerStats(); 
        timeManager timeManager_instance = new timeManager();
        storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
-    //   mining_expedition_simulation miningExpedition;
+    //   mining_expedition_simulation miningExpedition_shop;
 	//   finances_player playerFinances = new finances_player();
        
-       private mining_expedition_simulation miningExpedition;
+       private mining_expedition_simulation miningExpedition_shop;
        private finances_player playerFinances;
 
 	   
@@ -40,8 +40,8 @@ public class Shop_space_mining_sim {
 	    }
 	    
 	    
-	    public void setMiningExpedition(mining_expedition_simulation miningExpedition) {
-	        this.miningExpedition = miningExpedition;
+	    public void setMiningExpedition(mining_expedition_simulation miningExpedition_shop) {
+	        this.miningExpedition_shop = miningExpedition_shop;
 	    }
 
 	    public void setPlayerFinances(finances_player playerFinances) {
@@ -267,24 +267,25 @@ public class Shop_space_mining_sim {
 	}
 	
 	public void sellResourceUnits() {
-	    int copperAmount = miningExpedition.getCopperAmount();
-	    int silverAmount = miningExpedition.getSilverAmount();
-	    int goldAmount = miningExpedition.getGoldAmount();
-	    
+	    int copperAmount = miningExpedition_shop.getCopperAmount();
+	    int silverAmount = miningExpedition_shop.getSilverAmount();
+	    int goldAmount = miningExpedition_shop.getGoldAmount();
+
 	    System.out.println("Debug: Copper = " + copperAmount + ", Silver = " + silverAmount + ", Gold = " + goldAmount);
 
-	    int moneySellingCopperResourceUnits = copperAmount * 10;
-	    int moneySellingSilverResourceUnits = silverAmount * 50;
-	    int moneySellingGoldResourceUnits = goldAmount * 100;
+	    int moneySellingCopperResourceUnits = copperAmount * 10; // Assuming 10 credits per unit of copper
+	    int moneySellingSilverResourceUnits = silverAmount * 50; // Assuming 50 credits per unit of silver
+	    int moneySellingGoldResourceUnits = goldAmount * 100; // Assuming 100 credits per unit of gold
 
 	    int totalCredits = moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits;
 
-	    System.out.println(" you sold all your resource units. You get = " + totalCredits + " Credits");
+	    System.out.println("You sold all your resource units. You get = " + totalCredits + " Credits");
 	    playerFinances.increase_finances(totalCredits);
 
-	    // Reset resources
-	    miningExpedition.resetResources();
+	    // Reset resources after selling
+	    miningExpedition_shop.resetResources();
 	}
+
 
 
 
