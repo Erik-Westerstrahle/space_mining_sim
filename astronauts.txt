@@ -1,5 +1,5 @@
-Astronaut{name='Olivia Farrow', origin='Earth', personality='Daydreamer', skillLevel=9, occupation='Astrogator', salaryRequirement=9000, astrologySign='Virgo ', background='Professor '}
-Astronaut{name='Kira Bates', origin='Enceladus station', personality='Melanchony', skillLevel=1, occupation='Mechanic', salaryRequirement=1000, astrologySign='Taurus ', background='Programmer'}
-Astronaut{name='Yara Reed', origin='Mars', personality='Joyful', skillLevel=3, occupation='Geologist', salaryRequirement=3000, astrologySign='Gemini ', background='Military '}
-Astronaut{name='Talia Ford', origin='Venus', personality='Charming', skillLevel=2, occupation='Mechanic', salaryRequirement=2000, astrologySign='Aries ', background='Programmer'}
-Astronaut{name='Luna Knox', origin='Europa', personality='Wratful', skillLevel=9, occupation='Geologist', salaryRequirement=9000, astrologySign='Libra ', background='Miner '}
+Astronaut{name='Gideon Saari', origin='Luna', personality='Cautious', skillLevel=8, occupation='Miner', salaryRequirement=8000, astrologySign='Scorpio ', background='Miner '}
+Astronaut{name='Xena Ryder', origin='Europa', personality='Daydreamer', skillLevel=5, occupation='Astrogator', salaryRequirement=5000, astrologySign='Taurus ', background='Professor '}
+Astronaut{name='Luna Blackwood', origin='Mars', personality='Resoursful', skillLevel=2, occupation='Mechanic', salaryRequirement=2000, astrologySign='Aries ', background='Trader '}
+Astronaut{name='Mabel Hawke', origin='Luna', personality='Daydreamer', skillLevel=2, occupation='Miner', salaryRequirement=2000, astrologySign='Taurus ', background='Artist '}
+Astronaut{name='Charlie Sage', origin='Luna', personality='Daydreamer', skillLevel=8, occupation='Geologist', salaryRequirement=8000, astrologySign='Virgo ', background='Criminal '}

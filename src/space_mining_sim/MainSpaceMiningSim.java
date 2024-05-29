@@ -78,6 +78,8 @@ public class MainSpaceMiningSim {
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
 
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
+        
+        AudioAndMusic audioAndMusicInstance = new AudioAndMusic();
     
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
@@ -115,6 +117,10 @@ public class MainSpaceMiningSim {
     	  
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
+           
+           
+           
+         //  audioAndMusicInstance.playMenuSelectionSound();
            
 
            while (true) {
@@ -178,16 +184,7 @@ public class MainSpaceMiningSim {
            
         	   
            
-           
-//           if(getFirstTimeStartGameBoolean()==true)
-//           {
-//           System.out.println("Welcome to my game ");
-//           System.out.println("You have bought a mining space ship and you need to pay of your debt by mining to complete the game ");
-//           }
-//           else
-//           {
-//        	   
-//           }
+
          
            // Main game loop
            while (!input.equals("exit")) {
@@ -226,10 +223,12 @@ public class MainSpaceMiningSim {
                        break;
                    case "v":
                        ascii_art.ascii_spaceship();
+                    //  audioAndMusicInstance.playMenuSelectionSound();
                     //   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "f":
                 	   playerFinances.print_finances();
+                	  // audioAndMusicInstance.playMenuSelectionSound();
                 	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "r":
