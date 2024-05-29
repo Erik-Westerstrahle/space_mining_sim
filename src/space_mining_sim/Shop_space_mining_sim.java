@@ -267,17 +267,21 @@ public class Shop_space_mining_sim {
 	}
 	
 	public void sellResourceUnits() {
+		 int waterIceAmount = miningExpedition_shop.getWaterIceAmount();
 	    int copperAmount = miningExpedition_shop.getCopperAmount();
 	    int silverAmount = miningExpedition_shop.getSilverAmount();
 	    int goldAmount = miningExpedition_shop.getGoldAmount();
+	    int platinumAmount = miningExpedition_shop.getPlatinumAmount();
 
-	    System.out.println("Debug: Copper = " + copperAmount + ", Silver = " + silverAmount + ", Gold = " + goldAmount);
+	    System.out.println("Debug: water ice = "+ waterIceAmount + "Debug: Copper = " + copperAmount + ", Silver = " + silverAmount + ", Gold = " + goldAmount+ ", Platinum = " + platinumAmount);
 
-	    int moneySellingCopperResourceUnits = copperAmount * 10; // Assuming 10 credits per unit of copper
-	    int moneySellingSilverResourceUnits = silverAmount * 50; // Assuming 50 credits per unit of silver
-	    int moneySellingGoldResourceUnits = goldAmount * 100; // Assuming 100 credits per unit of gold
+	    int moneySellingWaterIceResourceUnits = waterIceAmount * 100; 
+	    int moneySellingCopperResourceUnits = copperAmount * 500; 
+	    int moneySellingSilverResourceUnits = silverAmount * 800; 
+	    int moneySellingGoldResourceUnits = goldAmount * 1000; 
+	    int moneySellingPlatinumResourceUnits = platinumAmount * 1500; 
 
-	    int totalCredits = moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits;
+	    int totalCredits = moneySellingWaterIceResourceUnits+ moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits+moneySellingPlatinumResourceUnits;
 
 	    System.out.println("You sold all your resource units. You get = " + totalCredits + " Credits");
 	    playerFinances.increase_finances(totalCredits);

@@ -26,10 +26,13 @@ public class mining_expedition_simulation {
 	 private playerStats playerStatsInstance;
 	 
 	 private storyDescriptionsText storyDescriptionsTextInstance;
-
+	 
+	int waterIceAmount = 0; 
+	int ironAmount = 0;
  	int copperAmount = 0; 
  	int silverAmount = 0;
  	int goldAmount = 0; 
+	int platinumAmount = 0; 
 
 
 	
@@ -171,21 +174,23 @@ public class mining_expedition_simulation {
 	        
 	        //events that can happen are listed here
 	        eventManagerInstance.callAllEvents();
-	       // eventManagerInstance.eventTankExplode();
-	      //  eventManagerInstance.encounterDeadAstronaut();
+
 	        
 	        playerStatsInstance.increaseGeologistExperiencePlayer(5);
 	        playerStatsInstance.increaseEngineeringExperiencePlayer(10);
             playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
 	        playerStatsInstance.levelUpGeologistPlayer();
 	        
-	        int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        
-	        playerFinances.increase_finances(receive_money); // Increase finances
-	        System.out.println("You received " + receive_money + " credits");
+//	        int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
+//	        
+//	        playerFinances.increase_finances(receive_money); // Increase finances
+//	        System.out.println("You received " + receive_money + " credits");
+	        
+	        chansToGetResources(80,60,50,30,10,1,10);
 	        playerFinances.print_finances();
      	   
-	      //  timeManager_instance.printCurrentDate();
+	
 	       
 	       
 	       
@@ -211,11 +216,13 @@ public class mining_expedition_simulation {
 	        
 	        //events that can happen are listed here
 	        eventManagerInstance.callAllEvents();
-	       // eventManagerInstance.eventTankExplode();
-	      //  eventManagerInstance.encounterDeadAstronaut();
+	 
 	        
-	        playerFinances.increase_finances(receive_money); // Increase finances
-	        System.out.println("You received " + receive_money);
+//	        playerFinances.increase_finances(receive_money); // Increase finances
+//	        System.out.println("You received " + receive_money);
+	        
+	        chansToGetResources(50,60,70,40,20,5,10);
+	        
 	        timeManager_instance.printCurrentDate();
 	        playerStatsInstance.increaseGeologistExperiencePlayer(10);
 	    }
@@ -321,7 +328,7 @@ public class mining_expedition_simulation {
     
 }  
     
-    public void chansToGetResources(int chanceToGetCopper,int chanceToGetSilver, int chanceToGetGold, int amountGetResources )
+    public void chansToGetResources(int chanceToGetWaterIce, int chanceToGetIron, int chanceToGetCopper,int chanceToGetSilver, int chanceToGetGold,int chanceToGetPlatinum, int amountGetResources )
     {
     //	int copperAmount = 0; 
     //	int silverAmount = 0;
@@ -329,10 +336,12 @@ public class mining_expedition_simulation {
     	
     	 Random random = new Random();
     	// int chance = random.nextInt(100);
-    	 
+    	 int chanceWaterIce = random.nextInt(100);
+    	 int chanceIron = random.nextInt(100);
     	 int chanceCopper = random.nextInt(100);
     	 int chanceSilver = random.nextInt(100);
     	 int chanceGold = random.nextInt(100);
+    	 int chancePlatinum = random.nextInt(100);
     	 int resouceRandomCalculationTimes = random.nextInt(amountGetResources);
     	 
     	// int chanceToGetCopper =50;
@@ -344,6 +353,15 @@ public class mining_expedition_simulation {
     	for (int i = 0; i <= resouceRandomCalculationTimes; i++) {
     		
     		 int chance = random.nextInt(100);
+    		 
+     		if (chance <= chanceToGetWaterIce ) {
+    			// copperAmount = copperAmount +1;
+    			this.waterIceAmount++;
+		    } 
+    		
+    		if (chance <= chanceToGetIron) {
+    			ironAmount = ironAmount +1;
+		    }
     		
     		if (chance <= chanceToGetCopper) {
     			// copperAmount = copperAmount +1;
@@ -356,27 +374,46 @@ public class mining_expedition_simulation {
     		if (chance <= chanceToGetGold) {
     			goldAmount = goldAmount +1;
 		    }
+    		if (chance <= chanceToGetGold) {
+    			goldAmount = goldAmount +1;
+		    }
+    		if (chance <= platinumAmount) {
+    			platinumAmount = platinumAmount +1;
+		    }
 	
 
     		
     	}
-    	 System.out.println("times gathered resource = "+amountGetResources);
+    	 System.out.println("times gathered resources for each = "+resouceRandomCalculationTimes);
     	 System.out.println(" ");
-    	
+    	 
+    	 
+    	 System.out.println("water ice amount = "+waterIceAmount);
 		 System.out.println("copper amount = "+copperAmount);
 		 System.out.println("silver amount = "+silverAmount);
 		 System.out.println("gold amount = "+goldAmount);
+		 System.out.println("platinum amount = "+platinumAmount);
+		 
+		 
+		 
+	
+		 
     	
     	}
     
     public void resetResources() {
+    	this.waterIceAmount = 0;
         this.copperAmount = 0;
         this.silverAmount = 0;
         this.goldAmount = 0;
+        this.platinumAmount = 0;
+        System.out.println("reset resources to 0");
     }
 
     
-    
+    public int getWaterIceAmount() {
+        return this.waterIceAmount;
+    }
     public int getCopperAmount() {
         return this.copperAmount;
     }
@@ -387,5 +424,8 @@ public class mining_expedition_simulation {
     
     public int getGoldAmount() {
         return goldAmount;
+    }
+    public int getPlatinumAmount() {
+        return platinumAmount;
     }
     }

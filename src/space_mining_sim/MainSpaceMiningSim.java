@@ -19,12 +19,14 @@ public class MainSpaceMiningSim {
 	// 
 
 // add a better main game loop to main
+// add an options menu	
 // make the start new game code better.
 // way for code to check if player has already entered name and saved, so that it does not always prompt the player
 	// add better ways to store data
 	// add more story descriptions
 
 // Done
+	// add more complex way that resources are gathered when going mining
 	// add way to start new game
 	// add way to rename ship
 	// add it so that the player can name their ship
@@ -171,6 +173,7 @@ public class MainSpaceMiningSim {
            else
         	   {
         	   System.out.println("Your ship is named: " + shipStats_instance.getShipName());
+        	   
         	   }
            
         	   
@@ -241,6 +244,8 @@ public class MainSpaceMiningSim {
                 	   
                 	 
                 	   miningExpedition.select_where_go_mining(playerFinances, shipStats_instance, shop_instance, timeManager_instance, shipStats_instance);
+                	   shop_instance.sellResourceUnits();
+                	 //  miningExpedition.resetResources();
 
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
                 	   shipStats_instance.fuel_comsumption();
@@ -321,19 +326,21 @@ public class MainSpaceMiningSim {
                 	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
                 	    break;
                 	    
-                   case "t":
-                	   // debug for getting resources
-                	   miningExpedition.chansToGetResources(50,10,1,10);
-                	   break;
-                	   
-                   case "m":
-                	   // debug for getting resources
-                	   shop_instance.sellResourceUnits();
-
-                	   break;
+//                   case "t":
+//                	   // debug for getting resources
+//                	   miningExpedition.chansToGetResources(80,70,50,30,10,1,10);
+//                	   shop_instance.sellResourceUnits();
+//                	   break;
+//                	   
+//                   case "m":
+//                	   // debug for getting resources
+//                	   shop_instance.sellResourceUnits();
+//
+//                	   break;
                    case "z":
                 	    startNewGame(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, SaveLoadSystemInstance, scanner);
                 	    main(new String[]{});
+                	    shipStats_instance.renameShip();
                         return;
                 	   // break;
                
@@ -352,7 +359,7 @@ public class MainSpaceMiningSim {
                        System.out.println("Press 'h' to hire astronauts");
                        System.out.println("Press 'view' to see hired astronauts");
                        System.out.println("Press 'c' to view your stats");
-                       System.out.println("Press 'z' to view your stats");
+                       System.out.println("Press 'z' to start a new game");
                 	   break;
                       case "exit":
                           System.out.println("Exiting the game. Goodbye!");
@@ -412,6 +419,17 @@ public class MainSpaceMiningSim {
         timeManager_instance.resetTimeManager();
       //  SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance, shop_instance, playerStatsInstance);
         System.out.println("New game started!");
+        
+        // Prompt for player and ship name
+        System.out.println("Please enter your character's name:");
+        String playerName = scanner.nextLine();
+        playerStatsInstance.setPlayerName(playerName);
+        System.out.println("Welcome, " + playerName + "!");
+
+        System.out.println("Please enter your ship's name:");
+        String shipName = scanner.nextLine();
+        shipStats_instance.setShipName(shipName);
+        System.out.println("Your ship is named: " + shipName);
     }
     
     
