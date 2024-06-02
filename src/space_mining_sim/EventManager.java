@@ -234,8 +234,28 @@ public class EventManager {
 
 		    } 
 	}
+	public void toxicMaterialAmongOre() {
+		Random random = new Random();
+		int chance = random.nextInt(100);
+		int chanceToxic =1;
+		//Normal store don't want to buy, have to find other store or dump ore
+   }
+	public void eventFamilyrobbed() {
+		Random random = new Random();
+		int valueRobbed = 1000;
+		int chance = random.nextInt(100);
+		int chanceEventrobbed =1;
+		if (chance <= chanceEventrobbed) {
+			playerFinancesInstance.decrease_finances(valueRobbed);
+		   } 
+   }
+   public void eventFamilybonding() {
+	Random random = new Random();
+	int relationshipChange = 5;
+	int chance = random.nextInt(100);
+	int chanceEventrobbed =1;
 
-
+}
 	
 	public void callAllEvents() {
 		eventTankExplode();
