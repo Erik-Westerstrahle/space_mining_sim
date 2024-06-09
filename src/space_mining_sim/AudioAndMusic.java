@@ -3,18 +3,27 @@ package space_mining_sim;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.*;
 public class AudioAndMusic {
+	
+
+	
+	//optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
+    private optionsSpaceMiningSim options;  // Use the same options instance
+
+    public AudioAndMusic(optionsSpaceMiningSim options) {
+        this.options = options;
+    }
+	
 	
 	public void playMenuSelectionSound()
 	{
+		if (options.getSoundBoolean()) {
+             
+           	
+		
         try {
             URL soundFileURL = getClass().getResource("/space_mining_sim/Menu Selection Click.wav");
             if (soundFileURL == null) {
@@ -46,5 +55,32 @@ public class AudioAndMusic {
             System.out.println("Line unavailable: " + e.getMessage());
         }
     }
+	}
+	
+    public void playToneAudio() throws LineUnavailableException {
+        if (options.getSoundBoolean() == true) {
+            int hz = 440;
+            int msecs = 50;
+            double vol = 0.3;
+
+            byte[] buf = new byte[1];
+            AudioFormat af = new AudioFormat(44100f, 8, 1, true, false);
+            SourceDataLine sdl = AudioSystem.getSourceDataLine(af);
+            sdl.open(af);
+            sdl.start();
+            for (int i = 0; i < msecs * 8; i++) {
+                double angle = i / (44100f / hz) * 2.0 * Math.PI;
+                buf[0] = (byte) (Math.sin(angle) * 127.0 * vol);
+                sdl.write(buf, 0, 1);
+            }
+            sdl.drain();
+            sdl.stop();
+            sdl.close();
+        }
+    }
+
+	
+	
+
 }
 	       

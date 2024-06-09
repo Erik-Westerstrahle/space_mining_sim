@@ -79,8 +79,10 @@ public class MainSpaceMiningSim {
 
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
         
-        AudioAndMusic audioAndMusicInstance = new AudioAndMusic();
-    
+      //  AudioAndMusic audioAndMusicInstance = new AudioAndMusic();
+        
+        optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
+        AudioAndMusic audioAndMusicInstance = new AudioAndMusic(optionsSpaceMiningSimInstance);
      //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         
       //  Scanner scanner = new Scanner(System.in);
@@ -89,6 +91,9 @@ public class MainSpaceMiningSim {
         
         // Generate and save astronauts at the start of the program
         generateAndSaveAstronauts();
+        //audioAndMusicInstance.playAmbientSynth();
+        //audioAndMusicInstance.playToneAudio();
+        audioAndMusicInstance.playMenuSelectionSound();
         
      // If loading is successful, display welcome messages and load game data
         System.out.println("Booting Spaceship OS...");
@@ -205,7 +210,7 @@ public class MainSpaceMiningSim {
                
                
                
-               
+               audioAndMusicInstance.playMenuSelectionSound();
                
 
                // Use switch statement to handle the input
@@ -223,12 +228,12 @@ public class MainSpaceMiningSim {
                        break;
                    case "v":
                        ascii_art.ascii_spaceship();
-                    //  audioAndMusicInstance.playMenuSelectionSound();
+                 
                     //   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "f":
                 	   playerFinances.print_finances();
-                	  // audioAndMusicInstance.playMenuSelectionSound();
+                	 
                 	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "r":
@@ -336,6 +341,15 @@ public class MainSpaceMiningSim {
 //                	   shop_instance.sellResourceUnits();
 //
 //                	   break;
+                	    
+                      case "o":
+                    	  //System.out.print("input your options");
+                    	  optionsSpaceMiningSimInstance.printOptions();
+                    	  String subInputOptions = scanner.nextLine();
+                    	 
+                    	  optionsSpaceMiningSimInstance.userInputOptions(subInputOptions);
+
+                 	   break;
                    case "z":
                 	    startNewGame(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, SaveLoadSystemInstance, scanner);
                 	    main(new String[]{});
