@@ -12,10 +12,14 @@ public class Astronauts {
 	private String home;
 	private String astrologySign;
 	private String backgroundAstronaut;
+    private int geologistSkill;
+    private int astrogatorSkill;
+    private int mechanicSkill;
+    private int minerSkill;
 	
 	
 
-    public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String astrologySign, String backgroundAstronaut) {
+    public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String astrologySign, String backgroundAstronaut, int geologistSkill, int astrogatorSkill, int mechanicSkill, int minerSkill) {
         this.name = name;
         this.skillLevel = skillLevel;
         this.salaryRequirement = salaryRequirement;
@@ -24,6 +28,15 @@ public class Astronauts {
         this.personalityAstronaut = personalityAstronaut;
         this.astrologySign = astrologySign;
         this.backgroundAstronaut = backgroundAstronaut;
+        this.geologistSkill = geologistSkill;
+        this.astrogatorSkill = astrogatorSkill;
+        this.mechanicSkill = mechanicSkill;
+        this.minerSkill = minerSkill;
+    }
+    
+    public void bonusesFromAstronautsSkills(int skillLevel)
+    {
+    	
     }
 
 
@@ -58,6 +71,22 @@ public class Astronauts {
     public String backgroundAstronaut() {
         return backgroundAstronaut;
     } 
+    
+    public int getGeologistSkill() {
+        return geologistSkill;
+    }
+
+    public int getAstrogatorSkill() {
+        return astrogatorSkill;
+    }
+
+    public int getMechanicSkill() {
+        return mechanicSkill;
+    }
+
+    public int getMinerSkill() {
+        return minerSkill;
+    }
     @Override
     public String toString() {
         return "Astronaut{" +
@@ -69,6 +98,11 @@ public class Astronauts {
                 ", salaryRequirement=" + salaryRequirement +
                 ", astrologySign='" + astrologySign + '\'' +
                 ", background='" + backgroundAstronaut + '\'' +
+                ", geologistSkill=" + geologistSkill +
+                ", astrogatorSkill=" + astrogatorSkill +
+                ", mechanicSkill=" + mechanicSkill +
+                ", minerSkill=" + minerSkill +
                 '}';
     }
+    
 }

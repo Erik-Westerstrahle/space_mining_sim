@@ -268,7 +268,7 @@ public class mining_expedition_simulation {
 		{
 			int totalSkillLevel = getTotalSkillLevelFromHiredAstronauts();
 			double bonusMultiplier = 1 + (totalSkillLevel / 100.0);
-			 System.out.println("total level bonus " + bonusMultiplier);
+			 System.out.println("total level bonus from astronauts " + bonusMultiplier);
 			
 		}
 		 catch (IOException e) {
@@ -409,6 +409,8 @@ public class mining_expedition_simulation {
         this.platinumAmount = 0;
         System.out.println("reset resources to 0");
     }
+    
+    
 
     
     public int getWaterIceAmount() {

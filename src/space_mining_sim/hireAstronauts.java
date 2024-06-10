@@ -52,17 +52,7 @@ class hireAstronauts {
 
 	
     
-    // Method to count the number of hired astronauts
-    private static int getNumberOfHiredAstronauts() throws IOException {
-        int count = 0;
-        // the number of astronauts that have been hired are saved to a text file. This migh need to be changed later
-        try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
-            while (reader.readLine() != null) {
-                count++;
-            }
-        }
-        return count;
-    }
+
 	
 	  // Method to save hired astronaut to a file
     private static void saveHiredAstronaut(Astronauts astronaut) throws IOException {
@@ -89,6 +79,18 @@ class hireAstronauts {
     		
     		  
     	  }
+    }
+    
+    // Method to count the number of hired astronauts
+    private static int getNumberOfHiredAstronauts() throws IOException {
+        int count = 0;
+        // the number of astronauts that have been hired are saved to a text file. This migh need to be changed later
+        try (BufferedReader reader = new BufferedReader(new FileReader("hired_astronauts.txt"))) {
+            while (reader.readLine() != null) {
+                count++;
+            }
+        }
+        return count;
     }
     
     
@@ -136,13 +138,47 @@ class hireAstronauts {
                     int salaryRequirement = Integer.parseInt(matcher.group(6).trim());
                     String astrologySign = matcher.group(7).trim();
                     String background = matcher.group(8).trim();
+                    
+                   // Default values for the jobb skills
+                    int geologistSkill = 0;
+                    int astrogatorSkill = 0;
+                    int mechanicSkill = 0;
+                    int minerSkill = 0;
 
                     // creates an new object and add it to the list
-                    hiredAstronauts.add(new Astronauts(name, skillLevel, salaryRequirement, occupation, origin, personality, astrologySign, background));
+                    hiredAstronauts.add(new Astronauts(
+                    		name, 
+                    		skillLevel, 
+                    		salaryRequirement, 
+                    		occupation, 
+                    		origin, 
+                    		personality, 
+                    		astrologySign, 
+                    		background, 
+                    		geologistSkill, 
+                    		astrogatorSkill, 
+                    		mechanicSkill, 
+                    		minerSkill));
                 }
             }
         }
         return hiredAstronauts;
     }
+    
+    
+    
+//    
+//    public static int calculateAstronautsTotalSkillLevel() throws IOException
+//    {
+//    	List<Astronauts> hiredAstronauts =getHiredAstronauts();
+//    	int totalAstronautsSkillLevel =0;
+//    	
+//    	for (Astronauts astronaut : hiredAstronauts) {
+//    		totalAstronautsSkillLevel += astronaut.getSkillLevel();
+//    		
+//    	}
+//    	
+//    	return totalAstronautsSkillLevel;
+//    }
 
 }

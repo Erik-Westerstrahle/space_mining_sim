@@ -19,13 +19,14 @@ public class MainSpaceMiningSim {
 	// 
 
 // add a better main game loop to main
-// add an options menu	
+// add it so that the astronaut skills do more things
 // make the start new game code better.
 // way for code to check if player has already entered name and saved, so that it does not always prompt the player
 	// add better ways to store data
 	// add more story descriptions
 
 // Done
+	// add an options menu	
 	// add more complex way that resources are gathered when going mining
 	// add way to start new game
 	// add way to rename ship
@@ -83,9 +84,7 @@ public class MainSpaceMiningSim {
         
         optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
         AudioAndMusic audioAndMusicInstance = new AudioAndMusic(optionsSpaceMiningSimInstance);
-     //   Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
-        
-      //  Scanner scanner = new Scanner(System.in);
+
     
         
         

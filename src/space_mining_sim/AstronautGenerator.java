@@ -47,8 +47,12 @@ public class AstronautGenerator {
             };
         
         private static final String[] backgroundAstronautArray = {
-                "Miner ","Navy ","Military ","Trader ","Professor ","Scientist ","Artist ","Criminal ","CENSORED ","Pilot","Warehouse manager","Smuggler","Dockhand"," Teacher","Programmer","Trader"
+                "Miner ","Navy ","Military ","Trader ","Professor ","Scientist ","Artist ","Criminal ","CENSORED ","Pilot","Warehouse manager","Smuggler","Dockhand"," Teacher","Programmer","Farmer", "Hydroponics worker"
             };
+        
+        private static int generateJobSkillLevel() {
+            return 1 + random.nextInt(10);
+        }
     
     
     
@@ -67,10 +71,18 @@ public class AstronautGenerator {
         String personalityAstronaut = personalitiesAstroanuts[random.nextInt(personalitiesAstroanuts.length)];
         String astrologySign = starSign[random.nextInt(starSign.length)];
         String backgroundAstronaut = backgroundAstronautArray[random.nextInt(backgroundAstronautArray.length)];
-        int skillLevel = 1 + random.nextInt(10); // Skill level between 1 and 10
+        int skillLevel = 1 + random.nextInt(10); // Skill level between 1 and 10 // this is a placeholder until more detailed job skill levels can be added
         int salary = 1000 * skillLevel; // Example salary calculation
+        
+        
+        int geologistSkill = generateJobSkillLevel();
+        int astrogatorSkill = generateJobSkillLevel();
+        int mechanicSkill = generateJobSkillLevel();
+        int minerSkill = generateJobSkillLevel();
+
+        
        // return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home,astrologySign,backgroundAstronaut);
-        return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, astrologySign, backgroundAstronaut);
+        return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, astrologySign, backgroundAstronaut, geologistSkill, astrogatorSkill, mechanicSkill, minerSkill);
 
     }
 }

@@ -44,6 +44,7 @@ public class playerStats {
 		 System.out.println( "Diplomacy Level: "+levelDiplomacySkillPlayer);
 	}
 	
+	// this is used when the player starts a new game
     public void resetPlayerStats() {
         this.playerName = "";
         this.reputationPlayer = 100;
