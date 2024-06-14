@@ -26,6 +26,9 @@ int shipHardpoint6 =0;
 
 private String shipName; 
 
+int crewMorale =100;
+// add so that crewMorale is saved later
+
 
 
 private Shop_space_mining_sim shop_instance;
@@ -84,6 +87,19 @@ public void displayEquippedParts() {
 public ship_stats(Shop_space_mining_sim shop_instance) {
     this.shop_instance = shop_instance;
 }
+
+public void decreaseCrewMorale(int decreaseCrewMoraleAmount) {
+	//crewMorale = crewMorale-reduceCrewMoraleAmount;
+	setCrewMorale(crewMorale = crewMorale-decreaseCrewMoraleAmount);
+	System.out.println("Crew morale reduced to "+ crewMorale );
+}
+
+public void increaseCrewMorale(int increaseCrewMoraleAmount) {
+	//crewMorale = crewMorale-reduceCrewMoraleAmount;
+	setCrewMorale(crewMorale = crewMorale-increaseCrewMoraleAmount);
+	System.out.println("Crew morale increased to "+ crewMorale );
+}
+
 
 
 public ship_stats() {
@@ -313,6 +329,10 @@ public int getMinerSkillValue() {
     return minerSkillValue; 
 }
 
+public int getCrewMorale() {
+    return crewMorale; 
+}
+
 
 public void setMinerSkillValue(int minerSkillValue) {
     this.minerSkillValue = minerSkillValue;
@@ -371,6 +391,11 @@ public void setAvailableCrewSpots(int newAvailableCrewSpots) {
 
 public void setShipName(String shipName) {
 	this.shipName=shipName;
+}
+
+
+public void setCrewMorale(int crewMorale) {
+	this.crewMorale=crewMorale;
 }
 
 }

@@ -63,6 +63,7 @@ public class EventManager {
 		        	
 		        playerStatsInstance.increasePlayersReputation(increaseInReputationForRevoceringDeadAstronaut);
 		        timeManagerInstance.increaseTimeDay(extraTimeToRevocerDeadAstronaut);
+		        shipStatsInstance.increaseCrewMorale(5);
 		        
 		      
 		        break;
@@ -70,6 +71,7 @@ public class EventManager {
 		        	
 		        	
 		        System.out.println("You have chosen to continue the expedition.");
+		        shipStatsInstance.decreaseCrewMorale(5);
                 break;
                 default:
                 System.out.println("Invalid choice. Continuing the expedition.");
@@ -99,12 +101,12 @@ public class EventManager {
 		        	
 		        playerStatsInstance.increasePlayersReputation(increaseInReputationForHelpingDistressedShip);
 		        timeManagerInstance.increaseTimeDay(extraTimeToHelpDistressedShip);
-		        
+		        shipStatsInstance.increaseCrewMorale(10);
 		      
 		        break;
 		        case "2":
 		        	
-		        	
+		        	 shipStatsInstance.decreaseCrewMorale(10);	
 		        System.out.println("You have chosen to continue the expedition.");
                break;
                default:
@@ -208,12 +210,15 @@ public class EventManager {
 	
 	
 	public void eventFindDroppedCargo() {
+	     
 		 Random random = new Random();
 		 int valueDroppedCargo = 10000;
 		 int chance = random.nextInt(100);
 		 int chanceEventFindDroppedCargoe =1;
 		 if (chance <= chanceEventFindDroppedCargoe) {
 			 playerFinancesInstance.increase_finances(valueDroppedCargo);
+			 System.out.println("You scanners found an abandoned cargocontainer filled with valuable ores. From where it came from you do not know");
+			 shipStatsInstance.increaseCrewMorale(10);
 
 		    } 
 	}
@@ -238,6 +243,7 @@ public class EventManager {
 		Random random = new Random();
 		int chance = random.nextInt(100);
 		int chanceToxic =1;
+		shipStatsInstance.decreaseCrewMorale(5);	
 		//Normal store don't want to buy, have to find other store or dump ore
    }
 	public void eventFamilyrobbed() {
