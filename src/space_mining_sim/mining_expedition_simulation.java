@@ -27,6 +27,8 @@ public class mining_expedition_simulation {
 	 
 	 private storyDescriptionsText storyDescriptionsTextInstance;
 	 
+	// private Astronauts AstronautsMiningExpeditionsSimulationInstance;
+	 
 	int waterIceAmount = 0; 
 	int ironAmount = 0;
  	int copperAmount = 0; 
@@ -42,6 +44,8 @@ public class mining_expedition_simulation {
 		    this.playerStatsInstance = playerStatsInstance;
 		    this.shipStats_instance = shipStats_instance;
 		    this.storyDescriptionsTextInstance = storyDescriptionsTextInstance; // Assigning the passed instance
+		    
+		 //   this.AstronautsMiningExpeditionsSimulationInstance = AstronautsMiningExpeditionsSimulationInstance; 
 		
 	       // this.shipStats_instance = shipStats_instance;
 	        // Other initializations...
@@ -296,6 +300,9 @@ public class mining_expedition_simulation {
 		 String skillLevelPart = astronautData.split(",")[1].trim(); // "skillLevel=X"
 		 return Integer.parseInt(skillLevelPart.split("=")[1]); // X
 	}
+	
+	
+
 	
 	
 	

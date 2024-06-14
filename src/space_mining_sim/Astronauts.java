@@ -3,6 +3,7 @@
 package space_mining_sim;
 
 public class Astronauts {
+	  private int id;
     private String name;
     private int skillLevel;
     private int salaryRequirement;
@@ -19,20 +20,25 @@ public class Astronauts {
 	
 	
 
-    public Astronauts(String name, int skillLevel, int salaryRequirement, String occupation, String origin, String personalityAstronaut, String astrologySign, String backgroundAstronaut, int geologistSkill, int astrogatorSkill, int mechanicSkill, int minerSkill) {
-        this.name = name;
-        this.skillLevel = skillLevel;
-        this.salaryRequirement = salaryRequirement;
-        this.occupation = occupation;
-        this.origin = origin;
-        this.personalityAstronaut = personalityAstronaut;
-        this.astrologySign = astrologySign;
-        this.backgroundAstronaut = backgroundAstronaut;
-        this.geologistSkill = geologistSkill;
-        this.astrogatorSkill = astrogatorSkill;
-        this.mechanicSkill = mechanicSkill;
-        this.minerSkill = minerSkill;
-    }
+  
+    public Astronauts(int id, String name, int skillLevel, int salaryRequirement, String occupation, String origin, 
+            String personalityAstronaut, String astrologySign, String backgroundAstronaut, 
+            int geologistSkill, int astrogatorSkill, int mechanicSkill, int minerSkill) {
+this.id = id;
+this.name = name;
+this.skillLevel = skillLevel;
+this.salaryRequirement = salaryRequirement;
+this.occupation = occupation;
+this.origin = origin;
+this.personalityAstronaut = personalityAstronaut;
+this.astrologySign = astrologySign;
+this.backgroundAstronaut = backgroundAstronaut;
+this.geologistSkill = geologistSkill;
+this.astrogatorSkill = astrogatorSkill;
+this.mechanicSkill = mechanicSkill;
+this.minerSkill = minerSkill;
+}
+
     
     public void bonusesFromAstronautsSkills(int skillLevel)
     {
@@ -41,6 +47,15 @@ public class Astronauts {
 
 
     // Getters and Setters
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -84,25 +99,27 @@ public class Astronauts {
         return mechanicSkill;
     }
 
-    public int getMinerSkill() {
+    public int getMinerSkillAstronautsClass() {
         return minerSkill;
     }
     @Override
     public String toString() {
         return "Astronaut{" +
-                "name='" + name + '\'' +
-                ", origin='" + origin + '\'' +
-                ", personality='" + personalityAstronaut + '\'' +
-                ", skillLevel=" + skillLevel +
-                ", occupation='" + occupation + '\'' +
-                ", salaryRequirement=" + salaryRequirement +
-                ", astrologySign='" + astrologySign + '\'' +
-                ", background='" + backgroundAstronaut + '\'' +
-                ", geologistSkill=" + geologistSkill +
-                ", astrogatorSkill=" + astrogatorSkill +
-                ", mechanicSkill=" + mechanicSkill +
-                ", minerSkill=" + minerSkill +
-                '}';
+               "id=" + id +
+               ", name='" + name + '\'' +
+               ", origin='" + origin + '\'' +
+               ", personality='" + personalityAstronaut + '\'' +
+               ", skillLevel=" + skillLevel +
+               ", occupation='" + occupation + '\'' +
+               ", salaryRequirement=" + salaryRequirement +
+               ", astrologySign='" + astrologySign + '\'' +
+               ", background='" + backgroundAstronaut + '\'' +
+               ", geologistSkill=" + geologistSkill +
+               ", astrogatorSkill=" + astrogatorSkill +
+               ", mechanicSkill=" + mechanicSkill +
+               ", minerSkill=" + minerSkill +
+               '}';
     }
+
     
 }

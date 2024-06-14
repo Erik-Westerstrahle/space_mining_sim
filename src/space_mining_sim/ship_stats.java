@@ -30,6 +30,8 @@ private String shipName;
 
 private Shop_space_mining_sim shop_instance;
 
+private int minerSkillValue;
+
 Scanner scanner = new Scanner(System.in);
 String input = "";
 
@@ -300,6 +302,21 @@ public int getShipHardpoint6() {
 	return shipHardpoint6;
 }
 
+
+public int getMinerValueForJob() {
+	
+	return shipHardpoint6;
+}
+
+
+public int getMinerSkillValue() {
+    return minerSkillValue; 
+}
+
+
+public void setMinerSkillValue(int minerSkillValue) {
+    this.minerSkillValue = minerSkillValue;
+}
 
 
 public void setBonusFusionEngine(double newBonusFusionEngine) {

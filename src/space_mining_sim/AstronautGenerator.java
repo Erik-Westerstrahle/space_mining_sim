@@ -50,6 +50,8 @@ public class AstronautGenerator {
                 "Miner ","Navy ","Military ","Trader ","Professor ","Scientist ","Artist ","Criminal ","CENSORED ","Pilot","Warehouse manager","Smuggler","Dockhand"," Teacher","Programmer","Farmer", "Hydroponics worker"
             };
         
+        
+        
         private static int generateJobSkillLevel() {
             return 1 + random.nextInt(10);
         }
@@ -58,6 +60,8 @@ public class AstronautGenerator {
     
     private static final String[] jobsAstronaut = {"Geologist","Astrogator","Mechanic","Miner"};
     private static final Random random = new Random();
+    
+    private static int nextAstronautId = 1;
  
 // here the astronauts are generated when the game is run
     // the randomly generated astronauts are saved to astronauts.txt
@@ -82,7 +86,7 @@ public class AstronautGenerator {
 
         
        // return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home,astrologySign,backgroundAstronaut);
-        return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, astrologySign, backgroundAstronaut, geologistSkill, astrogatorSkill, mechanicSkill, minerSkill);
+        return new Astronauts(nextAstronautId++,fullName, skillLevel, salary, occupation, home, personalityAstronaut, astrologySign, backgroundAstronaut, geologistSkill, astrogatorSkill, mechanicSkill, minerSkill);
 
     }
 }
