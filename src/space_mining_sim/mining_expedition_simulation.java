@@ -170,6 +170,7 @@ public class mining_expedition_simulation {
 
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
+	        shipStats_instance.decreaseCrewMorale(5);
 	    } else {
 	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	    	
@@ -184,6 +185,7 @@ public class mining_expedition_simulation {
 	        playerStatsInstance.increaseEngineeringExperiencePlayer(10);
             playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
 	        playerStatsInstance.levelUpGeologistPlayer();
+	        shipStats_instance.increaseCrewMorale(1);
 	        
 	        
 //	        int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
@@ -212,6 +214,7 @@ public class mining_expedition_simulation {
 
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
+	        shipStats_instance.decreaseCrewMorale(5);
 	    } else {
 	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
@@ -220,6 +223,8 @@ public class mining_expedition_simulation {
 	        
 	        //events that can happen are listed here
 	        eventManagerInstance.callAllEvents();
+	        
+	        shipStats_instance.increaseCrewMorale(3);
 	 
 	        
 //	        playerFinances.increase_finances(receive_money); // Increase finances
@@ -242,15 +247,16 @@ public class mining_expedition_simulation {
 
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
+	        shipStats_instance.decreaseCrewMorale(5);
 	    } else {
 	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	    	 
 	    	 
-		        //events that can happen are listed here
+		
 		        eventManagerInstance.callAllEvents();
-		       // eventManagerInstance.eventTankExplode();
-		      //  eventManagerInstance.encounterDeadAstronaut();
+		        shipStats_instance.increaseCrewMorale(5);
+		   
 	    	 
 	    	 
 	        System.out.println("Went mining inner ring");

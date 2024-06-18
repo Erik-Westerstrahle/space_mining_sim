@@ -88,16 +88,47 @@ public ship_stats(Shop_space_mining_sim shop_instance) {
     this.shop_instance = shop_instance;
 }
 
+public void crewMoraleEvents ()
+{
+	if (crewMorale>120 && crewMorale<140)
+	{
+		 System.out.println("crew morale is good");
+				 }
+	if (crewMorale>100 && crewMorale<120)
+	{
+		 System.out.println("crew morale is normal");
+				 }
+	if (crewMorale<80)
+	{
+		 System.out.println("Events have coused your crew to get a bit uneasy. You should perhaps pay attention to the crews morale");
+	}
+	if (crewMorale<60)
+	{
+		 System.out.println("The morale of the crew is middling. You should perhaps do something to improve morale.");
+	}
+	if (crewMorale<40)
+	{
+		System.out.println("The morale of the crew is poor. If you do not improve morale the crew will abandon you.");
+	}
+	if (crewMorale<20)
+	{
+		System.out.println("You need to urgently improve morale.");
+		
+	}
+}
+
 public void decreaseCrewMorale(int decreaseCrewMoraleAmount) {
 	//crewMorale = crewMorale-reduceCrewMoraleAmount;
 	setCrewMorale(crewMorale = crewMorale-decreaseCrewMoraleAmount);
 	System.out.println("Crew morale reduced to "+ crewMorale );
+	crewMoraleEvents();
 }
 
 public void increaseCrewMorale(int increaseCrewMoraleAmount) {
 	//crewMorale = crewMorale-reduceCrewMoraleAmount;
-	setCrewMorale(crewMorale = crewMorale-increaseCrewMoraleAmount);
+	setCrewMorale(crewMorale = crewMorale+increaseCrewMoraleAmount);
 	System.out.println("Crew morale increased to "+ crewMorale );
+	crewMoraleEvents();
 }
 
 
