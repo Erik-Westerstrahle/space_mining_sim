@@ -27,6 +27,8 @@ int shipHardpoint6 =0;
 private String shipName; 
 
 int crewMorale =100;
+
+int crewMoraleBonus =0;
 // add so that crewMorale is saved later
 
 
@@ -93,10 +95,12 @@ public void crewMoraleEvents ()
 	if (crewMorale>120 && crewMorale<140)
 	{
 		 System.out.println("crew morale is good");
+		 setCrewMorale(2);
 				 }
 	if (crewMorale>100 && crewMorale<120)
 	{
 		 System.out.println("crew morale is normal");
+		 setCrewMorale(1);
 				 }
 	if (crewMorale<80)
 	{
@@ -364,6 +368,10 @@ public int getCrewMorale() {
     return crewMorale; 
 }
 
+public int getCrewMoraleBonus() {
+    return crewMoraleBonus; 
+}
+
 
 public void setMinerSkillValue(int minerSkillValue) {
     this.minerSkillValue = minerSkillValue;
@@ -429,6 +437,9 @@ public void setCrewMorale(int crewMorale) {
 	this.crewMorale=crewMorale;
 }
 
+public void setCrewMoraleBonus(int crewMoraleBonus) {
+	this.crewMoraleBonus=crewMoraleBonus;
+}
 }
 
 

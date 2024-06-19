@@ -363,7 +363,7 @@ public class mining_expedition_simulation {
     	 
     	//int resouceRandomCalculationTimes = 6;
     	
-    	for (int i = 0; i <= resouceRandomCalculationTimes; i++) {
+    	for (int i = 0; i <= resouceRandomCalculationTimes * shipStats_instance.getCrewMoraleBonus(); i++) {
     		
     		 int chance = random.nextInt(100);
     		 
