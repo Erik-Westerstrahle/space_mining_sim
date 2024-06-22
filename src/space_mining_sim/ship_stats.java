@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class ship_stats {
 	
+	
+	
 int i =1;
 int ship_hull_integrity = 100;
 int fuel_amount = 100;
@@ -34,6 +36,18 @@ int crewMoraleBonus =0;
 
 
 private Shop_space_mining_sim shop_instance;
+private timeManager timeManagerInstance;
+private finances_player playerFinancesInstanceShipStats;
+
+public ship_stats( finances_player playerFinances,Shop_space_mining_sim shop_instance) {
+    
+
+    this.playerFinancesInstanceShipStats = playerFinances;
+    this.shop_instance = shop_instance;
+}
+
+//ship_stats myShipStats = new ship_stats();
+
 
 private int minerSkillValue;
 
@@ -56,6 +70,7 @@ public void checkIfShipHasMiningArm(){
 }
 
 //6 hardpoints here
+// hardpoints are meant so that the player can equip didderent parts to different parts of the ship
 private int[] hardpoints = new int[6]; // Array to store equipped parts by ID
 
 // Method to equip a part to a hardpoint
@@ -86,9 +101,9 @@ public void displayEquippedParts() {
 
 
 
-public ship_stats(Shop_space_mining_sim shop_instance) {
-    this.shop_instance = shop_instance;
-}
+//public ship_stats(Shop_space_mining_sim shop_instance) {
+//    this.shop_instance = shop_instance;
+//}
 
 public void crewMoraleEvents ()
 {
@@ -205,6 +220,7 @@ public static void main(String[] args) throws InterruptedException {
 
 }
 
+// redices the hull by 1
 public void wear_and_tear()
 {
 	if(wentOnMiningExpedition)
@@ -214,19 +230,65 @@ public void wear_and_tear()
 	}
 }
 
-public void repairShip()
+
+
+public void reduceShipHull(int amountReduceShipHull)
 {
 
-	
+	ship_hull_integrity = ship_hull_integrity-amountReduceShipHull;
+	 System.out.println("ship hull reduced to " + ship_hull_integrity);
 	
 }
 
 
-public void fuel_comsumption()
+
+public void repairShipShipStats()
+{
+
+	ship_hull_integrity=100;
+	
+}
+
+
+public void repairHullSpecificAmountShipStats()
+{
+	System.out.println("input how many points you want to repait the ship ");
+    Scanner scan = new Scanner(System.in);
+    int choice =  scan.nextInt();
+    int newHullIntegrity  = getHullIntegrity()+choice;
+    int priceToRepairHull = newHullIntegrity*10;
+   if(newHullIntegrity >100)
+   {
+	   System.out.println("You cannot repair above the max hull value which is " + ship_hull_integrity);
+	   
+	  // scan.close();
+   }
+   else
+   {
+	   //int choiceYesNo =  scan.nextInt();
+	   if(priceToRepairHull >playerFinancesInstanceShipStats.getFinances())
+	   {
+		   System.out.println("you do not have enough money to repair that amount");
+	   }
+	   else
+	   {
+	   playerFinancesInstanceShipStats.decrease_finances(newHullIntegrity *10);
+	   System.out.println("Ship hull value is now "+ getHullIntegrity());
+	   setHullIntegrity(newHullIntegrity );
+	   }
+	   
+	//   scan.close();
+   }
+  
+  
+}
+
+// function to calculate how much fuel is being spent
+public void fuel_comsumption(int fuelConsumptionAmount)
 {
 	if(wentOnMiningExpedition)
 	{
-		fuel_amount= fuel_amount-10;
+		fuel_amount= fuel_amount-fuelConsumptionAmount;
 		 wentOnMiningExpedition = false; 
 	}
 	
@@ -405,17 +467,17 @@ public void setShipHardpoint4(int newShipHardpoint4) {
 }
 
 public void setShipHardpoint5(int newShipHardpoint5) {
-	// TODO Auto-generated method stub
+	
 	this.shipHardpoint5 = newShipHardpoint5;
 }
 
 public void setShipHardpoint6(int newShipHardpoint6) {
-	// TODO Auto-generated method stub
+
 	this.shipHardpoint6 = newShipHardpoint6;
 }
 
 public void setHullIntegrity(int newShipHullIntegrity) {
-	// TODO Auto-generated method stub
+	
 	this.ship_hull_integrity = newShipHullIntegrity;
 }
 

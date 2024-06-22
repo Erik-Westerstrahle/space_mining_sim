@@ -266,6 +266,15 @@ public class Shop_space_mining_sim {
 		
 	}
 	
+	public void repairHullSpecificAmountShop()
+	{
+        Scanner scan = new Scanner(System.in);
+        int choice =  scan.nextInt();
+       
+        int variablerepairHullSpecificAmount = shipStats_instance.getHullIntegrity()+choice;
+        shipStats_instance.setHullIntegrity(variablerepairHullSpecificAmount);
+	}
+	
 	public void sellResourceUnits() {
 		 int waterIceAmount = miningExpedition_shop.getWaterIceAmount();
 	    int copperAmount = miningExpedition_shop.getCopperAmount();

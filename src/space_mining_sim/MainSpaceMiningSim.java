@@ -11,6 +11,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.List; 
 
 public class MainSpaceMiningSim {
 	
@@ -19,6 +20,7 @@ public class MainSpaceMiningSim {
 	// 
 
 // add a better main game loop to main
+// add  
 // add it so that the astronaut skills do more things
 // make the start new game code better.
 // way for code to check if player has already entered name and saved, so that it does not always prompt the player
@@ -63,13 +65,13 @@ public class MainSpaceMiningSim {
      // Create instances of the game's main components
         finances_player playerFinances = new finances_player();
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
-        ship_stats shipStats_instance = new ship_stats(shop_instance);
+        ship_stats shipStats_instance = new ship_stats(playerFinances, shop_instance);
         shop_instance.setShipStatsInstance(shipStats_instance);
         playerStats playerStatsInstance = new playerStats();
         timeManager timeManager_instance = new timeManager();
         storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
         mining_expedition_simulation miningExpedition = new mining_expedition_simulation(
-                timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance
+                timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance 
         );
 
         shop_instance.setMiningExpedition(miningExpedition);
@@ -77,10 +79,11 @@ public class MainSpaceMiningSim {
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
+        
 
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
         
-      //  AudioAndMusic audioAndMusicInstance = new AudioAndMusic();
+    
         
         optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
         AudioAndMusic audioAndMusicInstance = new AudioAndMusic(optionsSpaceMiningSimInstance);
@@ -90,8 +93,7 @@ public class MainSpaceMiningSim {
         
         // Generate and save astronauts at the start of the program
         generateAndSaveAstronauts();
-        //audioAndMusicInstance.playAmbientSynth();
-        //audioAndMusicInstance.playToneAudio();
+   
         audioAndMusicInstance.playMenuSelectionSound();
         
      // If loading is successful, display welcome messages and load game data
@@ -251,7 +253,7 @@ public class MainSpaceMiningSim {
                 	 //  miningExpedition.resetResources();
 
                 	   shipStats_instance.wear_and_tear(); // Apply wear and tear after expedition
-                	   shipStats_instance.fuel_comsumption();
+                	   shipStats_instance.fuel_comsumption(6);
                 	 //  shipStats_instance.displayStats();
                 	 //  playerFinances.print_finances();
                 	   
@@ -283,18 +285,18 @@ public class MainSpaceMiningSim {
                 	   }
                 	   playerFinances.print_finances();
                 	   playerFinances.checkIFDebtHasBeenPaid(); // victory condition
-                	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	;
                        break;
                    case "s":
                 	   
                 	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
-                	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	
                 	  
                        break;
                    case "h":
                 	   
                 	   hireAstronauts.hireAstronautPersonel(playerFinances, shipStats_instance);
-                	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	 
                 	  
                        break;
                    case "view":
@@ -303,7 +305,7 @@ public class MainSpaceMiningSim {
                    case "l":
                 	   
                 	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
-                	  // SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	
                 	  
                        break;
                    case "c":
@@ -349,6 +351,53 @@ public class MainSpaceMiningSim {
                     	  optionsSpaceMiningSimInstance.userInputOptions(subInputOptions);
 
                  	   break;
+                      case "n":
+                          System.out.println("DEBUG: User selected to assign a miner.");
+                          hireAstronauts.viewHiredAstronauts();
+                          if (hireAstronauts.getAssignedMiner() != null) {
+                              System.out.println("A miner is already assigned: " + hireAstronauts.getAssignedMiner().getName() + ". Use 'd' to unassign the current miner first.");
+                          } else {
+                              System.out.println("Select an astronaut to assign as a miner from the list of hired astronauts:");
+                              List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
+                              for (Astronauts astronaut : hiredAstronauts) {
+                                  System.out.println(astronaut.getId() + ". " + astronaut);
+                              }
+                              System.out.println("Enter the number of the astronaut to assign as a miner:");
+                              int minerChoice = scanner.nextInt();
+                              scanner.nextLine(); // consume the newline
+
+                              // Debug: Log the selected astronaut ID
+                              System.out.println("DEBUG: User selected astronaut ID: " + minerChoice);
+
+                              // Find the astronaut with the matching id
+                              Astronauts selectedAstronaut = null;
+                              for (Astronauts astronaut : hiredAstronauts) {
+                                  if (astronaut.getId() == minerChoice) {
+                                      selectedAstronaut = astronaut;
+                                      break;
+                                  }
+                              }
+
+                              if (selectedAstronaut != null) {
+                                  System.out.println("DEBUG: Selected astronaut found: " + selectedAstronaut.getName());
+                                  hireAstronauts.assignMinerToShip(selectedAstronaut, shipStats_instance);
+                              } else {
+                                  System.out.println("Invalid selection.");
+                                  System.out.println("DEBUG: No astronaut found with the ID: " + minerChoice);
+                              }
+                          }
+                    	    break;
+                      case "d":
+                    	    // Code to unassign the current miner
+                    	    hireAstronauts.unassignMiner();
+                    	   
+                 	   break;
+                      case "repair":
+                   	   
+                    	  shipStats_instance.repairHullSpecificAmountShipStats();
+                   	 
+                   	  
+                          break;
                    case "z":
                 	    startNewGame(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, SaveLoadSystemInstance, scanner);
                 	    main(new String[]{});
