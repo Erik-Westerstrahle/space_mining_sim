@@ -58,7 +58,7 @@ public class MainSpaceMiningSim {
         final int sleepTime = 1000 / loadingBarWidth; // Time to sleep in milliseconds
         final int infinityTimerStop = 200;
         boolean loadingSuccessful = false;
-    //    boolean firstTimeStartGameBoolean = false;
+   
         
         
      // Creating instances of the game's main components
@@ -126,9 +126,9 @@ public class MainSpaceMiningSim {
            
            
            
-         //  audioAndMusicInstance.playMenuSelectionSound();
+ 
            
-
+ // This keeps the game loop going
            while (true) {
 
                
@@ -194,6 +194,10 @@ public class MainSpaceMiningSim {
          
            // Main game loop
            while (!input.equals("exit")) {
+        	   
+               if (gameFailstate(playerFinances, shipStats_instance)) {
+                   break; // Exit the main game loop if a fail state is reached
+               }
         	   timeManager_instance.printCurrentDate();
         	   System.out.println("Type 'help' to see available commands");
 
@@ -225,25 +229,25 @@ public class MainSpaceMiningSim {
                            System.out.println("You can press 'p' to equip parts to hardpoints.");
                        }
                        
-                   //    SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                 
                        break;
                    case "v":
                        ascii_art.ascii_spaceship();
                  
-                    //   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                
                        break;
                    case "f":
                 	   playerFinances.print_finances();
                 	 
-                	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+                	 
                        break;
                    case "r":
                 	   shop_instance.refuel_spaceship(shipStats_instance, playerFinances);
-                	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+            
                 	   break;
                    case "k":
                 	   shipStats_instance.test_for_parameter(shop_instance);
-                	//   SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
+               
                 	   break;
                    case "e":
                 	   
@@ -507,7 +511,44 @@ public class MainSpaceMiningSim {
 //    }
 //  
 
-    
+    // this function checks if the game is over every input
+   private static boolean gameFailstate(finances_player playerFinances, ship_stats shipStats_instance)
+   {
+	   if(shipStats_instance.getHullIntegrity()<=0)
+	   {
+		   System.out.println("Your ship has been destroyed");
+		   System.out.println("game is over");
+		   System.out.println("reload an earlier save file or start a new game");
+		   handleGameOver();
+		   return true;
+	   }
+	   
+	   if(shipStats_instance.getCrewMorale()<=0)
+	   {
+		   System.out.println("Your crew morale is 0");
+		   System.out.println("game is over");
+		   System.out.println("reload an earlier save file or start a new game");
+		   handleGameOver();
+		   return true;
+	   }
+	   
+	   if(playerFinances.getFinances()<=0)
+	   {
+		   System.out.println("Your have 0 money and have gone bankrupt");
+		   System.out.println("game is over");
+		   System.out.println("reload an earlier save file or start a new game");
+		   handleGameOver();
+		   return true;
+	   }
+	   
+	return false;
+	   
+   }
+   private static void handleGameOver() {
+	    System.out.println("Game Over. Exiting...");
+	    System.exit(0); // Exit the program
+	}
+
 
 
 
