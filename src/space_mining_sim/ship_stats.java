@@ -30,8 +30,10 @@ private String shipName;
 
 int crewMorale =100;
 
-int crewMoraleBonus =0;
+int crewMoraleBonus =1;
 // add so that crewMorale is saved later
+
+String flightMode;
 
 
 
@@ -105,6 +107,7 @@ public void displayEquippedParts() {
 //    this.shop_instance = shop_instance;
 //}
 
+// function that gives the player bonus
 public void crewMoraleEvents ()
 {
 	if (crewMorale>120 && crewMorale<140)
@@ -117,15 +120,15 @@ public void crewMoraleEvents ()
 		 System.out.println("crew morale is normal");
 		 setCrewMorale(1);
 				 }
-	if (crewMorale<80)
+	if (crewMorale>80&& crewMorale<100)
 	{
 		 System.out.println("Events have coused your crew to get a bit uneasy. You should perhaps pay attention to the crews morale");
 	}
-	if (crewMorale<60)
+	if (crewMorale>60 && crewMorale<80)
 	{
 		 System.out.println("The morale of the crew is middling. You should perhaps do something to improve morale.");
 	}
-	if (crewMorale<40)
+	if (crewMorale>40 && crewMorale<60)
 	{
 		System.out.println("The morale of the crew is poor. If you do not improve morale the crew will abandon you.");
 	}
@@ -434,6 +437,10 @@ public int getCrewMoraleBonus() {
     return crewMoraleBonus; 
 }
 
+public String getFlightMode() {
+    return flightMode;
+}
+
 
 public void setMinerSkillValue(int minerSkillValue) {
     this.minerSkillValue = minerSkillValue;
@@ -501,6 +508,10 @@ public void setCrewMorale(int crewMorale) {
 
 public void setCrewMoraleBonus(int crewMoraleBonus) {
 	this.crewMoraleBonus=crewMoraleBonus;
+}
+
+public void setFlightMode(String flightMode) {
+	this.flightMode=flightMode;
 }
 }
 

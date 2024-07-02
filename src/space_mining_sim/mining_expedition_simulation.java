@@ -35,6 +35,9 @@ public class mining_expedition_simulation {
  	int silverAmount = 0;
  	int goldAmount = 0; 
 	int platinumAmount = 0; 
+	int baseTime = 0;
+	
+//	double timeItWillTakeToMine= baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine();
 
 
 	
@@ -68,6 +71,35 @@ public class mining_expedition_simulation {
         shipStats.setWentOnMiningExpedition(true); // Set flag on the passed shipStats instance
 	}
 	
+	public void setShipFlightMode(ship_stats shipStats)
+	{
+		 System.out.println("1 normal speed. It will take longer to travel but it is the fasfest");
+		 System.out.println("2 fast speed. It will take the shortest time to travel but it is the most dangerous");
+		 Scanner scanner = new Scanner(System.in);
+		 String choice = scanner.nextLine();
+
+		 switch(choice)
+		 {
+	        case "1":
+	            shipStats.setFlightMode("normal");
+	            System.out.println("Flight mode set to normal.");
+	            baseTime = 2;
+	            break;
+	        case "2":
+	            shipStats.setFlightMode("speedy");
+	            System.out.println("Flight mode set to speedy.");
+	            baseTime = 1;
+	            break;
+	        case "3":
+	            baseTime = 15;
+	            break;
+	        default:
+	            System.out.println("Invalid choice. Flight mode remains " + shipStats.getFlightMode() + ".");
+	            break;
+		 }
+		
+	}
+	
 	
 	
 	public void select_where_go_mining(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, timeManager timeManager,ship_stats shipStats_instance) throws IOException
@@ -83,8 +115,8 @@ public class mining_expedition_simulation {
           case "1":
         	  shipStats_instance.checkIfShipHasFusionEngine();
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-            timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
-            System.out.println("took "+ 5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
+            timeManager.advanceTime(5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
+            System.out.println("took "+ 5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
             storyDescriptionsTextInstance.printRandomStationDescription();
             storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
             
@@ -186,6 +218,7 @@ public class mining_expedition_simulation {
             playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
 	        playerStatsInstance.levelUpGeologistPlayer();
 	        shipStats_instance.increaseCrewMorale(1);
+	        shipStats_instance.fuel_comsumption(5);
 	        
 	        
 //	        int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
@@ -239,6 +272,8 @@ public class mining_expedition_simulation {
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
+	
+	// the inner ring has the most valuable resources to mi
 	public void go_on_mining_inner_ring(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance,  timeManager timeManager_instance ) throws IOException {
 		
 	    Random random = new Random();
@@ -255,8 +290,8 @@ public class mining_expedition_simulation {
 	    	 
 		
 		        eventManagerInstance.callAllEvents();
-		        shipStats_instance.increaseCrewMorale(5);
-		   
+		        shipStats_instance.increaseCrewMorale(5); // player gets
+		        shipStats_instance.fuel_comsumption(5);
 	    	 
 	    	 
 	        System.out.println("Went mining inner ring");

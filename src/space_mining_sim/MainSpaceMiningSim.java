@@ -17,30 +17,7 @@ public class MainSpaceMiningSim {
 	
 // TODO
 
-	// 
 
-// add a better main game loop to main
-// add  
-// add it so that the astronaut skills do more things
-// make the start new game code better.
-// way for code to check if player has already entered name and saved, so that it does not always prompt the player
-	// add better ways to store data
-	// add more story descriptions
-
-// Done
-	// add an options menu	
-	// add more complex way that resources are gathered when going mining
-	// add way to start new game
-	// add way to rename ship
-	// add it so that the player can name their ship
-	// add it so that the player can enter their character name
-	// add astrogator player skill lowers travel time
-	// make mining expedition code more cleaner
-	// add more events
-	// make the event system more efficent
-	
-	 // private static boolean firstTimeStartGameBoolean = true;
-	
     
 	
 
@@ -70,8 +47,7 @@ public class MainSpaceMiningSim {
         playerStats playerStatsInstance = new playerStats();
         timeManager timeManager_instance = new timeManager();
         storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
-        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(
-                timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance 
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance 
         );
 
         shop_instance.setMiningExpedition(miningExpedition);
@@ -251,7 +227,7 @@ public class MainSpaceMiningSim {
                 	   break;
                    case "e":
                 	   
-                	 
+                	   miningExpedition.setShipFlightMode(shipStats_instance);
                 	   miningExpedition.select_where_go_mining(playerFinances, shipStats_instance, shop_instance, timeManager_instance, shipStats_instance);
                 	   shop_instance.sellResourceUnits();
                 	 //  miningExpedition.resetResources();
