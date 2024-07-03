@@ -26,6 +26,7 @@ public class mining_expedition_simulation {
 	 private playerStats playerStatsInstance;
 	 
 	 private storyDescriptionsText storyDescriptionsTextInstance;
+	 private EventManager eventManagerInstance;
 	 
 	// private Astronauts AstronautsMiningExpeditionsSimulationInstance;
 	 
@@ -46,15 +47,11 @@ public class mining_expedition_simulation {
 		    this.timeManager_instance = timeManager_instance;
 		    this.playerStatsInstance = playerStatsInstance;
 		    this.shipStats_instance = shipStats_instance;
-		    this.storyDescriptionsTextInstance = storyDescriptionsTextInstance; // Assigning the passed instance
-		    
-		 //   this.AstronautsMiningExpeditionsSimulationInstance = AstronautsMiningExpeditionsSimulationInstance; 
-		
-	       // this.shipStats_instance = shipStats_instance;
-	        // Other initializations...
+		    this.storyDescriptionsTextInstance = storyDescriptionsTextInstance; 
+		    this.eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null, playerStatsInstance);
 	    }
 	  
-	  EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null);
+	//  EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null, playerStatsInstance);
 	// timeManager timeManager_instance = new timeManager();
 	
 
@@ -120,24 +117,7 @@ public class mining_expedition_simulation {
             storyDescriptionsTextInstance.printRandomStationDescription();
             storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
             
-         //   playerStatsInstance.increaseEngineeringExperiencePlayer(10);
-         //   playerStatsInstance.increaseAstrogatorExperiencePlayer(50);
-        	  
-//        	  if(shop_instance.getHaveBoughtFusionEngine()==true)
-//        	  {
-//        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-//                  //timeManager.advanceTime(5 * shop.getTimeTakeWithFusionEngine());
-//                  timeManager.advanceTime(5 * 0.6*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
-//        		  System.out.println("fusion engine lowered time");
-//        		  playerStatsInstance.increaseEngineeringExperiencePlayer(5);
-//        	  }
-//        	  else
-//        	  {
-//        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-//                    timeManager.advanceTime(5*playerStatsInstance.bonusesFromAstrogatorPlayerSkill());
-//                    System.out.println("took 5 days to mine");
-//                    playerStatsInstance.increaseEngineeringExperiencePlayer(5);
-//        	  }
+
           
               break;
           case "2":
@@ -149,21 +129,8 @@ public class mining_expedition_simulation {
     		  storyDescriptionsTextInstance.printRandomStationDescription();
     		  storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
 
-//              if(shop_instance.getHaveBoughtFusionEngine()==true)
-//        	  {
-//        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-//                  timeManager.advanceTime(10 * 0.6);
-//        		  System.out.println("fusion engine lowered time");
-//        		  playerStatsInstance.increaseEngineeringExperiencePlayer(15);
-//        	  }
-//        	  else
-//        	  {
-//        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-//                    timeManager.advanceTime(10);
-//                    System.out.println("took 10 days to mine");
-//                    playerStatsInstance.increaseEngineeringExperiencePlayer(5);
-//        	  }
-//              break;
+
+              break;
           case "3":
         	  
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
@@ -172,23 +139,6 @@ public class mining_expedition_simulation {
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(30);
     		  storyDescriptionsTextInstance.printRandomStationDescription();
     		  storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
-
-
-//              if(shop_instance.getHaveBoughtFusionEngine()==true)
-//        	  {
-//        		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-//                  timeManager.advanceTime(15 * 0.6);
-//        		  //sSystem.out.println("fusion engine lowered time");
-//        	  }
-//        	  else
-//        	  {
-//        		    go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
-//                    timeManager.advanceTime(15);
-//                    System.out.println("took 15 days to mine");
-//        	  }
-//              break;
-//          default:
-//              System.out.println("Invalid choice.");
               break;
 		  }
 	}

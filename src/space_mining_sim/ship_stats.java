@@ -14,7 +14,7 @@ boolean wentOnMiningExpedition = false;
 boolean shipHasMiningArm = false; 
 boolean shipHasFusionEngine = false; 
 double bonusFusionEngine = 1.0;
-//Example of part IDs, can be expanded as needed
+// part IDs, can be expanded as needed
 final int BASIC_RADAR = 1;
 final int ADVANCED_MINING_LASER = 2;
 //Add more parts as needed

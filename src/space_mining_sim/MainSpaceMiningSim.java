@@ -57,7 +57,7 @@ public class MainSpaceMiningSim {
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
         
 
-        EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances);
+        EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances, playerStatsInstance);
         
     
         
