@@ -17,11 +17,15 @@ public class EventManager {
 	 private finances_player playerFinancesInstance;
 	 private playerStats playerStatsInstance;
 	 
-	 public EventManager(ship_stats shipStats, timeManager timeManager, finances_player playerFinances) {
+	 public EventManager(ship_stats shipStats, timeManager timeManager, finances_player playerFinances, playerStats playerStatsInstance) {
         this.shipStatsInstance = shipStats;
         this.timeManagerInstance = timeManager;
         this.playerFinancesInstance = playerFinances;
+        this.playerStatsInstance = playerStatsInstance;
     }
+	 
+	 
+
 	
 	public void eventTankExplode() {
 		 Random random = new Random();
@@ -30,6 +34,7 @@ public class EventManager {
 		 int chanceEventTankExplode =1;
 		 if (chance <= chanceEventTankExplode) {
 		        System.out.println("one of the ships fuel tanks ruptured and exploded it will cost " +costToFixFuelTank + " to fix");
+		        shipStatsInstance.reduceShipHull(5);
 		        if(playerFinancesInstance.getFinances()<costToFixFuelTank)
 		        {
 		        	System.out.println("you do not have enough money to pay the cost of the tank. There has not been a fail state impelemented for this in the game yet");
@@ -48,7 +53,7 @@ public class EventManager {
 		 Random random = new Random();
 		
 		 int chance = random.nextInt(100);
-		 int chanceToEncounterDeadAstronaut =1;
+		 int chanceToEncounterDeadAstronaut =100;
 		 int extraTimeToRevocerDeadAstronaut = 1;
 		 int increaseInReputationForRevoceringDeadAstronaut = 5;
 		 
@@ -61,9 +66,24 @@ public class EventManager {
 				  {
 		        case "1":
 		        	
-		        playerStatsInstance.increasePlayersReputation(increaseInReputationForRevoceringDeadAstronaut);
-		        timeManagerInstance.increaseTimeDay(extraTimeToRevocerDeadAstronaut);
-		        shipStatsInstance.increaseCrewMorale(5);
+		         	 if(playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()>50||playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()==50)
+                	 {
+		         		 
+		         		 System.out.println("Suceeded with skill check");
+		         		System.out.println("you rolled "+playerStatsInstance.getRollD100()+" + Player astrogator skill "+ playerStatsInstance.getLevelAstrogatorSkillPlayer());
+		         		int totalRoll = playerStatsInstance.getRollD100()+ playerStatsInstance.getLevelAstrogatorSkillPlayer();
+		         		System.out.println("Total: "+ totalRoll );
+                		playerStatsInstance.increasePlayersReputation(increaseInReputationForRevoceringDeadAstronaut);
+          		        timeManagerInstance.increaseTimeDay(extraTimeToRevocerDeadAstronaut);
+          		        shipStatsInstance.increaseCrewMorale(5);
+                	 }
+		         	 else
+		         	 {
+		         		System.out.println("failed skill check");
+		         		System.out.println("the body is lost");
+		         		 break; 
+		         	 }
+		    
 		        
 		      
 		        break;
@@ -243,7 +263,8 @@ public class EventManager {
 		Random random = new Random();
 		int chance = random.nextInt(100);
 		int chanceToxic =1;
-		shipStatsInstance.decreaseCrewMorale(5);	
+		shipStatsInstance.decreaseCrewMorale(5);
+		shipStatsInstance.reduceShipHull(5);
 		//Normal store don't want to buy, have to find other store or dump ore
    }
 	public void eventFamilyrobbed() {

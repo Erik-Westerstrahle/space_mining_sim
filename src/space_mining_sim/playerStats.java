@@ -1,6 +1,7 @@
 package space_mining_sim;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class playerStats {
 	
@@ -21,6 +22,8 @@ public class playerStats {
 	int astrogatorExperiencePlayer = 0;
 	int engineeringExperiencePlayer = 0;
 	int diplomacyExperiencePlayer = 0;
+	
+	 int diceRoll;
 
 	
     
@@ -200,6 +203,19 @@ public class playerStats {
 		
 	}
 	
+	public int rollD100()
+	{
+		 Random random = new Random();
+		diceRoll = random.nextInt(100);
+		  System.out.println("rolled "+diceRoll); 
+		setRollD100(diceRoll);
+		return diceRoll;
+		
+	}
+	
+    public int getRollD100() {
+        return diceRoll;
+    }
 	
     public String getPlayerName() {
         return playerName;
@@ -265,6 +281,10 @@ public class playerStats {
     
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
+    }
+    
+    public void setRollD100(int diceRoll) {
+        this.diceRoll = diceRoll;
     }
 
 

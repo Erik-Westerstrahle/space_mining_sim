@@ -30,7 +30,9 @@ public class mining_expedition_simulation {
 	 
 	// private Astronauts AstronautsMiningExpeditionsSimulationInstance;
 	 
-	int waterIceAmount = 0; 
+	
+	 // integers for how many resources
+	 int waterIceAmount = 0; 
 	int ironAmount = 0;
  	int copperAmount = 0; 
  	int silverAmount = 0;
@@ -282,6 +284,7 @@ public class mining_expedition_simulation {
 				  totalSkill += extractSkillLevel(line);
 				  
 			  }
+			
 		  }
 		  return totalSkill;
 	}
