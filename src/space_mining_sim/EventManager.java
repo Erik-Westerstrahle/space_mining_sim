@@ -25,7 +25,17 @@ public class EventManager {
     }
 	 
 	 
-
+private boolean performSkillCheck(int playerSkillLevel, int difficulty)
+{
+	 Random random = new Random();
+	 int roll = random.nextInt(100) + 1;
+	 int total = roll + playerSkillLevel;
+	 System.out.println("Roll: " + roll + ", Skill Level: "+ playerSkillLevel);
+	 System.out.println("Difficulty was " + difficulty);
+	 return total >= difficulty;
+	 
+	 
+}
 	
 	public void eventTankExplode() {
 		 Random random = new Random();
@@ -53,11 +63,15 @@ public class EventManager {
 		 Random random = new Random();
 		
 		 int chance = random.nextInt(100);
-		 int chanceToEncounterDeadAstronaut =100;
+		
+		 int chanceToEncounterDeadAstronaut =5;
 		 int extraTimeToRevocerDeadAstronaut = 1;
 		 int increaseInReputationForRevoceringDeadAstronaut = 5;
+		 int chanceSucceedEncounterDeadAstronautEvent =50;
 		 
-		 if (chance <= chanceToEncounterDeadAstronaut) {
+		  System.out.println("event dead astronaut dice rolled "+chance);
+		 
+		 if (chance >= chanceToEncounterDeadAstronaut) {
 		        System.out.println("your scanners detect what probably is a dead astronaut in the asterois field. You can retrive the body back to the station for a funeral. This will take "+ extraTimeToRevocerDeadAstronaut + " day/days however your reputation will inrease by 5 if you do so");
 		        System.out.println("input 1 to recover the astronaut or 2 to continue on");
 		        Scanner scanner = new Scanner(System.in);
@@ -66,7 +80,7 @@ public class EventManager {
 				  {
 		        case "1":
 		        	
-		         	 if(playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()>50||playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()==50)
+		         	 if(playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()>chanceSucceedEncounterDeadAstronautEvent||playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()==chanceSucceedEncounterDeadAstronautEvent)
                 	 {
 		         		 
 		         		 System.out.println("Suceeded with skill check");
@@ -80,6 +94,9 @@ public class EventManager {
 		         	 else
 		         	 {
 		         		System.out.println("failed skill check");
+		         		System.out.println("you rolled "+playerStatsInstance.getRollD100()+" + Player astrogator skill "+ playerStatsInstance.getLevelAstrogatorSkillPlayer());
+		         		int totalRoll = playerStatsInstance.getRollD100()+ playerStatsInstance.getLevelAstrogatorSkillPlayer();
+		         		System.out.println("Total: "+ totalRoll );
 		         		System.out.println("the body is lost");
 		         		 break; 
 		         	 }
@@ -106,22 +123,32 @@ public class EventManager {
 		 Random random = new Random();
 		
 		 int chance = random.nextInt(100);
-		 int chanceToEncounterEventDistressCallFromShip =1;
+		 int chanceToEncounterEventDistressCallFromShip =15;
 		 int extraTimeToHelpDistressedShip = 1;
 		 int increaseInReputationForHelpingDistressedShip = 5;
+		 int chanceToSucceedEventDistressCallFromShip =25;
 		 
-		 if (chance <= chanceToEncounterEventDistressCallFromShip) {
+		 if (chance >= chanceToEncounterEventDistressCallFromShip) {
 		        System.out.println("you receive a distress call from a ship in distress it will take "+ extraTimeToHelpDistressedShip + " day/days to help however your reputation will inrease by 5 if you do so");
-		        System.out.println("input 1 to recover the astronaut or 2 to continue on");
+		        System.out.println("input 1 to help the ship or 2 to continue on");
 		        Scanner scanner = new Scanner(System.in);
 		        String choice = scanner.nextLine();
 		        switch(choice)
 				  {
 		        case "1":
 		        	
+		        	
+		       	 if(performSkillCheck(playerStatsInstance.getLevelAstrogatorSkillPlayer(), chanceToSucceedEventDistressCallFromShip))
+            	 {	
+		       		 
+		 //      	System.out.println("Suceeded with skill check");
+		 //       System.out.println("you rolled "+playerStatsInstance.getRollD100()+" + Player astrogator skill "+ playerStatsInstance.getLevelAstrogatorSkillPlayer());
+		 //        int totalRoll = playerStatsInstance.getRollD100()+ playerStatsInstance.getLevelAstrogatorSkillPlayer();
+		   //     System.out.println("Total: "+ totalRoll );	 
 		        playerStatsInstance.increasePlayersReputation(increaseInReputationForHelpingDistressedShip);
 		        timeManagerInstance.increaseTimeDay(extraTimeToHelpDistressedShip);
 		        shipStatsInstance.increaseCrewMorale(10);
+            	 }
 		      
 		        break;
 		        case "2":
@@ -143,6 +170,7 @@ public class EventManager {
 		 int chance = random.nextInt(1000);
 		 int chanceToEncounterThisEvent =1;
 		 int moneyToPayToExtortionists = 300;
+		int chanceToSucceedEventExtortionFromMiner =25;
 		 
 		 if (chance <= chanceToEncounterThisEvent) {
 			 
@@ -172,9 +200,16 @@ public class EventManager {
 		        case "2":
 		        	
 		        	
+		       	 if(performSkillCheck(playerStatsInstance.getLevelAstrogatorSkillPlayer(), chanceToSucceedEventExtortionFromMiner))
+            	 {		
 		        System.out.println("You have chosen to continue the expedition.");
-		        int damagedHull = shipStatsInstance.getHullIntegrity();
-		        shipStatsInstance.setHullIntegrity(damagedHull-5);
+		  
+            	 }
+		       	 else
+		       	 {
+		             int damagedHull = shipStatsInstance.getHullIntegrity();
+				        shipStatsInstance.setHullIntegrity(damagedHull-5); 
+		       	 }
 	              
 		      
                break;
@@ -193,6 +228,7 @@ public class EventManager {
 		 int chance = random.nextInt(1000);
 		 int chanceToEncounterThisEvent =1;
 		 int earnMoneyFromShipSalvage = 300;
+		 int chanceToSucceedEncounterDerelictShip = 25;
 		 
 		 if (chance <= chanceToEncounterThisEvent) {
 			 
@@ -207,10 +243,12 @@ public class EventManager {
 				  {
 		        case "1":
 		        	
+		        	if(performSkillCheck(playerStatsInstance.getLevelEngineeringSkillPlayer(), chanceToSucceedEncounterDerelictShip))
+		        	{
 		        	 System.out.println("You earn "+ earnMoneyFromShipSalvage +" from salvaging the ship and selling the salvage");
 		        	playerFinancesInstance.increase_finances(earnMoneyFromShipSalvage);
 		        	  timeManagerInstance.increaseTimeDay(5);// set here how much time this event should take
-		      
+		        	}
 		        break;
 		        case "2":
 		        	
@@ -235,6 +273,8 @@ public class EventManager {
 		 int valueDroppedCargo = 10000;
 		 int chance = random.nextInt(100);
 		 int chanceEventFindDroppedCargoe =1;
+		 
+		 
 		 if (chance <= chanceEventFindDroppedCargoe) {
 			 playerFinancesInstance.increase_finances(valueDroppedCargo);
 			 System.out.println("You scanners found an abandoned cargocontainer filled with valuable ores. From where it came from you do not know");
@@ -251,9 +291,9 @@ public class EventManager {
 		 int chance = random.nextInt(500);
 		 int chanceToEncounterThisEvent =1;
 		 if (chance <= chanceToEncounterThisEvent) {
-			 System.out.println("You receive a strange radio message saying: This patroll ship the Munich. Stop your engines and prepare to be scanned for weapons and contraband");
+			 System.out.println("You receive a strange radio message saying: This patroll ship the Buffalo. Stop your engines and prepare to be scanned for weapons and contraband");
 			 System.out.println("You recognise the ships name. The ship is famous for hunting pirates. It is heavily armed. You know it is better to be scanned instead of running");
-			 System.out.println("After a couple of tense minutes the Munich seds the message");
+			 System.out.println("After a couple of tense minutes the Buffalo sends the message");
 			 System.out.println("Your ship is cleared you may proceed");
 			 System.out.println("The Munich then starts burning fast. to where you do not know");
 
@@ -283,6 +323,11 @@ public class EventManager {
 	int chanceEventrobbed =1;
 
 }
+   
+   public void chancetoSucceedSkillCheck()
+   {
+	   playerStatsInstance.getLevelAstrogatorSkillPlayer();
+   }
 	
 	public void callAllEvents() {
 		eventTankExplode();
