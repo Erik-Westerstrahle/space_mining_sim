@@ -16,21 +16,27 @@ public class EventManager {
 	 private timeManager timeManagerInstance;
 	 private finances_player playerFinancesInstance;
 	 private playerStats playerStatsInstance;
+	 private Astronauts astronautsInstance;
+	 private hireAstronauts hireAstronautsInstance;
+	 private assignAstronauts assignAstronautsInstance;
 	 
-	 public EventManager(ship_stats shipStats, timeManager timeManager, finances_player playerFinances, playerStats playerStatsInstance) {
+	 public EventManager(ship_stats shipStats, timeManager timeManager, finances_player playerFinances, playerStats playerStatsInstance,hireAstronauts hireAstronautsInstance,assignAstronauts assignAstronautsInstance ) {
         this.shipStatsInstance = shipStats;
         this.timeManagerInstance = timeManager;
         this.playerFinancesInstance = playerFinances;
         this.playerStatsInstance = playerStatsInstance;
+        //this.astronautsInstance=astronautsInstance;
+        this.hireAstronautsInstance = hireAstronautsInstance;
+        this.assignAstronautsInstance =assignAstronautsInstance;
     }
 	 
-	 
-private boolean performSkillCheck(int playerSkillLevel, int difficulty)
+	 // add that skill check gets bonus from astronauts
+private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel,int difficulty)
 {
 	 Random random = new Random();
 	 int roll = random.nextInt(100) + 1;
-	 int total = roll + playerSkillLevel;
-	 System.out.println("Roll: " + roll + ", Skill Level: "+ playerSkillLevel);
+	 int total = roll + playerSkillLevels+astronautSkillLevel;
+	 System.out.println("Roll: " + roll + ", Skill Level: "+ playerSkillLevels+"bonus from astronaut skill" +astronautSkillLevel);
 	 System.out.println("Difficulty was " + difficulty);
 	 return total >= difficulty;
 	 
@@ -122,8 +128,9 @@ private boolean performSkillCheck(int playerSkillLevel, int difficulty)
 	public void eventDistressCallFromShip() {
 		 Random random = new Random();
 		
-		 int chance = random.nextInt(100);
-		 int chanceToEncounterEventDistressCallFromShip =15;
+		// int chance = random.nextInt(100)+1;
+		 int chance = 25;
+		 int chanceToEncounterEventDistressCallFromShip =25;
 		 int extraTimeToHelpDistressedShip = 1;
 		 int increaseInReputationForHelpingDistressedShip = 5;
 		 int chanceToSucceedEventDistressCallFromShip =25;
@@ -138,7 +145,7 @@ private boolean performSkillCheck(int playerSkillLevel, int difficulty)
 		        case "1":
 		        	
 		        	
-		       	 if(performSkillCheck(playerStatsInstance.getLevelAstrogatorSkillPlayer(), chanceToSucceedEventDistressCallFromShip))
+		       	 if(performSkillCheck(playerStatsInstance.getLevelAstrogatorSkillPlayer(),assignAstronautsInstance.getAssignedAstrogatorSkill(), chanceToSucceedEventDistressCallFromShip))
             	 {	
 		       		 
 		 //      	System.out.println("Suceeded with skill check");
@@ -200,7 +207,7 @@ private boolean performSkillCheck(int playerSkillLevel, int difficulty)
 		        case "2":
 		        	
 		        	
-		       	 if(performSkillCheck(playerStatsInstance.getLevelAstrogatorSkillPlayer(), chanceToSucceedEventExtortionFromMiner))
+		       	 if(performSkillCheck(playerStatsInstance.getLevelAstrogatorSkillPlayer(),assignAstronautsInstance.getAssignedMinerGeologistSkill(), chanceToSucceedEventExtortionFromMiner))
             	 {		
 		        System.out.println("You have chosen to continue the expedition.");
 		  
@@ -243,7 +250,7 @@ private boolean performSkillCheck(int playerSkillLevel, int difficulty)
 				  {
 		        case "1":
 		        	
-		        	if(performSkillCheck(playerStatsInstance.getLevelEngineeringSkillPlayer(), chanceToSucceedEncounterDerelictShip))
+		        	if(performSkillCheck(playerStatsInstance.getLevelEngineeringSkillPlayer(),assignAstronautsInstance.getAssignedMinerGeologistSkill() ,chanceToSucceedEncounterDerelictShip))
 		        	{
 		        	 System.out.println("You earn "+ earnMoneyFromShipSalvage +" from salvaging the ship and selling the salvage");
 		        	playerFinancesInstance.increase_finances(earnMoneyFromShipSalvage);
@@ -331,7 +338,7 @@ private boolean performSkillCheck(int playerSkillLevel, int difficulty)
 	
 	public void callAllEvents() {
 		eventTankExplode();
-		encounterDeadAstronaut();
+	//	encounterDeadAstronaut();
 		eventDistressCallFromShip();
 		eventExtortionFromMiner();
 		encounterDerelictShip();

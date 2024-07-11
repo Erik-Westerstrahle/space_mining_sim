@@ -55,22 +55,29 @@ public class MainSpaceMiningSim {
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
+        assignAstronauts assignAstronautsInstance = new assignAstronauts();
         
 
-        EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances, playerStatsInstance);
+        EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances, playerStatsInstance, hireAstronautsInstance,assignAstronautsInstance);
         
     
         
         optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
         AudioAndMusic audioAndMusicInstance = new AudioAndMusic(optionsSpaceMiningSimInstance);
+        
+        DisplayImageAnimation2 DisplayImageAnimation2_instance = new DisplayImageAnimation2();
 
     
         
         
         // Generate and save astronauts at the start of the program
         generateAndSaveAstronauts();
-   
+       // DisplayImageAnimation2_instance.displayAnimation();
         audioAndMusicInstance.playMenuSelectionSound();
+        
+       
+      
+       
         
      // If loading is successful, display welcome messages and load game data
         System.out.println("Booting Spaceship OS...");
@@ -226,7 +233,10 @@ public class MainSpaceMiningSim {
                
                 	   break;
                    case "e":
-                	   
+                	
+                		  
+                	 
+                	   System.out.println("astronaut highest geologist skill "+    assignAstronautsInstance.getAssignedMinerGeologistSkill());
                 	   miningExpedition.setShipFlightMode(shipStats_instance);
                 	   miningExpedition.select_where_go_mining(playerFinances, shipStats_instance, shop_instance, timeManager_instance, shipStats_instance);
                 	   shop_instance.sellResourceUnits();
@@ -334,8 +344,8 @@ public class MainSpaceMiningSim {
                       case "n":
                           System.out.println("DEBUG: User selected to assign a miner.");
                           hireAstronauts.viewHiredAstronauts();
-                          if (hireAstronauts.getAssignedMiner() != null) {
-                              System.out.println("A miner is already assigned: " + hireAstronauts.getAssignedMiner().getName() + ". Use 'd' to unassign the current miner first.");
+                          if (assignAstronauts.getAssignedMiner() != null) {
+                              System.out.println("A miner is already assigned: " + assignAstronauts.getAssignedMiner().getName() + ". Use 'd' to unassign the current miner first.");
                           } else {
                               System.out.println("Select an astronaut to assign as a miner from the list of hired astronauts:");
                               List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
@@ -360,7 +370,7 @@ public class MainSpaceMiningSim {
 
                               if (selectedAstronaut != null) {
                                   System.out.println("DEBUG: Selected astronaut found: " + selectedAstronaut.getName());
-                                  hireAstronauts.assignMinerToShip(selectedAstronaut, shipStats_instance);
+                                  assignAstronauts.assignMinerToShip(selectedAstronaut, shipStats_instance);
                               } else {
                                   System.out.println("Invalid selection.");
                                   System.out.println("DEBUG: No astronaut found with the ID: " + minerChoice);
@@ -369,7 +379,7 @@ public class MainSpaceMiningSim {
                     	    break;
                       case "d":
                     	    // Code to unassign the current miner
-                    	    hireAstronauts.unassignMiner();
+                    	  assignAstronauts.unassignMiner();
                     	   
                  	   break;
                       case "repair":
