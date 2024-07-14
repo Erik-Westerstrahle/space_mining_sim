@@ -1,5 +1,7 @@
 package space_mining_sim;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class assignAstronauts {
@@ -14,14 +16,119 @@ public class assignAstronauts {
 	
     private static Astronauts assignedMiner = null;
     private static Astronauts assignedAstrogator = null;
+    private static Astronauts assignedMechanic = null;
     
     private static Scanner scanner = new Scanner(System.in);
     
-public void choiceAssingAstronauts()
+public void choiceAssingAstronauts(hireAstronauts hireAstronautsInstance)
 {
   
 	System.out.println("Enter choice for assigning astronauts:");
+	System.out.println("Input 1 if you want to assign an astronaut to the miner jobb");
+	System.out.println("Input 2 if you want to assign an astronaut to the astrogator jobb");
+	System.out.println("Input 3 if you want to assign an astronaut to the mechanic jobb");
 	String input = scanner.nextLine();
+	
+	 switch (input) {
+	 case "1":
+		try {
+			hireAstronautsInstance.viewHiredAstronauts();
+			
+			System.out.println("Enter the id number of the astronaut that you want to assign to be the ship miner");
+			
+			int astronautChoice = scanner.nextInt();
+			
+			scanner.nextLine();
+			
+			List<Astronauts> hiredAstronauts = hiredAstronauts = hireAstronautsInstance.getHiredAstronauts();
+			Astronauts selectedAstronaut = null;
+			for (Astronauts astronaut : hiredAstronauts) {
+				if (astronaut.getId() == astronautChoice) {
+					selectedAstronaut = astronaut;
+			
+			 break;
+                }
+            }
+
+            if (selectedAstronaut != null) {
+                assignMinerToShip(selectedAstronaut, shipStats_instance);
+                System.out.println( "Miner is"+ getAssignedMiner());
+            } else {
+                System.out.println("Invalid selection.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error retrieving hired astronauts: " + e.getMessage());
+        }
+        break;
+        
+        
+	 case "2":
+		try {
+			hireAstronautsInstance.viewHiredAstronauts();
+			
+			System.out.println("Enter the id number of the astronaut that you want to assign to be the ship astrogator");
+			
+			int astronautChoice = scanner.nextInt();
+			
+			scanner.nextLine();
+			
+			List<Astronauts> hiredAstronauts = hiredAstronauts = hireAstronautsInstance.getHiredAstronauts();
+			Astronauts selectedAstronaut = null;
+			for (Astronauts astronaut : hiredAstronauts) {
+				if (astronaut.getId() == astronautChoice) {
+					selectedAstronaut = astronaut;
+			
+			 break;
+                }
+            }
+
+            if (selectedAstronaut != null) {
+                assignAstrogatorToShip(selectedAstronaut, shipStats_instance);
+            } else {
+                System.out.println("Invalid selection.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error retrieving hired astronauts: " + e.getMessage());
+        }
+        break;
+        
+        
+	 case "3":
+		try {
+			hireAstronautsInstance.viewHiredAstronauts();
+			
+			System.out.println("Enter the id number of the astronaut that you want to assign to be the ship mechanic");
+			
+			int astronautChoice = scanner.nextInt();
+			
+			scanner.nextLine();
+			
+			List<Astronauts> hiredAstronauts = hiredAstronauts = hireAstronautsInstance.getHiredAstronauts();
+			Astronauts selectedAstronaut = null;
+			for (Astronauts astronaut : hiredAstronauts) {
+				if (astronaut.getId() == astronautChoice) {
+					selectedAstronaut = astronaut;
+			
+			 break;
+                }
+            }
+
+            if (selectedAstronaut != null) {
+                assignMechanicToShip(selectedAstronaut, shipStats_instance);
+            } else {
+                System.out.println("Invalid selection.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error retrieving hired astronauts: " + e.getMessage());
+        }
+        break;
+        
+        
+        
+    default:
+        System.out.println("Invalid choice. Please enter a valid number.");
+        break;
+}
 }
     
 	
@@ -32,7 +139,7 @@ public void choiceAssingAstronauts()
 		 {
 			 System.out.println("An astronauts has already been assigned to the miner jobb" + assignedMiner.getName() + ". Unassign the current miner before assigning a new one.");
 		 
-			 System.out.println("Debug: Current astronaut" +  assignedMiner.getName() + " is assigned to the astrogator jobb");
+			 System.out.println("Debug: Current astronaut" +  assignedMiner.getName() + " is assigned to the miner jobb");
 		 }
 		 
 		 
@@ -72,7 +179,7 @@ public void choiceAssingAstronauts()
 		 assignedAstrogator = astronaut;
 		 shipStats_instance.setAstrogatorSkillValue(astronaut.getAstrogatorSkill());
 		 System.out.println("Astronaut " + astronaut.getName() + " has been assigned as the astrogator.");
-		 System.out.println("astronaut has the miner skill value: "+shipStats_instance.getAstrogatorSkillValue());
+		 System.out.println("astronaut has the astrogator skill value: "+shipStats_instance.getAstrogatorSkillValue());
 		 
 	 }
 	 
@@ -87,6 +194,41 @@ public void choiceAssingAstronauts()
 		        System.out.println("DEBUG: Attempted to unassign but no astrogator is assigned.");
 		    }
 		}
+	 
+	 
+	 
+	 public static void assignMechanicToShip(Astronauts astronaut, ship_stats shipStats_instance)
+	 {
+		 if(assignedMechanic !=null)
+		 {
+			 System.out.println("An astronauts has already been assigned to the Mechanic jobb" + assignedAstrogator.getName() + ". Unassign the current astrogator before assigning a new one.");
+		 
+			 System.out.println("Debug: Current astronaut" +  assignedMechanic.getName() + " is assigned to the astrogator jobb");
+		 }
+		 
+		 
+		 System.out.println(astronaut.getName() + " has been assigned to the mechanic jobb");
+		 System.out.println(astronaut);
+		 assignedMechanic = astronaut;
+		 shipStats_instance.setMechanicSkillValue(astronaut.getMechanicSkill());
+		 System.out.println("Astronaut " + astronaut.getName() + " has been assigned as the mechanic.");
+		 System.out.println("astronaut has the mechanic skill value: "+shipStats_instance.getMechanicSkillValue());
+		 
+	 }
+	 
+	 
+	 public static void unassignMechanic() {
+		    if (assignedMechanic != null) {
+		        System.out.println("Unassigned " + assignedMechanic.getName() + " from the mechanic job.");
+		        // Debug: Log the unassigned astronaut's details
+		        System.out.println("DEBUG: Unassigned astronaut: " + assignedMechanic);
+		        assignedMechanic = null;
+		    } else {
+		        System.out.println("No astrogator is currently assigned.");
+		        System.out.println("DEBUG: Attempted to unassign but no astrogator is assigned.");
+		    }
+		}
+	 
 	 
 	// public static void unassignMiner2()
 	// {
@@ -126,6 +268,18 @@ public void choiceAssingAstronauts()
 		if(assignedAstrogator !=null)
 		{
 			  return assignedAstrogator.getAstrogatorSkill();
+		}
+	 else {
+	    System.out.println("No astrogator is currently assigned.");
+	    return 0; // Return 0 if no astrogator is assigned
+	}
+	}
+	
+	public static int getAssignedMechanicSkill()
+	{
+		if(assignedMechanic !=null)
+		{
+			  return assignedMechanic.getMechanicSkill();
 		}
 	 else {
 	    System.out.println("No astrogator is currently assigned.");

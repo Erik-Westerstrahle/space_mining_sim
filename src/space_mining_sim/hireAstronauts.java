@@ -26,7 +26,7 @@ class hireAstronauts {
     
 
 
-    // Example of hiring in the BootScreen main method or a separate method
+ 
     public static void hireAstronautPersonel(finances_player playerFinances, ship_stats shipStats_instance) throws IOException {
         System.out.println("Available Astronauts: ");
         Astronauts[] availableAstronauts = new Astronauts[5];

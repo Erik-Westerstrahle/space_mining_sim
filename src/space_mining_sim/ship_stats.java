@@ -52,6 +52,8 @@ public ship_stats( finances_player playerFinances,Shop_space_mining_sim shop_ins
 
 
 private int minerSkillValue;
+private int astrogatorSkillValue;
+private int mechanicSkillValue;
 
 Scanner scanner = new Scanner(System.in);
 String input = "";
@@ -429,6 +431,14 @@ public int getMinerSkillValue() {
     return minerSkillValue; 
 }
 
+public int getAstrogatorSkillValue() {
+    return astrogatorSkillValue; 
+}
+
+public int getMechanicSkillValue() {
+    return mechanicSkillValue; 
+}
+
 public int getCrewMorale() {
     return crewMorale; 
 }
@@ -445,6 +455,15 @@ public String getFlightMode() {
 public void setMinerSkillValue(int minerSkillValue) {
     this.minerSkillValue = minerSkillValue;
 }
+
+public void setAstrogatorSkillValue(int astrogatorSkillValue) {
+    this.astrogatorSkillValue = astrogatorSkillValue;
+}
+
+public void setMechanicSkillValue(int mechanicSkillValue) {
+    this.mechanicSkillValue = mechanicSkillValue;
+}
+
 
 
 public void setBonusFusionEngine(double newBonusFusionEngine) {

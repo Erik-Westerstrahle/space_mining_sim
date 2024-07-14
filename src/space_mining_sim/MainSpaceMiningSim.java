@@ -65,7 +65,7 @@ public class MainSpaceMiningSim {
         optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
         AudioAndMusic audioAndMusicInstance = new AudioAndMusic(optionsSpaceMiningSimInstance);
         
-        DisplayImageAnimation2 DisplayImageAnimation2_instance = new DisplayImageAnimation2();
+   
 
     
         
@@ -342,41 +342,47 @@ public class MainSpaceMiningSim {
 
                  	   break;
                       case "n":
-                          System.out.println("DEBUG: User selected to assign a miner.");
-                          hireAstronauts.viewHiredAstronauts();
-                          if (assignAstronauts.getAssignedMiner() != null) {
-                              System.out.println("A miner is already assigned: " + assignAstronauts.getAssignedMiner().getName() + ". Use 'd' to unassign the current miner first.");
-                          } else {
-                              System.out.println("Select an astronaut to assign as a miner from the list of hired astronauts:");
-                              List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
-                              for (Astronauts astronaut : hiredAstronauts) {
-                                  System.out.println(astronaut.getId() + ". " + astronaut);
-                              }
-                              System.out.println("Enter the number of the astronaut to assign as a miner:");
-                              int minerChoice = scanner.nextInt();
-                              scanner.nextLine(); // consume the newline
-
-                              // Debug: Log the selected astronaut ID
-                              System.out.println("DEBUG: User selected astronaut ID: " + minerChoice);
-
-                              // Find the astronaut with the matching id
-                              Astronauts selectedAstronaut = null;
-                              for (Astronauts astronaut : hiredAstronauts) {
-                                  if (astronaut.getId() == minerChoice) {
-                                      selectedAstronaut = astronaut;
-                                      break;
-                                  }
-                              }
-
-                              if (selectedAstronaut != null) {
-                                  System.out.println("DEBUG: Selected astronaut found: " + selectedAstronaut.getName());
-                                  assignAstronauts.assignMinerToShip(selectedAstronaut, shipStats_instance);
-                              } else {
-                                  System.out.println("Invalid selection.");
-                                  System.out.println("DEBUG: No astronaut found with the ID: " + minerChoice);
-                              }
-                          }
+//                          System.out.println("DEBUG: User selected to assign a miner.");
+//                          hireAstronauts.viewHiredAstronauts();
+//                          if (assignAstronauts.getAssignedMiner() != null) {
+//                              System.out.println("A miner is already assigned: " + assignAstronauts.getAssignedMiner().getName() + ". Use 'd' to unassign the current miner first.");
+//                          } else {
+//                              System.out.println("Select an astronaut to assign as a miner from the list of hired astronauts:");
+//                              List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
+//                              for (Astronauts astronaut : hiredAstronauts) {
+//                                  System.out.println(astronaut.getId() + ". " + astronaut);
+//                              }
+//                              System.out.println("Enter the number of the astronaut to assign as a miner:");
+//                              int minerChoice = scanner.nextInt();
+//                              scanner.nextLine(); // consume the newline
+//
+//                              // Debug: Log the selected astronaut ID
+//                              System.out.println("DEBUG: User selected astronaut ID: " + minerChoice);
+//
+//                              // Find the astronaut with the matching id
+//                              Astronauts selectedAstronaut = null;
+//                              for (Astronauts astronaut : hiredAstronauts) {
+//                                  if (astronaut.getId() == minerChoice) {
+//                                      selectedAstronaut = astronaut;
+//                                      break;
+//                                  }
+//                              }
+//
+//                              if (selectedAstronaut != null) {
+//                                  System.out.println("DEBUG: Selected astronaut found: " + selectedAstronaut.getName());
+//                                  assignAstronauts.assignMinerToShip(selectedAstronaut, shipStats_instance);
+//                              } else {
+//                                  System.out.println("Invalid selection.");
+//                                  System.out.println("DEBUG: No astronaut found with the ID: " + minerChoice);
+//                              }
+//                          }
+                    	  
+                    	  assignAstronautsInstance.choiceAssingAstronauts(hireAstronautsInstance);
+                    	
+                    	
                     	    break;
+                    	    
+                    	    
                       case "d":
                     	    // Code to unassign the current miner
                     	  assignAstronauts.unassignMiner();
