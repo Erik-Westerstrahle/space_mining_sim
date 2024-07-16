@@ -127,7 +127,8 @@ public class MainSpaceMiningSim {
            
            
            
-           SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
+           SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance, shop_instance, playerStatsInstance, assignAstronautsInstance, hireAstronautsInstance);
+
            
            
            
@@ -279,7 +280,7 @@ public class MainSpaceMiningSim {
                        break;
                    case "s":
                 	   
-                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
+                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance, assignAstronautsInstance);
                 	
                 	  
                        break;
@@ -294,7 +295,8 @@ public class MainSpaceMiningSim {
                        break;
                    case "l":
                 	   
-                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance);
+                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance, shop_instance, playerStatsInstance, assignAstronautsInstance, hireAstronautsInstance);
+
                 	
                 	  
                        break;

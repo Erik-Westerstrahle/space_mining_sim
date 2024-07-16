@@ -249,6 +249,27 @@ public void choiceAssingAstronauts(hireAstronauts hireAstronautsInstance)
 	  }
 	  return assignedMiner;
 	}
+	
+	public static Astronauts getAssignedAstrogator() {
+		  // Debug: Log the current assigned miner, if any
+		  if (assignedAstrogator != null) {
+		      System.out.println("DEBUG: Returning current assigned astrogator: " + assignedAstrogator.getName());
+		  } else {
+		      System.out.println("DEBUG: No miner is currently assigned.");
+		  }
+		  return assignedAstrogator;
+		}
+
+	
+	public static Astronauts getAssignedMechanic() {
+		  // Debug: Log the current assigned miner, if any
+		  if (assignedMechanic != null) {
+		      System.out.println("DEBUG: Returning current assigned miner: " + assignedAstrogator.getName());
+		  } else {
+		      System.out.println("DEBUG: No miner is currently assigned.");
+		  }
+		  return assignedAstrogator;
+		}
 
 
 	public static int getAssignedMinerGeologistSkill()
@@ -286,5 +307,17 @@ public void choiceAssingAstronauts(hireAstronauts hireAstronautsInstance)
 	    return 0; // Return 0 if no astrogator is assigned
 	}
 	}
+	
+    public static void setAssignedMiner(Astronauts astronaut) {
+        assignedMiner = astronaut;
+    }
+    
+    public static void setAssignedAstrogator(Astronauts astronaut) {
+        assignedAstrogator = astronaut;
+    }
+    
+    public static void setAssignedMechanic(Astronauts astronaut) {
+        assignedMechanic = astronaut;
+    }
 
 }

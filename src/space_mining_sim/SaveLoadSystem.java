@@ -3,6 +3,7 @@
 package space_mining_sim;
 
 import java.io.*;
+import java.util.List;
 import java.util.Scanner;
 
 public class SaveLoadSystem {
@@ -13,7 +14,7 @@ public class SaveLoadSystem {
     
 	  // Method to save game state to a file
 	   // the save game is currently a txt file. This migt be changed later
-    public static void saveGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance,  playerStats playerStatsInstance) {
+    public static void saveGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance,  playerStats playerStatsInstance,assignAstronauts assignAstronautsInstance) {
         try {
         	  // Using BufferedWriter for efficient writing to a file
             BufferedWriter writer = new BufferedWriter(new FileWriter("game_save.txt"));
@@ -41,8 +42,13 @@ public class SaveLoadSystem {
             writer.write(firstTimeStartGameBoolean + "\n");
             
             
+            writer.write(assignAstronautsInstance.getAssignedMiner() != null ? assignAstronautsInstance.getAssignedMiner().getId() + "\n" : "-1\n");
+            writer.write(assignAstronautsInstance.getAssignedAstrogator() != null ? assignAstronautsInstance.getAssignedAstrogator().getId() + "\n" : "-1\n");
+            writer.write(assignAstronauts.getAssignedMechanic() != null ? assignAstronautsInstance.getAssignedMechanic().getId() + "\n" : "-1\n");
             
-            // ... Write other game states
+            
+            
+            // Write other game states here
             
             // Closing the writer to ensure data is saved and resources are released
             writer.close();
@@ -54,7 +60,8 @@ public class SaveLoadSystem {
     
     
     // Method to load game state from a file
-    public static void loadGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance, playerStats playerStatsInstance) {
+    public static void loadGame(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, playerStats playerStatsInstance, assignAstronauts assignAstronautsInstance, hireAstronauts hireAstronautsInstance)
+ {
         try {
         	 boolean nameLoaded = false;
             BufferedReader reader = new BufferedReader(new FileReader("game_save.txt"));
@@ -73,6 +80,18 @@ public class SaveLoadSystem {
            playerStatsInstance.setLevelGeologistSkillPlayer(Integer.parseInt(reader.readLine()));
            firstTimeStartGameBoolean=Boolean.parseBoolean(reader.readLine());
            shipStats.setShipName(reader.readLine());
+           
+           int minerId = Integer.parseInt(reader.readLine());
+           int astrogatorId = Integer.parseInt(reader.readLine());
+           int mechanicId = Integer.parseInt(reader.readLine());
+           
+           
+           List<Astronauts> hiredAstronauts = hireAstronautsInstance.getHiredAstronauts();
+           
+           assignAstronautsInstance.setAssignedMiner(findAstronautById(hiredAstronauts, minerId));
+           assignAstronautsInstance.setAssignedAstrogator(findAstronautById(hiredAstronauts, astrogatorId));
+           assignAstronautsInstance.setAssignedMechanic(findAstronautById(hiredAstronauts, mechanicId));
+           
             // ... Read other game states
             reader.close();
             System.out.println("Game loaded successfully.");
@@ -105,6 +124,17 @@ public class SaveLoadSystem {
         playerStatsInstance.resetPlayerStats();
         timeManager_instance.resetTimeManager();
     }
+    
+    private static Astronauts findAstronautById(List<Astronauts> astronauts, int id)
+{
+    	for (Astronauts astronaut : astronauts) {
+    		if (astronaut.getId()== id)
+    		{
+    			return astronaut;
+    		}
+    	}
+	return null;
+}
     
 
     
