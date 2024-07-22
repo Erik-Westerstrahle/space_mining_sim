@@ -78,6 +78,7 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 		  System.out.println("event dead astronaut dice rolled "+chance);
 		 
 		 if (chance >= chanceToEncounterDeadAstronaut) {
+		
 		        System.out.println("your scanners detect what probably is a dead astronaut in the asterois field. You can retrive the body back to the station for a funeral. This will take "+ extraTimeToRevocerDeadAstronaut + " day/days however your reputation will inrease by 5 if you do so");
 		        System.out.println("input 1 to recover the astronaut or 2 to continue on");
 		        Scanner scanner = new Scanner(System.in);
@@ -86,8 +87,9 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 				  {
 		        case "1":
 		        	
-		         	 if(playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()>chanceSucceedEncounterDeadAstronautEvent||playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()==chanceSucceedEncounterDeadAstronautEvent)
-                	 {
+		        // 	 if(playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()>chanceSucceedEncounterDeadAstronautEvent||playerStatsInstance.rollD100()+playerStatsInstance.getLevelAstrogatorSkillPlayer()==chanceSucceedEncounterDeadAstronautEvent)
+		        	  if(performSkillCheck(playerStatsInstance.getLevelAstrogatorSkillPlayer(),assignAstronautsInstance.getAssignedAstrogatorSkill(), chanceSucceedEncounterDeadAstronautEvent))
+		    		  {
 		         		 
 		         		 System.out.println("Suceeded with skill check");
 		         		System.out.println("you rolled "+playerStatsInstance.getRollD100()+" + Player astrogator skill "+ playerStatsInstance.getLevelAstrogatorSkillPlayer());
@@ -250,7 +252,7 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 				  {
 		        case "1":
 		        	
-		        	if(performSkillCheck(playerStatsInstance.getLevelEngineeringSkillPlayer(),assignAstronautsInstance.getAssignedMinerGeologistSkill() ,chanceToSucceedEncounterDerelictShip))
+		        	if(performSkillCheck(playerStatsInstance.getLevelEngineeringSkillPlayer(),assignAstronautsInstance.getAssignedMechanicSkill() ,chanceToSucceedEncounterDerelictShip))
 		        	{
 		        	 System.out.println("You earn "+ earnMoneyFromShipSalvage +" from salvaging the ship and selling the salvage");
 		        	playerFinancesInstance.increase_finances(earnMoneyFromShipSalvage);
@@ -331,6 +333,33 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 
 }
    
+   // cant call this event
+   public void eventGoGambling() {
+	Random random = new Random();
+	
+	int amountMoneyGamble = random.nextInt(100);
+	int chance = random.nextInt(100);
+	int chanceGambling = random.nextInt(100);
+	int chanceEventGoGambling =1;
+	int chanceWinGambling =20;
+	if (chance <= chanceEventGoGambling) 
+	{
+		 System.out.println("You gamble in an online casino to relax");
+		 System.out.println("You gamble "+amountMoneyGamble);
+		 if(chanceWinGambling<=chanceGambling)
+		 {
+			 System.out.println("You win "+(2*amountMoneyGamble));
+			 playerFinancesInstance.increase_finances(2*amountMoneyGamble);
+		 }
+		 else
+		 {
+			 System.out.println("You lost "+(2*amountMoneyGamble));
+		 }
+
+	}
+
+}
+   
    public void chancetoSucceedSkillCheck()
    {
 	   playerStatsInstance.getLevelAstrogatorSkillPlayer();
@@ -338,12 +367,13 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 	
 	public void callAllEvents() {
 		eventTankExplode();
-	//	encounterDeadAstronaut();
+		encounterDeadAstronaut();
 		eventDistressCallFromShip();
 		eventExtortionFromMiner();
 		encounterDerelictShip();
 		eventFindDroppedCargo();
 		eventEncounterEnforcers();
+		eventGoGambling();
 	}
 	
 	
