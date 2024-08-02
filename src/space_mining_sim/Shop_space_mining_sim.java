@@ -5,7 +5,7 @@
 		
 		// Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
 		
-		private boolean haveBoughtMiningArm = false;
+		private boolean haveBoughtMiningArm = true;
 		private boolean haveBoughtFusionEngine = false;
 		private boolean haveFusionEngine = false;
 		private boolean haveBoughtBasicCrewQuarters = false;
@@ -267,11 +267,41 @@
 		
 		
 		
-		public void check_what_have_bought(finances_player playerFinances)
+		public void check_what_have_bought()
 		{
-		
+			if(haveBoughtMiningArm)
+			{
+				 System.out.println("owns  Mining Arm = "+haveBoughtMiningArm);
+			}
+			
+			if(haveBoughtFusionEngine)
+			{
+				 System.out.println("owns Fusion Engine = "+haveBoughtFusionEngine);
+			}
+			
+			if(haveBoughtBasicRadar)
+			{
+				System.out.println("owns Basic Radar = "+haveBoughtBasicRadar);
+			}
+			
+			if(haveBoughtMiningArm)
+			{
+				 System.out.println("haveBoughtMiningArm = "+haveBoughtMiningArm);
+			}
+			
 	
-				
+			if(haveBoughtFusionEngine)
+			{
+				 System.out.println("haveBoughtFusionEngine = "+haveBoughtFusionEngine);
+			}
+			
+			if(haveBoughtBasicRadar)
+			{
+				System.out.println("haveBoughtBasicRadar = "+haveBoughtBasicRadar);
+			}
+		
+		
+			
 			 
 		}
 		
@@ -308,6 +338,7 @@
 			
 		}
 		
+		// function that lets player repair a specific amount of the hull instead of all
 		public void repairHullSpecificAmountShop()
 		{
 	        Scanner scan = new Scanner(System.in);
