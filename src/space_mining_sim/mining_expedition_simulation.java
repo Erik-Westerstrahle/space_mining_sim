@@ -27,6 +27,7 @@ public class mining_expedition_simulation {
 	 
 	 private storyDescriptionsText storyDescriptionsTextInstance;
 	 private EventManager eventManagerInstance;
+	 private assignAstronauts assignAstronautsInstance;
 	 
 	// private Astronauts AstronautsMiningExpeditionsSimulationInstance;
 	 
@@ -39,6 +40,7 @@ public class mining_expedition_simulation {
  	int goldAmount = 0; 
 	int platinumAmount = 0; 
 	int baseTime = 0;
+	int bonusSmallMiningLaser =0;
 	
 //	double timeItWillTakeToMine= baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine();
 
@@ -50,7 +52,7 @@ public class mining_expedition_simulation {
 		    this.playerStatsInstance = playerStatsInstance;
 		    this.shipStats_instance = shipStats_instance;
 		    this.storyDescriptionsTextInstance = storyDescriptionsTextInstance; 
-		    this.eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null, playerStatsInstance);
+		    this.eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null, playerStatsInstance,new hireAstronauts(),assignAstronautsInstance);
 	    }
 	  
 	//  EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null, playerStatsInstance);
@@ -178,7 +180,7 @@ public class mining_expedition_simulation {
 //	        playerFinances.increase_finances(receive_money); // Increase finances
 //	        System.out.println("You received " + receive_money + " credits");
 	        
-	        chansToGetResources(80,60,50,30,10,1,10);
+	        chansToGetResources(80,60,50,30,10,1,10, shop_instance);
 	        playerFinances.print_finances();
      	   
 	
@@ -215,7 +217,7 @@ public class mining_expedition_simulation {
 //	        playerFinances.increase_finances(receive_money); // Increase finances
 //	        System.out.println("You received " + receive_money);
 	        
-	        chansToGetResources(50,60,70,40,20,5,10);
+	        chansToGetResources(50,60,70,40,20,5,10, shop_instance);
 	        
 	        timeManager_instance.printCurrentDate();
 	        playerStatsInstance.increaseGeologistExperiencePlayer(10);
@@ -329,7 +331,7 @@ public class mining_expedition_simulation {
     
 }  
     
-    public void chansToGetResources(int chanceToGetWaterIce, int chanceToGetIron, int chanceToGetCopper,int chanceToGetSilver, int chanceToGetGold,int chanceToGetPlatinum, int amountGetResources )
+    public void chansToGetResources(int chanceToGetWaterIce, int chanceToGetIron, int chanceToGetCopper,int chanceToGetSilver, int chanceToGetGold,int chanceToGetPlatinum, int amountGetResources, Object shop_instance )
     {
     //	int copperAmount = 0; 
     //	int silverAmount = 0;
@@ -343,7 +345,16 @@ public class mining_expedition_simulation {
     	 int chanceSilver = random.nextInt(100);
     	 int chanceGold = random.nextInt(100);
     	 int chancePlatinum = random.nextInt(100);
-    	 int resouceRandomCalculationTimes = random.nextInt(amountGetResources);
+    	 
+    	  Shop_space_mining_sim shop = (Shop_space_mining_sim) shop_instance;
+    	  
+    	  int randomRollAmountGatherResources =(int) (random.nextInt(amountGetResources));
+    	 int resouceRandomCalculationTimes = randomRollAmountGatherResources+ shop.getSmallMiningLaserValue();
+    	 
+    	// System.out.println(" Bonus from small mining laser "+ shop.getSmallMiningLaserValue()); 	
+    	// System.out.println("randomRollAmountGatherResources "+randomRollAmountGatherResources); 		
+    	// System.out.println("resouceRandomCalculationTimes "+resouceRandomCalculationTimes); 
+    	 
     	 
     	// int chanceToGetCopper =50;
     	// int chanceToGetSilver =10;

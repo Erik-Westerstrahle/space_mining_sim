@@ -13,6 +13,7 @@ int availableCrewSpots = 1;
 boolean wentOnMiningExpedition = false; 
 boolean shipHasMiningArm = false; 
 boolean shipHasFusionEngine = false; 
+boolean shipHasSmallMiningLaser = false; 
 double bonusFusionEngine = 1.0;
 // part IDs, can be expanded as needed
 final int BASIC_RADAR = 1;
