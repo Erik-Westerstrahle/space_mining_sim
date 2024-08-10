@@ -67,10 +67,10 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 	
 	public void encounterDeadAstronaut() {
 		 Random random = new Random();
-		
+		 //diceRoll = random.nextInt(100);
 		 int chance = random.nextInt(100);
-		
-		 int chanceToEncounterDeadAstronaut =5;
+		// chance = random.nextInt(100);
+		 int chanceToEncounterDeadAstronaut =90;
 		 int extraTimeToRevocerDeadAstronaut = 1;
 		 int increaseInReputationForRevoceringDeadAstronaut = 5;
 		 int chanceSucceedEncounterDeadAstronautEvent =50;
@@ -131,8 +131,8 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 		 Random random = new Random();
 		
 		// int chance = random.nextInt(100)+1;
-		 int chance = 25;
-		 int chanceToEncounterEventDistressCallFromShip =25;
+		 int chance = random.nextInt(100);
+		 int chanceToEncounterEventDistressCallFromShip =90;
 		 int extraTimeToHelpDistressedShip = 1;
 		 int increaseInReputationForHelpingDistressedShip = 5;
 		 int chanceToSucceedEventDistressCallFromShip =25;
