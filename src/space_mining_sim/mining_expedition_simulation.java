@@ -10,10 +10,7 @@ import java.util.Random;
 
 public class mining_expedition_simulation {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-	}
 	
 	
 	ship_stats shipStats_instance = new ship_stats();
@@ -28,6 +25,7 @@ public class mining_expedition_simulation {
 	 private storyDescriptionsText storyDescriptionsTextInstance;
 	 private EventManager eventManagerInstance;
 	 private assignAstronauts assignAstronautsInstance;
+		private QuestManager QuestManagerInstance;
 	 
 	// private Astronauts AstronautsMiningExpeditionsSimulationInstance;
 	 
@@ -42,21 +40,38 @@ public class mining_expedition_simulation {
 	int baseTime = 0;
 	int bonusSmallMiningLaser =0;
 	
+	int haveGoneMiningOuterRing =0;
+	int haveGoneMiningMidRing =0;
+	
+	int totalCollectedWaterIceAmount=0;
+
+
+
+
+	
 //	double timeItWillTakeToMine= baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine();
 
 
 	
 	//dependency injection
-	 public mining_expedition_simulation(timeManager timeManager_instance, playerStats playerStatsInstance, ship_stats shipStats_instance, storyDescriptionsText storyDescriptionsTextInstance) {
-		    this.timeManager_instance = timeManager_instance;
-		    this.playerStatsInstance = playerStatsInstance;
-		    this.shipStats_instance = shipStats_instance;
-		    this.storyDescriptionsTextInstance = storyDescriptionsTextInstance; 
-		    this.eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null, playerStatsInstance,new hireAstronauts(),assignAstronautsInstance);
-	    }
+    public mining_expedition_simulation(timeManager timeManager_instance, 
+    		playerStats playerStatsInstance, 
+    		ship_stats shipStats_instance, 
+    		storyDescriptionsText storyDescriptionsTextInstance, 
+    		EventManager eventManagerInstance, 
+    		assignAstronauts assignAstronautsInstance,
+    		QuestManager QuestManagerInstance) {
+        this.timeManager_instance = timeManager_instance;
+        this.playerStatsInstance = playerStatsInstance;
+        this.shipStats_instance = shipStats_instance;
+        this.storyDescriptionsTextInstance = storyDescriptionsTextInstance;
+        this.eventManagerInstance = eventManagerInstance;
+        this.assignAstronautsInstance = assignAstronautsInstance;
+        this.QuestManagerInstance = QuestManagerInstance; 
+    }
+	 
+	
 	  
-	//  EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, null, playerStatsInstance);
-	// timeManager timeManager_instance = new timeManager();
 	
 
 
@@ -126,7 +141,7 @@ public class mining_expedition_simulation {
               break;
           case "2":
         	  shipStats_instance.checkIfShipHasFusionEngine();
-      		  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
+      		  go_on_mining_mid_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
               timeManager.advanceTime(10 * playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
     		  
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(15);
@@ -182,6 +197,9 @@ public class mining_expedition_simulation {
 	        
 	        chansToGetResources(80,60,50,30,10,1,10, shop_instance);
 	        playerFinances.print_finances();
+	       
+	        countGoneMiningOuterRing();
+	        QuestManagerInstance.miningSurveyQuestEasyDifficulty(1000, 1);
      	   
 	
 	       
@@ -221,7 +239,11 @@ public class mining_expedition_simulation {
 	        
 	        timeManager_instance.printCurrentDate();
 	        playerStatsInstance.increaseGeologistExperiencePlayer(10);
+	        
 	    }
+	    
+	    countGoneMiningMidRing();
+        QuestManagerInstance.miningSurveyQuestMediumDifficulty(1000);
 
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
@@ -301,7 +323,30 @@ public class mining_expedition_simulation {
 
 	
 	
+	public void countGoneMiningOuterRing()
+	{
+		
+	//	haveGoneMiningOuterRing = haveGoneMiningOuterRing++;
+		
+		if(QuestManagerInstance.getAcceptedMiningSurveyQuestEasyDifficulty()==true) {
+		haveGoneMiningOuterRing++;
+		//return baseTime;
+        System.out.println("DEBUG: Incremented haveGoneMiningOuterRing to " + haveGoneMiningOuterRing);
+    } else {
+        System.out.println("DEBUG: Quest not accepted, counter not incremented.");
+    }
+		
+	}
 	
+	public void countGoneMiningMidRing() {
+	    if (QuestManagerInstance.getAcceptedMiningSurveyQuestMediumDifficulty()) {
+	        haveGoneMiningMidRing++;
+	        System.out.println("DEBUG: Incremented haveGoneMiningMidRing to " + haveGoneMiningMidRing);
+	    } else {
+	        System.out.println("DEBUG: Medium difficulty quest not accepted, counter not incremented.");
+	    }
+	}
+
 		
 		  
 	
@@ -351,6 +396,8 @@ public class mining_expedition_simulation {
     	  int randomRollAmountGatherResources =(int) (random.nextInt(amountGetResources));
     	 int resouceRandomCalculationTimes = randomRollAmountGatherResources+ shop.getSmallMiningLaserValue();
     	 
+    	 
+    	 // Debug for smallMiningLaser
     	// System.out.println(" Bonus from small mining laser "+ shop.getSmallMiningLaserValue()); 	
     	// System.out.println("randomRollAmountGatherResources "+randomRollAmountGatherResources); 		
     	// System.out.println("resouceRandomCalculationTimes "+resouceRandomCalculationTimes); 
@@ -369,6 +416,7 @@ public class mining_expedition_simulation {
      		if (chance <= chanceToGetWaterIce ) {
     			// copperAmount = copperAmount +1;
     			this.waterIceAmount++;
+    			this.totalCollectedWaterIceAmount++; // this is not reset so it can be used for a quest
 		    } 
     		
     		if (chance <= chanceToGetIron) {
@@ -428,6 +476,10 @@ public class mining_expedition_simulation {
     public int getWaterIceAmount() {
         return this.waterIceAmount;
     }
+    
+    public int getTotalCollectedWaterIceAmount() {
+        return this.totalCollectedWaterIceAmount;
+    }
     public int getCopperAmount() {
         return this.copperAmount;
     }
@@ -442,4 +494,33 @@ public class mining_expedition_simulation {
     public int getPlatinumAmount() {
         return platinumAmount;
     }
+    
+    public int getHaveGoneMiningOuterRing() {
+        return haveGoneMiningOuterRing;
+    }
+    
+    public int getHaveGoneMiningMidRing() {
+        return haveGoneMiningMidRing;
+    }
+    
+	public void setHaveGoneMiningOuterRing(int newHaveGoneMiningOuterRing)
+	{
+		this.haveGoneMiningOuterRing= newHaveGoneMiningOuterRing;
+	}
+    
+	public void setHaveGoneMiningMidRing(int newHaveGoneMiningMidRing)
+	{
+		this.haveGoneMiningMidRing= newHaveGoneMiningMidRing;
+	}
+	
+	public void setQuestManager(QuestManager questManagerInstance) {
+	    this.QuestManagerInstance = questManagerInstance;
+	}
+	
+	public void setTotalCollectedWaterIceAmount(int newTotalCollectedWaterIceAmount)
+	{
+		this.totalCollectedWaterIceAmount= newTotalCollectedWaterIceAmount;
+	}
+	
+
     }

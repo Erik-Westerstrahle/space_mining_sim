@@ -37,9 +37,7 @@ public class MainSpaceMiningSim {
         boolean loadingSuccessful = false;
    
         
-        
-     // Creating instances of the game's main components
-     // Create instances of the game's main components
+        // Creating instances of the game's main components
         finances_player playerFinances = new finances_player();
         Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
         ship_stats shipStats_instance = new ship_stats(playerFinances, shop_instance);
@@ -47,21 +45,21 @@ public class MainSpaceMiningSim {
         playerStats playerStatsInstance = new playerStats();
         timeManager timeManager_instance = new timeManager();
         storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
-        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance 
-        );
+        hireAstronauts hireAstronautsInstance = new hireAstronauts();
+        assignAstronauts assignAstronautsInstance = new assignAstronauts();
+        EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances, playerStatsInstance, hireAstronautsInstance, assignAstronautsInstance);
 
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance, eventManagerInstance, assignAstronautsInstance, null);
+        QuestManager QuestManagerInstance = new QuestManager(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, storyDescriptionsTextInstance, miningExpedition);
+        
+        //sets the QuestManagerInstance in the existing miningExpedition instance
+        miningExpedition.setQuestManager(QuestManagerInstance);
+        
+        
         shop_instance.setMiningExpedition(miningExpedition);
         shop_instance.setPlayerFinances(playerFinances);
         SaveLoadSystem SaveLoadSystemInstance = new SaveLoadSystem();
         SoundGenerator SoundGeneratorInstance = new SoundGenerator();
-        hireAstronauts hireAstronautsInstance = new hireAstronauts();
-        assignAstronauts assignAstronautsInstance = new assignAstronauts();
-        
-
-        EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances, playerStatsInstance, hireAstronautsInstance,assignAstronautsInstance);
-        
-    
-        
         optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
         AudioAndMusic audioAndMusicInstance = new AudioAndMusic(optionsSpaceMiningSimInstance);
         
@@ -237,7 +235,7 @@ public class MainSpaceMiningSim {
                 	
                 		  
                 	 
-                	   System.out.println("astronaut highest geologist skill "+    assignAstronautsInstance.getAssignedMinerGeologistSkill());
+                	 //  System.out.println("astronaut highest geologist skill "+    assignAstronautsInstance.getAssignedMinerGeologistSkill());
                 	   miningExpedition.setShipFlightMode(shipStats_instance);
                 	   miningExpedition.select_where_go_mining(playerFinances, shipStats_instance, shop_instance, timeManager_instance, shipStats_instance);
                 	   shop_instance.sellResourceUnits();
@@ -256,13 +254,15 @@ public class MainSpaceMiningSim {
                 		   int daysUntilDeadline = timeManager_instance.getTimeUnitlDeadline();
                 		   System.out.println("Days until next debt payment deadline: " + daysUntilDeadline + " days");
                 	   }
+                	   QuestManagerInstance.miningSurveyQuestEasyDifficulty(1000,1);
+                	   QuestManagerInstance.collectIceQuest(1000);
                 	   
                 	  
                 	   
                 	 //  SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
                    case "b":
-                	   
+                	   shop_instance.check_what_have_bought();
                 	   shop_instance.spaceship_parts_store(playerFinances);
                 	   //SoundGeneratorInstance.playTone(loadingBarWidth, sleepTime, infinityTimerStop);
                        break;
@@ -390,6 +390,13 @@ public class MainSpaceMiningSim {
                     	  assignAstronauts.unassignMiner();
                     	   
                  	   break;
+                 	   
+                      case "q":
+                  	    // Code to unassign the current miner
+                  	  QuestManagerInstance.availableQuests();
+                  	QuestManagerInstance.chooseQuest();
+                  	   
+               	   break;
                       case "repair":
                    	   
                     	  shipStats_instance.repairHullSpecificAmountShipStats();
