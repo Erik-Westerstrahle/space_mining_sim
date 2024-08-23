@@ -5,12 +5,13 @@
 		
 		// Shop_space_mining_sim spaceship_parts_store_instance = new Shop_space_mining_sim();
 		
-		private boolean haveBoughtMiningArm = true;
+		private boolean haveBoughtMiningArm = false;
 		private boolean haveBoughtFusionEngine = false;
 		private boolean haveFusionEngine = false;
 		private boolean haveBoughtBasicCrewQuarters = false;
 		private boolean haveBoughtBasicRadar = false;
-		private boolean haveBoughtSmallMiningLaser = true;
+		private boolean haveBoughtSmallMiningLaser = false;
+		private boolean haveBoughtMediumMiningLaser = false;
 	
 		private double incomeMultiplier =1.0;
 		private double timeTakeWithFusionEngine =1.0;
@@ -191,6 +192,24 @@
 	    	
 	    }
 		
+		private void purchaseMediumMiningLaser(finances_player playerFinances) {
+	    	
+	    	if (haveBoughtSmallMiningLaser) {
+	    		System.out.println("You have already purchased the small mining laser.");
+	    	} else if (playerFinances.getFinances() >= priceSmallMiningLaser) {
+	            playerFinances.decrease_finances(priceSmallMiningLaser);
+	            haveBoughtSmallMiningLaser = true;
+	             bonusSmallMiningLaser = 1;
+	        
+	            System.out.println("small mining laser purchased successfully!");
+	            shipStats_instance.updateShipFeatures();
+	       
+	        } else {
+	            System.out.println("Not enough credits to purchase the small mining laser.");
+	    	}
+	    	
+	    }
+		
 		// this function is used when the player starts a new game
 	    public void resetShop() {
 	        this.haveBoughtMiningArm = false;
@@ -199,6 +218,7 @@
 	        this.haveBoughtBasicCrewQuarters = false;
 	        this.haveBoughtBasicRadar = false;
 	        this.haveBoughtSmallMiningLaser = false;
+	        this.haveBoughtMediumMiningLaser = false;
 	        this.incomeMultiplier = 1.0;
 	        this.timeTakeWithFusionEngine = 1.0;
 	        this.bonusSmallMiningLaser = 0;
