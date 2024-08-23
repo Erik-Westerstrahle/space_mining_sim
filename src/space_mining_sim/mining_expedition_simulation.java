@@ -44,6 +44,11 @@ public class mining_expedition_simulation {
 	int haveGoneMiningMidRing =0;
 	
 	int totalCollectedWaterIceAmount=0;
+	int  totalCollectedIronAmount=0;
+	
+	boolean isMiningOuterRing =false;
+	boolean isMiningMidRing =false;
+	boolean isMiningInnerRing =false;
 
 
 
@@ -87,6 +92,7 @@ public class mining_expedition_simulation {
         shipStats.setWentOnMiningExpedition(true); // Set flag on the passed shipStats instance
 	}
 	
+	
 	public void setShipFlightMode(ship_stats shipStats)
 	{
 		 System.out.println("1 normal speed. It will take longer to travel but it is the fasfest");
@@ -129,35 +135,42 @@ public class mining_expedition_simulation {
 		  switch(choice)
 		  {
           case "1":
+        	  setIsMiningOuterRing(true);
         	  shipStats_instance.checkIfShipHasFusionEngine();
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
             timeManager.advanceTime(5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
             storyDescriptionsTextInstance.printRandomStationDescription();
             storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
+            setIsMiningOuterRing(false);
             
 
           
               break;
           case "2":
+        	  setIsMiningMidRing(true);
         	  shipStats_instance.checkIfShipHasFusionEngine();
       		  go_on_mining_mid_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
               timeManager.advanceTime(10 * playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
     		  
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(15);
+    		  QuestManagerInstance.findLostSpaceShipQuest(400);
     		  storyDescriptionsTextInstance.printRandomStationDescription();
     		  storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
+    		  setIsMiningMidRing(false);
 
 
               break;
           case "3":
         	  
+        	  setIsMiningInnerRing(true);
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
               timeManager.advanceTime(10 * playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
     		  
     		  playerStatsInstance.increaseEngineeringExperiencePlayer(30);
     		  storyDescriptionsTextInstance.printRandomStationDescription();
     		  storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
+    		  setIsMiningInnerRing(false);
               break;
 		  }
 	}
@@ -420,7 +433,9 @@ public class mining_expedition_simulation {
 		    } 
     		
     		if (chance <= chanceToGetIron) {
-    			ironAmount = ironAmount +1;
+    			
+    			this.ironAmount++;
+    			this.totalCollectedIronAmount++;
 		    }
     		
     		if (chance <= chanceToGetCopper) {
@@ -480,6 +495,10 @@ public class mining_expedition_simulation {
     public int getTotalCollectedWaterIceAmount() {
         return this.totalCollectedWaterIceAmount;
     }
+    
+    public int getTotalCollectedIronIceAmount() {
+        return this.totalCollectedIronAmount;
+    }
     public int getCopperAmount() {
         return this.copperAmount;
     }
@@ -503,6 +522,19 @@ public class mining_expedition_simulation {
         return haveGoneMiningMidRing;
     }
     
+    public boolean getIsMiningOuterRing() {
+        return isMiningOuterRing;
+    }
+    
+  
+    public boolean getIsMiningMidRing() {
+        return isMiningMidRing;
+    }
+    
+    public boolean getIsMiningInnerRing() {
+        return isMiningInnerRing;
+    }
+    
 	public void setHaveGoneMiningOuterRing(int newHaveGoneMiningOuterRing)
 	{
 		this.haveGoneMiningOuterRing= newHaveGoneMiningOuterRing;
@@ -520,6 +552,21 @@ public class mining_expedition_simulation {
 	public void setTotalCollectedWaterIceAmount(int newTotalCollectedWaterIceAmount)
 	{
 		this.totalCollectedWaterIceAmount= newTotalCollectedWaterIceAmount;
+	}
+	
+	public boolean setIsMiningOuterRing(boolean newIsMiningOuterRing)
+	{
+		return this.isMiningOuterRing= newIsMiningOuterRing;
+	}
+	
+	public boolean setIsMiningMidRing(boolean newIsMiningMidRing)
+	{
+		return this.isMiningMidRing= newIsMiningMidRing;
+	}
+	
+	public boolean setIsMiningInnerRing(boolean newIsMiningInnerRing)
+	{
+		return this.isMiningInnerRing= newIsMiningInnerRing;
 	}
 	
 

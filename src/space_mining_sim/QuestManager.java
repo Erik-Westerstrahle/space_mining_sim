@@ -38,6 +38,7 @@ public class QuestManager {
     boolean acceptedminingSurveyQuestEasyDifficulty=false;
     boolean acceptedminingSurveyQuestMediumDifficulty=false;
     boolean acceptedminingSurveyQuestHardDifficulty=false;
+    boolean acceptedFindingLostSpaceShipQuest=false;
     
     boolean acceptedCollectIceQuesty=false;
     
@@ -48,7 +49,7 @@ public class QuestManager {
 		int questReward = 1000;
 		 int timesGoneOnMiningExpeditionOuterRing=0;
 	
-		 System.out.println("DEBUG: Checking quest completion quest 1: haveGoneMiningOuterRing=" + miningExpedition.getHaveGoneMiningOuterRing() + ", amountToCompleteQuest=" + amountToCompleteQuest);
+	//	 System.out.println("DEBUG: Checking quest completion quest 1: haveGoneMiningOuterRing=" + miningExpedition.getHaveGoneMiningOuterRing() + ", amountToCompleteQuest=" + amountToCompleteQuest);
 		if(miningExpedition.getHaveGoneMiningOuterRing()==amountToCompleteQuest) {
 			playerFinances.increase_finances(questMoneyReward);
 			
@@ -63,7 +64,7 @@ public class QuestManager {
 	
 	
 	public void miningSurveyQuestMediumDifficulty(int questMoney) {
-	    System.out.println("DEBUG: Checking quest completion for medium difficulty: haveGoneMiningMidRing=" + miningExpedition.getHaveGoneMiningMidRing() + ", required=1");
+	//    System.out.println("DEBUG: Checking quest completion for medium difficulty: haveGoneMiningMidRing=" + miningExpedition.getHaveGoneMiningMidRing() + ", required=1");
 
 	    if (miningExpedition.getHaveGoneMiningMidRing() >= 1) {
 	        playerFinances.increase_finances(questMoney);
@@ -98,6 +99,34 @@ public class QuestManager {
 		 
 }
 	
+	public void findLostSpaceShipQuest(int questMoney) {
+		
+		if(acceptedFindingLostSpaceShipQuest==true) {
+		if(miningExpedition.isMiningMidRing==true) {
+			 Random random = new Random();
+			 int roll = random.nextInt(100) + 1;
+			 
+			 if(roll<10)
+			 {
+				 
+					playerFinances.increase_finances(questMoney); 
+					//setAcceptedFindingLostSpaceShipQuest(false);
+					 System.out.println("found lost space ship. Reward: = "+questMoney);
+			 }
+			
+		}
+		else
+		{
+			
+		}
+		}
+		
+		
+		 
+		
+		 
+}
+	
 	public void resetGoneMiningOuterRingCount()
 	{
 		
@@ -121,6 +150,11 @@ public class QuestManager {
 		if(acceptedCollectIceQuesty==false)
 		{
 			 System.out.println("3 collect ice quest available ");
+		}
+		
+		if(acceptedCollectIceQuesty==false)
+		{
+			 System.out.println("4 find lost spaceship quest");
 		}
 		
 	}
@@ -157,6 +191,14 @@ public class QuestManager {
 	    
 	    break;
 	    
+	     case "4":
+	    	 setAcceptedFindingLostSpaceShipQuest(true);
+	    	 
+	    	
+	    	 System.out.println("4 find lost spaceship quest");
+	    
+	    break;
+	    
 	     default:
 	            System.out.println("Invalid command.");
 		}
@@ -178,6 +220,11 @@ public class QuestManager {
 		return acceptedCollectIceQuesty;
 	}
 	
+	public boolean getAcceptedFindingLostSpaceShipQuest()
+	{
+		return acceptedFindingLostSpaceShipQuest;
+	}
+	
 	
 	public void setAcceptedMiningSurveyQuestEasyDifficulty(boolean newAcceptedminingSurveyQuestEasyDifficulty)
 	{
@@ -192,6 +239,11 @@ public class QuestManager {
 	public void setAcceptedCollectIceQuesty(boolean newAcceptedCollectIceQuesty)
 	{
 		this.acceptedCollectIceQuesty= newAcceptedCollectIceQuesty;
+	}
+	
+	public void setAcceptedFindingLostSpaceShipQuest(boolean newAcceptedFindingLostSpaceShipQuest)
+	{
+		this.acceptedFindingLostSpaceShipQuest= newAcceptedFindingLostSpaceShipQuest;
 	}
 	
 }
