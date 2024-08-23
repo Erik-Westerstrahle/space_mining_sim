@@ -17,6 +17,7 @@ public class optionsSpaceMiningSim {
 		 System.out.print("audio enabled");
 		  break;
 	 case "0":
+		 // audio is by default off
 		 setSoundBoolean(false);
 		 System.out.print("audio disabled");
 		  break;
