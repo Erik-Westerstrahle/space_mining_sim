@@ -1,5 +1,7 @@
 package space_mining_sim;
 
+// this class manages the time in the game
+// the smallest unit of time in the game is a day
 public class timeManager {
 	
 	 // mining_expedition_simulation miningExpedition = new mining_expedition_simulation();
@@ -8,6 +10,7 @@ public class timeManager {
 	int timeMonth = 1;
 	int timeYear = 2221;
 	int timeToDebtDeadline =  60;
+	int timeToPayAstronauts = 30;
 	
 
 	  public timeManager() {
@@ -17,7 +20,7 @@ public class timeManager {
 
 	
 	
-	
+	// All of the months are 30 days to keep time calculation simple
 	public void advanceTime(double d)
 	{
 		 int intDays = (int) Math.round(d); // Round to nearest integer
@@ -59,7 +62,14 @@ public class timeManager {
         this.timeMonth = 1;
         this.timeYear = 2221;
         this.timeToDebtDeadline = 60;
+        this.timeToPayAstronauts=30;
     }
+    
+	public int getTimeToPayAstronauts()
+	{
+		return timeToPayAstronauts-timeDay;
+		
+	}
 	
 	public int getTimeUnitlDeadline()
 	{
@@ -72,7 +82,7 @@ public class timeManager {
 		return timeToDebtDeadline = timeDay + 60;
 	}
 	
-	public int getCurrentTimeDay()
+	public int getCurrentTimeDay(double d)
 	{
 		return timeDay;
 	
