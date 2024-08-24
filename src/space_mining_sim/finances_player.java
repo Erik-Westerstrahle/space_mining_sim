@@ -10,6 +10,7 @@ public class finances_player {
 	}
 	int finances_player = 0;
 	int debtPlayer = 600000;
+	
 
 	
 	public void print_finances() {
@@ -36,7 +37,8 @@ public class finances_player {
 		   }
 	    }
 
-	    
+	    // the debt is the win condition for the game
+	   // when the player reduces the debt to zero then the player has won the game
 	    public void payOffPlayerDebt ()
 	    {
 	    	  Scanner scanner = new Scanner(System.in);
@@ -63,7 +65,7 @@ public class finances_player {
 	    }
 	    
 	    
-	    
+	    // function that lets the player pay off the debt
 	    public void payDebtIstallment(timeManager timeManager_instance)
 	    {
 	    	int debtPayment = 300;
