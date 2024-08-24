@@ -17,13 +17,14 @@ public class Astronauts {
     private int astrogatorSkill;
     private int mechanicSkill;
     private int minerSkill;
+	private timeManager timeManager;
 	
 	
 
   
     public Astronauts(int id, String name, int skillLevel, int salaryRequirement, String occupation, String origin, 
             String personalityAstronaut, String astrologySign, String backgroundAstronaut, 
-            int geologistSkill, int astrogatorSkill, int mechanicSkill, int minerSkill) {
+            int geologistSkill, int astrogatorSkill, int mechanicSkill, int minerSkill,timeManager timeManagerInstanceAstonauts) {
 this.id = id;
 this.name = name;
 this.skillLevel = skillLevel;
@@ -37,12 +38,26 @@ this.geologistSkill = geologistSkill;
 this.astrogatorSkill = astrogatorSkill;
 this.mechanicSkill = mechanicSkill;
 this.minerSkill = minerSkill;
+this.timeManager = timeManagerInstanceAstonauts;
 }
 
+    
     
     public void bonusesFromAstronautsSkills(int skillLevel)
     {
     	
+    }
+    
+    public void salaryAstronauts()
+    {
+    	if(timeManager.getTimeToPayAstronauts()<=0)
+    	{
+    		 System.out.println("It's time to pay the astronauts.");
+    	}
+    	else
+    	{
+    		 System.out.println("time until astronauts salary needs to be paid is "+timeManager.getTimeToPayAstronauts() );
+    	} 
     }
 
 
@@ -101,6 +116,10 @@ this.minerSkill = minerSkill;
 
     public int getMinerSkillAstronautsClass() {
         return minerSkill;
+    }
+    
+    public int setAstrogatorSkill() {
+        return astrogatorSkill;
     }
     @Override
     public String toString() {
