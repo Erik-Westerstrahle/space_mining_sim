@@ -103,9 +103,10 @@ public void choiceAssingAstronauts(hireAstronauts hireAstronautsInstance)
 			
 			scanner.nextLine();
 			
-			List<Astronauts> hiredAstronauts = hiredAstronauts = hireAstronautsInstance.getHiredAstronauts();
+			List<Astronauts> hiredAstronauts = hiredAstronauts = hireAstronautsInstance.getHiredAstronauts(); // creates a list hiredAstronauts
 			Astronauts selectedAstronaut = null;
-			for (Astronauts astronaut : hiredAstronauts) {
+			for (Astronauts astronaut : hiredAstronauts) // iterates over the hiredAstronauts lists
+			{
 				if (astronaut.getId() == astronautChoice) {
 					selectedAstronaut = astronaut;
 			
@@ -146,7 +147,7 @@ public void choiceAssingAstronauts(hireAstronauts hireAstronautsInstance)
 		 System.out.println(astronaut.getName() + " has been assigned to the miner jobb");
 		 System.out.println(astronaut);
 		 assignedMiner = astronaut;
-		 shipStats_instance.setAvailableCrewSpots(astronaut.getMinerSkillAstronautsClass());
+		 shipStats_instance.setAvailableCrewSpots(astronaut.getMinerSkillAstronautsClass()); // sets miner skill value to shipStats
 		 System.out.println("Astronaut " + astronaut.getName() + " has been assigned as the miner.");
 		 System.out.println("astronaut has the miner skill value: "+shipStats_instance.getMinerSkillValue());
 		 
