@@ -47,9 +47,18 @@ public class MainSpaceMiningSim {
         storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
         hireAstronauts hireAstronautsInstance = new hireAstronauts();
         assignAstronauts assignAstronautsInstance = new assignAstronauts();
+        Astronauts assignedAstrogator = assignAstronautsInstance.getAssignedAstrogator();
         EventManager eventManagerInstance = new EventManager(shipStats_instance, timeManager_instance, playerFinances, playerStatsInstance, hireAstronautsInstance, assignAstronautsInstance);
 
-        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance, eventManagerInstance, assignAstronautsInstance, null);
+        mining_expedition_simulation miningExpedition = new mining_expedition_simulation(
+        		timeManager_instance, 
+        		playerStatsInstance, 
+        		shipStats_instance, 
+        		storyDescriptionsTextInstance, 
+        		eventManagerInstance, 
+        		assignAstronautsInstance, 
+        		null, 
+        		assignedAstrogator);
         QuestManager QuestManagerInstance = new QuestManager(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, storyDescriptionsTextInstance, miningExpedition);
         
         //sets the QuestManagerInstance in the existing miningExpedition instance
@@ -323,18 +332,7 @@ public class MainSpaceMiningSim {
                 	    shipStats_instance.equipPartToHardpoint(hardpoint, partId);
                 	    break;
                 	    
-//                   case "t":
-//                	   // debug for getting resources
-//                	   miningExpedition.chansToGetResources(80,70,50,30,10,1,10);
-//                	   shop_instance.sellResourceUnits();
-//                	   break;
-//                	   
-//                   case "m":
-//                	   // debug for getting resources
-//                	   shop_instance.sellResourceUnits();
-//
-//                	   break;
-                	    
+
                       case "o":
                     	  //System.out.print("input your options");
                     	  optionsSpaceMiningSimInstance.printOptions();
@@ -344,42 +342,13 @@ public class MainSpaceMiningSim {
 
                  	   break;
                       case "n":
-//                          System.out.println("DEBUG: User selected to assign a miner.");
-//                          hireAstronauts.viewHiredAstronauts();
-//                          if (assignAstronauts.getAssignedMiner() != null) {
-//                              System.out.println("A miner is already assigned: " + assignAstronauts.getAssignedMiner().getName() + ". Use 'd' to unassign the current miner first.");
-//                          } else {
-//                              System.out.println("Select an astronaut to assign as a miner from the list of hired astronauts:");
-//                              List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
-//                              for (Astronauts astronaut : hiredAstronauts) {
-//                                  System.out.println(astronaut.getId() + ". " + astronaut);
-//                              }
-//                              System.out.println("Enter the number of the astronaut to assign as a miner:");
-//                              int minerChoice = scanner.nextInt();
-//                              scanner.nextLine(); // consume the newline
-//
-//                              // Debug: Log the selected astronaut ID
-//                              System.out.println("DEBUG: User selected astronaut ID: " + minerChoice);
-//
-//                              // Find the astronaut with the matching id
-//                              Astronauts selectedAstronaut = null;
-//                              for (Astronauts astronaut : hiredAstronauts) {
-//                                  if (astronaut.getId() == minerChoice) {
-//                                      selectedAstronaut = astronaut;
-//                                      break;
-//                                  }
-//                              }
-//
-//                              if (selectedAstronaut != null) {
-//                                  System.out.println("DEBUG: Selected astronaut found: " + selectedAstronaut.getName());
-//                                  assignAstronauts.assignMinerToShip(selectedAstronaut, shipStats_instance);
-//                              } else {
-//                                  System.out.println("Invalid selection.");
-//                                  System.out.println("DEBUG: No astronaut found with the ID: " + minerChoice);
-//                              }
-//                          }
-                    	  
+
+                    	  // here assign astronauts to different jobs
                     	  assignAstronautsInstance.choiceAssingAstronauts(hireAstronautsInstance);
+                    	
+                    	  assignedAstrogator = assignAstronautsInstance.getAssignedAstrogator();
+                    	  miningExpedition.setAssignedAstrogator(assignedAstrogator);
+
                     	
                     	
                     	    break;

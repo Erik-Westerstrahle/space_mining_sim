@@ -26,6 +26,7 @@ public class mining_expedition_simulation {
 	 private EventManager eventManagerInstance;
 	 private assignAstronauts assignAstronautsInstance;
 		private QuestManager QuestManagerInstance;
+	private Astronauts AstronautsInstance;
 	 
 	// private Astronauts AstronautsMiningExpeditionsSimulationInstance;
 	 
@@ -52,20 +53,22 @@ public class mining_expedition_simulation {
 
 
 
-
+	
 	
 //	double timeItWillTakeToMine= baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine();
 
 
 	
 	//dependency injection
-    public mining_expedition_simulation(timeManager timeManager_instance, 
+    public mining_expedition_simulation(
+    		timeManager timeManager_instance, 
     		playerStats playerStatsInstance, 
     		ship_stats shipStats_instance, 
     		storyDescriptionsText storyDescriptionsTextInstance, 
     		EventManager eventManagerInstance, 
     		assignAstronauts assignAstronautsInstance,
-    		QuestManager QuestManagerInstance) {
+    		QuestManager QuestManagerInstance,
+    		Astronauts AstronautsInstance) {
         this.timeManager_instance = timeManager_instance;
         this.playerStatsInstance = playerStatsInstance;
         this.shipStats_instance = shipStats_instance;
@@ -73,6 +76,7 @@ public class mining_expedition_simulation {
         this.eventManagerInstance = eventManagerInstance;
         this.assignAstronautsInstance = assignAstronautsInstance;
         this.QuestManagerInstance = QuestManagerInstance; 
+       this.AstronautsInstance = AstronautsInstance;
     }
 	 
 	
@@ -136,12 +140,24 @@ public class mining_expedition_simulation {
 		  {
           case "1":
         	  setIsMiningOuterRing(true);
+        	    // Ensure astrogator is assigned
+        	    if (assignAstronautsInstance.getAssignedAstrogator() != null) {
+        	        AstronautsInstance = assignAstronautsInstance.getAssignedAstrogator(); // there can be several astronauts but one has the astrogator jobb. This makes sure that the experience is assigned to the astronaut whith the jobb
+        	    } else {
+        	        System.out.println("No astrogator assigned. Cannot proceed with mining expedition.");
+        	        return;
+        	    }
         	  shipStats_instance.checkIfShipHasFusionEngine();
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
             timeManager.advanceTime(5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
             storyDescriptionsTextInstance.printRandomStationDescription();
             storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
+            if (AstronautsInstance != null) {
+                AstronautsInstance.addAstrogatorExperience(25);
+            } else {
+                System.out.println("No astrogator assigned. Cannot add experience.");
+            }
             setIsMiningOuterRing(false);
             
 
@@ -186,7 +202,7 @@ public class mining_expedition_simulation {
 	        System.out.println("You encountered pirates and earned 0 money!");
 	        shipStats_instance.decreaseCrewMorale(5);
 	    } else {
-	    	 List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
+	    	// List<Astronauts> hiredAstronauts = hireAstronauts.getHiredAstronauts();
 	    	
 	        System.out.println("Went mining outer ring");
 	       
@@ -568,6 +584,11 @@ public class mining_expedition_simulation {
 	{
 		return this.isMiningInnerRing= newIsMiningInnerRing;
 	}
+	
+	public void setAssignedAstrogator(Astronauts assignedAstrogator) {
+	    this.AstronautsInstance = assignedAstrogator;
+	}
+
 	
 
     }

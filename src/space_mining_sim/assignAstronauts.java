@@ -1,5 +1,6 @@
 package space_mining_sim;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -230,14 +231,7 @@ public void choiceAssingAstronauts(hireAstronauts hireAstronautsInstance)
 		    }
 		}
 	 
-	 
-	// public static void unassignMiner2()
-	// {
-//		 if (assignedMiner != null)
-//		 {
-//			 
-//		 }
-	// }
+
 
 	    
 	//Method to get the assigned miner
@@ -307,6 +301,18 @@ public void choiceAssingAstronauts(hireAstronauts hireAstronautsInstance)
 	    System.out.println("No astrogator is currently assigned.");
 	    return 0; // Return 0 if no astrogator is assigned
 	}
+	}
+	
+	public void saveAssignedAstrogatorExperience(BufferedWriter writer) throws IOException {
+		if (assignedAstrogator !=null) {
+			assignedAstrogator.saveAstronautAstrogatorExperience(writer);
+		}
+	}
+	
+	public void loadAssignedAstrogatorExperience(int astrogatorExperience) {
+		if (assignedAstrogator !=null) {
+			assignedAstrogator.loadAstronautAstrogatorExperience(astrogatorExperience);
+		}
 	}
 	
     public static void setAssignedMiner(Astronauts astronaut) {

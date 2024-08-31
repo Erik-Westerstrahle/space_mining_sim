@@ -18,6 +18,8 @@ public class SaveLoadSystem {
         try {
         	  // Using BufferedWriter for efficient writing to a file
             BufferedWriter writer = new BufferedWriter(new FileWriter("game_save.txt"));
+            
+         
             // Writing player's finances and debt to the file
             writer.write( playerFinances.getFinances() + "\n");
             writer.write( playerFinances.getDebt() + "\n");
@@ -45,6 +47,8 @@ public class SaveLoadSystem {
             writer.write(assignAstronautsInstance.getAssignedMiner() != null ? assignAstronautsInstance.getAssignedMiner().getId() + "\n" : "-1\n");
             writer.write(assignAstronautsInstance.getAssignedAstrogator() != null ? assignAstronautsInstance.getAssignedAstrogator().getId() + "\n" : "-1\n");
             writer.write(assignAstronauts.getAssignedMechanic() != null ? assignAstronautsInstance.getAssignedMechanic().getId() + "\n" : "-1\n");
+            
+            assignAstronautsInstance.saveAssignedAstrogatorExperience(writer);
             
             
             
@@ -91,6 +95,9 @@ public class SaveLoadSystem {
            assignAstronautsInstance.setAssignedMiner(findAstronautById(hiredAstronauts, minerId));
            assignAstronautsInstance.setAssignedAstrogator(findAstronautById(hiredAstronauts, astrogatorId));
            assignAstronautsInstance.setAssignedMechanic(findAstronautById(hiredAstronauts, mechanicId));
+           
+           int astrogatorExperience = Integer.parseInt(reader.readLine());
+           assignAstronautsInstance.loadAssignedAstrogatorExperience(astrogatorExperience);
            
             // ... Read other game states
             reader.close();
