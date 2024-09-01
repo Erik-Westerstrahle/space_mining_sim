@@ -88,8 +88,13 @@ public class MainSpaceMiningSim {
         
      // If loading is successful, display welcome messages and load game data
         System.out.println("Booting Spaceship OS...");
+        
+   
         try {
-
+        
+        	if(optionsSpaceMiningSimInstance.getStartupLoadingBarIsActive()==true) {
+        		
+        	   
         // Display an ASCII loading bar
         for (int i = 0; i <= loadingBarWidth; i++) {
             System.out.print("\r[");
@@ -103,6 +108,10 @@ public class MainSpaceMiningSim {
             System.out.print("]");
             Thread.sleep(sleepTime); // Pause to simulate loading time
         }
+        	}else {
+        		
+        	}
+        	
         loadingSuccessful = true;
        } catch (InterruptedException e) {
            System.err.println("\nError during loading: " + e.getMessage());
@@ -123,7 +132,7 @@ public class MainSpaceMiningSim {
 
                
            
-               
+        	 
            
 
            
