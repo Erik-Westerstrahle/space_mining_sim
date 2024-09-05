@@ -23,6 +23,7 @@ class hireAstronauts {
     private static Astronauts assignedMiner = null;
     private static Astronauts assignedAstrogator = null;
     private static int nextAstronautId = 1;
+    private static assignAstronauts assignAstronautsInstance = new assignAstronauts();
     
 
 
@@ -178,7 +179,7 @@ class hireAstronauts {
                     int mechanicSkill = Integer.parseInt(matcher.group(12).trim());
                     int minerSkill = Integer.parseInt(matcher.group(13).trim());
 
-                    // Create a new Astronaut instance with the extracted data
+                    //  Astronaut instance with the extracted data
                     Astronauts astronaut = new Astronauts(
                         id,
                         name,
@@ -193,7 +194,8 @@ class hireAstronauts {
                         astrogatorSkill,
                         mechanicSkill,
                         minerSkill,
-                        timeManagerInstance
+                        timeManagerInstance,
+                        assignAstronautsInstance 
                     );
 
                     // Add the astronaut to the list

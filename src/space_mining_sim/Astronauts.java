@@ -24,14 +24,15 @@ public class Astronauts {
 	private int astrogatorExperienceAstronaut; 
 	private int geologistExperienceAstronaut; 
 	private int mechanistExperienceAstronaut; 
-	private int minerExperienceAstronaut; 
+	private int minerExperienceAstronaut;
+	private assignAstronauts assignAstronauts; 
 	
 	
 
   // constructor used to initializes the Astronauts object
     public Astronauts(int id, String name, int skillLevel, int salaryRequirement, String occupation, String origin, 
             String personalityAstronaut, String astrologySign, String backgroundAstronaut, 
-            int geologistSkill, int astrogatorSkill, int mechanicSkill, int minerSkill,timeManager timeManagerInstanceAstonauts) {
+            int geologistSkill, int astrogatorSkill, int mechanicSkill, int minerSkill,timeManager timeManagerInstanceAstonauts,assignAstronauts assignAstronautsInstance) {
 this.id = id;
 this.name = name;
 this.skillLevel = skillLevel;
@@ -50,16 +51,37 @@ this.astrogatorExperienceAstronaut = 0;
 this.geologistExperienceAstronaut = 0;
 this.mechanistExperienceAstronaut = 0;
 this.minerExperienceAstronaut = 0;
+this.assignAstronauts=assignAstronautsInstance;
 }
 
     
     public void addAstrogatorExperience (int experience) {
     	this.astrogatorExperienceAstronaut += experience;
-    	if (this.astrogatorExperienceAstronaut >=15) {
-    		this.astrogatorSkill +=1;
-    		this.astrogatorExperienceAstronaut=0; //reset experience
-    	    System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
-    	}
+//    	if (this.astrogatorExperienceAstronaut >=15) {
+//    		this.astrogatorSkill +=1;
+//    		this.astrogatorExperienceAstronaut=0; //reset experience
+//    	    System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+//    	}
+    	
+    	
+		if(astrogatorExperienceAstronaut >= 5)
+		{
+			astrogatorSkill +=1;
+			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+	
+		}
+		if(astrogatorExperienceAstronaut>=10 )
+		{
+			astrogatorSkill +=1;
+			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+		
+		}
+		if(astrogatorExperienceAstronaut>=15 )
+		{
+			astrogatorSkill +=1;
+			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+		
+		}
     }
     
     public void addGeologistExperienceAstronaut (int experience) {
@@ -90,6 +112,25 @@ this.minerExperienceAstronaut = 0;
         }
     }
 
+//	public void levelUpAstrogatorAstronaut () {
+//	
+//		if(astrogatorExperienceAstronaut>=5 &&astrogatorExperienceAstronaut==0)
+//		{
+//			astrogatorSkill +=1;
+//	
+//		}
+//		if(astrogatorExperienceAstronaut>=10 &&astrogatorExperienceAstronaut==1)
+//		{
+//			astrogatorSkill +=1;
+//		
+//		}
+//		if(astrogatorExperienceAstronaut>=15 &&astrogatorExperienceAstronaut==2)
+//		{
+//			astrogatorSkill +=1;
+//		
+//		}
+//		
+//		}
     
     
     public void bonusesFromAstronautsSkills(int skillLevel)

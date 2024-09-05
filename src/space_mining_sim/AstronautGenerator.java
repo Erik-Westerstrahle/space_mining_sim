@@ -64,6 +64,8 @@ public class AstronautGenerator {
     private static int nextAstronautId = 1;
     
     private static timeManager timeManagerInstance = new timeManager();
+    
+    private static assignAstronauts assignAstronautsInstance = new assignAstronauts();
  
 // here the astronauts are generated when the game is run
     // the randomly generated astronauts are saved to astronauts.txt
@@ -88,7 +90,20 @@ public class AstronautGenerator {
 
         
        // return new Astronauts(fullName, skillLevel, salary, occupation, home, personalityAstronaut, home,astrologySign,backgroundAstronaut);
-        return new Astronauts(nextAstronautId++,fullName, skillLevel, salary, occupation, home, personalityAstronaut, astrologySign, backgroundAstronaut, geologistSkill, astrogatorSkill, mechanicSkill, minerSkill,timeManagerInstance);
+        return new Astronauts(nextAstronautId++,fullName, 
+        		skillLevel, 
+        		salary, 
+        		occupation, 
+        		home, 
+        		personalityAstronaut, 
+        		astrologySign, 
+        		backgroundAstronaut, 
+        		geologistSkill, 
+        		astrogatorSkill, 
+        		mechanicSkill, 
+        		minerSkill,
+        		timeManagerInstance,
+        		assignAstronautsInstance  );
 
     }
 }
