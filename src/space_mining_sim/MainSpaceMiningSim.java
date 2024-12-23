@@ -94,7 +94,7 @@ public class MainSpaceMiningSim {
         
         	if(optionsSpaceMiningSimInstance.getStartupLoadingBarIsActive()==true) {
         		
-        	   
+  /*      	   
         // Display an ASCII loading bar
         for (int i = 0; i <= loadingBarWidth; i++) {
             System.out.print("\r[");
@@ -107,12 +107,15 @@ public class MainSpaceMiningSim {
             }
             System.out.print("]");
             Thread.sleep(sleepTime); // Pause to simulate loading time
-        }
-        	}else {
+            */
         		
-        	}
+        		LoadingBar LoadingBarInstance = new LoadingBar(loadingBarWidth, sleepTime);
+        		LoadingBarInstance.displayLoadingBar();
+        		
+        }
         	
-        loadingSuccessful = true;
+        	loadingSuccessful = true;	
+        
        } catch (InterruptedException e) {
            System.err.println("\nError during loading: " + e.getMessage());
            
@@ -123,12 +126,16 @@ public class MainSpaceMiningSim {
            System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
            System.out.println(" ");
            
-           
+       }
+       else {
+    	   System.out.println("\nBoot Failed. ");
+       }
+      
            
  
            
  // This keeps the game loop going
-           while (true) {
+          // while (true) {
 
                
            
@@ -401,9 +408,11 @@ public class MainSpaceMiningSim {
                        System.out.println("Press 's' to save the game");
                        System.out.println("Press 'l' to load the game");
                        System.out.println("Press 'h' to hire astronauts");
-                       System.out.println("Press 'view' to see hired astronauts");
+                       System.out.println("Type 'view' to see hired astronauts");
                        System.out.println("Press 'c' to view your stats");
                        System.out.println("Press 'z' to start a new game");
+                       System.out.println("Press 'n' to assign an astronaut to a job");
+                       System.out.println("Type 'repair' to repair the ship a specific amount");
                 	   break;
                       case "exit":
                           System.out.println("Exiting the game. Goodbye!");
@@ -420,9 +429,12 @@ public class MainSpaceMiningSim {
 
            
            
-       }} else {
+       }
+/*
+		else {
            System.out.println("\nBoot Failed. Please try again or contact support.");
        }
+       */
        
  
        
@@ -434,7 +446,7 @@ public class MainSpaceMiningSim {
      //   System.out.println("\nBoot Complete. Welcome to Spaceship OS!");
        
 
-    }
+    
     
 
     
