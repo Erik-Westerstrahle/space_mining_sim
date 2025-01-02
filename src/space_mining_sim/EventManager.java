@@ -173,6 +173,28 @@ private boolean performSkillCheck(int playerSkillLevels, int astronautSkillLevel
 }		
 }
 	
+	
+	public void eventEncounterAbandonedAsteroideMine() {
+		 Random random = new Random();
+		
+		// int chance = random.nextInt(100)+1;
+		 int chance = random.nextInt(100);
+		 int chanceToEncounterAbandonedAsteroideMine =90;
+
+		 
+		 if (chance >= chanceToEncounterAbandonedAsteroideMine) {
+		        System.out.println("you encountered an abandoned asteroid mine. It was abandoned a long time ago. There is nothing here you continue onwards");
+		 
+		 }
+		 else {
+			 
+		 }
+			 
+		 
+			 
+	
+}
+	
 	public void eventExtortionFromMiner() {
 		 Random random = new Random();
 			
