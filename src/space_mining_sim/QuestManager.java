@@ -5,16 +5,7 @@ import java.util.Scanner;
 
 public class QuestManager {
 	
-//    finances_player playerFinances = new finances_player();
-//    Shop_space_mining_sim shop_instance = new Shop_space_mining_sim();
-//    ship_stats shipStats_instance = new ship_stats(playerFinances, shop_instance);
-//  //  shop_instance.setShipStatsInstance(shipStats_instance);
-//    playerStats playerStatsInstance = new playerStats();
-//    timeManager timeManager_instance = new timeManager();
-//    storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
-//    mining_expedition_simulation miningExpedition = new mining_expedition_simulation(timeManager_instance, playerStatsInstance, shipStats_instance, storyDescriptionsTextInstance 
-//    );
-//    
+   
 	
     private finances_player playerFinances;
     private Shop_space_mining_sim shop_instance;
@@ -23,6 +14,9 @@ public class QuestManager {
     private timeManager timeManager_instance;
     private storyDescriptionsText storyDescriptionsTextInstance;
     private mining_expedition_simulation miningExpedition;
+    
+   
+    private static final int probe_quest_treshold =1;
     
     public QuestManager(finances_player playerFinances, Shop_space_mining_sim shop_instance, ship_stats shipStats_instance, playerStats playerStatsInstance, timeManager timeManager_instance, storyDescriptionsText storyDescriptionsTextInstance, mining_expedition_simulation miningExpedition) {
         this.playerFinances = playerFinances;
@@ -41,7 +35,7 @@ public class QuestManager {
     boolean acceptedFindingLostSpaceShipQuest=false;
     
     boolean acceptedCollectIceQuesty=false;
-    
+    boolean acceptedProbeQuest=false;
     
    
 
@@ -72,9 +66,26 @@ public class QuestManager {
 	        setAcceptedMiningSurveyQuestMediumDifficulty(false); // Mark the quest as completed
 	        System.out.println("Medium mining survey completed. You gained " + questMoney);
 	    } else {
-	        System.out.println("DEBUG: Medium mining survey not yet completed.");
+	        //System.out.println("DEBUG: Medium mining survey not yet completed.");
 	    }
 	}
+	
+	public void transportProbeQuest(int questMoney) {
+	
+		
+		if(!getAcceptedProbeQuest()) {
+			return;
+		}
+		miningExpedition.incrementProbeQuestProgress();
+		
+		if(miningExpedition.incrementProbeQuestProgress()>=probe_quest_treshold) {
+	        playerFinances.increase_finances(questMoney);
+	        miningExpedition.resetProbeQuestProgress();
+	        System.out.println("PROBE QUEST completed. Received " + questMoney);			
+		}
+	}
+	
+
 
 	
 	
@@ -156,6 +167,11 @@ public class QuestManager {
 		{
 			 System.out.println("4 find lost spaceship quest");
 		}
+		if(acceptedProbeQuest==false)
+		{
+			 System.out.println("5 probe quest");
+		}
+		
 		
 	}
 	
@@ -199,6 +215,14 @@ public class QuestManager {
 	    
 	    break;
 	    
+	     case "5":
+	    	 setAcceptedProbeQuest(true);
+	    	 
+	    	 miningExpedition.resetProbeQuestProgress();
+	    	 System.out.println("Probequest bool = "+ acceptedProbeQuest);
+	    
+	    break;
+	    
 	     default:
 	            System.out.println("Invalid command.");
 		}
@@ -225,6 +249,11 @@ public class QuestManager {
 		return acceptedFindingLostSpaceShipQuest;
 	}
 	
+	public boolean getAcceptedProbeQuest()
+	{
+		return acceptedProbeQuest;
+	}
+	
 	
 	public void setAcceptedMiningSurveyQuestEasyDifficulty(boolean newAcceptedminingSurveyQuestEasyDifficulty)
 	{
@@ -244,6 +273,11 @@ public class QuestManager {
 	public void setAcceptedFindingLostSpaceShipQuest(boolean newAcceptedFindingLostSpaceShipQuest)
 	{
 		this.acceptedFindingLostSpaceShipQuest= newAcceptedFindingLostSpaceShipQuest;
+	}
+	
+	public void setAcceptedProbeQuest(boolean newAcceptedProbeQuest)
+	{
+		this.acceptedProbeQuest= newAcceptedProbeQuest;
 	}
 	
 }

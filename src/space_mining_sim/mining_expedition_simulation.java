@@ -46,17 +46,45 @@ public class mining_expedition_simulation {
 	
 	int totalCollectedWaterIceAmount=0;
 	int  totalCollectedIronAmount=0;
+	int probeQuestProgress = 0;
+
+	
+	int probabilityFindWaterIceOuterRing =80;
+	int probabilityFindIroneOuterRing =60;
+	int probabilityFindCopperOuterRing =50;  
+	int probabilityFindSilverOuterRing =30;
+	int probabilityFindGoldOuterRing =10;
+	int probabilityFindPlatinumOuterRing =1;
+	int probabilityFindUraniumOuterRing =5;
+	
+	int amountGetResourcesOuterRing =10;
+	
+	
+	
+	int probabilityFindWaterIceMidRing =40;
+	int probabilityFindIronMidRing =30;
+	int probabilityFindCopperMidRing =50;  
+	int probabilityFindSilverMidRing =40;
+	int probabilityFindGoldMidRing =20;
+	int probabilityFindPlatinumMidRing =5;
+	int probabilityFindUraniumMidRing =10;
+	
+	int amountGetResourcesMidRing =15;
+	
+	
+	int probabilityFindWaterIceInnerRing =20;
+	int probabilityFindIronInnerRing =30;
+	int probabilityFindCopperInnerRing =60;  
+	int probabilityFindSilverInnerRing =50;
+	int probabilityFindGoldInnerRing =25;
+	int probabilityFindPlatinumInnerRing =10;
+	int probabilityFindUraniumInnerRing =20;
+	
+	int amountGetResourcesInnerRing =15;
 	
 	boolean isMiningOuterRing =false;
 	boolean isMiningMidRing =false;
 	boolean isMiningInnerRing =false;
-
-
-
-	
-	
-//	double timeItWillTakeToMine= baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine();
-
 
 	
 	//dependency injection
@@ -224,13 +252,22 @@ public class mining_expedition_simulation {
 //	        playerFinances.increase_finances(receive_money); // Increase finances
 //	        System.out.println("You received " + receive_money + " credits");
 	        
-	        chansToGetResources(80,60,50,30,10,1,10, shop_instance);
+	        chansToGetResources(
+	        		probabilityFindWaterIceOuterRing,
+	        		probabilityFindIroneOuterRing,
+	        		probabilityFindCopperOuterRing,
+	        		probabilityFindSilverOuterRing,
+	        		probabilityFindGoldOuterRing,
+	        		probabilityFindPlatinumOuterRing,
+	        		probabilityFindUraniumOuterRing, 
+	        		amountGetResourcesOuterRing,
+	        		shop_instance);
 	        playerFinances.print_finances();
 	       
 	        countGoneMiningOuterRing();
 	        QuestManagerInstance.miningSurveyQuestEasyDifficulty(1000, 1);
      	   
-	
+	        //QuestManagerInstance.transportProbeQuest(1000);
 	       
 	       
 	       
@@ -254,17 +291,29 @@ public class mining_expedition_simulation {
 	    	 int receive_money = calculateIncome(300, shop_instance.getIncomeMultiplier(), hiredAstronauts);
 	        System.out.println("Went mining mid ring");
 	        
+
+	        if(QuestManagerInstance.getAcceptedProbeQuest())
+	        {
+	        QuestManagerInstance.transportProbeQuest(10000);
+	        }
+	        
 	        
 	        //events that can happen are listed here
 	        eventManagerInstance.callAllEvents();
 	        
 	        shipStats_instance.increaseCrewMorale(3);
-	 
+
 	        
-//	        playerFinances.increase_finances(receive_money); // Increase finances
-//	        System.out.println("You received " + receive_money);
-	        
-	        chansToGetResources(50,60,70,40,20,5,10, shop_instance);
+	        chansToGetResources(
+	        		probabilityFindWaterIceMidRing,
+	        		probabilityFindIronMidRing,
+	        		probabilityFindCopperMidRing,
+	        		probabilityFindSilverMidRing,
+	        		probabilityFindGoldMidRing,
+	        		probabilityFindPlatinumMidRing,
+	        		probabilityFindUraniumMidRing,
+	        		amountGetResourcesMidRing, 
+	        		shop_instance);
 	        
 	        timeManager_instance.printCurrentDate();
 	        playerStatsInstance.increaseGeologistExperiencePlayer(10);
@@ -273,7 +322,7 @@ public class mining_expedition_simulation {
 	    
 	    countGoneMiningMidRing();
         QuestManagerInstance.miningSurveyQuestMediumDifficulty(1000);
-
+        setIsMiningMidRing(true);
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
@@ -283,7 +332,7 @@ public class mining_expedition_simulation {
 		
 	    Random random = new Random();
 	    int chance = random.nextInt(100); // Generate a number between 0 and 99
-	    int pirateChance = 1; // 1% chance for outer ring
+	    int pirateChance = 1; // 1% chance for pirate outer ring
 
 	    if (chance <= pirateChance) {
 	        System.out.println("You encountered pirates and earned 0 money!");
@@ -300,8 +349,19 @@ public class mining_expedition_simulation {
 	    	 
 	    	 
 	        System.out.println("Went mining inner ring");
-	        playerFinances.increase_finances(receive_money); // Increase finances
-	        System.out.println("You received " + receive_money);
+	        //playerFinances.increase_finances(receive_money); // Increase finances
+	        //System.out.println("You received " + receive_money);
+	        
+	        chansToGetResources(
+	        		probabilityFindWaterIceInnerRing,
+	        		probabilityFindIronInnerRing,
+	        		probabilityFindCopperInnerRing,
+	        		probabilityFindSilverInnerRing,
+	        		probabilityFindGoldInnerRing,
+	        		probabilityFindPlatinumInnerRing,
+	        		probabilityFindUraniumInnerRing,
+	        		amountGetResourcesInnerRing, 
+	        		shop_instance);
 	        timeManager_instance.printCurrentDate();
 	        playerStatsInstance.increaseGeologistExperiencePlayer(15);
 	    }
@@ -309,6 +369,8 @@ public class mining_expedition_simulation {
 	    shipStats_instance.setWentOnMiningExpedition(true);
 	}
 	
+	
+
 	
 	
 	
@@ -327,6 +389,7 @@ public class mining_expedition_simulation {
 		
 			  
 	}
+	
 	
 	private int getTotalSkillLevelFromHiredAstronauts() throws IOException {
 		int totalSkill = 0;
@@ -367,13 +430,14 @@ public class mining_expedition_simulation {
 		
 	}
 	
-	public void countGoneMiningMidRing() {
+	public int countGoneMiningMidRing() {
 	    if (QuestManagerInstance.getAcceptedMiningSurveyQuestMediumDifficulty()) {
 	        haveGoneMiningMidRing++;
 	        System.out.println("DEBUG: Incremented haveGoneMiningMidRing to " + haveGoneMiningMidRing);
 	    } else {
 	        System.out.println("DEBUG: Medium difficulty quest not accepted, counter not incremented.");
 	    }
+	    return haveGoneMiningMidRing;
 	}
 
 		
@@ -405,7 +469,16 @@ public class mining_expedition_simulation {
     
 }  
     
-    public void chansToGetResources(int chanceToGetWaterIce, int chanceToGetIron, int chanceToGetCopper,int chanceToGetSilver, int chanceToGetGold,int chanceToGetPlatinum, int amountGetResources, Object shop_instance )
+    public void chansToGetResources(
+    		int chanceToGetWaterIce, 
+    		int chanceToGetIron, 
+    		int chanceToGetCopper,
+    		int chanceToGetSilver, 
+    		int chanceToGetGold,
+    		int chanceToGetPlatinum,
+    		int chanceToGetUranium,
+    		int amountGetResources, 
+    		Object shop_instance )
     {
     //	int copperAmount = 0; 
     //	int silverAmount = 0;
@@ -419,6 +492,7 @@ public class mining_expedition_simulation {
     	 int chanceSilver = random.nextInt(100);
     	 int chanceGold = random.nextInt(100);
     	 int chancePlatinum = random.nextInt(100);
+    	 int chanceUranium = random.nextInt(100);
     	 
     	  Shop_space_mining_sim shop = (Shop_space_mining_sim) shop_instance;
     	  
@@ -426,17 +500,6 @@ public class mining_expedition_simulation {
     	 int resouceRandomCalculationTimes = randomRollAmountGatherResources+ shop.getSmallMiningLaserValue();
     	 
     	 
-    	 // Debug for smallMiningLaser
-    	// System.out.println(" Bonus from small mining laser "+ shop.getSmallMiningLaserValue()); 	
-    	// System.out.println("randomRollAmountGatherResources "+randomRollAmountGatherResources); 		
-    	// System.out.println("resouceRandomCalculationTimes "+resouceRandomCalculationTimes); 
-    	 
-    	 
-    	// int chanceToGetCopper =50;
-    	// int chanceToGetSilver =10;
-    	// int chanceToGetGold =1;
-    	 
-    	//int resouceRandomCalculationTimes = 6;
     	
     	for (int i = 0; i <= resouceRandomCalculationTimes * shipStats_instance.getCrewMoraleBonus(); i++) {
     		
@@ -471,6 +534,10 @@ public class mining_expedition_simulation {
     		if (chance <= platinumAmount) {
     			platinumAmount = platinumAmount +1;
 		    }
+    		if (chance <= platinumAmount) {
+    			platinumAmount = platinumAmount +1;
+		    }
+	
 	
 
     		
@@ -499,6 +566,20 @@ public class mining_expedition_simulation {
         this.goldAmount = 0;
         this.platinumAmount = 0;
         System.out.println("reset resources to 0");
+    }
+    
+    
+    public int incrementProbeQuestProgress() {
+    	probeQuestProgress++;
+    	return probeQuestProgress;
+    }
+    
+    public int getProbeQuestProgress() {
+    	return probeQuestProgress;
+    }
+    
+    public void resetProbeQuestProgress() {
+    	probeQuestProgress=0;
     }
     
     
