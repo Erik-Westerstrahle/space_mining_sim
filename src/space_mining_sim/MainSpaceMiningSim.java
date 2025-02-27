@@ -141,8 +141,6 @@ public class MainSpaceMiningSim {
            
         	 
            
-
-           
     
 
     
@@ -150,7 +148,14 @@ public class MainSpaceMiningSim {
            
            
            
-           SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance, shop_instance, playerStatsInstance, assignAstronautsInstance, hireAstronautsInstance);
+           SaveLoadSystemInstance.loadGame(
+        		   playerFinances, 
+        		   shipStats_instance, 
+        		   shop_instance, 
+        		   playerStatsInstance, 
+        		   assignAstronautsInstance, 
+        		   hireAstronautsInstance,
+        		   QuestManagerInstance);
 
            
            
@@ -199,7 +204,7 @@ public class MainSpaceMiningSim {
            
 
          
-           // Main game loop
+           // main game loop
            while (!input.equals("exit")) {
         	   
                if (gameFailstate(playerFinances, shipStats_instance)) {
@@ -211,7 +216,7 @@ public class MainSpaceMiningSim {
                System.out.println("Type 'exit' to quit");
 
          
-               input = scanner.nextLine(); // Assign new input value here, don't redeclare
+               input = scanner.nextLine(); // assign new input value here
 
                
                
@@ -305,7 +310,7 @@ public class MainSpaceMiningSim {
                        break;
                    case "s":
                 	   
-                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance, assignAstronautsInstance);
+                	   SaveLoadSystemInstance.saveGame(playerFinances, shipStats_instance,shop_instance, playerStatsInstance, assignAstronautsInstance,QuestManagerInstance);
                 	
                 	  
                        break;
@@ -320,16 +325,20 @@ public class MainSpaceMiningSim {
                        break;
                    case "l":
                 	   
-                	   SaveLoadSystemInstance.loadGame(playerFinances, shipStats_instance, shop_instance, playerStatsInstance, assignAstronautsInstance, hireAstronautsInstance);
+                	   SaveLoadSystemInstance.loadGame(
+                			   playerFinances, 
+                			   shipStats_instance, 
+                			   shop_instance, 
+                			   playerStatsInstance, 
+                			   assignAstronautsInstance, 
+                			   hireAstronautsInstance,QuestManagerInstance);
 
                 	
                 	  
                        break;
                    case "c":
                 	   playerStatsInstance.printPlayerStats();
-               // 	   System.out.println("Your geology levet is : "+ playerStatsInstance.getLevelGeologistSkillPlayer());
-                //	   System.out.println("Your Astrogator levet is : "+ playerStatsInstance.getAstrogatorExperiencePlayer());
-                	//   System.out.println("Your Engineering levet is : "+ playerStatsInstance.getEngineeringExperiencePlayer());
+         
                 	   
                 	   break;
                    case "u":
@@ -377,7 +386,7 @@ public class MainSpaceMiningSim {
                  	   break;
                  	   
                       case "q":
-                  	    // Code to unassign the current miner
+                  	   
                   	  QuestManagerInstance.availableQuests();
                   	QuestManagerInstance.chooseQuest();
                   	   
@@ -389,7 +398,14 @@ public class MainSpaceMiningSim {
                    	  
                           break;
                    case "z":
-                	    startNewGame(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, SaveLoadSystemInstance, scanner);
+                	    startNewGame(
+                	    		playerFinances, 
+                	    		shop_instance, 
+                	    		shipStats_instance, 
+                	    		playerStatsInstance, 
+                	    		timeManager_instance, 
+                	    		SaveLoadSystemInstance, 
+                	    		scanner);
                 	    main(new String[]{});
                 	    shipStats_instance.renameShip();
                         return;
@@ -412,6 +428,7 @@ public class MainSpaceMiningSim {
                        System.out.println("Press 'c' to view your stats");
                        System.out.println("Press 'z' to start a new game");
                        System.out.println("Press 'n' to assign an astronaut to a job");
+                       System.out.println("Press 'q' to view available quests");
                        System.out.println("Type 'repair' to repair the ship a specific amount");
                 	   break;
                       case "exit":
@@ -489,18 +506,7 @@ public class MainSpaceMiningSim {
     }
     
     
-//
-//    static boolean getFirstTimeStartGameBoolean()
-//    {
-//    	return firstTimeStartGameBoolean;
-//    }
-//    
-//    public static void setFirstTimeStartGameBoolean() {
-//    	// TODO Auto-generated method stub
-//    	//this.fuel_amount = newFuelAmount;
-//    	firstTimeStartGameBoolean = false;
-//    }
-//  
+
 
     // this function checks if the game is over every input
    private static boolean gameFailstate(finances_player playerFinances, ship_stats shipStats_instance)
