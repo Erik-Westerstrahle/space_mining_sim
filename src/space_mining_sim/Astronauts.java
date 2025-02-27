@@ -4,6 +4,8 @@ package space_mining_sim;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Astronauts {
 	  private int id;
@@ -53,36 +55,81 @@ this.mechanistExperienceAstronaut = 0;
 this.minerExperienceAstronaut = 0;
 this.assignAstronauts=assignAstronautsInstance;
 }
+    
+    private static final Map<Integer, Integer> astrogatorLevelEXPMap = new HashMap<>();
+    
+    static {
+    	astrogatorLevelEXPMap.put(1, 15);
+    	astrogatorLevelEXPMap.put(2, 30);
+    	astrogatorLevelEXPMap.put(3, 50);
+    	astrogatorLevelEXPMap.put(4, 80);
+    	astrogatorLevelEXPMap.put(5, 100);
+    	astrogatorLevelEXPMap.put(6, 175);
+    	astrogatorLevelEXPMap.put(7, 250);
+    	astrogatorLevelEXPMap.put(8, 325);
+    }
+    
+    
+    public int getExperienceNextLevelAstrogatorJobbAstronaut(int level) {
+    	return astrogatorLevelEXPMap.getOrDefault(level, Integer.MAX_VALUE);
+    	
+    }
 
     
+    public void checkLevelAstrogatorJobbAstronaut(){
+    	//Here checks what level astrogator skill the astronaut with the astrogator jobb has when game is loaded
+this.astrogatorExperienceAstronaut=0; // sets experience to 0
+for(int i =1; i< this.astrogatorSkill; i++) {
+	this.astrogatorExperienceAstronaut += getExperienceNextLevelAstrogatorJobbAstronaut(i);
+	
+}
+System.out.println(this.name + " starts with " + this.astrogatorExperienceAstronaut + " Astrogator XP for level " + this.astrogatorSkill);
+
+    }
+    
     public void addAstrogatorExperience (int experience) {
-    	this.astrogatorExperienceAstronaut += experience;
+//    	this.astrogatorExperienceAstronaut += experience;
 //    	if (this.astrogatorExperienceAstronaut >=15) {
 //    		this.astrogatorSkill +=1;
 //    		this.astrogatorExperienceAstronaut=0; //reset experience
 //    	    System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
 //    	}
     	
+//    	
+//
+//    	
+//		if(astrogatorExperienceAstronaut >= 5)
+//		{
+//			astrogatorSkill +=1;
+//			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+//	
+//		}
+//		if(astrogatorExperienceAstronaut>=10 )
+//		{
+//			astrogatorSkill +=1;
+//			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+//		
+//		}
+//		if(astrogatorExperienceAstronaut>=15 )
+//		{
+//			astrogatorSkill +=1;
+//			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+//		
+//		}
     	
-		if(astrogatorExperienceAstronaut >= 5)
-		{
-			astrogatorSkill +=1;
-			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
-	
-		}
-		if(astrogatorExperienceAstronaut>=10 )
-		{
-			astrogatorSkill +=1;
-			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
-		
-		}
-		if(astrogatorExperienceAstronaut>=15 )
-		{
-			astrogatorSkill +=1;
-			 System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
-		
-		}
+    	this.astrogatorExperienceAstronaut += experience;
+    	 System.out.println(this.name + " gained " + experience + " Astrogator XP. Total XP: " + this.astrogatorExperienceAstronaut);
+    		
+    	while (this.getAstrogatorExperienceAstronaut() >=  getExperienceNextLevelAstrogatorJobbAstronaut(this.astrogatorSkill)) {
+    		this.astrogatorExperienceAstronaut -= getExperienceNextLevelAstrogatorJobbAstronaut(this.astrogatorSkill);
+    		this.astrogatorSkill++;
+    		  System.out.println(this.name + " has leveled up their Astrogator Skill! New level: " + this.astrogatorSkill);
+    		  System.out.println(this.name +" total exp "+ getAstrogatorExperienceAstronaut());
+    	}
+    	
     }
+    
+    
     
     public void addGeologistExperienceAstronaut (int experience) {
     	this.geologistExperienceAstronaut += experience;
