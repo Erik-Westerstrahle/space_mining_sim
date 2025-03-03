@@ -9,12 +9,23 @@ import java.util.Scanner;
 public class SaveLoadSystem {
 	  Shop_space_mining_sim shop = new Shop_space_mining_sim();
 	   playerStats playerStatsInstance = new playerStats(); 
+	   private QuestManager QuestManagerInstance;
 	   static boolean firstTimeStartGameBoolean = true;
     
     
 	  // Method to save game state to a file
 	   // the save game is currently a txt file. This migt be changed later
-    public static void saveGame(finances_player playerFinances, ship_stats shipStats,Shop_space_mining_sim shop_instance,  playerStats playerStatsInstance,assignAstronauts assignAstronautsInstance) {
+    public static void saveGame(
+    		finances_player playerFinances, 
+    		ship_stats shipStats,
+    		Shop_space_mining_sim shop_instance,  
+    		playerStats playerStatsInstance,
+    		assignAstronauts assignAstronautsInstance,
+    		QuestManager QuestManagerInstance) 
+    {
+    	
+ 
+    	
         try {
         	  // Using BufferedWriter for efficient writing to a file
             BufferedWriter writer = new BufferedWriter(new FileWriter("game_save.txt"));
@@ -50,8 +61,9 @@ public class SaveLoadSystem {
             
             assignAstronautsInstance.saveAssignedAstrogatorExperience(writer);
             
-            
-            
+          //writing what quests have been completed
+            writer.write(QuestManagerInstance.getAcceptedMiningSurveyQuestEasyDifficulty() + "\n");
+            writer.write(QuestManagerInstance.getAcceptedMiningSurveyQuestMediumDifficulty() + "\n");
             // Write other game states here
             
             // Closing the writer to ensure data is saved and resources are released
@@ -64,7 +76,14 @@ public class SaveLoadSystem {
     
     
     // Method to load game state from a file
-    public static void loadGame(finances_player playerFinances, ship_stats shipStats, Shop_space_mining_sim shop_instance, playerStats playerStatsInstance, assignAstronauts assignAstronautsInstance, hireAstronauts hireAstronautsInstance)
+    public static void loadGame(
+    		finances_player playerFinances, 
+    		ship_stats shipStats, 
+    		Shop_space_mining_sim shop_instance, 
+    		playerStats playerStatsInstance, 
+    		assignAstronauts assignAstronautsInstance, 
+    		hireAstronauts hireAstronautsInstance, 
+    		QuestManager questManagerInstance2)
  {
         try {
         	 boolean nameLoaded = false;
