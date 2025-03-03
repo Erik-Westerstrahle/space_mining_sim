@@ -36,6 +36,7 @@ public class QuestManager {
     
     boolean acceptedCollectIceQuesty=false;
     boolean acceptedProbeQuest=false;
+    boolean acceptedProbeInnerRingQuest=false;
     
    
 
@@ -82,6 +83,22 @@ public class QuestManager {
 	        playerFinances.increase_finances(questMoney);
 	        miningExpedition.resetProbeQuestProgress();
 	        System.out.println("PROBE QUEST completed. Received " + questMoney);			
+		}
+	}
+	
+	
+	public void transportProbeInnerRingQuest(int questMoney) {
+	
+		
+		if(!getAcceptedProbeInnerRingQuest()) {
+			return;
+		}
+		miningExpedition.incrementProbeQuestProgress();
+		
+		if(miningExpedition.incrementProbeQuestProgress()>=probe_quest_treshold) {
+	        playerFinances.increase_finances(questMoney);
+	        miningExpedition.resetProbeQuestProgress();
+	        System.out.println("PROBE QUEST INNER Ring completed. Received " + questMoney);			
 		}
 	}
 	
@@ -255,6 +272,12 @@ public class QuestManager {
 	}
 	
 	
+	public boolean getAcceptedProbeInnerRingQuest()
+	{
+		return acceptedProbeInnerRingQuest;
+	}	
+	
+	
 	public void setAcceptedMiningSurveyQuestEasyDifficulty(boolean newAcceptedminingSurveyQuestEasyDifficulty)
 	{
 		this.acceptedminingSurveyQuestEasyDifficulty= newAcceptedminingSurveyQuestEasyDifficulty;
@@ -278,6 +301,11 @@ public class QuestManager {
 	public void setAcceptedProbeQuest(boolean newAcceptedProbeQuest)
 	{
 		this.acceptedProbeQuest= newAcceptedProbeQuest;
+	}
+	
+	public void setAcceptedProbeInnerRingQuest(boolean newAcceptedProbeInnerRingQuest)
+	{
+		this.acceptedProbeInnerRingQuest= newAcceptedProbeInnerRingQuest;
 	}
 	
 }
