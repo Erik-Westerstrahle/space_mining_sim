@@ -419,6 +419,7 @@ public class MainSpaceMiningSim {
                        System.out.println("Press 'f' to view your finances");
                        System.out.println("Press 'e' to go on a mining expedition");
                        System.out.println("Press 'r' to refuel");
+                       System.out.println("Press 'o' to see options");
                        System.out.println("Press 'b' to access store");
                        System.out.println("Press 'p' to pay of your debts");
                        System.out.println("Press 's' to save the game");

@@ -15,6 +15,9 @@
 	
 		private double incomeMultiplier =1.0;
 		private double timeTakeWithFusionEngine =1.0;
+
+		
+		
 		int bonusSmallMiningLaser = 1;
 		
 		
@@ -23,6 +26,12 @@
 		int priceMiningArm = 100;
 		int priceBasicCrewQuarters = 100;
 		int priceSmallMiningLaser = 100;
+		
+		int sellValueWaterIce = 300;
+		int sellValueCopper = 500;
+		int sellValueSilver = 800;
+		int sellValueGold = 1000;
+		int sellValuePlatinum = 1500;
 			
 		//ship_stats shipStats_instance = new ship_stats();
 		   ship_stats shipStats_instance = new ship_stats();
@@ -30,11 +39,15 @@
 	       playerStats playerStatsInstance = new playerStats(); 
 	       timeManager timeManager_instance = new timeManager();
 	       storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
+	       private stockMarket stockMarketInstance  = new stockMarket();
 	    //   mining_expedition_simulation miningExpedition_shop;
 		//   finances_player playerFinances = new finances_player();
 	       
 	       private mining_expedition_simulation miningExpedition_shop;
 	       private finances_player playerFinances;
+	       
+	
+	   	
 	
 		   
 	
@@ -336,8 +349,7 @@
 		
 		
 		
-									//   remember you can input instance of classes as variables
-												//V
+	
 		
 		public void refuel_spaceship(ship_stats shipStats_instance, finances_player playerFinances)
 		{
@@ -377,14 +389,24 @@
 	
 		    System.out.println("Debug: water ice = "+ waterIceAmount + "Debug: Copper = " + copperAmount + ", Silver = " + silverAmount + ", Gold = " + goldAmount+ ", Platinum = " + platinumAmount);
 	
-		    int moneySellingWaterIceResourceUnits = waterIceAmount * 100; 
-		    int moneySellingCopperResourceUnits = copperAmount * 500; 
-		    int moneySellingSilverResourceUnits = silverAmount * 800; 
-		    int moneySellingGoldResourceUnits = goldAmount * 1000; 
-		    int moneySellingPlatinumResourceUnits = platinumAmount * 1500; 
+		   
+		    //int moneySellingCopperResourceUnits = copperAmount * 500; 
+		    //int moneySellingSilverResourceUnits = silverAmount * 800; 
+		    //int moneySellingGoldResourceUnits = goldAmount * 1000; 
+		    //int moneySellingPlatinumResourceUnits = platinumAmount * 1500; 
+		    
+		    int moneySellingWaterIceResourceUnits = Math.round(waterIceAmount * sellValueWaterIce* stockMarketInstance.getWaterPriceRandom()); 
+		    int moneySellingCopperResourceUnits = Math.round(copperAmount * sellValueCopper*stockMarketInstance.getCopperPriceRandom()); 
+		    int moneySellingSilverResourceUnits = Math.round(silverAmount * sellValueSilver*stockMarketInstance.getSilverPriceRandom()); 
+		    int moneySellingGoldResourceUnits = Math.round(goldAmount * sellValueGold*stockMarketInstance.getGoldPriceRandom()); 
+		    int moneySellingPlatinumResourceUnits = Math.round(platinumAmount * sellValuePlatinum*stockMarketInstance.getPlatinumPriceRandom()); 
 	
 		    int totalCredits = moneySellingWaterIceResourceUnits+ moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits+moneySellingPlatinumResourceUnits;
 	
+		    //System.out.println("DEBUG stock market. Original price: "+ (waterIceAmount * sellValueWaterIce) + " |stockmarket price: "+moneySellingWaterIceResourceUnits );
+		    //System.out.println("DEBUG stock market water multiplier "+stockMarketInstance.getWaterPriceRandom());	
+		    System.out.println("Money from selling water ice = " + moneySellingWaterIceResourceUnits + " Credits");
+		    System.out.println("Money from selling copper = " + moneySellingCopperResourceUnits + " Credits");
 		    System.out.println("You sold all your resource units. You get = " + totalCredits + " Credits");
 		    playerFinances.increase_finances(totalCredits);
 	

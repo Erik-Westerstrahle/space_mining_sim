@@ -7,6 +7,7 @@ public class optionsSpaceMiningSim {
 	
 	boolean soundBoolean = false;
 	 boolean startupLoadingBarIsActive = true;
+		boolean optionStockMarket =true;
 	
 	
 	public void userInputOptions(String input)
@@ -32,6 +33,17 @@ public class optionsSpaceMiningSim {
 		 setStartupLoadingBarIsActive(false);
 		 System.out.print("start loading bar  disabled");
 		  break;
+		  
+	 case "4":
+		 
+		 setOptionStockMarket(true);
+		 System.out.print("Enabled stock market");
+		  break;	  
+	 case "5":
+		 
+		 setOptionStockMarket(false);
+		 System.out.print("Disabled stock market");
+		  break;
      default:
          System.out.println("Invalid option.");
          break;
@@ -47,6 +59,8 @@ public class optionsSpaceMiningSim {
 		 System.out.println("input 0 to turn off audio");
 		 System.out.println("input 2 to turn on start loading bar");
 		 System.out.println("input 3 to turn off start loading bar");
+		 System.out.println("input 4 to turn on stock market (random selling prices on resources");
+		 System.out.println("input 5 to turn off stock market (random selling prices on resources");
 		 System.out.println("Current audio status: " + soundBoolean);
 		 System.out.println("Current start loading bar status: " + startupLoadingBarIsActive);
 	}
@@ -56,6 +70,16 @@ public class optionsSpaceMiningSim {
 	public boolean getSoundBoolean()
 	{
 		return soundBoolean;
+	}
+	
+    public  boolean getStartupLoadingBarIsActive()
+    {
+    	return startupLoadingBarIsActive;
+    }
+    
+	public boolean getOptionStockMarket()
+	{
+		return optionStockMarket;
 	}
 	
     public void setSoundBoolean(boolean newSoundBoolean) {
@@ -68,9 +92,11 @@ public class optionsSpaceMiningSim {
     	this.startupLoadingBarIsActive = newStartupLoadingBarIsActive;
     }
     
-    public  boolean getStartupLoadingBarIsActive()
-    {
-    	return startupLoadingBarIsActive;
+    public void setOptionStockMarket(boolean newOptionStockMarket) {
+    	// TODO Auto-generated method stub
+    	this.optionStockMarket = newOptionStockMarket;
     }
+    
+
 
 }
