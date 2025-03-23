@@ -72,6 +72,8 @@ public class MainSpaceMiningSim {
         optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
         AudioAndMusic audioAndMusicInstance = new AudioAndMusic(optionsSpaceMiningSimInstance);
         
+     
+        
    
 
     
@@ -322,6 +324,35 @@ public class MainSpaceMiningSim {
                        break;
                    case "view":
                        hireAstronauts.viewHiredAstronauts();
+                       
+                       System.out.println(" ");
+                       
+                 	  Astronauts minerInstance = assignAstronautsInstance.getAssignedMiner();
+                 	  Astronauts mechanicInstance = assignAstronautsInstance.getAssignedMechanic();
+                 	  Astronauts astrogatorInstance = assignAstronautsInstance.getAssignedAstrogator();
+                 	  
+                 	  if (minerInstance != null) {
+             	      System.out.println("Miner Name " + minerInstance.getName() +" miner skill: " + minerInstance.getMinerSkillAstronautsClass());
+                 	  }
+                 	  else {
+                 		    System.out.println("No miner is currently assigned.");
+                 	  }
+                 	  
+                 	  
+                 	  if (mechanicInstance != null) {
+                 		  System.out.println("Mechanic Name "+mechanicInstance.getName() + " mechanic skill: " + assignAstronautsInstance.getAssignedMechanicSkill());
+                 	  }
+                 	  else {
+                 		    System.out.println("No mechanic is currently assigned.");
+                 	  }
+                 	  
+                 	  if (astrogatorInstance != null) {
+                 		  System.out.println("Astrogator Name "+astrogatorInstance.getName() + " astrogator skill: " + assignAstronautsInstance.getAssignedAstrogator());
+                 	  }
+                 	  else {
+                 		    System.out.println("No astrogator is currently assigned.");
+                 	  }
+             	     
                        break;
                    case "l":
                 	   
@@ -394,8 +425,7 @@ public class MainSpaceMiningSim {
                       case "repair":
                    	   
                     	  shipStats_instance.repairHullSpecificAmountShipStats();
-                   	 
-                   	  
+                      	
                           break;
                    case "z":
                 	    startNewGame(
