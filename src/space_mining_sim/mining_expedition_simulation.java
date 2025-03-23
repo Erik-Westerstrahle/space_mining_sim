@@ -25,9 +25,9 @@ public class mining_expedition_simulation {
 	 private storyDescriptionsText storyDescriptionsTextInstance;
 	 private EventManager eventManagerInstance;
 	 private assignAstronauts assignAstronautsInstance;
-		private QuestManager QuestManagerInstance;
+	private QuestManager QuestManagerInstance;
 	private Astronauts AstronautsInstance;
-	 
+	private stockMarket stockMarketInstance;
 	// private Astronauts AstronautsMiningExpeditionsSimulationInstance;
 	 
 	
@@ -169,23 +169,24 @@ public class mining_expedition_simulation {
           case "1":
         	  setIsMiningOuterRing(true);
         	    // Ensure astrogator is assigned
-        	    if (assignAstronautsInstance.getAssignedAstrogator() != null) {
-        	        AstronautsInstance = assignAstronautsInstance.getAssignedAstrogator(); // there can be several astronauts but one has the astrogator jobb. This makes sure that the experience is assigned to the astronaut whith the jobb
-        	    } else {
-        	        System.out.println("No astrogator assigned. Cannot proceed with mining expedition.");
-        	        return;
-        	    }
+//        	    if (assignAstronautsInstance.getAssignedAstrogator() != null) {
+//        	        AstronautsInstance = assignAstronautsInstance.getAssignedAstrogator(); // there can be several astronauts but one has the astrogator jobb. This makes sure that the experience is assigned to the astronaut whith the jobb
+//        	    } else {
+//        	        System.out.println("No astrogator assigned. Cannot proceed with mining expedition.");
+//        	        return;
+//        	    }
         	  shipStats_instance.checkIfShipHasFusionEngine();
         	  go_on_mining_outer_ring(playerFinances, shipStats_instance, shop_instance, timeManager  );
             timeManager.advanceTime(5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine());
             System.out.println("took "+ 5*baseTime*playerStatsInstance.bonusesFromAstrogatorPlayerSkill()*shipStats_instance.getBonusFusionEngine()+" days to mine");
             storyDescriptionsTextInstance.printRandomStationDescription();
             storyDescriptionsTextInstance.chanceToEncounterRadioChatter();
-            if (AstronautsInstance != null) {
-                AstronautsInstance.addAstrogatorExperience(25);
-            } else {
-                System.out.println("No astrogator assigned. Cannot add experience.");
-            }
+            
+//            if (AstronautsInstance != null) {
+//                AstronautsInstance.addAstrogatorExperience(25);
+//            } else {
+//                System.out.println("No astrogator assigned. Cannot add experience.");
+//            }
             setIsMiningOuterRing(false);
             
 
@@ -423,9 +424,9 @@ public class mining_expedition_simulation {
 		if(QuestManagerInstance.getAcceptedMiningSurveyQuestEasyDifficulty()==true) {
 		haveGoneMiningOuterRing++;
 		//return baseTime;
-        System.out.println("DEBUG: Incremented haveGoneMiningOuterRing to " + haveGoneMiningOuterRing);
+        //System.out.println("DEBUG: Incremented haveGoneMiningOuterRing to " + haveGoneMiningOuterRing);
     } else {
-        System.out.println("DEBUG: Quest not accepted, counter not incremented.");
+        //System.out.println("DEBUG: Quest not accepted, counter not incremented.");
     }
 		
 	}
