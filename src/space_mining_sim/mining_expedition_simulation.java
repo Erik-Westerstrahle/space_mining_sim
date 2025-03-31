@@ -14,7 +14,7 @@ public class mining_expedition_simulation {
 	
 	
 	ship_stats shipStats_instance = new ship_stats();
-	
+	private optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
 
 
 	private timeManager timeManager_instance;
@@ -447,6 +447,18 @@ public class mining_expedition_simulation {
 	
     // Method to calculate income considering the multiplier
     private int calculateIncome(int baseIncome, double multiplier,List<Astronauts> hiredAstronauts) {
+    	if (optionsSpaceMiningSimInstance.getOptionsoftwareTestMode()==true) {
+    		System.out.println("[TEST MODE] calculateIncome test is being done") ;
+    		int finalIncome = (int) (baseIncome + multiplier);
+    		
+    		// mutant returns 0
+    		//int finalIncome =0;
+    		
+    		//int finalIncome = (int) (baseIncome - multiplier);
+    		
+    		return finalIncome; 
+    	}
+    	else {
     	double geologistBonusFromAstronauts = 1.0;
     	double geologistBonusFromPlayer = 1.0;
     	double[] levelBonuses = {0.0, 0.1, 0.3, 0.6}; // Index 0 is unused, levels start from 1
@@ -467,6 +479,7 @@ public class mining_expedition_simulation {
     
     
     return (int) (baseIncome * multiplier * geologistBonusFromAstronauts* geologistBonusFromPlayer); 
+    	}
     
 }  
     
@@ -538,11 +551,13 @@ public class mining_expedition_simulation {
     		if (chance <= platinumAmount) {
     			platinumAmount = platinumAmount +1;
 		    }
-	
-	
 
+	
     		
     	}
+		if (optionsSpaceMiningSimInstance.getOptionsoftwareTestMode()==true) {
+			System.out.println("[TEST MODE] Completed resource gathering simulation:");
+		}
     	 System.out.println("times gathered resources for each = "+resouceRandomCalculationTimes);
     	 System.out.println(" ");
     	 
@@ -559,6 +574,9 @@ public class mining_expedition_simulation {
 		 
     	
     	}
+    
+    
+    
     
     public void resetResources() {
     	this.waterIceAmount = 0;
@@ -584,7 +602,6 @@ public class mining_expedition_simulation {
     }
     
     
-
     
     public int getWaterIceAmount() {
         return this.waterIceAmount;

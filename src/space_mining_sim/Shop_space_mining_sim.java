@@ -32,6 +32,8 @@
 		int sellValueSilver = 800;
 		int sellValueGold = 1000;
 		int sellValuePlatinum = 1500;
+		
+	
 			
 		//ship_stats shipStats_instance = new ship_stats();
 		   ship_stats shipStats_instance = new ship_stats();
@@ -40,6 +42,7 @@
 	       timeManager timeManager_instance = new timeManager();
 	       storyDescriptionsText storyDescriptionsTextInstance = new storyDescriptionsText();
 	       private stockMarket stockMarketInstance  = new stockMarket();
+	       private optionsSpaceMiningSim optionsSpaceMiningSimInstance = new optionsSpaceMiningSim();
 	    //   mining_expedition_simulation miningExpedition_shop;
 		//   finances_player playerFinances = new finances_player();
 	       
@@ -386,29 +389,44 @@
 		    int silverAmount = miningExpedition_shop.getSilverAmount();
 		    int goldAmount = miningExpedition_shop.getGoldAmount();
 		    int platinumAmount = miningExpedition_shop.getPlatinumAmount();
-	
-		    System.out.println("Debug: water ice = "+ waterIceAmount + "Debug: Copper = " + copperAmount + ", Silver = " + silverAmount + ", Gold = " + goldAmount+ ", Platinum = " + platinumAmount);
-	
-		   
-		    //int moneySellingCopperResourceUnits = copperAmount * 500; 
-		    //int moneySellingSilverResourceUnits = silverAmount * 800; 
-		    //int moneySellingGoldResourceUnits = goldAmount * 1000; 
-		    //int moneySellingPlatinumResourceUnits = platinumAmount * 1500; 
-		    
+		    int totalCredits;
+		 		    
 		    int moneySellingWaterIceResourceUnits = Math.round(waterIceAmount * sellValueWaterIce* stockMarketInstance.getWaterPriceRandom()); 
 		    int moneySellingCopperResourceUnits = Math.round(copperAmount * sellValueCopper*stockMarketInstance.getCopperPriceRandom()); 
 		    int moneySellingSilverResourceUnits = Math.round(silverAmount * sellValueSilver*stockMarketInstance.getSilverPriceRandom()); 
 		    int moneySellingGoldResourceUnits = Math.round(goldAmount * sellValueGold*stockMarketInstance.getGoldPriceRandom()); 
-		    int moneySellingPlatinumResourceUnits = Math.round(platinumAmount * sellValuePlatinum*stockMarketInstance.getPlatinumPriceRandom()); 
+		    int moneySellingPlatinumResourceUnits = Math.round(platinumAmount * sellValuePlatinum*stockMarketInstance.getPlatinumPriceRandom());
+		    
+		    
+		    //mutation testing
+	    	if (optionsSpaceMiningSimInstance.getOptionsoftwareTestMode()==true) 
+	    	{
+	    		System.out.println("Debug: water ice = "+ waterIceAmount + " Debug: Copper = " + copperAmount + ", Silver = " + silverAmount + ", Gold = " + goldAmount+ ", Platinum = " + platinumAmount);
+	    		System.out.println("[TEST MODE] sellResourceUnits test is being done") ;
+	    		 
+	    		  totalCredits = moneySellingWaterIceResourceUnits+ moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits+moneySellingPlatinumResourceUnits;
+	    		 int totalCreditsMultiplication = moneySellingWaterIceResourceUnits* moneySellingCopperResourceUnits;
+	    		 int totalCreditsSubtraction = moneySellingWaterIceResourceUnits- moneySellingCopperResourceUnits;
+	    		 
+	    		 System.out.println("[TEST MODE] sellResourceUnits multiplication test "+ moneySellingWaterIceResourceUnits + " * " + moneySellingCopperResourceUnits + " = "+totalCreditsMultiplication);
+	    		 System.out.println("[TEST MODE] sellResourceUnits subtraction test "+ moneySellingWaterIceResourceUnits + " - " + moneySellingCopperResourceUnits + " = "+totalCreditsSubtraction);
+	    				
+	    		 System.out.println("You sold all your resource units. You get = " + totalCredits + " Credits");
+	    		 //System.out.println("mutation  = " + totalCredits + " Credits");
+	    		 playerFinances.increase_finances(totalCredits);
+	    	}
+	    	else
+	    	{
 	
-		    int totalCredits = moneySellingWaterIceResourceUnits+ moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits+moneySellingPlatinumResourceUnits;
-	
-		    //System.out.println("DEBUG stock market. Original price: "+ (waterIceAmount * sellValueWaterIce) + " |stockmarket price: "+moneySellingWaterIceResourceUnits );
-		    //System.out.println("DEBUG stock market water multiplier "+stockMarketInstance.getWaterPriceRandom());	
-		    System.out.println("Money from selling water ice = " + moneySellingWaterIceResourceUnits + " Credits");
-		    System.out.println("Money from selling copper = " + moneySellingCopperResourceUnits + " Credits");
+		     totalCredits = moneySellingWaterIceResourceUnits+ moneySellingCopperResourceUnits + moneySellingSilverResourceUnits + moneySellingGoldResourceUnits+moneySellingPlatinumResourceUnits;
+		    //System.out.println("Money from selling water ice = " + moneySellingWaterIceResourceUnits + " Credits");
+		    //System.out.println("Money from selling copper = " + moneySellingCopperResourceUnits + " Credits");
 		    System.out.println("You sold all your resource units. You get = " + totalCredits + " Credits");
 		    playerFinances.increase_finances(totalCredits);
+	    	}
+		    //System.out.println("DEBUG stock market. Original price: "+ (waterIceAmount * sellValueWaterIce) + " |stockmarket price: "+moneySellingWaterIceResourceUnits );
+		    //System.out.println("DEBUG stock market water multiplier "+stockMarketInstance.getWaterPriceRandom());	
+
 	
 		    // Reset resources after selling
 		    miningExpedition_shop.resetResources();

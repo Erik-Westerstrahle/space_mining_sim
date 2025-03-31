@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class optionsSpaceMiningSim {
 	
-	boolean soundBoolean = false;
-	 boolean startupLoadingBarIsActive = true;
-		boolean optionStockMarket =true;
+boolean soundBoolean = false;
+boolean startupLoadingBarIsActive = false;
+boolean optionStockMarket =true;
+boolean optionsoftwareTestMode = false;
 	
 	
 	public void userInputOptions(String input)
@@ -82,6 +83,11 @@ public class optionsSpaceMiningSim {
 		return optionStockMarket;
 	}
 	
+	public boolean getOptionsoftwareTestMode()
+	{
+		return optionsoftwareTestMode;
+	}
+	
     public void setSoundBoolean(boolean newSoundBoolean) {
     	// TODO Auto-generated method stub
     	this.soundBoolean = newSoundBoolean;
@@ -95,6 +101,11 @@ public class optionsSpaceMiningSim {
     public void setOptionStockMarket(boolean newOptionStockMarket) {
     	// TODO Auto-generated method stub
     	this.optionStockMarket = newOptionStockMarket;
+    }
+    
+    public void setOptionsoftwareTestMode(boolean newOptionsoftwareTestMode) {
+        
+    	this.optionsoftwareTestMode = newOptionsoftwareTestMode;
     }
     
 
