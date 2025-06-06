@@ -14,11 +14,20 @@ public class QuestManager {
     private timeManager timeManager_instance;
     private storyDescriptionsText storyDescriptionsTextInstance;
     private mining_expedition_simulation miningExpedition;
+    private Astronauts Astronauts_instance;
     
    
     private static final int probe_quest_treshold =1;
     
-    public QuestManager(finances_player playerFinances, Shop_space_mining_sim shop_instance, ship_stats shipStats_instance, playerStats playerStatsInstance, timeManager timeManager_instance, storyDescriptionsText storyDescriptionsTextInstance, mining_expedition_simulation miningExpedition) {
+    public QuestManager(finances_player playerFinances, 
+    		Shop_space_mining_sim shop_instance, 
+    		ship_stats shipStats_instance, 
+    		playerStats playerStatsInstance, 
+    		timeManager timeManager_instance, 
+    		storyDescriptionsText storyDescriptionsTextInstance, 
+    		mining_expedition_simulation miningExpedition,
+    		Astronauts Astronauts_instance) {
+    	
         this.playerFinances = playerFinances;
         this.shop_instance = shop_instance;
         this.shipStats_instance = shipStats_instance;
@@ -26,6 +35,7 @@ public class QuestManager {
         this.timeManager_instance = timeManager_instance;
         this.storyDescriptionsTextInstance = storyDescriptionsTextInstance;
         this.miningExpedition = miningExpedition;
+        this.Astronauts_instance = Astronauts_instance;
     }
 
     
@@ -37,6 +47,8 @@ public class QuestManager {
     boolean acceptedCollectIceQuesty=false;
     boolean acceptedProbeQuest=false;
     boolean acceptedProbeInnerRingQuest=false;
+    boolean acceptedEldritchHorrorQuest=false;
+    boolean encounteredEldritchHorror=false;
     
    
 
@@ -148,12 +160,37 @@ public class QuestManager {
 			
 		}
 		}
-		
-		
-		 
-		
+			
 		 
 }
+	
+	public void findEldritchHorrorQuest(int questReward) {
+		
+		if (Astronauts_instance==null) {
+			 System.out.println("you have no Astrogator assigned you cannot do the eldritch horror quest");
+			 return;
+		}
+		else {
+		 Random random = new Random();
+		 int rollEncounterEldritchHorror = random.nextInt(100) + 1;
+		 
+		 if(acceptedEldritchHorrorQuest==true && Astronauts_instance.getAstrogatorSkill()>=10) {
+			 
+		 if(rollEncounterEldritchHorror<=1) {
+			 //encounteredEldritchHorror = true;
+			 playerFinances.increase_finances(questReward); 
+			 shipStats_instance.decreaseCrewMorale(10);
+			 System.out.println("you found the eldritch horror. You wish you had not. you gained "+questReward);
+			 acceptedEldritchHorrorQuest = false;
+			 
+		 }
+		 
+		 }
+		
+		return;
+		}
+	}
+	
 	
 	public void resetGoneMiningOuterRingCount()
 	{
@@ -240,6 +277,12 @@ public class QuestManager {
 	    
 	    break;
 	    
+	     case "6":
+	    	 setAcceptedEldritchHorrorQuest(true);
+	    	 
+	    	 
+	    break;
+	    
 	     default:
 	            System.out.println("Invalid command.");
 		}
@@ -270,6 +313,12 @@ public class QuestManager {
 	{
 		return acceptedProbeQuest;
 	}
+	
+	public boolean getEldritchHorrorQuest()
+	{
+		return acceptedEldritchHorrorQuest;
+	}
+	
 	
 	
 	public boolean getAcceptedProbeInnerRingQuest()
@@ -308,4 +357,9 @@ public class QuestManager {
 		this.acceptedProbeInnerRingQuest= newAcceptedProbeInnerRingQuest;
 	}
 	
+	
+	public void setAcceptedEldritchHorrorQuest(boolean newAcceptedEldritchHorrorQuest)
+	{
+		this.acceptedEldritchHorrorQuest= newAcceptedEldritchHorrorQuest;
+	}
 }

@@ -59,7 +59,7 @@ public class MainSpaceMiningSim {
         		assignAstronautsInstance, 
         		null, 
         		assignedAstrogator);
-        QuestManager QuestManagerInstance = new QuestManager(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, storyDescriptionsTextInstance, miningExpedition);
+        QuestManager QuestManagerInstance = new QuestManager(playerFinances, shop_instance, shipStats_instance, playerStatsInstance, timeManager_instance, storyDescriptionsTextInstance, miningExpedition, assignedAstrogator);
         
         //sets the QuestManagerInstance in the existing miningExpedition instance
         miningExpedition.setQuestManager(QuestManagerInstance);
