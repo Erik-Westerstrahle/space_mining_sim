@@ -53,11 +53,11 @@ public class QuestManager {
    
 
 	public void miningSurveyQuestEasyDifficulty(int questMoneyReward, int amountToCompleteQuest) {
-		int questReward = 1000;
+		//int questReward = 1000;
 		 int timesGoneOnMiningExpeditionOuterRing=0;
 	
 	//	 System.out.println("DEBUG: Checking quest completion quest 1: haveGoneMiningOuterRing=" + miningExpedition.getHaveGoneMiningOuterRing() + ", amountToCompleteQuest=" + amountToCompleteQuest);
-		if(miningExpedition.getHaveGoneMiningOuterRing()==amountToCompleteQuest) {
+		if(acceptedminingSurveyQuestEasyDifficulty && miningExpedition.getHaveGoneMiningOuterRing()==amountToCompleteQuest) {
 			playerFinances.increase_finances(questMoneyReward);
 			
 			 System.out.println("easy mining survey completed. you gained  = "+questMoneyReward);
@@ -225,6 +225,10 @@ public class QuestManager {
 		{
 			 System.out.println("5 probe quest");
 		}
+		if(acceptedEldritchHorrorQuest==false)
+		{
+			 System.out.println("6 eldritch horror quest");
+		}
 		
 		
 	}
@@ -279,7 +283,7 @@ public class QuestManager {
 	    
 	     case "6":
 	    	 setAcceptedEldritchHorrorQuest(true);
-	    	 
+	    	 System.out.println("you accepted the eldritch horror quest");
 	    	 
 	    break;
 	    
