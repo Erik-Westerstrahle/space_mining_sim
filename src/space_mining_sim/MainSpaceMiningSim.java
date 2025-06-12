@@ -347,7 +347,7 @@ public class MainSpaceMiningSim {
                  	  }
                  	  
                  	  if (astrogatorInstance != null) {
-                 		  System.out.println("Astrogator Name "+astrogatorInstance.getName() + " astrogator skill: " + assignAstronautsInstance.getAssignedAstrogator());
+                 		  System.out.println("Astrogator Name "+astrogatorInstance.getName() + " astrogator skill: " + assignAstronautsInstance.getAssignedAstrogatorSkill());
                  	  }
                  	  else {
                  		    System.out.println("No astrogator is currently assigned.");
@@ -419,7 +419,7 @@ public class MainSpaceMiningSim {
                       case "q":
                   	   
                   	  QuestManagerInstance.availableQuests();
-                  	QuestManagerInstance.chooseQuest();
+                  	QuestManagerInstance.chooseQuest(scanner);
                   	   
                	   break;
                       case "repair":

@@ -122,7 +122,7 @@ public class QuestManager {
 		
 	
 		if(acceptedCollectIceQuesty==true) {
-		if(miningExpedition.getTotalCollectedWaterIceAmount()==1) {
+		if(miningExpedition.getTotalCollectedWaterIceAmount()>=1) {
 			playerFinances.increase_finances(questMoney);
 			
 			 System.out.println("ice collect quest completed. you gained  = "+questMoney);
@@ -233,9 +233,9 @@ public class QuestManager {
 		
 	}
 	
-	public void chooseQuest()
+	public void chooseQuest(Scanner scanner)
 	{
-		Scanner scanner = new Scanner(System.in);
+		//Scanner scanner = new Scanner(System.in);
 		 System.out.println("choose available quest ");
 		 String input = scanner.nextLine();
 		switch (input) {
@@ -269,7 +269,7 @@ public class QuestManager {
 	    	 setAcceptedFindingLostSpaceShipQuest(true);
 	    	 
 	    	
-	    	 System.out.println("4 find lost spaceship quest");
+	    	 System.out.println("accpeted find lost spaceship quest");
 	    
 	    break;
 	    
